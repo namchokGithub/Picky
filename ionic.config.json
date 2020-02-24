@@ -1,0 +1,7 @@
+{
+  "name": "PickyApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
