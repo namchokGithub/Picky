@@ -9,12 +9,13 @@
             <ion-content>
                 <ion-list id="inbox-list">
                     <ion-list-header>Picky | Team2</ion-list-header>
-                    <ion-note>60160336</ion-note>
+                    <!-- <ion-note>60160336</ion-note> -->
 
                     <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
                         <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
                             <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-                            <ion-label>{{ p.title }}</ion-label> <!-- tab menu -->
+                            <ion-label>{{ p.title }}</ion-label>
+                            <!-- tab menu -->
                         </ion-item>
                     </ion-menu-toggle>
                 </ion-list>
@@ -24,7 +25,8 @@
 
                     <ion-item *ngFor="let label of labels" lines="none">
                         <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-                        <ion-label>{{ label }}</ion-label> <!-- text label -->
+                        <ion-label>{{ label }}</ion-label>
+                        <!-- text label -->
                     </ion-item>
                 </ion-list>
             </ion-content>
