@@ -1,7 +1,8 @@
 <!-- 
   File Name : app.component.html
-  Name : Chomphunut 
+  Name : Chomphunut  
   Date : 24/02/20 
+  Date :25/02/20 Varthinee
  -->
 <ion-app>
     <ion-split-pane contentId="main-content">
@@ -9,7 +10,7 @@
             <ion-content>
                 <ion-list id="inbox-list">
                     <ion-list-header>Picky | Team2</ion-list-header>
-                    <ion-note>60160350</ion-note><!--รหัสนิสิต-->
+                    <ion-note>60160336</ion-note> <!-- 60160345 --> <!-- Namchok is coming --> <!-- Chatchalerm edit here -->
 
                     <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
                         <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
@@ -22,7 +23,11 @@
 
                 <ion-list id="labels-list">
                     <ion-list-header>Labels</ion-list-header>
-
+                    <!-- loop 60160345 -->
+                    <!-- I'm tried -->
+                    <!-- Why so harder -->
+                    <!-- isuss -->
+                    <!-- enook even-->
                     <ion-item *ngFor="let label of labels" lines="none">
                         <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
                         <ion-label>{{ label }}</ion-label>
@@ -31,6 +36,4 @@
                 </ion-list>
             </ion-content>
         </ion-menu>
-        <ion-router-outlet id="main-content"></ion-router-outlet>
-    </ion-split-pane>
-</ion-app>
+        <ion-router-outlet id="main-content"></ion-routs
