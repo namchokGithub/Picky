@@ -1,7 +1,7 @@
 <!-- 
   File Name : app.component.html
   Name : Chomphunut 
-  Date : 24/02/20
+  Date : 24/02/20 
  -->
 <ion-app>
     <ion-split-pane contentId="main-content">
@@ -9,7 +9,7 @@
             <ion-content>
                 <ion-list id="inbox-list">
                     <ion-list-header>Picky | Team2</ion-list-header>
-                    <ion-note>60160336</ion-note>
+                    <ion-note>60160336</ion-note><!--รหัสนิสิต-->
 
                     <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
                         <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
