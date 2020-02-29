@@ -11,11 +11,7 @@
                 <ion-list id="inbox-list">
                     <ion-list-header>Picky | Team2</ion-list-header>
                     <ion-note>60160336</ion-note>
-                    <!-- 60160345 -->
-                    <!-- Namchok is coming -->
-                    <!-- Chatchalerm edit here -->
-                    <!-- Namchok update AND Komsan-->
-                    <!-- TEST GIT 22-->
+                    <!-- Devmaster คอมเมนท์ครั้งที่ 1 -->
                     <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
                         <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
                             <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
@@ -42,3 +38,5 @@
         </ion-menu>
         <ion-router-outlet id="main-content">
         </ion-router-outlet>
+
+        <!-- Mhee test  -->
