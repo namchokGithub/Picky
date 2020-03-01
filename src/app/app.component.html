@@ -18,10 +18,27 @@
                         </ion-item>
                     </ion-menu-toggle>
                 </ion-list>
-
-
             </ion-content>
         </ion-menu>
+        <ion-tabs>
+            <ion-tab-bar slot="bottom">
+                <ion-tab-button tab="transactions">
+                    <ion-img justify-content-center style="width: 40px; height: 40px;" src="assets/icon/pickylogo.png"></ion-img>
+                    <ion-label>Transactions</ion-label>
+                </ion-tab-button>
+
+                <ion-tab-button tab="add">
+                    <ion-img justify-content-center style="width: 40px; height: 40px;" src="assets/icon/pickylogo.png"></ion-img>
+                </ion-tab-button>
+
+                <ion-tab-button tab="account">
+                    <ion-img justify-content-center style="width: 40px; height: 40px;" src="assets/icon/pickylogo.png"></ion-img>
+                    <ion-label>Account</ion-label>
+                </ion-tab-button>
+
+
+            </ion-tab-bar>
+        </ion-tabs>
         <ion-router-outlet id="main-content"></ion-router-outlet>
     </ion-split-pane>
 </ion-app>
