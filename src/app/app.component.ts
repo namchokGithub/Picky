@@ -30,12 +30,12 @@ export class AppComponent implements OnInit {
     {
       title: 'Report',
       url: '/report',
-      icon: 'archive'
+      icon: 'bar-chart'
     },
     {
       title: 'Setting',
       url: '/setting',
-      icon: 'trash'
+      icon: 'settings'
     }
   ];
   
