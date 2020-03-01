@@ -14,37 +14,31 @@ export class AppComponent implements OnInit {
   public appPages = [
     {
       title: 'Home',
-      url: '/tabs',
+      url: '/home',
       icon: 'Home'
     },
     {
       title: 'Transactions',
-      url: '/folder/Transactions',
+      url: '/transactions',
       icon: 'card'
     },
     {
       title: 'Account',
-      url: '/folder/Account',
+      url: '/account',
       icon: 'person'
     },
     {
       title: 'Report',
-      url: '/folder/Report',
+      url: '/report',
       icon: 'archive'
     },
     {
-      title: 'Trash',
-      url: '/folder/Trash',
+      title: 'Setting',
+      url: '/setting',
       icon: 'trash'
-    },
-    {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
     }
   ];
-  public labels = ['Namchok', 'Namchok 2', 'Namchok 3', 'Namchok 4', 'Namchok 6', 'Reminders'];
-
+  
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
