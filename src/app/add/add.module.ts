@@ -7,15 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { AddPageRoutingModule } from './add-routing.module';
 
 import { AddPage } from './add.page';
-import { ModalPagePage } from '../modal-page/modal-page.page';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddPageRoutingModule,
-    ModalPagePage
+    AddPageRoutingModule
 
   ],
   declarations: [AddPage]

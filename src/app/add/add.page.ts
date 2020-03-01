@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController, NavController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-add',
@@ -7,14 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddPage implements OnInit {
 
-  constructor() { }
+  constructor(private nav: NavController,private modalController: ModalController) { }
 
   ngOnInit() {
   }
   openModal(){
 
-   
-
-    console.log("openModal")
+ 
   }
 }
