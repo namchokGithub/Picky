@@ -43,8 +43,7 @@ export class AppComponent implements OnInit {
       icon: 'warning'
     }
   ];
-  public labels = ['Namchok', 'Namchok 2', 'Namchok 3', 'Namchok 4', 'Namchok 6', 'Reminders'];
-
+ 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
