@@ -14,7 +14,11 @@ const routes: Routes = [
   {
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },  {
+    path: 'folder',
+    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
   }
+
 
 ];
 
