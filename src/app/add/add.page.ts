@@ -11,5 +11,10 @@ export class AddPage implements OnInit {
 
   ngOnInit() {
   }
+  openModal(){
 
+   
+
+    console.log("openModal")
+  }
 }

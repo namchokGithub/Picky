@@ -4,20 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AddPageRoutingModule } from './add-routing.module';
+import { ModalPagePageRoutingModule } from './modal-page-routing.module';
 
-import { AddPage } from './add.page';
-import { ModalPagePage } from '../modal-page/modal-page.page';
+import { ModalPagePage } from './modal-page.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddPageRoutingModule,
-    ModalPagePage
-
+    ModalPagePageRoutingModule
   ],
-  declarations: [AddPage]
+  declarations: [ModalPagePage]
 })
-export class AddPageModule {}
+export class ModalPagePageModule {}
