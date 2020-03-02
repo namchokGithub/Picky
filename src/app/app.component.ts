@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Account',
-      url: '/account',
+      url: '/showaccount',
       icon: 'person'
     },
     {
