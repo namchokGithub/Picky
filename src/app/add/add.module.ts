@@ -8,14 +8,12 @@ import { AddPageRoutingModule } from './add-routing.module';
 
 import { AddPage } from './add.page';
 
-
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     AddPageRoutingModule
-
   ],
   declarations: [AddPage]
 })

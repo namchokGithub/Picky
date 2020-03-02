@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
     {
       title: 'Home',
       url: '/home',
-      icon: 'Home'
+      icon: 'home'
     },
     {
       title: 'Transactions',
@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
       icon: 'settings'
     }
   ];
-  
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  callpageAdd(){
-    console.log("click")
+  callpageAdd() {
+    console.log('click');
   }
 }
