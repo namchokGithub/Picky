@@ -20,10 +20,6 @@ const routes: Routes = [
     loadChildren: () => import('./transactions/transactions.module').then( m => m.TransactionsPageModule)
   },
   {
-    path: 'account',
-    loadChildren: () => import('./account/account.module').then( m => m.AccountPageModule)
-  },
-  {
     path: 'report',
     loadChildren: () => import('./report/report.module').then( m => m.ReportPageModule)
   },
@@ -39,10 +35,19 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./Login/login/login.module').then( m => m.LoginPageModule)
-  },  {
+  },
+  {
     path: 'register',
     loadChildren: () => import('./Login/register/register.module').then( m => m.RegisterPageModule)
+  },  {
+    path: 'showaccount',
+    loadChildren: () => import('./account/showaccount/showaccount.module').then( m => m.ShowaccountPageModule)
+  },
+  {
+    path: 'addaccount',
+    loadChildren: () => import('./account/addaccount/addaccount.module').then( m => m.AddaccountPageModule)
   }
+
 
 
 
