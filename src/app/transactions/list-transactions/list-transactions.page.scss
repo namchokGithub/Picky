@@ -1,11 +1,12 @@
 .circle {
-    width: 140px;
+    width: 150px;
     /* ความกว้าง */
-    height: 140px;
+    height: 30px;
     /* ความสูง */
-    background: greenyellow;
+    background: gray;
     /* สี */
     -moz-border-radius: 70px;
     -webkit-border-radius: 70px;
     border-radius: 70px;
+    font-size: 16px;
 }
