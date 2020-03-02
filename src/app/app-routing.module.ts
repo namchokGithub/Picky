@@ -42,7 +42,7 @@ const routes: Routes = [
   ,
   // {
   //   path: 'modal-page',
-  //   loadChildren: () => import('./modal-page/modal-page.module').then( m => m.ModalPagePageModule)
+  //   loadChildren: () => import('./modal-page/modal-p age.module').then( m => m.ModalPagePageModule)
   // }
 ];
 
