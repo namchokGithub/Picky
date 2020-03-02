@@ -3,7 +3,7 @@
         <ion-col align-self-center class="bg-color">
             <!-- logo -->
             <div class="mt-0 pt-0" style="align-items: center;">
-                <ion-img style="height: 80px; width: 80px;" src="../../assets/image/logo.png"></ion-img>
+                <!-- <ion-img style="height: 80px; width: 80px;" src="../../assets/image/logo.png"></ion-img> -->
             </div>
             <!-- end logo -->
 
@@ -19,40 +19,43 @@
                 <!-- Name -->
                 <ion-item>
                     <ion-label position="floating">
-                        ชื่อ
+                        Name
                     </ion-label>
                     <ion-input type="text" [(ngModel)]="name" name="name" placeholder=""></ion-input>
                 </ion-item>
                 <!-- Name -->
                 <ion-item>
                     <ion-label position="floating">
-                        นามสกุล
+                        Username
                     </ion-label>
-                    <ion-input type="text" [(ngModel)]="lastName" name="lastName" placeholder=""></ion-input>
+                    <ion-input type="text" [(ngModel)]="username" name="username" placeholder=""></ion-input>
                 </ion-item>
                 <!-- Username -->
                 <ion-item style="border-radius: 5px; margin-top: 5px;">
                     <ion-label position="floating">
-                        ชื่อผู้ใช้งาน
+                        Password
                     </ion-label>
-                    <ion-input type="text" [(ngModel)]="username" placeholder=""></ion-input>
+                    <ion-input type="password" [(ngModel)]="password" placeholder=""></ion-input>
                 </ion-item>
                 <!-- Password -->
                 <ion-item style="border-radius: 5px; margin-top: 5px;">
                     <ion-label position="floating">
-                        รหัสผ่าน
+                        Confirm Password
                     </ion-label>
-                    <ion-input type="password" [(ngModel)]="password" placeholder=""></ion-input>
+                    <ion-input type="password" [(ngModel)]="ConfirmPassword" placeholder=""></ion-input>
                 </ion-item>
             </div>
-            <!-- end login -->
 
-            <!-- login button -->
-            <div padding>
-                <ion-button (click)="validate()" expand="block" color="success">ยืนยันการสมัคร</ion-button>
-                <ion-button (click)="back()" expand="block" color="danger">ยกเลิก</ion-button>
-            </div>
-            <!-- end login button -->
+            <ion-row>
+                <ion-col>
+                    <ion-button (click)="validate()" expand="block" color="success">ยืนยันการสมัคร</ion-button>
+                </ion-col>
+
+                <ion-col>
+                    <ion-button (click)="back()" expand="block" color="danger">ยกเลิก</ion-button>
+                </ion-col>
+            </ion-row>
+
 
 
         </ion-col>

@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router'
 import { NavController } from "@ionic/angular";
-
 @Component({
-  selector: 'app-regis',
-  templateUrl: './regis.page.html',
-  styleUrls: ['./regis.page.scss'],
+  selector: 'app-register',
+  templateUrl: './register.page.html',
+  styleUrls: ['./register.page.scss'],
 })
-export class RegisPage implements OnInit {
+export class RegisterPage implements OnInit {
+
 
   constructor(public navCtrl: NavController,private router: Router) { }
 
@@ -15,7 +15,9 @@ export class RegisPage implements OnInit {
   }
 
   back() {
-    this.router.navigate(['home'])
+    this.router.navigate(['login'])
   }
 
 }
+
+
