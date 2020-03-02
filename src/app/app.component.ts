@@ -36,6 +36,11 @@ export class AppComponent implements OnInit {
       title: 'Setting',
       url: '/setting',
       icon: 'settings'
+    },
+    {
+      title: 'Logout',
+      url: '/login',
+      icon: 'log-out'
     }
   ];
 
