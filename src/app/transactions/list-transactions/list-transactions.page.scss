@@ -13,6 +13,21 @@
     padding-left: 15px;
 }
 
+.circle-card {
+    width: 120px;
+    /* ความกว้าง */
+    height: 30px;
+    /* ความสูง */
+    background: white;
+    /* สี */
+    -moz-border-radius: 70px;
+    -webkit-border-radius: 70px;
+    border-radius: 70px;
+    font-size: 16px;
+    padding: 5px;
+    padding-left: 15px;
+}
+
 .text-red {
     color: red;
 }
