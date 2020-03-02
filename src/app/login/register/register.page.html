@@ -1,0 +1,60 @@
+<ion-content class="bg">
+    <ion-row justify-content-center class="bg-color">
+        <ion-col align-self-center class="bg-color">
+            <!-- logo -->
+            <div class="mt-0 pt-0" style="align-items: center;">
+                <ion-img style="height: 80px; width: 80px;" src="../../assets/image/logo.png"></ion-img>
+            </div>
+            <!-- end logo -->
+
+
+            <div padding class="ion-text-center font">
+                <ion-text>
+                    สมัครสมาชิก
+                </ion-text>
+            </div>
+
+            <!-- login -->
+            <div padding>
+                <!-- Name -->
+                <ion-item>
+                    <ion-label position="floating">
+                        ชื่อ
+                    </ion-label>
+                    <ion-input type="text" [(ngModel)]="name" name="name" placeholder=""></ion-input>
+                </ion-item>
+                <!-- Name -->
+                <ion-item>
+                    <ion-label position="floating">
+                        นามสกุล
+                    </ion-label>
+                    <ion-input type="text" [(ngModel)]="lastName" name="lastName" placeholder=""></ion-input>
+                </ion-item>
+                <!-- Username -->
+                <ion-item style="border-radius: 5px; margin-top: 5px;">
+                    <ion-label position="floating">
+                        ชื่อผู้ใช้งาน
+                    </ion-label>
+                    <ion-input type="text" [(ngModel)]="username" placeholder=""></ion-input>
+                </ion-item>
+                <!-- Password -->
+                <ion-item style="border-radius: 5px; margin-top: 5px;">
+                    <ion-label position="floating">
+                        รหัสผ่าน
+                    </ion-label>
+                    <ion-input type="password" [(ngModel)]="password" placeholder=""></ion-input>
+                </ion-item>
+            </div>
+            <!-- end login -->
+
+            <!-- login button -->
+            <div padding>
+                <ion-button (click)="validate()" expand="block" color="success">ยืนยันการสมัคร</ion-button>
+                <ion-button (click)="back()" expand="block" color="danger">ยกเลิก</ion-button>
+            </div>
+            <!-- end login button -->
+
+
+        </ion-col>
+    </ion-row>
+</ion-content>
