@@ -6,13 +6,20 @@
 
 <ion-content>
     <ion-card>
-        <ion-card-header>
-            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-            <ion-card-title>Card Title</ion-card-title>
-        </ion-card-header>
+        <div padding class="ion-text-center">
+            <ion-card-header>
 
+                <ion-card-title>Manage account</ion-card-title>
+            </ion-card-header>
+        </div>
         <ion-card-content>
-            Keep close to Nature's heart... and break clear away, once in awhile, and climb a mountain or spend a week in the woods. Wash your spirit clean.
+            <ion-toolbar>
+                <div padding class="ion-text-center">
+                    <ion-button (click)="openAddAccount()">
+                        <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+                    </ion-button>
+                </div>
+            </ion-toolbar>
         </ion-card-content>
     </ion-card>
 </ion-content>

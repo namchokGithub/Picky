@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterModule } from '@angular/router'
+import { NavController } from "@ionic/angular";
 
 @Component({
   selector: 'app-addaccount',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddaccountPage implements OnInit {
 
-  constructor() { }
+  private  nameaccount: string = "";
+ 
+  constructor(public navCtrl: NavController,private router: Router) { }
 
   ngOnInit() {
   }
 
+  back(){
+
+    this.router.navigate(['showaccount'])
+  }
+  
 }
