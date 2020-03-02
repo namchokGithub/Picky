@@ -39,13 +39,18 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./Login/register/register.module').then( m => m.RegisterPageModule)
-  },  {
+  },
+  {
     path: 'showaccount',
     loadChildren: () => import('./account/showaccount/showaccount.module').then( m => m.ShowaccountPageModule)
   },
   {
     path: 'addaccount',
     loadChildren: () => import('./account/addaccount/addaccount.module').then( m => m.AddaccountPageModule)
+  },
+  {
+    path: 'list-transactions',
+    loadChildren: () => import('./transactions/list-transactions/list-transactions.module').then( m => m.ListTransactionsPageModule)
   }
 
 

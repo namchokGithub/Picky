@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: TransactionsPage
+  },  {
+    path: 'list-transactions',
+    loadChildren: () => import('./list-transactions/list-transactions.module').then( m => m.ListTransactionsPageModule)
   }
+
 ];
 
 @NgModule({
