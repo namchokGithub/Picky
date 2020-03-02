@@ -1,3 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit|Mitr|Prompt&display=swap');
+
+.menu-icon {
+  width: 40px; 
+  height: 40px;
+}
+
+.menu-icon-lg {
+  width: 60px; 
+  height: 60px;
+  margin-bottom: 10px !important;
+}
+
+.mhee {
+  font-family: 'Kanit', ;
+  font-family: 'Prompt', ;
+  font-family: 'Mitr', ;
+}
+
+* {
+  font-family: 'Prompt', sans-serif !important;
+}
+
+ion-tab-bar {
+  height: 60px !important;
+}
+
 ion-menu ion-content {
   --background: var(--ion-item-background, var(--ion-background-color, #fff));
 }
