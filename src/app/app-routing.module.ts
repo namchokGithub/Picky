@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
+    path: 'transactions',
+    loadChildren: () => import('./Transactions/transactions-add.module').then( m => m.TransactionsPageModule)
+  },
+  {
     path: 'report',
     loadChildren: () => import('./report/report.module').then( m => m.ReportPageModule)
   },
@@ -43,6 +47,10 @@ const routes: Routes = [
   {
     path: 'addaccount',
     loadChildren: () => import('./account/addaccount/addaccount.module').then( m => m.AddaccountPageModule)
+  },
+  {
+    path: 'list-transactions',
+    loadChildren: () => import('./transactions/list-transactions/list-transactions.module').then( m => m.ListTransactionsPageModule)
   }
 
 
