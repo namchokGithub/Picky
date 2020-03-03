@@ -53,11 +53,6 @@ const routes: Routes = [
     loadChildren: () => import('./transactions/list-transactions/list-transactions.module').then( m => m.ListTransactionsPageModule)
   }
 
-
-
-
-
-
 ];
 
 @NgModule({
