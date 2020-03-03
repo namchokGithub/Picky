@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TransactionsAddPageRoutingModule } from './transactions-add-routing.module';
+import { TransactionsPageRoutingModule } from './transactions-add-routing.module';
 
 import { TransactionsAddPage } from './transactions-add.page';
 
@@ -13,7 +13,7 @@ import { TransactionsAddPage } from './transactions-add.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    TransactionsAddPageRoutingModule
+    TransactionsPageRoutingModule
   ],
   declarations: [TransactionsAddPage]
 })

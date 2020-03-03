@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'transactions',
-    loadChildren: () => import('./Transactions/transactions-add.module').then( m => m.TransactionsPageModule)
+    loadChildren: () => import('./transactions/transactions-add/transactions-add.module').then( m => m.TransactionsAddPageModule)
   },
   {
     path: 'report',
