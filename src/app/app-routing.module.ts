@@ -8,14 +8,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '',
-    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
-  },
-  {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  },
-  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
@@ -59,8 +51,6 @@ const routes: Routes = [
     path: 'category',
     loadChildren: () => import('./add/category/category.module').then( m => m.CategoryPageModule)
   }
-
-
 
 ];
 @NgModule({
