@@ -10,14 +10,25 @@ import { Router } from '@angular/router';
 })
 export class AddPage implements OnInit {
 
-  constructor(private nav: NavController,private modalController: ModalController,private router: Router) { }
+  constructor(private nav: NavController, private modalController: ModalController, private router: Router) { }
 
   ngOnInit() {
-  }
-  openModal(){
-  }
-  goCategoryPage(){
 
-    this.router.navigate(['category'])
+  }
+
+  openModal() {
+
+  }
+
+  goCategoryPage() {
+    this.router.navigate(['category']);
+  }
+
+  back() {
+    this.router.navigate(['home'], { replaceUrl: true });
+  }
+
+  confirm() {
+    this.router.navigate(['home'], { replaceUrl: true });
   }
 }

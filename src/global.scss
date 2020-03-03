@@ -39,11 +39,61 @@
   }
   
 .menu-icon-lg {
-width: 60px; 
-height: 60px;
-margin-bottom: 10px !important;
+    width: 60px; 
+    height: 60px;
+    margin-bottom: 10px !important;
 }
 
 .icon-taps {
     font-size: 90px !important;
+}
+
+.inner-scroll {
+    background: linear-gradient(237deg, #62b4ea, #f8b7cd) !important;
+    background-size: 400% 400% !important;
+
+    -webkit-animation: AnimationName 6s ease infinite;
+    -moz-animation: AnimationName 6s ease infinite;
+    animation: AnimationName 6s ease infinite !important;
+
+    @-webkit-keyframes AnimationName {
+        0%{background-position:0% 24%}
+        50%{background-position:100% 77%}
+        100%{background-position:0% 24%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:0% 24%}
+        50%{background-position:100% 77%}
+        100%{background-position:0% 24%}
+    }
+    @keyframes AnimationName {
+        0%{background-position:0% 24%}
+        50%{background-position:100% 77%}
+        100%{background-position:0% 24%}
+    }
+}
+
+.bg-login {
+    background: linear-gradient(237deg, #62b4ea, #f8b7cd) !important;
+    background-size: 400% 400% !important;
+
+    -webkit-animation: AnimationName 6s ease infinite;
+    -moz-animation: AnimationName 6s ease infinite;
+    animation: AnimationName 6s ease infinite !important;
+
+    @-webkit-keyframes AnimationName {
+        0%{background-position:0% 24%}
+        50%{background-position:100% 77%}
+        100%{background-position:0% 24%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:0% 24%}
+        50%{background-position:100% 77%}
+        100%{background-position:0% 24%}
+    }
+    @keyframes AnimationName {
+        0%{background-position:0% 24%}
+        50%{background-position:100% 77%}
+        100%{background-position:0% 24%}
+    }
 }
