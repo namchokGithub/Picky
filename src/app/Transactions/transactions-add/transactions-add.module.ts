@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { TransactionsPageRoutingModule } from './transactions-routing.module';
+import { TransactionsAddPageRoutingModule } from './transactions-add-routing.module';
 
-import { TransactionsPage } from './transactions.page';
+import { TransactionsAddPage } from './transactions-add.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TransactionsPageRoutingModule
+    TransactionsAddPageRoutingModule
   ],
-  declarations: [TransactionsPage]
+  declarations: [TransactionsAddPage]
 })
-export class TransactionsPageModule {}
+export class TransactionsAddPageModule {}
