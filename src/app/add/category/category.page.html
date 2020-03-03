@@ -20,7 +20,9 @@
     </ion-card-header>
   
     <ion-card-content>
-      
+      <ion-list>
+        <ion-item *ngFor="let category of category">{{category.title}}</ion-item>
+      </ion-list>
     </ion-card-content>
   </ion-card>
 </ion-content>
