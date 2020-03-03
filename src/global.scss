@@ -27,7 +27,23 @@
 
 @import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Kanit|Mitr|Prompt&display=swap');
 
-ion-app {
-    font-family: 'Kanit', !important;
+* {
+    font-family: 'Prompt', !important;
+}
+
+.menu-icon {
+    width: 40px; 
+    height: 40px;
+  }
+  
+.menu-icon-lg {
+width: 60px; 
+height: 60px;
+margin-bottom: 10px !important;
+}
+
+.icon-taps {
+    font-size: 90px !important;
 }

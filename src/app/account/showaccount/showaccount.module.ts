@@ -17,4 +17,8 @@ import { ShowaccountPage } from './showaccount.page';
   ],
   declarations: [ShowaccountPage]
 })
-export class ShowaccountPageModule {}
+export class ShowaccountPageModule {
+
+
+
+}
