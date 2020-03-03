@@ -51,6 +51,10 @@ const routes: Routes = [
   {
     path: 'list-transactions',
     loadChildren: () => import('./transactions/list-transactions/list-transactions.module').then( m => m.ListTransactionsPageModule)
+  },
+  {
+    path: 'category',
+    loadChildren: () => import('./add/category/category.module').then( m => m.CategoryPageModule)
   }
 
 ];
