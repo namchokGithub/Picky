@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Transactions',
-      url: '/transactions',
+      url: '/list-transactions',
       icon: 'card'
     },
     {

@@ -16,8 +16,8 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'transactions',
-    loadChildren: () => import('./transactions/transactions.module').then( m => m.TransactionsPageModule)
+    path: 'transactions-add',
+    loadChildren: () => import('./transactions/transactions-add/transactions-add.module').then( m => m.TransactionsAddPageModule)
   },
   {
     path: 'report',
@@ -39,22 +39,21 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./Login/register/register.module').then( m => m.RegisterPageModule)
-  },  {
+  },
+  {
     path: 'showaccount',
     loadChildren: () => import('./account/showaccount/showaccount.module').then( m => m.ShowaccountPageModule)
   },
   {
     path: 'addaccount',
     loadChildren: () => import('./account/addaccount/addaccount.module').then( m => m.AddaccountPageModule)
+  },
+  {
+    path: 'list-transactions',
+    loadChildren: () => import('./transactions/list-transactions/list-transactions.module').then( m => m.ListTransactionsPageModule)
   }
 
-
-
-
-
-
 ];
-
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
