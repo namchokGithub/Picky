@@ -17,13 +17,16 @@
 
         <ion-card-content>
             <ion-item>
-                <ion-label position="floating">Category</ion-label>
-                <ion-input placeholder="Category"><ion-icon name="help-circle-outline"></ion-icon></ion-input>
+                <ion-label>Category</ion-label>
+                    <ion-select>
+                        <ion-select-option value="01">Revenue</ion-select-option>
+                        <ion-select-option value="02">Expenditure</ion-select-option>
+                    </ion-select>
             </ion-item>
 
             <ion-item>
                 <ion-label position="floating">Note</ion-label>
-                <ion-input placeholder="Add Note"><ion-icon name="pencil-outline"></ion-icon></ion-input>
+                <ion-textarea placeholder="Add Note"><ion-icon name="pencil-outline"></ion-icon></ion-textarea>
             </ion-item>
         </ion-card-content>
 
