@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,12 +10,14 @@ import { ModalController, NavController } from '@ionic/angular';
 })
 export class AddPage implements OnInit {
 
-  constructor(private nav: NavController,private modalController: ModalController) { }
+  constructor(private nav: NavController,private modalController: ModalController,private router: Router) { }
 
   ngOnInit() {
   }
   openModal(){
+  }
+  goCategoryPage(){
 
- 
+    this.router.navigate(['category'])
   }
 }

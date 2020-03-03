@@ -17,15 +17,26 @@
 
         <ion-card-content>
             <ion-item>
-                <ion-label position="floating">Category</ion-label>
-                <ion-input placeholder="Category"><ion-icon name="help-circle-outline"></ion-icon></ion-input>
+                <ion-label (click)="goCategoryPage()">Category</ion-label>
             </ion-item>
 
             <ion-item>
                 <ion-label position="floating">Note</ion-label>
-                <ion-input placeholder="Add Note"><ion-icon name="pencil-outline"></ion-icon></ion-input>
+                <ion-textarea placeholder="Add Note"><ion-icon name="pencil-outline"></ion-icon></ion-textarea>
             </ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-button expand="block" color="success">Confirm</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button expand="block" color="danger">Cancle</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
         </ion-card-content>
+
+
 
     </ion-card>
 
