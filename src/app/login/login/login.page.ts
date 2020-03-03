@@ -13,19 +13,17 @@ export class LoginPage implements OnInit {
   private username: string = "";
   private password: string = "";
 
-  constructor(public navCtrl: NavController,private router: Router) { }
+  constructor(public navCtrl: NavController, private router: Router) { }
 
   ngOnInit() {
   }
 
   goHomePage(){
-
-    this.router.navigate(['home'])
+    this.router.navigateByUrl('home', { replaceUrl: true })
   }
+
   register(){
-
     this.router.navigate(['register'])
-
   }
 
   async validate() {

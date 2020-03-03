@@ -8,10 +8,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  },
-  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
@@ -30,8 +26,7 @@ const routes: Routes = [
   {
     path: 'add',
     loadChildren: () => import('./add/add.module').then( m => m.AddPageModule)
-  }
-  ,
+  },
   {
     path: 'login',
     loadChildren: () => import('./Login/login/login.module').then( m => m.LoginPageModule)
@@ -51,6 +46,10 @@ const routes: Routes = [
   {
     path: 'list-transactions',
     loadChildren: () => import('./transactions/list-transactions/list-transactions.module').then( m => m.ListTransactionsPageModule)
+  },
+  {
+    path: 'category',
+    loadChildren: () => import('./add/category/category.module').then( m => m.CategoryPageModule)
   }
 
 ];
