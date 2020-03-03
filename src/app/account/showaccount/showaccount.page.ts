@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class ShowaccountPage implements OnInit {
 
-  constructor(public navCtrl: NavController,private router: Router) { }
+  constructor(public navCtrl: NavController, private router: Router) { }
 
   ngOnInit() {
   }
