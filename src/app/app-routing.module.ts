@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'transactions',
+    path: 'transactions-add',
     loadChildren: () => import('./transactions/transactions-add/transactions-add.module').then( m => m.TransactionsAddPageModule)
   },
   {
