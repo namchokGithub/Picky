@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="bg-account">
     <ion-toolbar>
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
@@ -9,12 +9,6 @@
 
 <ion-content>
     <ion-card>
-        <div padding class="ion-text-center">
-            <ion-card-header>
-
-                <ion-card-title>Manage account</ion-card-title>
-            </ion-card-header>
-        </div>
         <ion-card-content>
             <ion-list>
                 <!-- Sliding item with text options on both sides -->
@@ -30,16 +24,13 @@
                     </ion-item-options>
                 </ion-item-sliding>
             </ion-list>
-
-
-            <ion-toolbar>
-                <div padding class="ion-text-center">
-                    <ion-button (click)="openAddAccount()">
-                        <ion-icon slot="icon-only" name="add-circle"></ion-icon>
-                    </ion-button>
-                </div>
-            </ion-toolbar>
-
         </ion-card-content>
+        <ion-toolbar>
+            <div padding class="ion-text-center">
+                <ion-button (click)="openAddAccount()">
+                    <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+                </ion-button>
+            </div>
+        </ion-toolbar>
     </ion-card>
 </ion-content>
