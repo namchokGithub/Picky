@@ -1,0 +1,54 @@
+.circle {
+    width: 120px;
+    /* ความกว้าง */
+    height: 30px;
+    /* ความสูง */
+    background: rgb(204, 202, 202);
+    /* สี */
+    -moz-border-radius: 70px;
+    -webkit-border-radius: 70px;
+    border-radius: 70px;
+    font-size: 16px;
+    padding: 5px;
+    padding-left: 15px;
+    color: black;
+}
+
+.circle-card {
+    width: 284px;
+    height: 88px;
+    background: white;
+    border-radius: 17px;
+    padding: 4px;
+    padding-left: 7px;
+}
+
+.text-red {
+    color: red;
+}
+
+// .text-blue {
+//     color: rgb(29, 29, 110);
+// }
+
+.line-red {
+    border-color: #f44336!important;
+    border-bottom: 1px solid #ccc!important;
+
+}
+.txt-green {
+    text-align: right;
+    color: green;
+}
+.txt-red {
+    text-align: right;
+    color: red;
+}
+.txt-black {
+    text-align: right;
+    color: black;
+}
+.txt-blue {
+    color: blue;
+    font-size: 16px;
+}
