@@ -1,15 +1,13 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
-        <ion-buttons slot="start">
+        <!-- <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
-        </ion-buttons>
+        </ion-buttons> -->
         <ion-title>Add</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-
 
     <ion-card>
 
@@ -17,21 +15,25 @@
             <p (click)="openModal()">฿ 0</p>
         </ion-card-header>
 
-
         <ion-card-content>
-            <ion-list>
+            <ion-item>
+                <ion-label (click)="goCategoryPage()">Category</ion-label>
+            </ion-item>
 
-
-
-
-                <ion-item>
-
-                    <ion-label position="floating">
-                        <ion-icon name="pencil-sharp"></ion-icon>Note</ion-label>
-                    <ion-textarea></ion-textarea>
-                </ion-item>
-
-            </ion-list>
+            <ion-item>
+                <ion-label position="floating">Note</ion-label>
+                <ion-textarea placeholder="Add Note"><ion-icon name="pencil-outline"></ion-icon></ion-textarea>
+            </ion-item>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-button (click)="confirm()" expand="block" color="success">Confirm</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button (click)="back()" expand="block" color="danger">Cancle</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
         </ion-card-content>
     </ion-card>
 

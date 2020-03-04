@@ -1,15 +1,15 @@
 <!-- 
   File Name : app.component.html
-  Name : Chomphunut 
+  Name : Chomphunut  
   Date : 24/02/20
  -->
-<ion-app>
-    <ion-split-pane contentId="main-content">
+<ion-app >
+    <ion-split-pane contentId="main-content" class="bg">
         <ion-menu contentId="main-content" type="overlay">
             <ion-content>
                 <ion-list id="inbox-list">
                     <ion-list-header>Picky | Team2</ion-list-header>
-                    <ion-note>60160336</ion-note>
+                    <ion-note>Username</ion-note>
                     <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
                         <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
                             <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
@@ -19,22 +19,6 @@
                 </ion-list>
             </ion-content>
         </ion-menu>
-        
+
         <ion-router-outlet id="main-content"></ion-router-outlet>
-        <ion-tabs>
-            <ion-tab-bar slot="bottom">
-                <ion-tab-button tab="transactions">
-                    <ion-img justify-content-center class="menu-icon" src="assets/icon/pickylogo.png"></ion-img>
-                    <ion-label>Transactions</ion-label>
-                </ion-tab-button>
-
-                <ion-tab-button tab="add">
-                    <ion-img justify-content-center class="menu-icon-lg" src="assets/icon/pickylogo.png"></ion-img>
-                </ion-tab-button>
-
-                <ion-tab-button tab="account">
-                    <ion-img justify-content-center class="menu-icon" src="assets/icon/pickylogo.png"></ion-img>
-                    <ion-label>Account</ion-label>
-                </ion-tab-button>
-            </ion-tab-bar>
-        </ion-tabs>
+        

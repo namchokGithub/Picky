@@ -7,7 +7,11 @@ const routes: Routes = [
   {
     path: '',
     component: AddPage
+  },  {
+    path: 'category',
+    loadChildren: () => import('./category/category.module').then( m => m.CategoryPageModule)
   }
+
 ];
 
 @NgModule({

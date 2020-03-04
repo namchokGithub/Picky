@@ -1,3 +1,36 @@
+
+@import url('https://fonts.googleapis.com/css?family=Kanit|Mitr|Prompt&display=swap');
+
 a {
     font-size: 10px;
+}
+
+* {
+    font-family: 'Prompt' !important;
+  }
+
+.bg-login {
+    // background-color: #62b4ea;
+    background: linear-gradient(237deg, #62b4ea, #f8b7cd) !important;
+    background-size: 400% 400% !important;
+
+    -webkit-animation: AnimationName 6s ease infinite;
+    -moz-animation: AnimationName 6s ease infinite;
+    animation: AnimationName 6s ease infinite !important;
+
+    @-webkit-keyframes AnimationName {
+        0%{background-position:0% 24%}
+        50%{background-position:100% 77%}
+        100%{background-position:0% 24%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:0% 24%}
+        50%{background-position:100% 77%}
+        100%{background-position:0% 24%}
+    }
+    @keyframes AnimationName {
+        0%{background-position:0% 24%}
+        50%{background-position:100% 77%}
+        100%{background-position:0% 24%}
+    }
 }

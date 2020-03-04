@@ -4,21 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ShowaccountPageRoutingModule } from './showaccount-routing.module';
+import { CategoryPageRoutingModule } from './category-routing.module';
 
-import { ShowaccountPage } from './showaccount.page';
+import { CategoryPage } from './category.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ShowaccountPageRoutingModule
+    CategoryPageRoutingModule
   ],
-  declarations: [ShowaccountPage]
+  declarations: [CategoryPage]
 })
-export class ShowaccountPageModule {
-
-
-
-}
+export class CategoryPageModule {}
