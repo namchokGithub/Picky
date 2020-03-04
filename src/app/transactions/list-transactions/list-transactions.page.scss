@@ -2,8 +2,8 @@
 
 * {
     font-family: 'Prompt' !important;
-}
-  
+  }
+
 .circle {
     width: 120px;
     /* ความกว้าง */
@@ -43,7 +43,7 @@
 }
 
 .text-green {
-    color: rgb(8, 231, 8);
+    color: green;
 }
 
 .text-red {
@@ -54,17 +54,8 @@
     color: black;
 }
 
-.text-white {
-    color: white;
-}
-
 .text-right {
     text-align: right !important;
-}
-
-.bg-flow {
-    background: linear-gradient(75deg, #90d1fd, rgb(235, 246, 255)) !important;
-    color: black;
 }
 
 .bg-tran {
