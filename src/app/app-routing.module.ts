@@ -50,7 +50,8 @@ const routes: Routes = [
   {
     path: 'category',
     loadChildren: () => import('./add/category/category.module').then( m => m.CategoryPageModule)
-  },  {
+  },
+  {
     path: 'enterprisemanagement',
     loadChildren: () => import('./account/enterprisemanagement/enterprisemanagement.module').then( m => m.EnterprisemanagementPageModule)
   }
