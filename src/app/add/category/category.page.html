@@ -1,29 +1,36 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Category</ion-title>
-    <ion-text (click)="back()" style="padding: 10px;" slot="end" size="small">Back</ion-text>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Category</ion-title>
+        <ion-text (click)="back()" style="padding: 10px;" slot="end" size="small">Back</ion-text>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-card-header>
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-card-title class="backgroundincome" >Income</ion-card-title>
-          </ion-col>
-          <ion-col>
-            <ion-card-title class="backgroundexpense">Expense</ion-card-title>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card-header>
-  
-    <ion-card-content>
-      <ion-list>
-        <ion-item *ngFor="let category of category">{{category.title}}</ion-item>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
+    <ion-card>
+        <ion-card-header>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <ion-card-title class="backgroundincome shadow" (click)="ChecktypeCatagory('income')">Income</ion-card-title>
+                    </ion-col>
+                    <ion-col>
+                        <ion-card-title class="backgroundexpense shadow" (click)="ChecktypeCatagory('Expense')">Expense</ion-card-title>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-header>
+
+        <ion-card-content *ngIf="type_catagory == 'income'">
+            <ion-list>
+                <ion-item *ngFor="let category_income of category_income">{{category_income.title}}</ion-item>
+            </ion-list>
+        </ion-card-content>
+
+        <ion-card-content *ngIf="type_catagory == 'Expense'">
+            <ion-list>
+                <ion-item *ngFor="let category_expense of category_expense">{{category_expense.title}}</ion-item>
+            </ion-list>
+        </ion-card-content>
+
+    </ion-card>
 </ion-content>

@@ -5,21 +5,22 @@
     border-radius: 10px;
     padding: 3px;
     padding-left: 15px;
-    color: white;
+}
 
-  }
 .backgroundexpense {
     background-color: rgb(202, 209, 202);
-    width: 100px;
+    width: 110px;
     height: 30px;
     color: black;
     border-radius: 10px;
     padding: 3px;
     padding-left: 12px;
 }
-ion-card-title:hover {
-    font-size: 22px;  
+
+.shadow {
+    box-shadow: 3px 3px gray;
 }
 
-
-
+ion-card-title:hover {
+    font-size: 21px;
+}
