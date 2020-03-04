@@ -23,4 +23,8 @@ export class ShowaccountPage implements OnInit {
   unread(item) {
     console.log('test' + item);
   }
+
+  gotopagefamilymanage() {
+    this.router.navigate(['familymanagement']);
+  }
 }
