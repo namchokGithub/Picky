@@ -13,37 +13,36 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'Inbox',
-      url: '/folder/Inbox',
-      icon: 'mail'
+      title: 'Home',
+      url: '/home',
+      icon: 'home'
     },
     {
-      title: 'Outbox',
-      url: '/folder/Outbox',
-      icon: 'paper-plane'
+      title: 'Transactions',
+      url: '/list-transactions',
+      icon: 'card'
     },
     {
-      title: 'Favorites',
-      url: '/folder/Favorites',
-      icon: 'heart'
+      title: 'Account',
+      url: '/showaccount',
+      icon: 'person'
     },
     {
-      title: 'Archived',
-      url: '/folder/Archived',
-      icon: 'archive'
+      title: 'Report',
+      url: '/report',
+      icon: 'bar-chart'
     },
     {
-      title: 'Trash',
-      url: '/folder/Trash',
-      icon: 'trash'
+      title: 'Setting',
+      url: '/setting',
+      icon: 'settings'
     },
     {
-      title: 'Spam',
-      url: '/folder/Spam',
-      icon: 'warning'
+      title: 'Logout',
+      url: '/login',
+      icon: 'log-out'
     }
   ];
-  public labels = ['Namchok', 'Namchok 2', 'Namchok 3', 'Namchok 4', 'Namchok 6', 'Reminders'];
 
   constructor(
     private platform: Platform,
@@ -65,5 +64,9 @@ export class AppComponent implements OnInit {
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
     }
+  }
+
+  callpageAdd() {
+    console.log('click');
   }
 }
