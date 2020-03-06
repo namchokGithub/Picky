@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./add.page.scss'],
 })
 export class AddPage implements OnInit {
-
+  
+  
   constructor(private nav: NavController, private modalController: ModalController, private router: Router) { }
 
   ngOnInit() {
@@ -31,4 +32,5 @@ export class AddPage implements OnInit {
   confirm() {
     this.router.navigate(['home'], { replaceUrl: true });
   }
+ 
 }
