@@ -6,12 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./setting.page.scss'],
 })
 export class SettingPage implements OnInit {
-
+  status=true
   constructor() { }
 
   ngOnInit(){
   }
   
+  editname(){
+    if(this.status == true){
+        this.status == false;
+    }else{
+        this.status == true;
+    }
+  }
   
 
 }
