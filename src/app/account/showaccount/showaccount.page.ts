@@ -23,4 +23,9 @@ export class ShowaccountPage implements OnInit {
   unread(item) {
     console.log('test' + item);
   }
+
+  selecet_account() {
+    this.router.navigateByUrl('home', { replaceUrl: true })
+  }
+
 }

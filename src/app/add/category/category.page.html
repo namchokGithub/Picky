@@ -22,7 +22,7 @@
   
     <ion-card-content>
       <ion-list>
-        <ion-item *ngFor="let category of category">{{category.title}}</ion-item>
+        <ion-item *ngFor="let category of category" (click)="back()">{{category.title}}</ion-item>
       </ion-list>
     </ion-card-content>
   </ion-card>
