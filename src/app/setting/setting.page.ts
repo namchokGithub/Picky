@@ -13,10 +13,11 @@ export class SettingPage implements OnInit {
   }
   
   editname(){
+    console.log(123)
     if(this.status == true){
-        this.status == false;
+        this.status = false
     }else{
-        this.status == true;
+        this.status = true
     }
   }
   
