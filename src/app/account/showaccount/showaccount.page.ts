@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class ShowaccountPage implements OnInit {
 
+
   constructor(public navCtrl: NavController, private router: Router) { }
 
   ngOnInit() {
@@ -21,11 +22,19 @@ export class ShowaccountPage implements OnInit {
   }
 
   unread(item) {
-    console.log('test' + item);
+    console.log('test ' + item);
   }
 
   selecet_account() {
     this.router.navigateByUrl('home', { replaceUrl: true })
   }
 
+  gotopagefamilymanage() {
+    console.log('TEST121212');
+    this.router.navigate(['familymanagement']);
+  }
+
+  delete(item) {
+
+  }
 }

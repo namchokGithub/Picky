@@ -50,8 +50,11 @@ const routes: Routes = [
   {
     path: 'category',
     loadChildren: () => import('./add/category/category.module').then( m => m.CategoryPageModule)
+  },
+  {
+    path: 'familymanagement',
+    loadChildren: () => import('./account/familymanagement/familymanagement.module').then( m => m.FamilymanagementPageModule)
   }
-
 ];
 @NgModule({
   imports: [
