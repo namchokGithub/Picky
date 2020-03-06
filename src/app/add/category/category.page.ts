@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController, ModalController } from '@ionic/angular';
+
 
 
 @Component({
@@ -10,8 +11,9 @@ import { NavController } from '@ionic/angular';
 })
 export class CategoryPage implements OnInit {
 
+  private type_catagory: string = 'income';
   constructor(private nav: NavController, private router: Router) { }
-    public category = [
+    public category_income = [
       {title: 'Bonus'},
       {title: 'Lotter'},
       {title: 'Salary'},
@@ -19,10 +21,26 @@ export class CategoryPage implements OnInit {
       {title: 'Others'}
     ];
 
+    public category_expense = [
+      {title: 'Bill'},
+      {title: 'Cloth'}
+    ];
+
+ 
   ngOnInit() {
   }
 
   back() {
     this.router.navigate(['add'], { replaceUrl: true });
+  }
+  ChecktypeCatagory(type: string){
+    console.log(type);
+      if(type=='income'){
+        this.type_catagory = 'income';
+      }else{
+
+        this.type_catagory = 'Expense';
+      }
+
   }
 }
