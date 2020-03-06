@@ -22,7 +22,7 @@
 
         <ion-card-content *ngIf="type_catagory == 'income'">
             <ion-list>
-                <ion-item *ngFor="let category_income of category_income">{{category_income.title}}</ion-item>
+                <ion-item ngFor="let category_income of category_income">{{category_income.title}}</ion-item>
             </ion-list>
         </ion-card-content>
 
