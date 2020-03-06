@@ -42,4 +42,12 @@ export class ShowaccountPage implements OnInit {
     console.log('nooktest');
     this.router.navigate(['enterprisemanagement']);
   }
+  gotomanagementFamily(){
+
+    console.log('gotomanagementFamily');
+  }
+  delete(){
+
+
+  }
 }
