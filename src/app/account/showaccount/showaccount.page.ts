@@ -10,6 +10,10 @@ export class ShowaccountPage implements OnInit {
 
   constructor(public navCtrl: NavController, private router: Router) { }
 
+  Data = [
+    "บัญชีส่วนตัว","บัญชีเงินฝาก","บัญชีเงินเก็บ"
+  ];
+
   ngOnInit() {
   }
 
@@ -23,4 +27,6 @@ export class ShowaccountPage implements OnInit {
   unread(item) {
     console.log('test' + item);
   }
+
+  
 }
