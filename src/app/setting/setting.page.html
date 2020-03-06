@@ -6,31 +6,31 @@
         <ion-title>Setting</ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-content>
+<ion-content class="bg">
     <ion-card-content>
-        <ion-card>
+        <ion-card class="bg">
             <ion-grid>
                 <ion-row>
                     <ion-col>
-                        <ion-label position="floating">
+                        <ion-label>
                             <h2>Name: </h2>
                         </ion-label>
                     </ion-col>
-                    <ion-col class="ionic-text-center">
-                        <ion-input *ngIf="status==true;" disabled value="Numchock" #thenBlock></ion-input>
-                        <ion-input *ngIf="status==false;" value="Numchock" #elseBlock></ion-input>
+                    <ion-col class="ionic-text-center ">
+                        <ion-input *ngIf="status==true; " disabled value="Numchock " #thenBlock></ion-input>
+                        <ion-input *ngIf="status==false; " value="Numchock " #elseBlock></ion-input>
                     </ion-col>
                 </ion-row>
                 <ion-row>
                     <ion-col>
                     </ion-col>
                     <ion-col>
-                        <div (click)="editname()">
-                            <ion-button color="warning" size="small">
-                                <ion-icon name="create-outline"></ion-icon>
+                        <div (click)="editname() ">
+                            <ion-button color="warning " size="small ">
+                                <ion-icon name="create-outline "></ion-icon>
                             </ion-button>
-                            <ion-button color="success" size="small">
-                                <ion-icon name="checkmark-outline"></ion-icon>
+                            <ion-button color="success " size="small ">
+                                <ion-icon name="checkmark-outline "></ion-icon>
                             </ion-button>
                         </div>
                     </ion-col>
@@ -38,10 +38,10 @@
             </ion-grid>
         </ion-card>
         <ion-row>
-            <ion-col size="6">
+            <ion-col size="6 ">
             </ion-col>
             <ion-col>
-                <ion-button color="danger">Danger</ion-button>
+                <ion-button color="danger ">Danger</ion-button>
             </ion-col>
         </ion-row>
     </ion-card-content>
