@@ -8,7 +8,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./familymanagement.page.scss'],
 })
 export class FamilymanagementPage implements OnInit {
-  name = "Namhokss"
+  Name = ["Namhokss","Chomphunut","Mint","Ice"];
 
   constructor(public navCtrl: NavController, private router: Router) { }
 
