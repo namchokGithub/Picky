@@ -37,4 +37,9 @@ export class ShowaccountPage implements OnInit {
   delete(item) {
 
   }
+
+  linkpangenterprise(){
+    console.log('nooktest');
+    this.router.navigate(['enterprisemanagement']);
+  }
 }

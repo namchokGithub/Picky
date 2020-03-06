@@ -54,7 +54,14 @@ const routes: Routes = [
   {
     path: 'familymanagement',
     loadChildren: () => import('./account/familymanagement/familymanagement.module').then( m => m.FamilymanagementPageModule)
+  },
+  {
+    path: 'enterprisemanagement',
+    loadChildren: () => import('./account/enterprisemanagement/enterprisemanagement.module').then( m => m.EnterprisemanagementPageModule)
   }
+
+
+
 ];
 @NgModule({
   imports: [
