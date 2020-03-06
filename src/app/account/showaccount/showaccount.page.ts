@@ -15,10 +15,8 @@ export class ShowaccountPage implements OnInit {
   }
 
   openAddAccount() {
-
     console.log('Clcik');
     this.router.navigate(['addaccount']);
-
   }
 
   unread(item) {
@@ -38,16 +36,12 @@ export class ShowaccountPage implements OnInit {
 
   }
 
-  linkpangenterprise(){
+  linkpangenterprise() {
     console.log('nooktest');
     this.router.navigate(['enterprisemanagement']);
   }
-  gotomanagementFamily(){
-
+  gotomanagementFamily() {
     console.log('gotomanagementFamily');
   }
-  delete(){
 
-
-  }
 }
