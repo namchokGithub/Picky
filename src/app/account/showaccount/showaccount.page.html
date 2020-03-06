@@ -10,12 +10,12 @@
 <ion-content>
     <ion-card>
         <ion-card-content>
-            <ion-list>
+            <ion-list >
                 <!-- Sliding item with text options on both sides -->
-                <ion-item-sliding>
+                <ion-item-sliding *ngFor ="let data of Data">
 
                     <ion-item>
-                        <ion-label>บัญชีที่ 1</ion-label>
+                        <ion-label>{{data}}</ion-label>
                     </ion-item>
 
                     <ion-item-options side="end">
