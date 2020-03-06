@@ -8,27 +8,35 @@ import { Router } from '@angular/router';
 })
 export class ShowaccountPage implements OnInit {
 
+
   constructor(public navCtrl: NavController, private router: Router) { }
 
   ngOnInit() {
   }
 
   openAddAccount() {
-
     console.log('Clcik');
     this.router.navigate(['addaccount']);
-
   }
 
   unread(item) {
-    console.log('test' + item);
+    console.log('test ' + item);
   }
-  gotomanagementFamily(){
 
-    console.log('gotomanagementFamily');
+  selecet_account() {
+    this.router.navigateByUrl('home', { replaceUrl: true })
   }
-  delete(){
 
-
+  gotopagefamilymanage() {
+    console.log('TEST121212');
+    this.router.navigate(['familymanagement']);
   }
+
+  linkpangenterprise() {
+    console.log('nooktest');
+    this.router.navigate(['enterprisemanagement']);
+  }
+
+  delete() { }
+
 }

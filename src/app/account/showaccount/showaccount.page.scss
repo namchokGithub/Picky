@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Kanit|Mitr|Prompt&display=swap');
-
 * {
     font-family: 'Prompt' !important;
-  }
-  
+}
+
 .bg-account {
     background: linear-gradient(75deg, #aedaf7, rgb(234, 245, 255)) !important;
     color: black;
+}
+
+.margin-bottom {
+    margin-bottom: 10cm;
 }
