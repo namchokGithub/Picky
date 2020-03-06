@@ -23,7 +23,7 @@ export class SettingPage implements OnInit {
   }
   successtoedit(){
     if(this.status == false){
-        name="Ice"
+        
     }
   }
 
