@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { VirtualTimeScheduler } from 'rxjs';
+
 @Component({
   selector: 'app-showaccount',
   templateUrl: './showaccount.page.html',
@@ -13,7 +15,6 @@ export class ShowaccountPage implements OnInit {
   Data = [
     "บัญชีส่วนตัว","บัญชีเงินฝาก","บัญชีเงินเก็บ"
   ];
-
   ngOnInit() {
   }
 
@@ -34,6 +35,15 @@ export class ShowaccountPage implements OnInit {
   unread(item) {
     console.log('test' + item);
   }
+
+  removeAccount(data){
+    let index = this.Data.indexOf(data);
+
+    if(index > -1){
+      this.Data.splice(index, 1);
+    }
+  }
+
 
   
 }
