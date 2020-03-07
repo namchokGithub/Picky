@@ -25,11 +25,11 @@
                 <ion-row>
                     <ion-col size="9">
                     </ion-col>
-                    <ion-col size="2.5">
-                        <ion-button (click)="editName()" color="warning" size="small">
+                    <ion-col size="2">
+                        <ion-button *ngIf="status==true;" (click)="editName()" color="warning" size="small">
                             <ion-icon name="create-outline"></ion-icon>
                         </ion-button>
-                        <ion-button (click)="successToEdit()" color="success" size="small">
+                        <ion-button *ngIf="status==false;" (click)="successToEdit()" color="success" size="small">
                             <ion-icon name="checkmark-outline"></ion-icon>
                         </ion-button>
                     </ion-col>
