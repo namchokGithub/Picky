@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AddPage implements OnInit {
   
   income :string = ""
+  expense :string = ""
   constructor(private nav: NavController,
               private modalController: ModalController, 
               public activatedRoute: ActivatedRoute,
@@ -18,8 +19,8 @@ export class AddPage implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe(params => {
-       this.income  =params.get('Income');
-      //console.log(params.get('Income'))
+       this.income  =params.get('Income')
+       this.expense  =params.get('Expense')
     });
   }
 

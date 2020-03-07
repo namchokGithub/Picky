@@ -19,18 +19,18 @@
                 </ion-row>
             </ion-grid>
         </ion-card-header>
-
-        <ion-card-content >
-            <ion-list  *ngFor="let income of category_expense" (click)="categoryincome(income.title)">
+        
+        <ion-card-content *ngIf="type_catagory == 'income'">
+            <ion-list *ngFor="let income of category_income" (click)="categoryincome(income.title)">
                 <ion-label >{{income.title}}</ion-label> 
             </ion-list>
         </ion-card-content>
-
-        <!-- <ion-card-content *ngIf="type_catagory == 'Expense'">
-            <ion-list>
-                <ion-item *ngFor="let category_expense of category_expense">{{category_expense.title}}</ion-item>
+        
+        <ion-card-content *ngIf="type_catagory == 'Expense'">
+            <ion-list *ngFor="let expense of category_expense" (click)="categoryexpense(expense.title)">
+                <ion-label >{{expense.title}}</ion-label> 
             </ion-list>
-        </ion-card-content> -->
+        </ion-card-content>
 
     </ion-card>
 </ion-content>

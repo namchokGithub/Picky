@@ -24,7 +24,7 @@
             
             <ion-item (click)="goCategoryPage()">
                 <ion-label position="floating">Category</ion-label>
-                <ion-input value="{{income}}"></ion-input>
+                <ion-input value="{{income}}{{expense}}"></ion-input>
             </ion-item>
 
             <ion-item>
@@ -33,8 +33,8 @@
             </ion-item>
 
             <ion-item>
-                <ion-label position="floating">Note</ion-label>
-                <ion-textarea placeholder="Add Note"><ion-icon name="pencil-outline"></ion-icon></ion-textarea>
+                <ion-label position="floating"><ion-icon name="pencil-outline"></ion-icon>Note</ion-label>
+                <ion-textarea placeholder="Add Note"></ion-textarea>
             </ion-item>
         <ion-grid>
             <ion-row>
