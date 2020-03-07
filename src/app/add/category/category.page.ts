@@ -41,7 +41,7 @@ export class CategoryPage implements OnInit {
     this.router.navigate(['add'], { replaceUrl: true });
   }
 
-  ChecktypeCatagory(type: string){
+  ChecktypeCatagory(type: string){ 
     console.log(type);
       if(type=='income'){
         this.type_catagory = 'income';
@@ -57,10 +57,5 @@ export class CategoryPage implements OnInit {
     this.router.navigate(['add'], {queryParams: {Income: income}});
 } 
 
-// catecome(income:string) {
-//   let index = this.Income.indexOf(income)
-//   //console.log(index)
-//   this.Income.splice(index, 1);
-//  }
 
 }
