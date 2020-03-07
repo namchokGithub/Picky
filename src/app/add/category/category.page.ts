@@ -12,7 +12,14 @@ import { NavController, ToastController, ModalController } from '@ionic/angular'
 export class CategoryPage implements OnInit {
 
   private type_catagory: string = 'income';
-  constructor(private nav: NavController, private router: Router) { }
+ 
+  Income = ["Bonus","Lotter","Salary","Tips","Others"];
+  Expense = ["Bill","Cloth"];
+
+  constructor(private nav: NavController, private router: Router) {
+
+  }
+
     public category_income = [
       {title: 'Bonus'},
       {title: 'Lotter'},
@@ -26,21 +33,29 @@ export class CategoryPage implements OnInit {
       {title: 'Cloth'}
     ];
 
- 
   ngOnInit() {
   }
 
   back() {
     this.router.navigate(['add'], { replaceUrl: true });
   }
-  ChecktypeCatagory(type: string){
+
+  ChecktypeCatagory(type: string){ 
     console.log(type);
       if(type=='income'){
         this.type_catagory = 'income';
       }else{
-
         this.type_catagory = 'Expense';
       }
-
   }
+
+  categoryincome(income){
+  console.log(income)
+    this.router.navigate(['add'], {queryParams: {Income: income}});
+} 
+  categoryexpense(expense){
+  console.log(expense)
+    this.router.navigate(['add'], {queryParams: {Expense: expense}});
+} 
+
 }

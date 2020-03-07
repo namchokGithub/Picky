@@ -6,7 +6,7 @@
 </ion-header>
 
 <ion-content>
-    <ion-card>
+    <ion-card id="card">
         <ion-card-header>
             <ion-grid>
                 <ion-row>
@@ -19,18 +19,17 @@
                 </ion-row>
             </ion-grid>
         </ion-card-header>
-
+        
         <ion-card-content *ngIf="type_catagory == 'income'">
-            <ion-list>
-                <ion-item *ngFor="let category_income of category_income">{{category_income.title}}</ion-item>
+            <ion-list *ngFor="let income of category_income" (click)="categoryincome(income.title)">
+                <ion-label id="Income" class="category" >{{income.title}}</ion-label> 
             </ion-list>
         </ion-card-content>
 
         <ion-card-content *ngIf="type_catagory == 'Expense'">
-            <ion-list>
-                <ion-item *ngFor="let category_expense of category_expense">{{category_expense.title}}</ion-item>
+            <ion-list *ngFor="let expense of category_expense" (click)="categoryexpense(expense.title)">
+                <ion-label id="Expense" class="category">{{expense.title}}</ion-label> 
             </ion-list>
         </ion-card-content>
-
     </ion-card>
 </ion-content>
