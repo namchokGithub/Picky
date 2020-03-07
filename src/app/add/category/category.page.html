@@ -25,12 +25,11 @@
                 <ion-label >{{income.title}}</ion-label> 
             </ion-list>
         </ion-card-content>
-        
+
         <ion-card-content *ngIf="type_catagory == 'Expense'">
             <ion-list *ngFor="let expense of category_expense" (click)="categoryexpense(expense.title)">
                 <ion-label >{{expense.title}}</ion-label> 
             </ion-list>
         </ion-card-content>
-
     </ion-card>
 </ion-content>
