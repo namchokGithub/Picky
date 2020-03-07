@@ -19,18 +19,27 @@ export class SettingPage implements OnInit {
     
   }
 
-  editname(){
-    console.log(123)
-    async presentAlert() {
-      const alert = await this.alertController.create({
-        header: 'Alert',
-        subHeader: 'Subtitle',
-        message: 'This is an alert message.',
-        buttons: ['OK']
-      })
-  
-      await alert.present();
-    }
+  async editname(){
+
+    const alert = await this.alertController.create({
+      header: 'Confirm!',
+      message: 'Message',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        }
+      ]
+    });
 
 
     // if(this.status == true){
@@ -39,6 +48,7 @@ export class SettingPage implements OnInit {
     //     this.status = true
     // }
   }
+
 
   successtoEdit(){
 
