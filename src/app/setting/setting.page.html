@@ -30,10 +30,13 @@
                 <ion-row>
                     <ion-col size="9">
                     </ion-col>
+                    <!-- ส่วนนี้จะเป็น ปุ่มแก้ไขและปุ่มยืนยัน -->
                     <ion-col size="2">
+                        <!-- ปุ่มกดแก้ไข หลังจากปุ่มนี้จะถูกซ่อน-->
                         <ion-button *ngIf="status==true;" (click)="editName()" color="warning" size="small">
                             <ion-icon name="create-outline"></ion-icon>
                         </ion-button>
+                        <!-- ปุ่มกดยืนยันแก้ไข หลังจากที่กดแก้ไขในปุ่มก่อนหน้า -->
                         <ion-button *ngIf="status==false;" (click)="successToEdit()" color="success" size="small">
                             <ion-icon name="checkmark-outline"></ion-icon>
                         </ion-button>
@@ -42,11 +45,11 @@
             </ion-grid>
         </ion-card>
         <ion-row>
-            <ion-col size="9">
-            </ion-col>
+            <!-- <ion-col size="9">
+            </ion-col> -->
             <ion-col>
-                <ion-button color="danger ">
-                    <ion-icon name="trash-bin-outline"></ion-icon>
+                <ion-button color="danger" expand="block">
+                    ลบบัญชีผู้ใช้
                 </ion-button>
             </ion-col>
         </ion-row>
