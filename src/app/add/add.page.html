@@ -3,7 +3,7 @@
         <!-- <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons> -->
-        <ion-title>Add</ion-title>
+        <ion-title>Add transactions</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -12,12 +12,24 @@
     <ion-card>
 
         <ion-card-header>
-            <p (click)="openModal()">฿ 0</p>
+            <!-- <p (click)="openModal()">฿ 0</p> -->
         </ion-card-header>
 
         <ion-card-content>
+            
             <ion-item>
-                <ion-label (click)="goCategoryPage()">Category</ion-label>
+                <ion-label position="floating"></ion-label>
+                <ion-textarea placeholder="example: ฿ 100"><ion-icon name="cash-outline"></ion-icon></ion-textarea>
+            </ion-item>
+            
+            <ion-item (click)="goCategoryPage()">
+                <ion-label position="floating">Category</ion-label>
+                <ion-input value="Bonus"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Date</ion-label>
+                <ion-datetime displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
             </ion-item>
 
             <ion-item>
@@ -30,7 +42,7 @@
                     <ion-button (click)="confirm()" expand="block" color="success">Confirm</ion-button>
                 </ion-col>
                 <ion-col>
-                    <ion-button (click)="back()" expand="block" color="danger">Cancle</ion-button>
+                    <ion-button (click)="back()" expand="block" color="danger">Cancel</ion-button>
                 </ion-col>
             </ion-row>
         </ion-grid>
