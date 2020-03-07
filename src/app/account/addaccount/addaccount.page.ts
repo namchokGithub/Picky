@@ -11,7 +11,7 @@ import { AlertController } from '@ionic/angular';
 
 export class AddaccountPage implements OnInit {
 
-  private  nameaccount = '';
+  nameAccount = '';
 
   constructor(public navCtrl: NavController, private router: Router , public alertController: AlertController) { }
 

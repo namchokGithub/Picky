@@ -7,5 +7,47 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
+    <ion-row justify-content-center style="text-align: center !important; margin-top: 10px;">
+        <ion-col align-self-center> 
+            <div style="align-items: center;">
+                <ion-icon  style=" width: 150px; height: 150px;" name="person-circle"></ion-icon>
+                
+            </div>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-card>
+        <ion-card-header>
+            <ion-card-subtitle>Personal Account</ion-card-subtitle>
+            <ion-card-title><h3>Namchok Singhachai</h3></ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-card-title><h1>20,000 Baht</h1></ion-card-title> 
+        </ion-card-content>
 
+        </ion-card>
+    </ion-row>
+    <ion-row>
+        
+        <ion-card class="welcome-card">
+            <ion-card-header>
+              <ion-card-subtitle>Simple Column Chart</ion-card-subtitle>
+              <ion-card-title>Population of Largest U.S. Cities</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <google-chart [data]="columnChart2"></google-chart>
+          </ion-card-content>
+        </ion-card>
+        <ion-card class="welcome-card">
+          <ion-card-header>
+            <ion-card-subtitle>Stacked Bar Chart</ion-card-subtitle>
+            <ion-card-title>Population of Largest U.S. Cities</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <google-chart [data]="barChart"></google-chart>
+            </ion-card-content>
+          </ion-card>
+    </ion-row>    
+
+    
 </ion-content>
