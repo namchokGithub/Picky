@@ -18,13 +18,17 @@ export class AddaccountPage implements OnInit {
   ngOnInit() {
   }
 
+  addaccount(){
+
+  }
+
   back() {
     this.router.navigate(['showaccount'], { replaceUrl: true });
   }
 
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
-      header: 'Confirmation?',
+      header: 'Need Confirmation?',
       message: 'Do you want to add an account?',
       buttons: [
         {
@@ -38,6 +42,7 @@ export class AddaccountPage implements OnInit {
           text: 'Confirm',
           handler: () => {
             console.log('Confirm Okay');
+
             this.router.navigate(['showaccount'], { replaceUrl: true });
           }
         }

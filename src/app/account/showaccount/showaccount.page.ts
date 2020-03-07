@@ -15,7 +15,7 @@ export class ShowaccountPage implements OnInit {
   }
 
   openAddAccount() {
-    console.log('Clcik');
+    console.log('Click');
     this.router.navigate(['addaccount']);
   }
 
