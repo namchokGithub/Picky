@@ -24,6 +24,13 @@ export class ShowaccountPage implements OnInit {
 
   }
 
+  openSelectAccount() {
+
+    console.log('Clcik');
+    this.router.navigate(['home']);
+
+  }
+
   unread(item) {
     console.log('test' + item);
   }
