@@ -20,9 +20,13 @@ export class SettingPage implements OnInit {
   }
 
   async editName(){
+    // เก็บชื่อไว้ในตัวแปล tempName
+    tempName
     if(this.status === true) {
+      // hide edit
         this.status = false;
     } else {
+      // show edit
         this.status = true;
     }
   }
@@ -40,6 +44,8 @@ export class SettingPage implements OnInit {
         cssClass: 'secondary',
         handler: (blah) => {
           console.log('Confirm Cancel: blah');
+          // ถ้า cancle ก็เอาตัวแปลจาก tempName มาไว้ที่ name
+          // show edit
         }
       }, {
         text: 'Okay',
