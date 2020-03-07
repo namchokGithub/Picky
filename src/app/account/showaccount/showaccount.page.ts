@@ -32,16 +32,11 @@ export class ShowaccountPage implements OnInit {
     this.router.navigate(['familymanagement']);
   }
 
-  delete(item) {
-
-  }
-
   linkpangenterprise() {
     console.log('nooktest');
     this.router.navigate(['enterprisemanagement']);
   }
-  gotomanagementFamily() {
-    console.log('gotomanagementFamily');
-  }
+
+  delete() { }
 
 }
