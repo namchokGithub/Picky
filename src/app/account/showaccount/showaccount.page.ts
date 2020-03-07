@@ -34,7 +34,7 @@ export class ShowaccountPage implements OnInit {
 
   openSetting() {
     console.log('Clcik');
-    this.router.navigate(['setting']);
+    this.router.navigate(['familymanagement']);
 
   }
 
