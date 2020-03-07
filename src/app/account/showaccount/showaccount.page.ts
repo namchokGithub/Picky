@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { VirtualTimeScheduler } from 'rxjs';
+
 @Component({
   selector: 'app-showaccount',
   templateUrl: './showaccount.page.html',
@@ -11,33 +13,41 @@ export class ShowaccountPage implements OnInit {
 
   constructor(public navCtrl: NavController, private router: Router) { }
 
+  Data = [
+    'บัญชีส่วนตัว', 'บัญชีเงินฝาก', 'บัญชีเงินเก็บ'
+  ];
   ngOnInit() {
   }
 
   openAddAccount() {
-    console.log('Clcik');
+    console.log('Click');
     this.router.navigate(['addaccount']);
   }
 
-  unread(item) {
-    console.log('test ' + item);
+  openSelectAccount() {
+
+    console.log('Clcik');
+    this.router.navigate(['home']);
   }
 
   selecet_account() {
     this.router.navigateByUrl('home', { replaceUrl: true });
   }
 
-  gotopagefamilymanage() {
-    console.log('TEST121212');
+
+  openSetting() {
+    console.log('Clcik');
     this.router.navigate(['familymanagement']);
+
   }
 
-  linkpangenterprise() {
-    console.log('nooktest');
-    this.router.navigate(['enterprisemanagement']);
-  }
+  removeAccount(data) {
+    const index = this.Data.indexOf(data);
 
-  delete() { }
+    if (index > -1) {
+      this.Data.splice(index, 1);
+    }
+  }
 
   gotomanagementFamily() {
     console.log('gotomanagementFamily');

@@ -10,7 +10,7 @@ import { Router } from '@angular/router'
 export class LoginPage implements OnInit {
 
 
-  private username: string = "";
+  private username: string = ""; 
   private password: string = "";
 
   constructor(public navCtrl: NavController, private router: Router) { }
