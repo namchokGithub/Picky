@@ -10,25 +10,24 @@ import { async } from 'rxjs/internal/scheduler/async';
 export class SettingPage implements OnInit {
   status = true;
   name: string;
-
+  tempName:string;
   constructor(public alertController: AlertController) {
       this.name = 'Mhee';
   }
-
   ngOnInit() {
 
   }
 
   async editName(){
     // เก็บชื่อไว้ในตัวแปล tempName
-    tempName
-    if(this.status === true) {
-      // hide edit
-        this.status = false;
-    } else {
-      // show edit
-        this.status = true;
-    }
+    this.tempName = this.name
+      if(this.status == true) {
+        // hide edit
+          this.status = false;
+      } else {
+        // show edit
+          this.status = true;
+      }
   }
 
 
@@ -44,6 +43,7 @@ export class SettingPage implements OnInit {
         cssClass: 'secondary',
         handler: (blah) => {
           console.log('Confirm Cancel: blah');
+          this.name = this.tempName;
           // ถ้า cancle ก็เอาตัวแปลจาก tempName มาไว้ที่ name
           // show edit
         }
