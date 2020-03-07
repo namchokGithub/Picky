@@ -7,12 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingPage implements OnInit {
   status=true
-  name:string
+  name = 'Mhee'
   constructor() { }
 
   ngOnInit(){
+
   }
-  
+
   editname(){
     console.log(123)
     if(this.status == true){
@@ -23,7 +24,7 @@ export class SettingPage implements OnInit {
   }
   successtoedit(){
     if(this.status == false){
-        
+
     }
   }
 
