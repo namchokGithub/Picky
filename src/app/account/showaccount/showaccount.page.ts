@@ -24,7 +24,7 @@ export class ShowaccountPage implements OnInit {
   }
 
   selecet_account() {
-    this.router.navigateByUrl('home', { replaceUrl: true })
+    this.router.navigateByUrl('home', { replaceUrl: true });
   }
 
   gotopagefamilymanage() {
@@ -38,5 +38,9 @@ export class ShowaccountPage implements OnInit {
   }
 
   delete() { }
+
+  gotomanagementFamily() {
+    console.log('gotomanagementFamily');
+  }
 
 }
