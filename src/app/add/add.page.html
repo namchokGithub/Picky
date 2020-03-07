@@ -18,22 +18,22 @@
         <ion-card-content>
             
             <ion-item>
-                <ion-label position="floating"></ion-label>
+                <ion-label class="lable" position="floating"></ion-label>
                 <ion-textarea placeholder="example: ฿ 100"><ion-icon name="cash-outline"></ion-icon></ion-textarea>
             </ion-item>
             
             <ion-item (click)="goCategoryPage()">
-                <ion-label position="floating">Category</ion-label>
+                <ion-label class="lable" position="floating">Category</ion-label>
                 <ion-input value="{{income}}{{expense}}"></ion-input>
             </ion-item>
 
             <ion-item>
-                <ion-label position="floating">Date</ion-label>
+                <ion-label  class="lable" position="floating">Date</ion-label>
                 <ion-datetime displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
             </ion-item>
 
             <ion-item>
-                <ion-label position="floating"><ion-icon name="pencil-outline"></ion-icon>Note</ion-label>
+                <ion-label class="lable" position="floating"><ion-icon style="zoom:1.5;" name="pencil-outline"></ion-icon>Note</ion-label>
                 <ion-textarea placeholder="Add Note"></ion-textarea>
             </ion-item>
         <ion-grid>

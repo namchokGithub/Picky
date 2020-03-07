@@ -1,32 +1,30 @@
 .backgroundincome {
     background-color: rgb(33, 168, 44);
-    width: 90px;
+    width: 95px;
     height: 30px;
-    border-radius: 10px;
-    padding: 3px;
-    padding-left: 15px;
-    font-size: 20px;
+    border-radius: 20px;
+    padding: 5px;
+    padding-left: 16px;
+    font-size: 18px;
 }
 
 .backgroundexpense {
     background-color: rgb(202, 209, 202);
-    width: 100px;
+    width: 95px;
     height: 30px;
     color: black;
+    border-radius: 20px;
+    padding: 5px;
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+#card {
     border-radius: 10px;
-    padding: 3px;
-    padding-left: 12px;
-    font-size: 20px;
 }
 
-.shadow {
-    box-shadow: 3px 3px gray;
-}
-
-ion-card-title:hover {
-    font-size: 15px;
-    text-align: center;
-    padding-top: 8px;
-    padding-right: 8px;
-
+#category{
+    font-size: 17px;
+    color: white;
+    margin-left: 20px;
 }
