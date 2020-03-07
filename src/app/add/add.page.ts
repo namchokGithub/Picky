@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -10,11 +10,17 @@ import { Router } from '@angular/router';
 })
 export class AddPage implements OnInit {
   
-  
-  constructor(private nav: NavController, private modalController: ModalController, private router: Router) { }
+  income :string = ""
+  constructor(private nav: NavController,
+              private modalController: ModalController, 
+              public activatedRoute: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
-
+    this.activatedRoute.queryParamMap.subscribe(params => {
+       this.income  =params.get('Income');
+      //console.log(params.get('Income'))
+    });
   }
 
   openModal() {
