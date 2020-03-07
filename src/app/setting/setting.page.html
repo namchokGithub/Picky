@@ -18,7 +18,8 @@
                     </ion-col>
                     <ion-col class="ionic-text-center ">
                         <ion-input *ngIf="status==true; " disabled value="{{name}}" #thenBlock></ion-input>
-                        <ion-input *ngIf="status==false; " value="" #elseBlock></ion-input>
+                        <!--  แท๊กนี้จะเป็นส่วนของการแก้ไขชื่อ -->
+                        <ion-input *ngIf="status==false; " value="{{name}}" #elseBlock></ion-input>
                     </ion-col>
                 </ion-row>
                 <ion-row>
@@ -33,7 +34,7 @@
                         </div>
                     </ion-col>
                     <ion-col size="2">
-                        <div (click)="successtoedit()">
+                        <div (click)="successtoedit(elseBlock)">
                             <ion-button color="success" size="small">
                                 <ion-icon name="checkmark-outline"></ion-icon>
                             </ion-button>
