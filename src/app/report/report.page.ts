@@ -61,7 +61,7 @@ export class ReportPage implements OnInit {
       ],
       //opt_firstRowIsData: true,
       options: {
-        title: 'Population of Largest U.S. Cities',
+        title: 'Monthly Balances',
         height: 600,
         chartArea: { height: '400' },
         hAxis: {
