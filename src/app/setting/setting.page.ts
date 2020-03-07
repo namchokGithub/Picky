@@ -10,6 +10,7 @@ import { async } from 'rxjs/internal/scheduler/async';
 export class SettingPage implements OnInit {
   status = true;
   name: string;
+
   constructor(public alertController: AlertController) {
       this.name = 'Mhee';
   }
