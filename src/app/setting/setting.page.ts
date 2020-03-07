@@ -44,6 +44,7 @@ export class SettingPage implements OnInit {
         handler: (blah) => {
           console.log('Confirm Cancel: blah');
           this.name = this.tempName;
+          this.status=true;
           // ถ้า cancle ก็เอาตัวแปลจาก tempName มาไว้ที่ name
           // show edit
         }
