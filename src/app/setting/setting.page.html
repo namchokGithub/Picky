@@ -17,9 +17,9 @@
                         </ion-label>
                     </ion-col>
                     <ion-col class="ionic-text-center ">
-                        <!--  แท๊กนี้จะเป็นส่วนของการแก้ไขชื่อ -->
-                        <ion-input *ngIf="status==true; " [disabled]="status" value="{{name}}" name="{{name}}" #thenBlock></ion-input>
-                        <!-- <ion-input *ngIf="status==false; " value="{{name}}" #elseBlock></ion-input> -->
+                        <!-- แท๊กนี้จะเป็นส่วนของการแก้ไขชื่อ -->
+                        <ion-input [disabled]="status" value="{{name}}" [(ngModel)]="name" #thenBlock></ion-input>
+                        <!-- <ion-input *ngIf="status==false;" value="{{name}}" #elseBlock></ion-input> -->
                     </ion-col>
                 </ion-row>
                 <ion-row>
