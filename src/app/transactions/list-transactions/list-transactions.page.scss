@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit|Mitr|Prompt&display=swap');
+
+* {
+    font-family: 'Prompt' !important;
+  }
+
 .circle {
     width: 120px;
     /* ความกว้าง */
     height: 30px;
     /* ความสูง */
-    background: rgb(204, 202, 202);
+    background: rgb(102, 112, 245);
     /* สี */
     -moz-border-radius: 70px;
     -webkit-border-radius: 70px;
@@ -11,7 +17,7 @@
     font-size: 16px;
     padding: 5px;
     padding-left: 15px;
-    color: black;
+    color: white;
 }
 
 .circle-card {
@@ -27,28 +33,32 @@
     color: red;
 }
 
-// .text-blue {
-//     color: rgb(29, 29, 110);
-// }
+.text-blue {
+    color: rgb(29, 29, 110);
+}
 
 .line-red {
     border-color: #f44336!important;
     border-bottom: 1px solid #ccc!important;
-
 }
-.txt-green {
-    text-align: right;
+
+.text-green {
     color: green;
 }
-.txt-red {
-    text-align: right;
+
+.text-red {
     color: red;
 }
-.txt-black {
-    text-align: right;
+
+.text-black {
     color: black;
 }
-.txt-blue {
-    color: blue;
-    font-size: 16px;
+
+.text-right {
+    text-align: right !important;
+}
+
+.bg-tran {
+    background: linear-gradient(75deg, #aedaf7, rgb(234, 245, 255)) !important;
+    color: black;
 }

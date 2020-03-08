@@ -9,7 +9,9 @@ export class SettingPage implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(){
   }
+  
+  
 
 }
