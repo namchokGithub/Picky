@@ -10,12 +10,10 @@ import { Observable } from "rxjs";
 
 export interface User {
   id?: string;
-  usUsername: number;
-  usPassword: string;
-  usFirstname: string;
-  usLastname: string;
-  usEmail: string;
-  usTel: string;
+  user_email: string;
+  user_name: string;
+  user_password: string;
+  user_tel: string;
 }
 
 @Injectable({
@@ -61,12 +59,10 @@ export class UserService {
 
   update_user(User: User): Promise<void> {
     return this.user_Collection.doc(User.id).update({
-      usUsername: User.usUsername,
-      usPassword: User.usPassword,
-      usFirstname: User.usFirstname,
-      usLastname: User.usLastname,
-      usEmail: User.usEmail,
-      usTel : User.usTel
+      user_email: User.user_email,
+      user_name: User.user_name,
+      user_password: User.user_password,
+      user_tel: User.user_tel
     }); 
   }
 
