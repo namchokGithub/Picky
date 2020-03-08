@@ -10,9 +10,10 @@ import { Observable } from "rxjs";
 
 export interface Account {
   id?: string;
-  accAmount: number;
-  accName: string;
-  accTypeId: string;
+  balance: number;
+  name_account: string;
+  type_account: string;
+  user_member:[];
 }
 
 @Injectable({
@@ -58,9 +59,10 @@ export class AccountService {
 
   update_account(Account: Account): Promise<void> {
     return this.account_Collection.doc(Account.id).update({
-      accAmount: Account.accAmount,
-      accName: Account.accName,
-      accTypeId: Account.accTypeId
+      balance: Account.balance,
+      name_account: Account.name_account,
+      type_account: Account.type_account,
+      user_member: Account.user_member
     });
   }
 
@@ -68,3 +70,4 @@ export class AccountService {
     return this.account_Collection.doc(id).delete();
   }
 }
+
