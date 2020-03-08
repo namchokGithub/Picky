@@ -1,5 +1,7 @@
+import { AddPage } from './add/add.page';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { CategoryPage } from './add/category/category.page';
 
 const routes: Routes = [
   {

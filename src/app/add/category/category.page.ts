@@ -1,6 +1,7 @@
+import { AddPage } from './../add.page';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController, ToastController, ModalController } from '@ionic/angular';
+import { NavController, ToastController, ModalController, NavParams} from '@ionic/angular';
 
 
 
@@ -12,7 +13,11 @@ import { NavController, ToastController, ModalController } from '@ionic/angular'
 export class CategoryPage implements OnInit {
 
   private type_catagory: string = 'income';
-  constructor(private nav: NavController, private router: Router) { }
+  constructor(public nav: NavController, private router: Router, private navParams: NavParams ) {
+
+    
+
+   }
     public category_income = [
       {title: 'Bonus'},
       {title: 'Lotter'},
@@ -38,9 +43,13 @@ export class CategoryPage implements OnInit {
       if(type=='income'){
         this.type_catagory = 'income';
       }else{
-
         this.type_catagory = 'Expense';
       }
+  }
 
+  sentcategory(category:String){
+
+      console.log(category);
+    
   }
 }

@@ -1,3 +1,4 @@
+import { CategoryPage } from './category/category.page';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
@@ -10,13 +11,11 @@ import { Router } from '@angular/router';
 })
 export class AddPage implements OnInit {
 
+private Category : String 
+
   constructor(private nav: NavController, private modalController: ModalController, private router: Router) { }
 
   ngOnInit() {
-
-  }
-
-  openModal() {
 
   }
 
