@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { Injectable } from '@angular/core';
-=======
-import { Injectable } from "@angular/core";
->>>>>>> 2c5ba58318072e899a05e958e23944c38de2c8ca
 import {
   AngularFirestore,
   AngularFirestoreCollection,
