@@ -21,34 +21,34 @@
                     <ion-label position="floating">
                         Name
                     </ion-label>
-                    <ion-input type="text" [(ngModel)]="name" name="name" placeholder=""></ion-input>
+                    <ion-input type="text" [(ngModel)]="name" name="name" placeholder="name"></ion-input>
                 </ion-item>
                 <!-- Name -->
                 <ion-item>
                     <ion-label position="floating">
                         Username
                     </ion-label>
-                    <ion-input type="text" [(ngModel)]="username" name="username" placeholder=""></ion-input>
+                    <ion-input type="text" [(ngModel)]="user_id" name="user_id" placeholder="username"></ion-input>
                 </ion-item>
                 <!-- Username -->
                 <ion-item style="border-radius: 5px; margin-top: 5px;">
                     <ion-label position="floating">
                         Password
                     </ion-label>
-                    <ion-input type="password" [(ngModel)]="password" placeholder=""></ion-input>
+                    <ion-input type="password" [(ngModel)]="password" placeholder="password"></ion-input>
                 </ion-item>
                 <!-- Password -->
                 <ion-item style="border-radius: 5px; margin-top: 5px;">
                     <ion-label position="floating">
                         Confirm Password
                     </ion-label>
-                    <ion-input type="password" [(ngModel)]="ConfirmPassword" placeholder=""></ion-input>
+                    <ion-input type="password" [(ngModel)]="ConfirmPassword" placeholder="ConfirmPassword"></ion-input>
                 </ion-item>
             </div>
 
             <ion-row>
                 <ion-col>
-                    <ion-button expand="block" color="success">Confirm</ion-button>
+                    <ion-button (click)="confirm_regis()" expand="block" color="success">Confirm</ion-button>
                 </ion-col>
 
                 <ion-col>
