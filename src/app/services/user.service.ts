@@ -1,3 +1,4 @@
+// ไปคอมเม้นมาทุกส่วน
 import { Injectable } from "@angular/core";
 import {
   AngularFirestore,
@@ -16,7 +17,7 @@ export interface User {
   user_password: string;
   user_tel: string;
 }
-
+// ไปคอมเม้นมาทุกส่วน
 @Injectable({
   providedIn: "root"
 })

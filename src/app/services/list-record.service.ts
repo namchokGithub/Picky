@@ -19,7 +19,7 @@ export interface List_record {
   providedIn: 'root'
 })
 
-
+// ไปคอมเม้นมาทุกส่วน
 export class ListRecordService {
 
   private list_record: Observable<List_record[]>;

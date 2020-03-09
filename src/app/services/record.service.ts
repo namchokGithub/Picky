@@ -19,7 +19,7 @@ export interface Record {
   user_id: string;
   user_name: string;
 }
-
+// ไปคอมเม้นมาทุกส่วน
 @Injectable({
   providedIn: "root"
 })

@@ -8,6 +8,9 @@ import { UserService, User } from "src/app/services/user.service";
   templateUrl: "./register.page.html",
   styleUrls: ["./register.page.scss"]
 })
+
+// ไปคอมเม้นมาทุกส่วน
+
 export class RegisterPage implements OnInit {
   private name: string = "";
   private user_id: string = "";
