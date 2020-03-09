@@ -14,13 +14,12 @@ import { ListRecordService } from './../../services/list-record.service';
 export class CategoryPage implements OnInit {
 
   private type_catagory: string = 'income';
-<<<<<<< HEAD
+
   constructor(public nav: NavController, private router: Router, private navParams: NavParams ) {
 
-    
-
+  
    }
-=======
+
  
   public category_income : any = [];
   public category_expense : any = [];
@@ -29,12 +28,9 @@ export class CategoryPage implements OnInit {
     private nav: NavController, 
     private router: Router,
     private ListRecordService: ListRecordService) {
-
       
-
   }
 
-<<<<<<< HEAD
 // * @Function   : ngOnInit => ดึงข้อมูลจาก ListRecordService แล้วทำการบันทึกข้อมูล ลง array โดยมีการแยกประเภท Income ,  expense
 // * @Author     : Komsan Tesana
 // * @Create Date: 10/3/2563
@@ -45,17 +41,7 @@ export class CategoryPage implements OnInit {
 
 
         console.log(res);
-                 
-=======
->>>>>>> c51e732bb929a7341d988b3c24ce5475cf5bef0e
-    public category_income = [
-      {title: 'Bonus'},
-      {title: 'Lotter'},
-      {title: 'Salary'},
-      {title: 'Tips'},
-      {title: 'Others'}
-    ];
->>>>>>> 863c1f8ccb5acf40f6637c324b3f09c1049440c7
+              
 
         for(var i = 0; i < res.length ; i++){
                 if(res[i].record_type=="Income"){
@@ -90,15 +76,11 @@ export class CategoryPage implements OnInit {
       }else{
         this.type_catagory = 'Expense';
       }
-<<<<<<< HEAD
   }
 
   sentcategory(category:String){
 
       console.log(category);
-    
-=======
->>>>>>> c51e732bb929a7341d988b3c24ce5475cf5bef0e
   }
 
 
