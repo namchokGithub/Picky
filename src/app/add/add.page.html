@@ -17,18 +17,22 @@
 
         <ion-card-content>
 
+            <ion-item (click)="goCategoryPage()">
+                <ion-label class="lable" position="floating">Category</ion-label>
+
+                <ion-input [(ngModel)]="name_category"></ion-input>
+
+            </ion-item>
 
             <ion-item>
                 <ion-label class="lable" position="floating"></ion-label>
-                <ion-textarea placeholder="ตัวอย่าง : ฿ 100" [(ngModel)]="cash">
+                <ion-input type="number" placeholder=" ตัวอย่าง : ฿ 100" [(ngModel)]="cash">
                     <ion-icon name="cash"></ion-icon>
-                </ion-textarea>
+                    <div style="padding-left: 10px;"></div>
+                </ion-input>
             </ion-item>
 
-            <ion-item (click)="goCategoryPage()">
-                <ion-label class="lable" position="floating">Category</ion-label>
-                <ion-input [(ngModel)]="category" value="Salary"></ion-input>
-            </ion-item>
+
 
             <ion-item>
                 <ion-label class="lable" position="floating">Date</ion-label>
@@ -44,7 +48,7 @@
             <ion-grid>
                 <ion-row>
                     <ion-col>
-                        <ion-button (click)="onSubmit()" expand="block" color="success">Confirm</ion-button>
+                        <ion-button (click)="validate()" expand="block" color="success">Confirm</ion-button>
                         <!-- s -->
                     </ion-col>
                     <ion-col>
