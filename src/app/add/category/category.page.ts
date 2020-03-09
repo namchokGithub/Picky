@@ -1,4 +1,3 @@
-import { AddPage } from './../add.page';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController, ToastController, ModalController } from '@ionic/angular';
@@ -14,12 +13,6 @@ import { ListRecordService } from './../../services/list-record.service';
 export class CategoryPage implements OnInit {
 
   private type_catagory: string = 'income';
-
-  constructor(public nav: NavController, private router: Router, private navParams: NavParams ) {
-
-  
-   }
-
  
   public category_income : any = [];
   public category_expense : any = [];
@@ -28,7 +21,9 @@ export class CategoryPage implements OnInit {
     private nav: NavController, 
     private router: Router,
     private ListRecordService: ListRecordService) {
+
       
+
   }
 
 // * @Function   : ngOnInit => ดึงข้อมูลจาก ListRecordService แล้วทำการบันทึกข้อมูล ลง array โดยมีการแยกประเภท Income ,  expense
@@ -41,7 +36,7 @@ export class CategoryPage implements OnInit {
 
 
         console.log(res);
-              
+                 
 
         for(var i = 0; i < res.length ; i++){
                 if(res[i].record_type=="Income"){
@@ -76,11 +71,6 @@ export class CategoryPage implements OnInit {
       }else{
         this.type_catagory = 'Expense';
       }
-  }
-
-  sentcategory(category:String){
-
-      console.log(category);
   }
 
 

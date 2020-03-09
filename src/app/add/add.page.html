@@ -35,17 +35,6 @@
 
 
             <ion-item>
-
-                <ion-label position="floating">Date</ion-label>
-                <ion-datetime displayFormat="MM DD YY" placeholder="Select Date"></ion-datetime>
-            </ion-item>
-
-            <ion-item>
-                <ion-label position="floating">Note</ion-label>
-                <ion-textarea placeholder="Add Note">
-                    <ion-icon name="pencil-outline"></ion-icon>
-                </ion-textarea>
-
                 <ion-label class="lable" position="floating">Date</ion-label>
                 <ion-datetime pickerFormat="DD MMM YYYY" displayFormat="DD MMM YY" placeholder="Select Date" [(ngModel)]="date"></ion-datetime>
             </ion-item>
@@ -55,7 +44,6 @@
                     <ion-icon style="zoom:1.5;" name="pencil-outline"></ion-icon>Note
                 </ion-label>
                 <ion-textarea placeholder="Add Note" [(ngModel)]="note"></ion-textarea>
-
             </ion-item>
             <ion-grid>
                 <ion-row>
@@ -65,7 +53,6 @@
                     </ion-col>
                     <ion-col>
                         <ion-button (click)="back()" expand="block" color="danger">Cancel</ion-button>
-
                     </ion-col>
                 </ion-row>
 
