@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 
 import { ReportPageRoutingModule } from './report-routing.module';
 
@@ -13,7 +14,8 @@ import { ReportPage } from './report.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ReportPageRoutingModule
+    ReportPageRoutingModule,
+    Ng2GoogleChartsModule
   ],
   declarations: [ReportPage]
 })

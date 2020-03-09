@@ -1,7 +1,7 @@
 import { CategoryPage } from './category/category.page';
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { ModalController, NavController, AlertController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -10,13 +10,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./add.page.scss'],
 })
 export class AddPage implements OnInit {
+  
+  income :string = ""
+  expense :string = ""
+  cash :string = ""
+  category :string = ""
+  date :string = ""
+  note :string = ""
 
-private Category : String 
-
-  constructor(private nav: NavController, private modalController: ModalController, private router: Router) { }
+  constructor(private nav: NavController,
+              private modalController: ModalController, 
+              public activatedRoute: ActivatedRoute,
+              private router: Router, public alertController: AlertController) { }
 
   ngOnInit() {
-
+    this.activatedRoute.queryParamMap.subscribe(params => {
+       this.income  =params.get('Income')
+       this.expense  =params.get('Expense')
+    });
   }
 
   goCategoryPage() {
@@ -29,5 +40,23 @@ private Category : String
 
   confirm() {
     this.router.navigate(['home'], { replaceUrl: true });
+  }
+
+  async addtransaction() {
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      subHeader: 'Subtitle',
+      message: 'This is an alert message.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  async add(){
+    this.cash;
+    this.category;
+    this.date;
+    this.note;
   }
 }

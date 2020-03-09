@@ -1,22 +1,36 @@
+<!-- 
+  File Name : app.component.html
+  Name : Chomphunut Pitathawatchai 
+  Date : 01/03/20
+ -->
+<!-- Header -->
 <ion-header>
     <ion-toolbar color="primary">
         <ion-grid>
             <ion-row>
+                <!--Icon Back -->
                 <ion-col>
                     <div class="margin-top">
-                        <ion-icon name="arrow-back-circle"></ion-icon>
+                        <ion-icon class="icon" (click)="back()" name="arrow-back-circle"></ion-icon>
                     </div>
                 </ion-col>
+                <!-- end Icon Back -->
+
+                <!-- Text Little -->
                 <ion-col>
                     <div class="ion-text-center">
                         <ion-title>บัญชีที่ 2 Family</ion-title>
                     </div>
                 </ion-col>
+                <!-- End Text Little -->
+
+                <!-- Icon logout -->
                 <ion-col class="ion-text-right">
                     <div class="margin-top text-right">
-                        <ion-icon name="log-out"></ion-icon>
+                        <ion-icon class="icon" (click)="logout()" name="log-out"></ion-icon>
                     </div>
                 </ion-col>
+                <!-- End Icon logout -->
 
             </ion-row>
         </ion-grid>
@@ -24,36 +38,44 @@
     </ion-toolbar>
 
 </ion-header>
-
+<!-- End Header -->
 <ion-content>
+    <!-- Image Acoount -->
     <div class="ion-text-center">
         <img class="sizeimg" decoding="async" src="assets/account.png">
     </div>
+    <!-- End Image Acoount -->
 
     <ion-card>
+        <!-- Header -->
         <ion-card-header>
             <div class="ion-text-center">
                 <ion-title>List Shared with</ion-title>
             </div>
         </ion-card-header>
-
+        <!-- End Header -->
         <ion-card-content>
             <ion-grid>
-                <ion-row>
-                    <ion-col>
-                        <ion-title>Mom123</ion-title>
-                    </ion-col>
-                    <ion-col>
-                        <div class="margin-top ion-text-end">
-                            <ion-icon name="trash"></ion-icon>
-                        </div>
-                    </ion-col>
-                </ion-row>
+                <!-- Show List Family -->
+                <ion-list *ngFor="let name of Name">
+                    <ion-item-sliding>
+                        <ion-item>
+                            <ion-label>{{ name }}</ion-label>
+                        </ion-item>
+                        <!-- Button delete -->
+                        <ion-item-options side="end">
+                            <ion-item-option color="danger" (click)="delete(name)">Delete</ion-item-option>
+                        </ion-item-options>
+                        <!-- End Button delete -->
+                    </ion-item-sliding>
+                </ion-list>
+                <!-- End Show List Family -->
             </ion-grid>
         </ion-card-content>
     </ion-card>
+    <!-- Button confirm -->
     <ion-card-content>
         <ion-button expand="block">confirm</ion-button>
     </ion-card-content>
-
+    <!-- End Button confirm -->
 </ion-content>
