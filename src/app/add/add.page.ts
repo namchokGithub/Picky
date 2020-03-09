@@ -1,3 +1,4 @@
+import { CategoryPage } from './category/category.page';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController, AlertController ,ToastController,LoadingController} from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';

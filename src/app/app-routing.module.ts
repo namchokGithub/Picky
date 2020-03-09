@@ -1,5 +1,7 @@
+import { AddPage } from './add/add.page';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { CategoryPage } from './add/category/category.page';
 
 const routes: Routes = [
   {
@@ -10,10 +12,6 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'transactions-add',
-    loadChildren: () => import('./transactions/transactions-add/transactions-add.module').then( m => m.TransactionsAddPageModule)
   },
   {
     path: 'report',
