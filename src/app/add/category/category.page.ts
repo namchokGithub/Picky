@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController, ToastController, ModalController } from '@ionic/angular';
-
+import { ListTransectionService } from 'src/app/services/list-transection.service';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class CategoryPage implements OnInit {
   Income = ["Bonus","Lotter","Salary","Tips","Others"];
   Expense = ["Bill","Cloth"];
 
-  constructor(private nav: NavController, private router: Router) {
+  constructor(private nav: NavController, private router: Router, private ListeService: ListTransectionService) {
 
   }
 
@@ -34,6 +34,10 @@ export class CategoryPage implements OnInit {
     ];
 
   ngOnInit() {
+    this.ListeService.get_list_transaction().subscribe(res => {
+
+      console.log(res)
+    });
   }
 
   back() {
@@ -42,6 +46,8 @@ export class CategoryPage implements OnInit {
 
   ChecktypeCatagory(type: string){ 
     console.log(type);
+
+  
       if(type=='income'){
         this.type_catagory = 'income';
       }else{

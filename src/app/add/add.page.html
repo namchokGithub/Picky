@@ -17,16 +17,17 @@
 
         <ion-card-content>
 
+
             <ion-item>
                 <ion-label class="lable" position="floating"></ion-label>
-                <ion-textarea placeholder="example: ฿ 100" [(ngModel)]="cash">
+                <ion-textarea placeholder="ตัวอย่าง : ฿ 100" [(ngModel)]="cash">
                     <ion-icon name="cash"></ion-icon>
                 </ion-textarea>
             </ion-item>
 
             <ion-item (click)="goCategoryPage()">
                 <ion-label class="lable" position="floating">Category</ion-label>
-                <ion-input value="{{income}}{{expense}}" [(ngModel)www]="category"></ion-input>
+                <ion-input [(ngModel)]="category" value="Salary"></ion-input>
             </ion-item>
 
             <ion-item>
@@ -36,20 +37,23 @@
 
             <ion-item>
                 <ion-label class="lable" position="floating">
-                    <ion-icon style="zoom:1.5;" name="pencil-outline"></ion-icon>Note</ion-label>
+                    <ion-icon style="zoom:1.5;" name="pencil-outline"></ion-icon>Note
+                </ion-label>
                 <ion-textarea placeholder="Add Note" [(ngModel)]="note"></ion-textarea>
             </ion-item>
             <ion-grid>
                 <ion-row>
                     <ion-col>
-                        <ion-button (click)="confirm()" expand="block" color="success">Confirm</ion-button>
+                        <ion-button (click)="onSubmit()" expand="block" color="success">Confirm</ion-button>
                         <!-- s -->
                     </ion-col>
                     <ion-col>
                         <ion-button (click)="back()" expand="block" color="danger">Cancel</ion-button>
                     </ion-col>
                 </ion-row>
+
             </ion-grid>
+
         </ion-card-content>
 
     </ion-card>

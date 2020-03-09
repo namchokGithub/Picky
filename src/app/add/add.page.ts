@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController, AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgForOf } from '@angular/common';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -23,15 +25,12 @@ export class AddPage implements OnInit {
               private router: Router,public alertController: AlertController) { }
 
   ngOnInit() {
-    this.activatedRoute.queryParamMap.subscribe(params => {
-       this.income  =params.get('Income')
-       this.expense  =params.get('Expense')
-    });
+    // this.activatedRoute.queryParamMap.subscribe(params => {
+    //    this.income  = params.get('Income')
+    //    this.expense  = params.get('Expense')
+    // });
   }
 
-  openModal() {
-
-  }
 
   goCategoryPage() {
     this.router.navigate(['category']);
@@ -56,10 +55,11 @@ export class AddPage implements OnInit {
     await alert.present();
   }
 
-  async add(){
-    this.cash;
-    this.category;
-    this.date;
-    this.note;
+  onSubmit(){
+    
+      console.log(this.category);
+      console.log(this.date);
+      console.log(this.note);
+      console.log(this.cash);
   }
 }
