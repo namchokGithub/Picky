@@ -1,10 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, RouterModule } from "@angular/router";
-<<<<<<< HEAD
 import { NavController, AlertController, MenuController, ToastController } from "@ionic/angular";
-=======
-import { NavController , AlertController} from "@ionic/angular";
->>>>>>> origin/kittisak
 import { map, count } from "rxjs/operators";
 import { UserService, User } from "src/app/services/user.service";
 @Component({
@@ -39,7 +35,6 @@ export class RegisterPage implements OnInit {
     private userservice: UserService
     ,public navCtrl: NavController
     ,private menu: MenuController
-    ,public alertController: AlertController
     ,public toastController: ToastController
   ) {}
 
@@ -55,27 +50,15 @@ export class RegisterPage implements OnInit {
     this.router.navigate(["login"]);
   }
 
-  confirm_regis() {
+  // confirm_regis() {
     
-    if(this.check_username() && this.check_regis()){
-      this.userservice.add_user(this.user_add)
-      this.back();
-    }
-  }
+  //   if(this.check_username() && this.check_regis()){
+  //     this.userservice.add_user(this.user_add)
+  //     this.back();
+  //   }
+  // }
   
-  check_regis(){
-    if(this.user_add.user_name && this.user_add.user_id && this.user_add.user_password){
-      if(this.user_add.user_password == this.ConfirmPassword){
-        return true
-      }else{
-        this.Alert("confirm รหัสผ่านไม่ถูกต้อง")
-        return false
-      }
-    }else{
-      this.Alert("กรุณาระบุข้อมูลให้ครบถ้วน")
-      return false
-    }
-  }
+
 
   validate() {
     
