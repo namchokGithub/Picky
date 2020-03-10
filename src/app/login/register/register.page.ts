@@ -4,38 +4,33 @@ import { NavController, AlertController, MenuController, ToastController } from 
 import { map, count } from "rxjs/operators";
 import { UserService, User } from "src/app/services/user.service";
 @Component({
-  selector: "app-register",
-  templateUrl: "./register.page.html",
-  styleUrls: ["./register.page.scss"]
+  selector: "app-register", // เป็นส่วนที่เชื่อมต่อ
+  templateUrl: "./register.page.html",//เป็นส่วนที่เชื่อมต่อ
+  styleUrls: ["./register.page.scss"]//เป็นส่วนที่เชื่อมต่อ
 })
 
 // ไปคอมเม้นมาทุกส่วน
 
 export class RegisterPage implements OnInit {
   
-  private ConfirmPassword: string = "";
-  private name: string = "";
-  private username: string = "";
-  private password: string = "";
-  private confirmPassword: string = "";
+  private confirmPassword: string = ""; // ประกาศตัวเเปร confirmPassword เป็น string
 
-  user_add: User = {
-    id:'',
-    user_name:'',
-    user_id:'',
-    user_password:'' 
+  user_add: User = {  //ฟังก์ชันการทำงานของการเพิ่มบัญชีผู้ใช้
+    user_name:'',  //class ของ user
+    user_id:'',  //
+    user_password:'' //
   };
 
   user: User[] 
 
 
-  constructor(
-    private router: Router,
-    private alertController:AlertController,
-    private userservice: UserService
-    ,public navCtrl: NavController
-    ,private menu: MenuController
-    ,public toastController: ToastController
+  constructor( 
+    private router: Router,  //
+    private alertController:AlertController,//
+    private userservice: UserService//
+    ,public navCtrl: NavController//
+    ,private menu: MenuController//
+    ,public toastController: ToastController//
   ) {}
 
   ngOnInit() {
@@ -49,18 +44,10 @@ export class RegisterPage implements OnInit {
   back() {
     this.router.navigate(["login"]);
   }
-
-  // confirm_regis() {
-    
-  //   if(this.check_username() && this.check_regis()){
-  //     this.userservice.add_user(this.user_add)
-  //     this.back();
-  //   }
-  // }
   
   validate() {
     
-    if(this.user_add.user_name == "") {
+    if(this.user_add.user_name == "") { //
 
       this.Toast('กรุณาใส่ชื่อ')
       console.log('กรุณาใส่ชื่อ')
@@ -85,6 +72,9 @@ export class RegisterPage implements OnInit {
       this.Toast('รหัสผ่านไม่ตรงกัน')
       console.log('รหัสผ่านไม่ตรงกัน')
 
+    }else{
+      this.userservice.add_user(this.user_add)
+      this.back();
     }
     
   }
@@ -113,29 +103,9 @@ export class RegisterPage implements OnInit {
     });
 
        toast.present();
-
-  }
-  
-
-  check_username() {
-    const founc = this.user.find(user => user.user_id === this.user_add.user_id)
-    if(!founc){
-      return true
-    }else{
-      this.Alert("มีผู้ใช้ "+this.user+" อยู่ในระบบแล้ว")
-      return false
-    }
+        
   }
 
-  async Alert(massage:string) {
-    const alert = await this.alertController.create({
-      header: 'สมัครใช้บริการไม่สำเร็จ',
-      subHeader: '',
-      message: massage,
-      buttons: ['OK']
-    });
-    await alert.present();
-  }
 
 
 
