@@ -1,16 +1,19 @@
 <ion-content class="bg">
-    <ion-row justify-content-center class="bg-color">
+    <ion-row justify-content-center>
         <ion-col align-self-center class="bg-color">
+
             <!-- logo -->
-            <div class="mt-0 pt-0" style="align-items: center;">
-                <!-- <ion-img style="height: 80px; width: 80px;" src="../../assets/image/logo.png"></ion-img> -->
-            </div>
+            <ion-row justify-content-center>
+                <ion-col>
+                    <ion-img class="image" src="assets/picky_logo.png"></ion-img>
+                </ion-col>
+            </ion-row>
             <!-- end logo -->
 
 
             <div padding class="ion-text-center" style="margin-top: 20px;">
                 <ion-text>
-                    Registration
+                    <h1>สมัครสมาชิก</h1>
                 </ion-text>
             </div>
 
@@ -19,45 +22,43 @@
                 <!-- Name -->
                 <ion-item>
                     <ion-label position="floating">
-                        Name
+                        ชื่อ
                     </ion-label>
-                    <ion-input type="text" [(ngModel)]="user_add.user_name" name="user_add.user_name" placeholder="name"></ion-input>
+                    <ion-input type="text" [(ngModel)]="user_add.user_name" name="user_add.user_name" placeholder="ชื่อ"></ion-input>
                 </ion-item>
                 <!-- Name -->
                 <ion-item>
                     <ion-label position="floating">
-                        Username
+                        ชื่อผู้ใช้งาน
                     </ion-label>
-                    <ion-input type="text" [(ngModel)]="user_add.user_id" name="user_id" placeholder="username"></ion-input>
+                    <ion-input type="text" [(ngModel)]="user_add.user_id" name="user_id" placeholder="ชื่อผู้ใช้งาน"></ion-input>
                 </ion-item>
                 <!-- Username -->
                 <ion-item style="border-radius: 5px; margin-top: 5px;">
                     <ion-label position="floating">
-                        Password
+                        รหัสผ่าน
                     </ion-label>
-                    <ion-input type="password" [(ngModel)]="user_add.user_password" placeholder="password"></ion-input>
+                    <ion-input type="password" [(ngModel)]="user_add.user_password" placeholder="รหัสผ่าน"></ion-input>
                 </ion-item>
                 <!-- Password -->
                 <ion-item style="border-radius: 5px; margin-top: 5px;">
                     <ion-label position="floating">
-                        Confirm Password
+                        ยืนยันรหัสผ่าน
                     </ion-label>
-                    <ion-input type="password" [(ngModel)]="ConfirmPassword" placeholder="ConfirmPassword"></ion-input>
+                    <ion-input type="password" [(ngModel)]="confirmPassword" placeholder="ยืนยันรหัสผ่าน"></ion-input>
                 </ion-item>
             </div>
 
-            <ion-row>
+            <ion-row style="margin-top: 20px;">
                 <ion-col>
-                    <ion-button (click)="confirm_regis()" expand="block" color="success">Confirm</ion-button>
-                </ion-col>
-
-                <ion-col>
-                    <ion-button (click)="back()" expand="block" color="danger">Cancel</ion-button>
+                    <ion-button (click)="validate()" expand="block" color="success">ยืนยัน</ion-button>
                 </ion-col>
             </ion-row>
-
-
-
+            <ion-row>
+                <ion-col>
+                    <ion-button (click)="backToLogin()" expand="block" color="danger">ยกเลิก</ion-button>
+                </ion-col>
+            </ion-row>
         </ion-col>
     </ion-row>
 </ion-content>
