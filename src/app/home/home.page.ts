@@ -22,4 +22,6 @@ export class HomePage implements OnInit {
     console.log(this.user_session)
   }
 
+
+
 }

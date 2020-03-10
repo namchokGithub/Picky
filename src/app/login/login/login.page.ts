@@ -70,9 +70,6 @@ export class LoginPage implements OnInit {
       if (this.validate_login()) {
         await this.presentLoading();
         if (await this.check_login()) {
-         
-
-         
           this.UserService.set_session_user(this.userlogin);
           this.goHomePage();
 

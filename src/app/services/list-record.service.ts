@@ -4,9 +4,9 @@ import {
   AngularFirestoreCollection,
   AngularFirestoreDocument,
   DocumentReference
-} from "@angular/fire/firestore";
-import { map, take } from "rxjs/operators";
-import { Observable } from "rxjs";
+} from '@angular/fire/firestore';
+import { map, take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 export interface List_record {
   id?: string;
@@ -26,7 +26,7 @@ export class ListRecordService {
   private list_record_Collection: AngularFirestoreCollection<List_record>;
 
   constructor(private afs: AngularFirestore) {
-    this.list_record_Collection = this.afs.collection<List_record>("list_record");
+    this.list_record_Collection = this.afs.collection<List_record>('list_record');
     this.list_record = this.list_record_Collection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -64,7 +64,6 @@ export class ListRecordService {
       record_name_en: List_record.record_name_en,
       record_name_th: List_record.record_name_th,
       record_type: List_record.record_type,
-      
     });
   }
 
