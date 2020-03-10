@@ -18,15 +18,12 @@ export class AddaccountPage implements OnInit {
   ngOnInit() {
   }
 
-  addaccount(){
-
-  }
-
   back() {
     this.router.navigate(['showaccount'], { replaceUrl: true });
   }
 
-  async presentAlertConfirm() {
+  // function เพิ่มบัญชี 
+  async confirm() {
     const alert = await this.alertController.create({
       header: 'Need Confirmation?',
       message: 'Do you want to add an account?',
@@ -36,13 +33,13 @@ export class AddaccountPage implements OnInit {
           role: 'cancel',
           cssClass: 'secondary',
           handler: (blah) => {
-            console.log('Confirm Cancel: blah');
+            console.log('Confirm Cancel');
           }
         }, {
           text: 'Confirm',
           handler: () => {
             console.log('Confirm Okay');
-
+            
             this.router.navigate(['showaccount'], { replaceUrl: true });
           }
         }
@@ -52,5 +49,4 @@ export class AddaccountPage implements OnInit {
     await alert.present();
   }
 
-  
 }
