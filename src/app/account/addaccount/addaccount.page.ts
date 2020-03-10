@@ -17,6 +17,7 @@ export class AddaccountPage implements OnInit {
   constructor(public navCtrl: NavController, private router: Router , public alertController: AlertController) { }
 
   ngOnInit() {
+    
   }
 
   back() {

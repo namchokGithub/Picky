@@ -21,6 +21,9 @@ export interface User {
 })
 export class UserService {
   private user: Observable<User[]>;
+
+  private user_name = "";
+ 
   // tslint:disable-next-line: variable-name
   private user_collection: AngularFirestoreCollection<User>;
   private check: any[];
@@ -81,5 +84,12 @@ export class UserService {
           return user;
         })
       );
+  }
+
+  set_user_name(user_name: any){
+    this.user_name = user_name
+  }
+  get_user_name(){
+    return this.user_name
   }
 }

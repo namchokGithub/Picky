@@ -26,7 +26,7 @@ export class HomePage implements OnInit {
    });
 
 
-   console.log('HOME'+this.user_name+' '+this.user_password+' '+this.user_id)
+   
   }
 
 }

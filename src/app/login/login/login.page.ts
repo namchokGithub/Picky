@@ -32,6 +32,7 @@ export class LoginPage implements OnInit {
       // console.log(res);
       this.db_user = res;
     });
+
     this.loginMenu();
   }
 
@@ -43,14 +44,13 @@ export class LoginPage implements OnInit {
     await loading.present();
 
     const { role, data } = await loading.onDidDismiss();
-    console.log('Loading dismissed!');
+    // console.log('Loading dismissed!');
   }
 
-  goHomePage(user_name: string, user_password: string, user_id: string) {
-
+  goHomePage() {
     // this.router.navigate(['home']);
-    this.router.navigate(['app'], {queryParams: {user_name:user_name, user_password:user_password, user_id:user_id}});
-    this.router.navigate(['home'], {queryParams: {user_name:user_name, user_password:user_password, user_id:user_id}});
+    this.router.navigate(['app']);
+    this.router.navigate(['home']);
   }
 
   register() {
@@ -66,7 +66,9 @@ export class LoginPage implements OnInit {
       if (this.validate_login()) {
         await this.presentLoading();
         if (await this.check_login()) {
-          this.goHomePage(this.userlogin.user_name, this.userlogin.user_password, this.userlogin.user_id);
+          this.UserService.set_user_name(this.userlogin.user_name);
+          this.goHomePage();
+        
         }
         else {
           this.showToast('รหัสผู้ใช้งานไม่ถูกต้อง');
@@ -118,7 +120,7 @@ export class LoginPage implements OnInit {
     showToast(msg) {
         this.toastController.create({
             message: msg,
-            duration: 3000,
+            duration: 1000,
             color: 'dark'
         }).then(toast => toast.present());
     }
