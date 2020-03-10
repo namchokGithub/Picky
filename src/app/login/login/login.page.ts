@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, MenuController, AlertController } from "@ionic/angular";
+import { NavController, MenuController, AlertController ,ToastController } from "@ionic/angular";
 import { Router } from '@angular/router'
 @Component({
   selector: 'app-login',
@@ -16,6 +16,7 @@ export class LoginPage implements OnInit {
     ,private router: Router
     ,private menu: MenuController
     ,public alertController: AlertController
+    ,public toastController: ToastController
   ) {
 
   }
@@ -42,8 +43,23 @@ export class LoginPage implements OnInit {
 
     if (this.username == "user" && this.password == "user") {
       this.goHomePage()
-    }else {
-
+    }else if(this.username =="" ){
+      const toast = await this.toastController.create({
+        message: 'กรุณากรอกชื่อผู้ใช้',
+        duration: 1000
+        ,position: 'bottom'
+        ,cssClass: 'toast-message-color'
+      });
+      toast.present();
+    }else if(this.password == ""){
+      const toast = await this.toastController.create({
+        message: 'กรุณากรอกรหัสผ่าน',
+        duration: 1000
+        ,position: 'bottom'
+        ,cssClass: 'toast-message-color'
+      });
+      toast.present();
+    }else{
       const alert = await this.alertController.create({
         header: 'แจ้งเตือน',
         message: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง',
