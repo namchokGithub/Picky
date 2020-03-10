@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute, Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -11,6 +11,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
+  private user_name : String = ' ';
+  private user_password : String = ' ';
+  private user_id : String = ' ';
   public appPages = [
     {
       title: 'Home',
@@ -47,7 +50,8 @@ export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    public activatedRoute: ActivatedRoute
   ) {
     this.initializeApp();
   }
@@ -60,6 +64,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.activatedRoute.queryParamMap.subscribe(params => {
+      this.user_name  = params.get('user_name');
+      this.user_password  = params.get('user_password');
+      this.user_id  = params.get('user_id');
+     
+   });
+
     const path = window.location.pathname.split('home/')[1];
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
