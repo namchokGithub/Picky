@@ -11,10 +11,10 @@ import { NavController, ToastController, ModalController } from '@ionic/angular'
 })
 export class CategoryPage implements OnInit {
 
-  private type_catagory: string = 'income';
- 
-  Income = ["Bonus","Lotter","Salary","Tips","Others"];
-  Expense = ["Bill","Cloth"];
+  private type_catagory = 'income';
+
+  Income = ['Bonus', 'Lotter', 'Salary', 'Tips', 'Others'];
+  Expense = ['Bill', 'Cloth'];
 
   constructor(private nav: NavController, private router: Router) {
 
@@ -33,29 +33,30 @@ export class CategoryPage implements OnInit {
       {title: 'Cloth'}
     ];
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  back() {
-    this.router.navigate(['add'], { replaceUrl: true });
-  }
+    back() {
+        this.router.navigate(['add'], { replaceUrl: true });
+    }
 
-  ChecktypeCatagory(type: string){ 
-    console.log(type);
-      if(type=='income'){
-        this.type_catagory = 'income';
-      }else{
-        this.type_catagory = 'Expense';
-      }
-  }
+    ChecktypeCatagory(type: string) {
+        console.log(type);
+        if (type === 'income') {
+            this.type_catagory = 'income';
+        } else {
+            this.type_catagory = 'Expense';
+        }
+    }
 
-  categoryincome(income){
-  console.log(income)
-    this.router.navigate(['add'], {queryParams: {Income: income}});
-} 
-  categoryexpense(expense){
-  console.log(expense)
-    this.router.navigate(['add'], {queryParams: {Expense: expense}});
-} 
+    categoryincome(income) {
+        console.log(income)
+        this.router.navigate(['add'], {queryParams: {Income: income}});
+    }
+
+    categoryexpense(expense) {
+        console.log(expense)
+        this.router.navigate(['add'], {queryParams: {Expense: expense}});
+    }
 
 }

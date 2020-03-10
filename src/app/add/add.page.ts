@@ -56,10 +56,15 @@ export class AddPage implements OnInit {
     await alert.present();
   }
 
-  async add(){
-    this.cash;
-    this.category;
-    this.date;
-    this.note;
+  /**
+   * Function: add
+   * Name: Namchok
+   * Date create: 2020-03-10
+   */
+  add() {
+    // this.cash;
+    // this.category;
+    // this.date;
+    // this.note;
   }
 }
