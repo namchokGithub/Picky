@@ -8,29 +8,32 @@ import { VirtualTimeScheduler } from 'rxjs';
   templateUrl: './showaccount.page.html',
   styleUrls: ['./showaccount.page.scss'],
 })
+
 export class ShowaccountPage implements OnInit {
 
 
   constructor(public navCtrl: NavController, private router: Router) { }
 
+  /*balance = ['1000','2000','3000']
+  name_account = ['บัญชีส่วนตัว', 'บัญชีเงินฝาก', 'บัญชีเงินเก็บ'];
+  type_account = ['ครอบครัว','องค์กร','ผู้ใช้ทั่วไป']
+  user_member = [0,1,2,3]*/
+
   Data = [
     'บัญชีส่วนตัว', 'บัญชีเงินฝาก', 'บัญชีเงินเก็บ'
   ];
+
   ngOnInit() {
   }
-
+  /* ไปสู่หน้า Add Account */
   openAddAccount() {
     console.log('Click');
     this.router.navigate(['addaccount']);
   }
 
-  openSelectAccount() {
-
-    console.log('Clcik');
-    this.router.navigate(['home']);
-  }
-
+  /* เลือก Account ไปสู่หน้า Home */
   selecet_account() {
+    console.log('Clcik');
     this.router.navigateByUrl('home', { replaceUrl: true });
   }
 
