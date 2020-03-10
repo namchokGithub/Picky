@@ -8,11 +8,7 @@ import {
 } from '@angular/fire/firestore';
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-<<<<<<< HEAD
-
-=======
 import { async } from '@angular/core/testing';
->>>>>>> origin/DevMaster
 export interface User {
   id?: string;
   user_id: string;
