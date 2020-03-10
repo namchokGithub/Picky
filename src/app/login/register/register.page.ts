@@ -14,16 +14,20 @@ import { UserService, User } from "src/app/services/user.service";
 export class RegisterPage implements OnInit {
   
   private ConfirmPassword: string = "";
-  user_add:User = {
-    user_name:'',
-    user_id:'',
-    user_password:'' 
-  };
   private name: string = "";
   private username: string = "";
   private password: string = "";
   private confirmPassword: string = "";
-  user: User[]
+
+  user_add: User = {
+    id:'',
+    user_name:'',
+    user_id:'',
+    user_password:'' 
+  };
+
+  user: User[] 
+
 
   constructor(
     private router: Router,
@@ -70,21 +74,31 @@ export class RegisterPage implements OnInit {
 
   validate() {
     
-    if(this.name == "") {
+    if(this.user_add.user_name == "") {
+
       this.Toast('กรุณาใส่ชื่อ')
       console.log('กรุณาใส่ชื่อ')
-    } else if(this.username == "") {
+
+    } else if(this.user_add.user_id == "") {
+
       this.Toast('กรุณาใส่ชื่อผู้ใช้งาน')
       console.log('กรุณาใส่ชื่อผู้ใช้งาน')
-    } else if(this.password == "") {
+
+    } else if(this.user_add.user_password == "") {
+
       this.Toast('กรุณาใส่รหัสผ่าน')
       console.log('กรุณาใส่รหัสผ่าน')
+
     } else if(this.confirmPassword == "") {
+
       this.Toast('กรุณายืนยันรหัสผ่าน')
       console.log('กรุณายืนยันรหัสผ่าน')
-    }else if(this.confirmPassword != this.password ) {
+
+    }else if(this.confirmPassword != this.user_add.user_password ) {
+
       this.Toast('รหัสผ่านไม่ตรงกัน')
       console.log('รหัสผ่านไม่ตรงกัน')
+
     }
     
   }
@@ -106,7 +120,8 @@ export class RegisterPage implements OnInit {
   async Toast(text){
       const toast = await this.toastController.create({
       message: text,
-      duration: 1000
+      color: 'dark'
+      ,duration: 1000
       ,position: 'bottom'
       ,cssClass: 'toast-message-color'
     });
