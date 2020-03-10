@@ -1,6 +1,7 @@
-.backgroundincome {
+.background_click {
     background-color: rgb(33, 168, 44);
     width: 95px;
+    color: white;
     height: 30px;
     border-radius: 20px;
     padding: 5px;
@@ -8,7 +9,7 @@
     font-size: 18px;
 }
 
-.backgroundexpense {
+.background_default {
     background-color: rgb(202, 209, 202);
     width: 95px;
     height: 30px;
@@ -23,8 +24,8 @@
     border-radius: 10px;
 }
 
-.category{
+.category {
     font-size: 17px;
-    color: white;
+    color: rgb(10, 9, 9);
     margin-left: 20px;
 }

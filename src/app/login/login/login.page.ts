@@ -1,6 +1,5 @@
-
 import { Component, OnInit } from '@angular/core';
-import { NavController, MenuController } from "@ionic/angular";
+import { NavController, MenuController, AlertController ,ToastController } from "@ionic/angular";
 import { Router } from '@angular/router'
 @Component({
   selector: 'app-login',
@@ -16,6 +15,8 @@ export class LoginPage implements OnInit {
     public navCtrl: NavController
     ,private router: Router
     ,private menu: MenuController
+    ,public alertController: AlertController
+    ,public toastController: ToastController
   ) {
 
   }
@@ -32,17 +33,49 @@ export class LoginPage implements OnInit {
     this.router.navigate(['register'])
   }
 
+  /**
+   * loginMenu
+   * Name: Komsan
+   * 2020-03-10
+   */
   async validate() {
     let check: Boolean = true
 
-    if (this.username != "" && this.password != "") {
+    if (this.username == "user" && this.password == "user") {
+      this.goHomePage()
+    }else if(this.username =="" ){
+      const toast = await this.toastController.create({
+        message: 'กรุณากรอกชื่อผู้ใช้',
+        duration: 1000
+        ,position: 'bottom'
+        ,cssClass: 'toast-message-color'
+      });
+      toast.present();
+    }else if(this.password == ""){
+      const toast = await this.toastController.create({
+        message: 'กรุณากรอกรหัสผ่าน',
+        duration: 1000
+        ,position: 'bottom'
+        ,cssClass: 'toast-message-color'
+      });
+      toast.present();
+    }else{
+      const alert = await this.alertController.create({
+        header: 'แจ้งเตือน',
+        message: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง',
+        buttons: ['ตกลง']
+      });
+  
+      await alert.present();
 
+      console.log('Incorrect username nad password')
     }
+
   }
 
   /**
    * loginMenu
-   * Name: Namchok
+   * Name: Phannita
    * 2020-03-10
    */
   loginMenu() {
