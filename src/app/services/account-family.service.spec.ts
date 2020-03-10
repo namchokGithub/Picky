@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MemberAccountService } from './member-account.service';
+import { AccountFamilyService } from './account-family.service';
 
-describe('MemberAccountService', () => {
+describe('AccountFamilyService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: MemberAccountService = TestBed.get(MemberAccountService);
+    const service: AccountFamilyService = TestBed.get(AccountFamilyService);
     expect(service).toBeTruthy();
   });
 });

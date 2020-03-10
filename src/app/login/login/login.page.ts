@@ -1,7 +1,8 @@
-
 import { Component, OnInit } from '@angular/core';
-import { NavController, MenuController, AlertController } from "@ionic/angular";
-import { Router } from '@angular/router'
+import { NavController, MenuController, AlertController , ToastController, LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -9,62 +10,124 @@ import { Router } from '@angular/router'
 })
 export class LoginPage implements OnInit {
 
-  private username: string = ""; 
-  private password: string = "";
+  private username = null;
+  private password = null;
+  private db_user: any = [];
+  private userlogin: any = [];
 
   constructor(
     public navCtrl: NavController
-    ,private router: Router
-    ,private menu: MenuController
-    ,public alertController: AlertController
+    , private router: Router
+    , private menu: MenuController
+    , public alertController: AlertController
+    , private UserService: UserService
+    , private toastController: ToastController
+    , public loadingController: LoadingController
   ) {
 
   }
 
   ngOnInit() {
-    this.loginMenu()
+    this.UserService.get_user().subscribe(async res => {
+      this.db_user = res;
+    });
+
+    this.loginMenu();
   }
 
-  goHomePage(){
-    this.router.navigateByUrl('home', { replaceUrl: true })
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'รอสักครู่...',
+      duration: 1000
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    // console.log('Loading dismissed!');
   }
 
-  register(){
-    this.router.navigate(['register'])
+  goHomePage() {
+    
+    
+    // this.router.navigate(['home']);
+    this.router.navigate(['app']);
+    this.router.navigate(['home']);
+  }
+
+  register() {
+    this.router.navigate(['register']);
   }
 
   /**
-   * loginMenu
-   * Name: Komsan
+   * validate เช็คlogin userid && password
+   * Name: Komsan tesana
    * 2020-03-10
    */
-  async validate() {
-    let check: Boolean = true
-
-    if (this.username == "user" && this.password == "user") {
-      this.goHomePage()
-    }else {
-
-      const alert = await this.alertController.create({
-        header: 'แจ้งเตือน',
-        message: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง',
-        buttons: ['ตกลง']
-      });
-  
-      await alert.present();
-
-      console.log('Incorrect username nad password')
+    async validate() {
+      if (this.validate_login()) {
+        await this.presentLoading();
+        if (await this.check_login()) {
+          this.UserService.set_session_user(this.userlogin);
+          this.goHomePage();
+        }
+        else {
+          this.showToast('รหัสผู้ใช้งานไม่ถูกต้อง');
+        }
+      }
     }
 
-  }
+    // comment
+    validate_login() {
+      if ( this.username == '') {
+        this.showToast('กรุณาใส่ชื่อผู้ใช้')
+        console.log('false');
+        return false;
+      }else if ( this.password == '') {
+        this.showToast('กรุณาใส่รหัสผ่าน')
+        console.log('false');
+        return false;
+      }else {
+        return true;
+      }
+    }
 
-  /**
-   * loginMenu
-   * Name: Namchok
-   * 2020-03-10
-   */
-  loginMenu() {
-    this.menu.enable(false, 'menuSilde');
-  }
+    // comment1
+    async check_login() {
+      this.userlogin = this.db_user.find(user => {
+        if(user.user_id == this.username) {
+          return true;
+        }else{
+          return false;
+        }
+      });
+
+      if (this.userlogin.user_password == this.password) {
+        console.log('true');
+        return true;
+      } else {
+        console.log('false');
+        return false;
+      }
+    }
+
+    /**
+     * loginMenu
+     * Name: Phannita
+     * 2020-03-10
+     */
+    loginMenu() {
+      this.menu.enable(false, 'menuSilde');
+    }
+
+    // * @Function   : showToast => แสดงข้อความแจ้งเตือน
+    // * @Author     : Komsan Tesana
+    // * @Create Date: 10/3/2563
+    showToast(msg) {
+        this.toastController.create({
+            message: msg,
+            duration: 1000,
+            color: 'dark'
+        }).then(toast => toast.present());
+    }
 
 }
