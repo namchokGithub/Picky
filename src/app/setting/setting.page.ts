@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController} from '@ionic/angular';
+import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { async } from 'rxjs/internal/scheduler/async';
 
 @Component({
@@ -9,6 +11,7 @@ import { async } from 'rxjs/internal/scheduler/async';
 })
 export class SettingPage implements OnInit {
   status = true;
+  statusDelete = false;
   name: string;
   tempName: string;
   constructor(public alertController: AlertController) {
@@ -31,7 +34,13 @@ export class SettingPage implements OnInit {
   }
 
   async deleteName(){
-
+    console.log(123)
+    let index = this.name.indexOf(name);
+    if(index > -1){
+      this.name.slice(index, 1);
+      this.name = '  ';
+      this.statusDelete = true;
+    }
   }
 
   async successToEdit() {
