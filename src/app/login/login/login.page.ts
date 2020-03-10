@@ -69,10 +69,10 @@ export class LoginPage implements OnInit {
                 this.showToast('Username ไม่ถูกต้อง')
             } else if(this.username != this.db_user[i].user_id){
                 if(this.password == null){
-                this.showToast('Password ไม่ถูกต้อง')
+                    this.showToast('Password ไม่ถูกต้อง')
                 }
                 else if(this.password != this.db_user[i].user_password){
-                this.showToast('ไม่พบข้อมูลอยู่ในระบบ')
+                    this.showToast('ไม่พบข้อมูลอยู่ในระบบ')
                 }
             }
             
