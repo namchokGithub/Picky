@@ -1,6 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, RouterModule } from "@angular/router";
+<<<<<<< HEAD
 import { NavController, AlertController, MenuController, ToastController } from "@ionic/angular";
+=======
+import { NavController , AlertController} from "@ionic/angular";
+>>>>>>> origin/kittisak
 import { map, count } from "rxjs/operators";
 import { UserService, User } from "src/app/services/user.service";
 @Component({
@@ -31,6 +35,7 @@ export class RegisterPage implements OnInit {
 
   constructor(
     private router: Router,
+    private alertController:AlertController,
     private userservice: UserService
     ,public navCtrl: NavController
     ,private menu: MenuController
@@ -54,9 +59,7 @@ export class RegisterPage implements OnInit {
     
     if(this.check_username() && this.check_regis()){
       this.userservice.add_user(this.user_add)
-      console.log(123)
-    }else{
-      console.log(234)
+      this.back();
     }
   }
   
@@ -65,9 +68,11 @@ export class RegisterPage implements OnInit {
       if(this.user_add.user_password == this.ConfirmPassword){
         return true
       }else{
+        this.Alert("confirm รหัสผ่านไม่ถูกต้อง")
         return false
       }
     }else{
+      this.Alert("กรุณาระบุข้อมูลให้ครบถ้วน")
       return false
     }
   }
@@ -136,7 +141,22 @@ export class RegisterPage implements OnInit {
     if(!founc){
       return true
     }else{
+      this.Alert("มีผู้ใช้ "+this.user+" อยู่ในระบบแล้ว")
       return false
     }
   }
+
+  async Alert(massage:string) {
+    const alert = await this.alertController.create({
+      header: 'สมัครใช้บริการไม่สำเร็จ',
+      subHeader: '',
+      message: massage,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+
+
+
+  
 }
