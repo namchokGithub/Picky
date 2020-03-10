@@ -59,7 +59,7 @@ export class LoginPage implements OnInit {
 
   /**
    * loginMenu
-   * Name: Namchok
+   * Name: Phannita
    * 2020-03-10
    */
   loginMenu() {
