@@ -62,17 +62,17 @@ export class LoginPage implements OnInit {
                     this.showToast('เข้าสู่ระบบสำเร็จ')
                     this.goHomePage();
                 }else if(this.password == null || this.password != this.db_user[i].user_password){
-                    this.showToast('Password ไม่ถูกต้อง')
+                    this.showToast('รหัสผู้ใช้งานไม่ถูกต้อง')
                 }
                     
             } else if(this.username == null){
-                this.showToast('Username ไม่ถูกต้อง')
+                this.showToast('ชื่อผู้ใช้งานไม่ถูกต้อง')
             } else if(this.username != this.db_user[i].user_id){
                 if(this.password == null){
-                this.showToast('Password ไม่ถูกต้อง')
+                this.showToast('รหัสผู้ใช้งานไม่ถูกต้อง')
                 }
                 else if(this.password != this.db_user[i].user_password){
-                this.showToast('ไม่พบข้อมูลอยู่ในระบบ')
+                this.showToast('ไม่พบข้อมูลผู้ใช้งานอยู่ในระบบ')
                 }
             }
             
@@ -96,7 +96,9 @@ export class LoginPage implements OnInit {
     showToast(msg) {
         this.toastController.create({
             message: msg,
-            duration: 3000
+            duration: 3000,
+            color: 'dark'
+            
         }).then(toast => toast.present());
     }
 
