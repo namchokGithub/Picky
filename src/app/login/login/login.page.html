@@ -11,14 +11,14 @@
             <ion-col size="8" size-lg offset="2" class="ion-text-center">
                 <ion-text class="app-name">
                     Picky
-                    <p style="font-size: 20px;">save money, save you!</p>
+                    <p style="font-size: 20px; margin-top: 3px;">save money, save you!</p>
                 </ion-text>
             </ion-col>
         </ion-row>
 
         <ion-row style="margin-top: 40px;">
             <ion-col size="8" size-lg offset="2" class="bg-input">
-                <ion-input placeholder="Username" [(ngModel)]="username" type="text" name="username">
+                <ion-input placeholder="ชื่อผู้ใช้งาน" [(ngModel)]="username" type="text" name="username">
                     <ion-icon style="margin-right: 5px;" name="person-sharp"></ion-icon>
                 </ion-input>
             </ion-col>
@@ -26,7 +26,7 @@
 
         <ion-row style="margin-top: 10px;">
             <ion-col size="8" size-lg offset="2" class="bg-input">
-                <ion-input placeholder="Password" type="password" [(ngModel)]="password" name="password">
+                <ion-input placeholder="รหัสผ่าน" type="password" [(ngModel)]="password" name="password">
                     <ion-icon style="margin-right: 5px;" name="key-sharp"></ion-icon>
                 </ion-input>
             </ion-col>
@@ -34,13 +34,13 @@
 
         <ion-row align-items-center style="margin-top: 50px;">
             <ion-col size="8" size-lg offset="2" class="ion-text-center mt-3" (click)="validate()">
-                <ion-button color="primary" expand="block">Login</ion-button>
+                <ion-button color="primary" expand="block">เข้าสู่ระบบ</ion-button>
             </ion-col>
         </ion-row>
 
         <ion-row>
             <ion-col class="ion-text-center " (click)="register()">
-                Register
+                สมัครสมาชิก
             </ion-col>
         </ion-row>
 
