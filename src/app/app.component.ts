@@ -12,7 +12,7 @@ import { UserService, User } from "src/app/services/user.service";
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
-  private user_session: User[];
+  private user_session: any = [];
   private name: string;
   public appPages = [
     {
