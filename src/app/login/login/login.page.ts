@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, MenuController, AlertController , ToastController } from '@ionic/angular';
+import { NavController, MenuController, AlertController , ToastController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
@@ -22,6 +22,7 @@ export class LoginPage implements OnInit {
     , public alertController: AlertController
     , private UserService: UserService
     , private toastController: ToastController
+    , public loadingController: LoadingController
   ) {
 
   }
@@ -29,19 +30,25 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.UserService.get_user().subscribe(async res => {
       // console.log(res);
-
       this.db_user = res;
-
-
     });
-
     this.loginMenu();
+  }
 
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'รอสักครู่...',
+      duration: 1000
+    });
+    await loading.present();
 
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
   }
 
   goHomePage(user_name: string, user_password: string, user_id: string) {
 
+    // this.router.navigate(['home']);
     this.router.navigate(['app'], {queryParams: {user_name, user_password, user_id}});
     this.router.navigate(['home'], {queryParams: {user_name, user_password, user_id}});
   }
@@ -57,27 +64,26 @@ export class LoginPage implements OnInit {
    */
     async validate() {
       if (this.validate_login()) {
-        await setTimeout( () => {
-
-          this.userlogin = this.check_login();
-            
-          if (this.userlogin) {
-            this.goHomePage(this.userlogin.user_name, this.userlogin.user_password, this.userlogin.user_id);
-          } else {
-            this.showToast('รหัสผู้ใช้งานไม่ถูกต้อง');
-          }
-  
-        }, 3000);
+        await this.presentLoading();
+          
+        if (await this.check_login()) {
+          this.goHomePage(this.userlogin.user_name, this.userlogin.user_password, this.userlogin.user_id);
+        }
+        else {
+          this.showToast('รหัสผู้ใช้งานไม่ถูกต้อง');
+        }
       }
     }
 
     // comment
     validate_login() {
       if ( this.username === '') {
-       this.showToast('กรุณาใส่ชื่อผู้ใช้')
-       return false;
-      }else if ( this.username === '') {
+        this.showToast('กรุณาใส่ชื่อผู้ใช้')
+        console.log('false');
+        return false;
+      }else if ( this.password === '') {
         this.showToast('กรุณาใส่รหัสผ่าน')
+        console.log('false');
         return false;
       }else {
         return true;
@@ -89,7 +95,7 @@ export class LoginPage implements OnInit {
 
       this.userlogin = this.db_user.find(user => user.user_id === this.username);
 
-      if (this.userlogin.user_id === this.username) {
+      if (this.userlogin.user_password === this.password) {
         console.log('true');
         return true;
       } else {
@@ -97,13 +103,14 @@ export class LoginPage implements OnInit {
         return false;
       }
     }
+
     /**
      * loginMenu
      * Name: Phannita
      * 2020-03-10
      */
     loginMenu() {
-        this.menu.enable(false, 'menuSilde');
+      this.menu.enable(false, 'menuSilde');
     }
 
 
