@@ -79,22 +79,18 @@ export class AddPage implements OnInit {
 // * @Create Date: 10/3/2563
 
   onSubmit() {
-
-
       console.log('ประเภท :' + this.type_category);
       console.log('ชื่อ :' + this.name_category);
       console.log('วันที่ :' + this.date);
       console.log('เพิ่มเติม :' + this.note);
       console.log('จำนวนเงิน :' + this.cash);
-
-
   }
 
 // * @Function   : validate => เช็คค่าหากไม่มีการกรอกข้อมูล จะทำการแสดงข้อความแจ้งเตือน
 // * @Author     : Komsan Tesana
 // * @Create Date: 10/3/2563
 
-  validate(){
+  validate() {
 
       if(this.type_category == ' ' ){
 
