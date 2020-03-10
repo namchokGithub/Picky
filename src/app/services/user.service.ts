@@ -20,6 +20,7 @@ export interface User {
   providedIn: 'root'
 })
 export class UserService {
+  private set_user : any[];
   private user: Observable<User[]>;
   // tslint:disable-next-line: variable-name
   private user_collection: AngularFirestoreCollection<User>;
@@ -72,5 +73,12 @@ export class UserService {
     return this.user_collection.doc(id).delete();
   }
 
-  
+  set_session_user(User:any){
+    this.set_user = User;
+  }
+
+  get_session_user(){
+    return this.set_user;
+  }
+
 }

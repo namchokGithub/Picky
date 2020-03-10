@@ -46,11 +46,17 @@ export class LoginPage implements OnInit {
     console.log('Loading dismissed!');
   }
 
-  goHomePage(user_name: string, user_password: string, user_id: string) {
-
+  goHomePage() {
+    
+    this.UserService.set_session_user(this.userlogin);
     // this.router.navigate(['home']);
+<<<<<<< HEAD
     this.router.navigate(['app'], {queryParams: {user_name:user_name, user_password:user_password, user_id:user_id}});
     this.router.navigate(['home'], {queryParams: {user_name:user_name, user_password:user_password, user_id:user_id}});
+=======
+    this.router.navigate(['app']);
+    this.router.navigate(['home']);
+>>>>>>> origin/kittisak
   }
 
   register() {
@@ -66,7 +72,7 @@ export class LoginPage implements OnInit {
       if (this.validate_login()) {
         await this.presentLoading();
         if (await this.check_login()) {
-          this.goHomePage(this.userlogin.user_name, this.userlogin.user_password, this.userlogin.user_id);
+          this.goHomePage();
         }
         else {
           this.showToast('รหัสผู้ใช้งานไม่ถูกต้อง');
@@ -91,6 +97,7 @@ export class LoginPage implements OnInit {
 
     // comment1
     async check_login() {
+<<<<<<< HEAD
       this.userlogin = this.db_user.find(user => {
         if(user.user_id == this.username) {
           return true;
@@ -100,6 +107,10 @@ export class LoginPage implements OnInit {
       });
 
       if (this.userlogin.user_password == this.password) {
+=======
+      this.userlogin = this.db_user.find(user => user.user_id === this.username);
+      if (this.userlogin.user_password === this.password) {
+>>>>>>> origin/kittisak
         console.log('true');
         return true;
       } else {
