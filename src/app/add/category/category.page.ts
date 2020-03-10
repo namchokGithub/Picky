@@ -15,7 +15,7 @@ export class CategoryPage implements OnInit {
   public type_catagory = 'income';
   public category_income: any = [];
   public category_expense: any = [];
-
+  public categores: any = [];
   constructor(
     private nav: NavController,
     private router: Router,
@@ -35,17 +35,13 @@ export class CategoryPage implements OnInit {
     this.type_catagory = 'income';
 
     this.ListRecordService.get_list_record().subscribe(async res => {
-        console.log(res);
+       
 
-        for (let i = 0; i < res.length ; i++) {
-                if (res[i].record_type == 'Income' ) {
-                  this.category_income.push(res[i]);
-                } else {
-                  this.category_expense.push(res[i]);
-                }
-        }
-        console.log(this.category_income);
-        console.log(this.category_expense);
+        this.categores = res;
+
+        this.setcategorys();
+        console.log(this.categores)
+     
       });
   }
 
@@ -57,6 +53,19 @@ export class CategoryPage implements OnInit {
     this.router.navigate(['add'], { replaceUrl: true });
   }
 
+    setcategorys(){
+
+      for (let i = 0; i < this.categores.length ; i++) {
+                      if (this.categores[i].record_type == 'Income' ) {
+                        this.category_income.push(this.categores[i]);
+                      } else {
+                        this.category_expense.push(this.categores[i]);
+                      }
+              }
+
+        console.log(this.category_income);
+        console.log(this.category_expense);
+    }
 // * @Function   : ChecktypeCatagory เปลี่ยนค่า type category เพื่อแสดงข้อมูลในส่วน view
 // * @Author     : Komsan Tesana
 // * @Create Date: 10/3/2563

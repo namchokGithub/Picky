@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, MenuController, AlertController ,ToastController } from "@ionic/angular";
 import { Router } from '@angular/router'
+import { UserService } from '../../services/user.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -8,21 +10,33 @@ import { Router } from '@angular/router'
 })
 export class LoginPage implements OnInit {
 
-  private username: string = ""; 
-  private password: string = "";
+  private username = null 
+  private password = null
+  private db_user : any = [];
 
   constructor(
     public navCtrl: NavController
     ,private router: Router
     ,private menu: MenuController
     ,public alertController: AlertController
-    ,public toastController: ToastController
+    ,private UserService: UserService
+    ,private toastController: ToastController
   ) {
 
   }
 
   ngOnInit() {
+    this.UserService.get_user().subscribe(async res => {
+      console.log(res);
+
+      this.db_user = res;
+      
+     
+    });
+
     this.loginMenu()
+
+
   }
 
   goHomePage(){
@@ -34,52 +48,57 @@ export class LoginPage implements OnInit {
   }
 
   /**
-   * loginMenu
-   * Name: Komsan
+   * validate เช็คlogin userid && password
+   * Name: Komsan tesana
    * 2020-03-10
    */
-  async validate() {
-    let check: Boolean = true
+    validate() {
 
-    if (this.username == "user" && this.password == "user") {
-      this.goHomePage()
-    }else if(this.username =="" ){
-      const toast = await this.toastController.create({
-        message: 'กรุณากรอกชื่อผู้ใช้',
-        duration: 1000
-        ,position: 'bottom'
-        ,cssClass: 'toast-message-color'
-      });
-      toast.present();
-    }else if(this.password == ""){
-      const toast = await this.toastController.create({
-        message: 'กรุณากรอกรหัสผ่าน',
-        duration: 1000
-        ,position: 'bottom'
-        ,cssClass: 'toast-message-color'
-      });
-      toast.present();
-    }else{
-      const alert = await this.alertController.create({
-        header: 'แจ้งเตือน',
-        message: 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง',
-        buttons: ['ตกลง']
-      });
-  
-      await alert.present();
+        for (let i = 0; i <  this.db_user.length ; i++) {
 
-      console.log('Incorrect username nad password')
+            if(this.username == this.db_user[i].user_id) {
+
+                if(this.password == this.db_user[i].user_password){
+                    this.showToast('เข้าสู่ระบบสำเร็จ')
+                    this.goHomePage();
+                }else if(this.password == null || this.password != this.db_user[i].user_password){
+                    this.showToast('Password ไม่ถูกต้อง')
+                }
+                    
+            } else if(this.username == null){
+                this.showToast('Username ไม่ถูกต้อง')
+            } else if(this.username != this.db_user[i].user_id){
+                if(this.password == null){
+                this.showToast('Password ไม่ถูกต้อง')
+                }
+                else if(this.password != this.db_user[i].user_password){
+                this.showToast('ไม่พบข้อมูลอยู่ในระบบ')
+                }
+            }
+            
+
+        }
     }
 
-  }
+    /**
+     * loginMenu
+     * Name: Phannita
+     * 2020-03-10
+     */
+    loginMenu() {
+        this.menu.enable(false, 'menuSilde');
+    }
 
-  /**
-   * loginMenu
-   * Name: Phannita
-   * 2020-03-10
-   */
-  loginMenu() {
-    this.menu.enable(false, 'menuSilde');
-  }
+  
+    // * @Function   : showToast => แสดงข้อความแจ้งเตือน
+    // * @Author     : Komsan Tesana
+    // * @Create Date: 10/3/2563
+    showToast(msg) {
+        this.toastController.create({
+            message: msg,
+            duration: 3000
+        }).then(toast => toast.present());
+    }
+
 
 }
