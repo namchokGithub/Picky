@@ -32,6 +32,7 @@ export class LoginPage implements OnInit {
       // console.log(res);
       this.db_user = res;
     });
+
     this.loginMenu();
   }
 
@@ -43,7 +44,7 @@ export class LoginPage implements OnInit {
     await loading.present();
 
     const { role, data } = await loading.onDidDismiss();
-    console.log('Loading dismissed!');
+    // console.log('Loading dismissed!');
   }
 
   goHomePage() {
@@ -124,7 +125,7 @@ export class LoginPage implements OnInit {
     showToast(msg) {
         this.toastController.create({
             message: msg,
-            duration: 3000,
+            duration: 1000,
             color: 'dark'
         }).then(toast => toast.present());
     }

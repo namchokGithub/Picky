@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NavController, MenuController, AlertController , ToastController, LoadingController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService,User } from 'src/app/services/user.service'
+import { UserService, User } from 'src/app/services/user.service'
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
