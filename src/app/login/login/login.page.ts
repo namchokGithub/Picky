@@ -39,8 +39,10 @@ export class LoginPage implements OnInit {
 
   }
 
-  goHomePage(){
-    this.router.navigateByUrl('home', { replaceUrl: true })
+  goHomePage(user_name:string,user_password:string,user_id:string){
+   
+    this.router.navigate(['app'], {queryParams: {user_name:user_name,user_password:user_password,user_id:user_id}});
+    this.router.navigate(['home'], {queryParams: {user_name:user_name,user_password:user_password,user_id:user_id}});
   }
 
   register(){
@@ -60,7 +62,7 @@ export class LoginPage implements OnInit {
 
                 if(this.password == this.db_user[i].user_password){
                     this.showToast('เข้าสู่ระบบสำเร็จ')
-                    this.goHomePage();
+                    this.goHomePage(this.db_user[i].user_name,this.db_user[i].user_password,this.db_user[i].user_id);
                 }else if(this.password == null || this.password != this.db_user[i].user_password){
                     this.showToast('รหัสผู้ใช้งานไม่ถูกต้อง')
                 }
