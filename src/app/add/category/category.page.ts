@@ -12,8 +12,7 @@ import { ListRecordService } from './../../services/list-record.service';
 })
 export class CategoryPage implements OnInit {
 
-  private type_catagory: string = 'income';
- 
+  public type_catagory: string = 'income';
   public category_income : any = [];
   public category_expense : any = [];
 
@@ -32,14 +31,17 @@ export class CategoryPage implements OnInit {
 
   ngOnInit(){
 
+
+    this.type_catagory = 'income';
+
       this.ListRecordService.get_list_record().subscribe(async res => {
 
 
         console.log(res);
-                 
 
         for(var i = 0; i < res.length ; i++){
-                if(res[i].record_type=="Income"){
+          
+                if(res[i].record_type == "Income" ){
 
                   this.category_income.push(res[i]);
                 }else{
@@ -81,6 +83,6 @@ export class CategoryPage implements OnInit {
        console.log(type+' '+record_name);
        this.router.navigate(['add'], {queryParams: {Type_category: type,record_name: record_name}});
     }
- 
+
 
 }
