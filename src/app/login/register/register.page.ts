@@ -60,7 +60,7 @@ export class RegisterPage implements OnInit {
     this.router.navigate(['login'], { replaceUrl: true })
   }
 
-  Toast(text){
+  async Toast(text){
       const toast = await this.toastController.create({
       message: text,
       duration: 1000
