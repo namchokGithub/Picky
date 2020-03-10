@@ -76,11 +76,11 @@ export class LoginPage implements OnInit {
 
     // comment
     validate_login() {
-      if ( this.username === '') {
+      if ( this.username == '') {
         this.showToast('กรุณาใส่ชื่อผู้ใช้')
         console.log('false');
         return false;
-      }else if ( this.password === '') {
+      }else if ( this.password == '') {
         this.showToast('กรุณาใส่รหัสผ่าน')
         console.log('false');
         return false;
@@ -91,10 +91,15 @@ export class LoginPage implements OnInit {
 
     // comment1
     async check_login() {
+      this.userlogin = this.db_user.find(user => {
+        if(user.user_id == this.username) {
+          return true;
+        }else{
+          return false;
+        }
+      });
 
-      this.userlogin = this.db_user.find(user => user.user_id === this.username);
-
-      if (this.userlogin.user_password === this.password) {
+      if (this.userlogin.user_password == this.password) {
         console.log('true');
         return true;
       } else {
