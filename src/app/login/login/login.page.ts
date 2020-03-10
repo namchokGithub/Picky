@@ -35,9 +35,12 @@ export class LoginPage implements OnInit {
   async validate() {
     let check: Boolean = true
 
-    if (this.username != "" && this.password != "") {
-
+    if (this.username == "user" && this.password == "user") {
+      this.goHomePage()
+    }else {
+      console.log('Incorrect username nad password')
     }
+
   }
 
   /**
