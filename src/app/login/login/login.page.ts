@@ -28,9 +28,11 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+   
+
     this.UserService.get_user().subscribe(async res => {
-      // console.log(res);
       this.db_user = res;
+      console.log(res)
     });
 
     this.loginMenu();
@@ -49,7 +51,7 @@ export class LoginPage implements OnInit {
 
   goHomePage() {
     
-    this.UserService.set_session_user(this.userlogin);
+    
     // this.router.navigate(['home']);
     this.router.navigate(['app']);
     this.router.navigate(['home']);
@@ -68,7 +70,13 @@ export class LoginPage implements OnInit {
       if (this.validate_login()) {
         await this.presentLoading();
         if (await this.check_login()) {
+         
+
+         
+          this.UserService.set_session_user(this.userlogin);
           this.goHomePage();
+
+          
         }
         else {
           this.showToast('รหัสผู้ใช้งานไม่ถูกต้อง');
@@ -95,6 +103,8 @@ export class LoginPage implements OnInit {
     async check_login() {
       this.userlogin = this.db_user.find(user => {
         if(user.user_id == this.username) {
+
+          console.log(user.user_id)
           return true;
         }else{
           return false;
@@ -102,10 +112,10 @@ export class LoginPage implements OnInit {
       });
 
       if (this.userlogin.user_password == this.password) {
-        console.log('true');
+        console.log('password true');
         return true;
       } else {
-        console.log('false');
+        console.log('password false');
         return false;
       }
     }

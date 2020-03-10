@@ -12,10 +12,7 @@ import { UserService } from '../app/services/user.service';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
-  private nametest = '';
-  private user_name  = ' ';
-  private user_password  = ' ';
-  private user_id  = ' ';
+  private Users: any = [];
   public appPages = [
     {
       title: 'Home',
@@ -68,7 +65,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-      // this.load();
+       //this.loadName();
 
       const path = window.location.pathname.split('home/')[1];
       if (path !== undefined) {
@@ -77,7 +74,9 @@ export class AppComponent implements OnInit {
   }
 
   loadName() {
+     this.Users = this.userService.get_session_user();
     
+     console.log(this.Users)
   }
 
   callpageAdd() {

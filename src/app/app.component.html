@@ -5,11 +5,11 @@
  -->
 <ion-app>
     <ion-split-pane contentId="main-content" class="bg">
-        <ion-menu contentId="main-content" type="overlay" menuId="menuSilde" (ionDidOpen)="load()">
+        <ion-menu contentId="main-content" type="overlay" menuId="menuSilde" (ionDidOpen)="loadName()">
             <ion-content class="bg-login">
                 <ion-list id="inbox-list">
                     <ion-list-header>Picky | Team2</ion-list-header>
-                    <ion-note>{{nametest}}</ion-note>
+                    <ion-note>{{Users.user_name}}</ion-note>
                     <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
                         <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
                             <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
