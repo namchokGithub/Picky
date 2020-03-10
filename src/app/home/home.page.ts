@@ -11,7 +11,7 @@ export class HomePage implements OnInit {
   private user_name : String = ' ';
   private user_password : String = ' ';
   private user_id : String = ' ';
-  private user_session :User[];
+  private user_session : User [];
   constructor(private menu: MenuController,
     private activatedRoute: ActivatedRoute,
     private user :UserService) { }

@@ -10,14 +10,9 @@ import { Observable } from "rxjs";
 
 export interface Record {
   id?: string;
-  account_id: number;
-  date_record: string;
-  list_record: string;
-  money_record: string;
-  note_record: string;
-  type_record: number;
-  user_id: string;
-  user_name: string;
+  account_id: string;
+  account_name: string;
+  user_record: any[];
 }
 // ไปคอมเม้นมาทุกส่วน
 @Injectable({
@@ -40,11 +35,11 @@ export class RecordService {
     );
   }
 
-  get_account(): Observable<Record[]> {
+  get_record(): Observable<Record[]> {
     return this.record;
   }
 
-  get_account_By_Id(id: string): Observable<Record> {
+  get_record_By_Id(id: string): Observable<Record> {
     return this.record_Collection
       .doc<Record>(id)
       .valueChanges()
@@ -57,24 +52,19 @@ export class RecordService {
       );
   }
 
-  add_account(Record: Record): Promise<DocumentReference> {
+  add_record(Record: Record): Promise<DocumentReference> {
     return this.record_Collection.add(Record);
   }
 
-  update_account(Record: Record): Promise<void> {
+  update_record(Record: Record): Promise<void> {
     return this.record_Collection.doc(Record.id).update({
       account_id: Record.account_id,
-      date_record: Record.date_record,
-      list_record: Record.list_record,
-      money_record: Record.money_record,
-      note_record: Record.note_record,
-      type_record: Record.type_record,
-      user_id: Record.user_id,
-      user_name: Record.user_name
+      account_name: Record.account_name,
+      user_record: Record.user_record
     });
   }
 
-  delete_account(id: string): Promise<void> {
+  delete_record(id: string): Promise<void> {
     return this.record_Collection.doc(id).delete();
   }
 }

@@ -12,7 +12,7 @@ import { UserService, User } from "src/app/services/user.service";
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
-  private user_session: User[];
+  private user_session: any = [];
   private name: string;
   public appPages = [
     {
@@ -78,7 +78,7 @@ export class AppComponent implements OnInit {
   loadName() {
     this.user_session = this.userService.get_session_user();
     this.name = this.user_session.user_name;
-    console.log(this.user_session);
+    
   }
 
   callpageAdd() {

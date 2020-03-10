@@ -106,7 +106,7 @@ export class CategoryPage implements OnInit {
   settype_category(type: String, record_name: String) {
     console.log(type + " " + record_name);
     this.router.navigate(["add"], {
-      queryParams: { Type_category: type, record_name }
+      queryParams: { Type_category: type, Record_name: record_name }
     });
   }
 }
