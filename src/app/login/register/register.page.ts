@@ -44,11 +44,7 @@ export class RegisterPage implements OnInit {
   back() {
     this.router.navigate(["login"]);
   }
-<<<<<<< HEAD
   
-=======
-
->>>>>>> origin/kittisak
   validate() {
     
     if(this.user_add.user_name == "") { //
