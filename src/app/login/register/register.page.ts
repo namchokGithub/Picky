@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router'
-import { NavController, AlertController, MenuController } from "@ionic/angular";
+import { NavController, AlertController, MenuController, ToastController } from "@ionic/angular";
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -18,6 +18,7 @@ export class RegisterPage implements OnInit {
     ,private router: Router
     ,private menu: MenuController
     ,public alertController: AlertController
+    ,public toastController: ToastController
     ) { }
 
   ngOnInit() {
@@ -37,22 +38,22 @@ export class RegisterPage implements OnInit {
       console.log('กรุณาใส่รหัสผ่าน')
     } else if(this.confirmPassword == "") {
       this.alertInput('กรุณายืนยันรหัสผ่าน')
-      console.log('กรุณายืนยันรหัสผ่าน')
+      console.log('กรุณายืนยันรหัสผ่าน') 
     }else if(this.confirmPassword != this.password ) {
       this.alertInput('รหัสผ่านไม่ตรงกัน')
       console.log('รหัสผ่านไม่ตรงกัน')
     }
-    
+
   }
 
   async alertInput(text) {
-    const alert = await this.alertController.create({
-      header: 'แจ้งเตือน',
+    const toast = await this.toastController.create({
       message: text,
-      buttons: ['ตกลง']
+      duration: 1000
+      ,position: 'bottom'
+      ,cssClass: 'toast-message-color'
     });
-
-    await alert.present();
+    toast.present();
   }
 
   backToLogin() {
