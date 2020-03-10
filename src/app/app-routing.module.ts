@@ -58,6 +58,11 @@ const routes: Routes = [
   {
     path: 'enterprisemanagement',
     loadChildren: () => import('./account/enterprisemanagement/enterprisemanagement.module').then( m => m.EnterprisemanagementPageModule)
+  },
+  {
+    path: 'app',
+    loadChildren: () => import('./app.module').then( m => m.AppModule)
+ 
   }
 
 ];
