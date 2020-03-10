@@ -17,18 +17,18 @@
                     </ion-col>
                 </ion-row>
                 <ion-row>
-                    <ion-col class="center-font">
+                    <ion-col class="center-font" size=2>
                         <ion-label>
-                            <h2>Name: </h2>
+                            <h2>ชื่อ: </h2>
                         </ion-label>
                     </ion-col>
-                    <ion-col class="ionic-text-center ">
+                    <ion-col class="ionic-text-center " size=7>
                         <!-- แท๊กนี้จะเป็นส่วนของการแก้ไขชื่อ -->
                         <ion-input [disabled]="status" value="{{name}}" [(ngModel)]="name" #thenBlock></ion-input>
                         <!-- <ion-input *ngIf="status==false;" value="{{name}}" #elseBlock></ion-input> -->
                     </ion-col>
                     <!-- ส่วนนี้จะเป็น ปุ่มแก้ไขและปุ่มยืนยัน -->
-                    <ion-col>
+                    <ion-col size=2>
                         <!-- ปุ่มกดแก้ไข หลังจากปุ่มนี้จะถูกซ่อน-->
                         <ion-button *ngIf="status==true;" (click)="editName()" color="warning" size="small">
                             <ion-icon name="create-outline"></ion-icon>
