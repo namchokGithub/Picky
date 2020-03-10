@@ -29,7 +29,6 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.UserService.get_user().subscribe(async res => {
-      // console.log(res);
       this.db_user = res;
     });
 
@@ -49,7 +48,7 @@ export class LoginPage implements OnInit {
 
   goHomePage() {
     
-    this.UserService.set_session_user(this.userlogin);
+    
     // this.router.navigate(['home']);
     this.router.navigate(['app']);
     this.router.navigate(['home']);
@@ -68,6 +67,7 @@ export class LoginPage implements OnInit {
       if (this.validate_login()) {
         await this.presentLoading();
         if (await this.check_login()) {
+          this.UserService.set_session_user(this.userlogin);
           this.goHomePage();
         }
         else {
