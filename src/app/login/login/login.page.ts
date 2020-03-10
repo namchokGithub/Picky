@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { NavController } from "@ionic/angular";
+import { NavController, MenuController } from "@ionic/angular";
 import { Router } from '@angular/router'
 @Component({
   selector: 'app-login',
@@ -13,9 +13,14 @@ export class LoginPage implements OnInit {
   private username: string = ""; 
   private password: string = "";
 
-  constructor(public navCtrl: NavController, private router: Router) { }
+  constructor(
+    public navCtrl: NavController
+    ,private router: Router
+    ,private menu: MenuController
+  ) { }
 
   ngOnInit() {
+    this.loginMenu()
   }
 
   goHomePage(){
@@ -33,4 +38,14 @@ export class LoginPage implements OnInit {
 
     }
   }
+
+  /**
+   * loginMenu
+   * Name: Namchok
+   * 2020-03-10
+   */
+  loginMenu() {
+    this.menu.enable(false, 'login');
+  }
+
 }
