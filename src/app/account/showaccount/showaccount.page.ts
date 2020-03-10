@@ -37,13 +37,13 @@ export class ShowaccountPage implements OnInit {
     this.router.navigateByUrl('home', { replaceUrl: true });
   }
 
-
+  /*ไปสู่หน้า Setting */
   openSetting() {
     console.log('Clcik');
     this.router.navigate(['familymanagement']);
 
   }
-
+  /* ลบ Account บัญชีออก */
   removeAccount(data) {
     const index = this.Data.indexOf(data);
 
