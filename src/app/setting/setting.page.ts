@@ -30,6 +30,9 @@ export class SettingPage implements OnInit {
       }
   }
 
+  async deleteName(){
+
+  }
 
   async successToEdit() {
     const alert = await this.alertController.create({
@@ -63,5 +66,7 @@ export class SettingPage implements OnInit {
     await alert.present();
 
   }
+
+
 
 }
