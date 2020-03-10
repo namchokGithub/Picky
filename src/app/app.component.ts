@@ -11,9 +11,11 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
-  private user_name : String = ' ';
-  private user_password : String = ' ';
-  private user_id : String = ' ';
+
+  private user_name = ' ';
+  private user_password = ' ';
+  private user_id = ' ';
+
   public appPages = [
     {
       title: 'Home',
@@ -69,7 +71,10 @@ export class AppComponent implements OnInit {
       this.user_name  = params.get('user_name');
       this.user_password  = params.get('user_password');
       this.user_id  = params.get('user_id');
-     
+
+      console.log(this.user_name);
+      console.log(this.user_password);
+      console.log(this.user_id);
    });
 
     const path = window.location.pathname.split('home/')[1];

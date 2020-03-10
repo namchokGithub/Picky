@@ -62,7 +62,6 @@ const routes: Routes = [
   {
     path: 'app',
     loadChildren: () => import('./app.module').then( m => m.AppModule)
- 
   }
 
 ];
