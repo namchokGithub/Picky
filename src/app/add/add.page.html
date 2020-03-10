@@ -16,36 +16,40 @@
         </ion-card-header>
 
         <ion-card-content>
-            
+
             <ion-item>
                 <ion-label class="lable" position="floating"></ion-label>
-                <ion-textarea placeholder="example: ฿ 100" [(ngModel)]="cash"><ion-icon name="cash" ></ion-icon></ion-textarea>
+                <ion-textarea placeholder="example: ฿ 100" [(ngModel)]="cash">
+                    <ion-icon name="cash"></ion-icon>
+                </ion-textarea>
             </ion-item>
-            
+
             <ion-item (click)="goCategoryPage()">
                 <ion-label class="lable" position="floating">Category</ion-label>
-                <ion-input value="{{income}}{{expense}}" [(ngModel)]="category"></ion-input>
+                <ion-input value="{{income}}{{expense}}" [(ngModel)www]="category"></ion-input>
             </ion-item>
 
             <ion-item>
-                <ion-label  class="lable" position="floating">Date</ion-label>
+                <ion-label class="lable" position="floating">Date</ion-label>
                 <ion-datetime pickerFormat="DD MMM YYYY" displayFormat="DD MMM YY" placeholder="Select Date" [(ngModel)]="date"></ion-datetime>
             </ion-item>
 
             <ion-item>
-                <ion-label class="lable" position="floating"><ion-icon style="zoom:1.5;" name="pencil-outline"></ion-icon>Note</ion-label>
+                <ion-label class="lable" position="floating">
+                    <ion-icon style="zoom:1.5;" name="pencil-outline"></ion-icon>Note</ion-label>
                 <ion-textarea placeholder="Add Note" [(ngModel)]="note"></ion-textarea>
             </ion-item>
-        <ion-grid>
-            <ion-row>
-                <ion-col>
-                    <ion-button (click)="confirm()" expand="block" color="success">Confirm</ion-button>
-                </ion-col>
-                <ion-col>
-                    <ion-button (click)="back()" expand="block" color="danger">Cancel</ion-button>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <ion-button (click)="confirm()" expand="block" color="success">Confirm</ion-button>
+                        <!-- s -->
+                    </ion-col>
+                    <ion-col>
+                        <ion-button (click)="back()" expand="block" color="danger">Cancel</ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
         </ion-card-content>
 
     </ion-card>
