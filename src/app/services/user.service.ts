@@ -1,15 +1,14 @@
 // ไปคอมเม้นมาทุกส่วน
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument,
   DocumentReference
-} from "@angular/fire/firestore";
-import { map, take } from "rxjs/operators";
-import { Observable } from "rxjs";
+} from '@angular/fire/firestore';
+import { map, take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { async } from '@angular/core/testing';
-
 export interface User {
   id?: string;
   user_id: string;
@@ -18,15 +17,16 @@ export interface User {
 }
 // ไปคอมเม้นมาทุกส่วน
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class UserService {
   private user: Observable<User[]>;
-  private user_Collection: AngularFirestoreCollection<User>;
-  private check:any[];
+  // tslint:disable-next-line: variable-name
+  private user_collection: AngularFirestoreCollection<User>;
+  private check: any[];
   constructor(private afs: AngularFirestore) {
-    this.user_Collection = this.afs.collection<User>("user");
-    this.user = this.user_Collection.snapshotChanges().pipe(
+    this.user_collection = this.afs.collection<User>('user');
+    this.user = this.user_collection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -42,7 +42,7 @@ export class UserService {
   }
 
   get_user_By_Id(id: string): Observable<User> {
-    return this.user_Collection
+    return this.user_collection
       .doc<User>(id)
       .valueChanges()
       .pipe(
@@ -54,12 +54,14 @@ export class UserService {
       );
   }
 
+  // tslint:disable-next-line: no-shadowed-variable
   add_user(User: User): Promise<DocumentReference> {
-    return this.user_Collection.add(User);
+    return this.user_collection.add(User);
   }
 
+  // tslint:disable-next-line: no-shadowed-variable
   update_user(User: User): Promise<void> {
-    return this.user_Collection.doc(User.id).update({
+    return this.user_collection.doc(User.id).update({
       user_email: User.user_id,
       user_name: User.user_name,
       user_password: User.user_password
@@ -67,11 +69,12 @@ export class UserService {
   }
 
   delete_user(id: string): Promise<void> {
-    return this.user_Collection.doc(id).delete();
+    return this.user_collection.doc(id).delete();
   }
 
-  check_user(user_id:string){
-    return this.user_Collection.doc<User>(user_id).valueChanges().pipe(
+  // tslint:disable-next-line: variable-name
+  check_user(user_id: string) {
+    return this.user_collection.doc<User>(user_id).valueChanges().pipe(
         take(1),
         map(user => {
           user.user_id = user_id;
