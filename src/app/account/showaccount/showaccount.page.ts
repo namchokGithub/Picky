@@ -20,8 +20,7 @@ export class ShowaccountPage implements OnInit {
   user_member = [0,1,2,3]*/
 
   Data = [
-    'บัญชีส่วนตัว', 'บัญชีเงินฝาก', 'บัญชีเงินเก็บ'
-  ];
+    'บัญชีส่วนตัว', 'บัญชีเงินฝาก', 'บัญชีเงินเก็บ'];
 
   ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe(params => {
