@@ -15,7 +15,7 @@ export class SettingPage implements OnInit {
   name: string;
   tempName: string;
   constructor(public alertController: AlertController, private router: Router) {
-      this.name = 'Mhee';
+      this.name = 'นายนำโชค สิงหะชัย';
   }
   ngOnInit() {
 
