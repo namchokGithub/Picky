@@ -58,8 +58,6 @@ export class RegisterPage implements OnInit {
   //   }
   // }
   
-
-
   validate() {
     
     if(this.user_add.user_name == "") {

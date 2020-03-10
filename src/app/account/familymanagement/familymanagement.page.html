@@ -5,7 +5,7 @@
  -->
 <!-- Header -->
 <ion-header>
-    <ion-toolbar color="primary">
+    <ion-toolbar>
         <ion-grid>
             <ion-row>
                 <!--Icon Back -->
@@ -50,7 +50,7 @@
         <!-- Header -->
         <ion-card-header>
             <div class="ion-text-center">
-                <ion-title>List Shared with</ion-title>
+                <ion-title>รายชื่อที่ใช้ร่วมกัน</ion-title>
             </div>
         </ion-card-header>
         <!-- End Header -->
@@ -75,7 +75,7 @@
     </ion-card>
     <!-- Button confirm -->
     <ion-card-content>
-        <ion-button expand="block">confirm</ion-button>
+        <ion-button expand="block" (click)="confirm()">confirm</ion-button>
     </ion-card-content>
     <!-- End Button confirm -->
 </ion-content>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { VirtualTimeScheduler } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-showaccount',
@@ -12,7 +12,7 @@ import { VirtualTimeScheduler } from 'rxjs';
 export class ShowaccountPage implements OnInit {
 
 
-  constructor(public navCtrl: NavController, private router: Router) { }
+  constructor(public navCtrl: NavController, private router: Router , private activatedRoute: ActivatedRoute ) { }
 
   /*balance = ['1000','2000','3000']
   name_account = ['บัญชีส่วนตัว', 'บัญชีเงินฝาก', 'บัญชีเงินเก็บ'];
@@ -24,6 +24,10 @@ export class ShowaccountPage implements OnInit {
   ];
 
   ngOnInit() {
+    this.activatedRoute.queryParamMap.subscribe(params => {
+      // this.type_account  = params.get('Type_Account')
+      this.Data.push(params.get('Name_Account'))
+   });
   }
   /* ไปสู่หน้า Add Account */
   openAddAccount() {

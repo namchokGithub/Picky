@@ -39,4 +39,11 @@ export class FamilymanagementPage implements OnInit {
     //console.log(index)
     this.Name.splice(index, 1);
    }
+
+  //  Function: confirm กด icon ออกจากหน้า familymanagement เพื่อไปยังหน้า showaccount
+  //  Name: Chomphunut 
+  //  Date: 10/3/20
+  confirm() {
+    this.router.navigate(['showaccount'], { replaceUrl: true });
+  }
 }

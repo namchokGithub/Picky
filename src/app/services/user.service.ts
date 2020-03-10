@@ -27,7 +27,7 @@ export class UserService {
   private user: Observable<User[]>;
   // tslint:disable-next-line: variable-name
   private user_collection: AngularFirestoreCollection<User>;
-  private check: any[];
+ 
   constructor(private afs: AngularFirestore) {
     this.user_collection = this.afs.collection<User>('user');
     this.user = this.user_collection.snapshotChanges().pipe(
@@ -76,14 +76,5 @@ export class UserService {
     return this.user_collection.doc(id).delete();
   }
 
-  // tslint:disable-next-line: variable-name
-  check_user(user_id: string) {
-    return this.user_collection.doc<User>(user_id).valueChanges().pipe(
-        take(1),
-        map(user => {
-          user.user_id = user_id;
-          return user;
-        })
-      );
-  }
+  
 }
