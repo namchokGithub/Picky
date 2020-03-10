@@ -15,7 +15,6 @@ export interface User {
   user_id: string;
   user_name: string;
   user_password: string;
-  user_tel: string;
 }
 // ไปคอมเม้นมาทุกส่วน
 @Injectable({
@@ -56,7 +55,6 @@ export class UserService {
   }
 
   add_user(User: User): Promise<DocumentReference> {
-    
     return this.user_Collection.add(User);
   }
 
@@ -64,8 +62,7 @@ export class UserService {
     return this.user_Collection.doc(User.id).update({
       user_email: User.user_id,
       user_name: User.user_name,
-      user_password: User.user_password,
-      user_tel: User.user_tel
+      user_password: User.user_password
     });
   }
 

@@ -12,13 +12,14 @@ import { UserService, User } from "src/app/services/user.service";
 // ไปคอมเม้นมาทุกส่วน
 
 export class RegisterPage implements OnInit {
-  private name: string = "";
-  private user_id: string = "";
-  private password: string = "";
+  
   private ConfirmPassword: string = "";
-  user: User[
-
-  ];
+  user_add:User = {
+    user_name:'',
+    user_id:'',
+    user_password:'' 
+  };
+  user: User[]
   constructor(
     public navCtrl: NavController,
     private router: Router,
@@ -26,9 +27,10 @@ export class RegisterPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    
     this.userservice.get_user().subscribe(res => {
       console.log(res);
-      
+      this.user = res;
     });
   }
 
@@ -38,17 +40,33 @@ export class RegisterPage implements OnInit {
 
   confirm_regis() {
     
+    if(this.check_username() && this.check_regis()){
+      this.userservice.add_user(this.user_add)
+      console.log(123)
+    }else{
+      console.log(234)
+    }
   }
   
- 
+  check_regis(){
+    if(this.user_add.user_name && this.user_add.user_id && this.user_add.user_password){
+      if(this.user_add.user_password == this.ConfirmPassword){
+        return true
+      }else{
+        return false
+      }
+    }else{
+      return false
+    }
+  }
+
 
   check_username() {
-    const founc = this.user.find(user => user.user_id === this.user_id)
+    const founc = this.user.find(user => user.user_id === this.user_add.user_id)
     if(!founc){
-      console.log(true)
+      return true
     }else{
-      console.log(true)
+      return false
     }
-    
   }
 }
