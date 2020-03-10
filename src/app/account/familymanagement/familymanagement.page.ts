@@ -47,6 +47,9 @@ export class FamilymanagementPage implements OnInit {
     this.router.navigate(['showaccount'], { replaceUrl: true });
   }
 
+  //  Function: alert แจ้งเตือนเพื่อนยืนยัน
+  //  Name: Chomphunut 
+  //  Date: 10/3/20
   async alert() {
     const alert = await this.alertController.create({
       header: 'ยืนยัน',
