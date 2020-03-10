@@ -70,7 +70,3 @@ export class AccountService {
     return this.account_Collection.doc(id).delete();
   }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master

@@ -26,12 +26,8 @@
                         <ion-input [disabled]="status" value="{{name}}" [(ngModel)]="name" #thenBlock></ion-input>
                         <!-- <ion-input *ngIf="status==false;" value="{{name}}" #elseBlock></ion-input> -->
                     </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col size="9">
-                    </ion-col>
                     <!-- ส่วนนี้จะเป็น ปุ่มแก้ไขและปุ่มยืนยัน -->
-                    <ion-col size="2">
+                    <ion-col>
                         <!-- ปุ่มกดแก้ไข หลังจากปุ่มนี้จะถูกซ่อน-->
                         <ion-button *ngIf="status==true;" (click)="editName()" color="warning" size="small">
                             <ion-icon name="create-outline"></ion-icon>
@@ -42,13 +38,14 @@
                         </ion-button>
                     </ion-col>
                 </ion-row>
+
             </ion-grid>
         </ion-card>
         <ion-row>
             <!-- <ion-col size="9">
             </ion-col> -->
             <ion-col>
-                <ion-button color="danger" expand="block">
+                <ion-button color="danger" expand="block" (click)="deleteName()">
                     ลบบัญชีผู้ใช้
                 </ion-button>
             </ion-col>
