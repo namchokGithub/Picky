@@ -15,7 +15,7 @@ export class SettingPage implements OnInit {
   name: string;
   tempName: string;
   constructor(public alertController: AlertController, private router: Router) {
-      this.name = 'Mhee';
+      this.name = 'นายนำโชค สิงหะชัย';
   }
   ngOnInit() {
 
@@ -50,8 +50,8 @@ export class SettingPage implements OnInit {
       }, {
         text: 'ต้องการ',
         handler: () => {
-          console.log(this.name);
-          console.log('กด ต้องการลบ');
+          //console.log(this.name);
+          console.log('กดต้องการลบ');
           this.router.navigate(['login'], { replaceUrl: true })
         }
       }]
@@ -83,7 +83,8 @@ export class SettingPage implements OnInit {
       }, {
         text: 'ต้องการ',
         handler: () => {
-          console.log(this.name);
+          //console.log(this.name);
+          this.status = true;
           console.log('กด ต้องการ');
         }
       }
