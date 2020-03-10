@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router'
-import { NavController, AlertController, MenuController } from "@ionic/angular";
+import { NavController, AlertController, MenuController, ToastController } from "@ionic/angular";
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -18,6 +18,7 @@ export class RegisterPage implements OnInit {
     ,private router: Router
     ,private menu: MenuController
     ,public alertController: AlertController
+    ,public toastController: ToastController
     ) { }
 
   ngOnInit() {
@@ -27,19 +28,19 @@ export class RegisterPage implements OnInit {
   validate() {
     
     if(this.name == "") {
-      this.alertInput('กรุณาใส่ชื่อ')
+      this.Toast('กรุณาใส่ชื่อ')
       console.log('กรุณาใส่ชื่อ')
     } else if(this.username == "") {
-      this.alertInput('กรุณาใส่ชื่อผู้ใช้งาน')
+      this.Toast('กรุณาใส่ชื่อผู้ใช้งาน')
       console.log('กรุณาใส่ชื่อผู้ใช้งาน')
     } else if(this.password == "") {
-      this.alertInput('กรุณาใส่รหัสผ่าน')
+      this.Toast('กรุณาใส่รหัสผ่าน')
       console.log('กรุณาใส่รหัสผ่าน')
     } else if(this.confirmPassword == "") {
-      this.alertInput('กรุณายืนยันรหัสผ่าน')
+      this.Toast('กรุณายืนยันรหัสผ่าน')
       console.log('กรุณายืนยันรหัสผ่าน')
     }else if(this.confirmPassword != this.password ) {
-      this.alertInput('รหัสผ่านไม่ตรงกัน')
+      this.Toast('รหัสผ่านไม่ตรงกัน')
       console.log('รหัสผ่านไม่ตรงกัน')
     }
     
@@ -58,5 +59,18 @@ export class RegisterPage implements OnInit {
   backToLogin() {
     this.router.navigate(['login'], { replaceUrl: true })
   }
+
+  Toast(text){
+      const toast = await this.toastController.create({
+      message: text,
+      duration: 1000
+      ,position: 'bottom'
+      ,cssClass: 'toast-message-color'
+    });
+
+       toast.present();
+
+  }
+  
 
 }
