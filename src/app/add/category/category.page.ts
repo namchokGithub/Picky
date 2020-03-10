@@ -15,8 +15,30 @@ import { ListRecordService } from "./../../services/list-record.service";
 export class CategoryPage implements OnInit {
   public categorys: any = [];
   public type_catagory = "income";
-  public category_income: any = [];
-  public category_expense: any = [];
+  public category_income: any = [
+    {
+      record_name:'โบนัส'
+    },{
+      record_name:'สลากกินแบ่ง'
+    },{
+      record_name:'เงินเดือน'
+    },{
+      record_name:'เบี้ยเลี้ยง'
+    }
+  ];
+  public category_expense: any = [
+    {
+      record_name:'ออกกำลังกาย'
+    },{
+      record_name:'การบันเทิง'
+    },{
+      record_name:'ของขวัญ'
+    },{
+      record_name:'อาหาร'
+    },{
+      record_name:'บิล'
+    }
+  ];
   public categores: any = [];
   constructor(
     private nav: NavController,

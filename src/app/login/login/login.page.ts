@@ -46,11 +46,12 @@ export class LoginPage implements OnInit {
     console.log('Loading dismissed!');
   }
 
-  goHomePage(user_name: string, user_password: string, user_id: string) {
-
+  goHomePage() {
+    
+    this.UserService.set_session_user(this.userlogin);
     // this.router.navigate(['home']);
-    this.router.navigate(['app'], {queryParams: {user_name, user_password, user_id}});
-    this.router.navigate(['home'], {queryParams: {user_name, user_password, user_id}});
+    this.router.navigate(['app']);
+    this.router.navigate(['home']);
   }
 
   register() {
@@ -66,7 +67,7 @@ export class LoginPage implements OnInit {
       if (this.validate_login()) {
         await this.presentLoading();
         if (await this.check_login()) {
-          this.goHomePage(this.userlogin.user_name, this.userlogin.user_password, this.userlogin.user_id);
+          this.goHomePage();
         }
         else {
           this.showToast('รหัสผู้ใช้งานไม่ถูกต้อง');
@@ -91,9 +92,7 @@ export class LoginPage implements OnInit {
 
     // comment1
     async check_login() {
-
       this.userlogin = this.db_user.find(user => user.user_id === this.username);
-
       if (this.userlogin.user_password === this.password) {
         console.log('true');
         return true;

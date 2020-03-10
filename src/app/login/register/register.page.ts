@@ -20,7 +20,6 @@ export class RegisterPage implements OnInit {
   private confirmPassword: string = "";
 
   user_add: User = {
-    id:'',
     user_name:'',
     user_id:'',
     user_password:'' 
@@ -50,14 +49,6 @@ export class RegisterPage implements OnInit {
     this.router.navigate(["login"]);
   }
 
-  // confirm_regis() {
-    
-  //   if(this.check_username() && this.check_regis()){
-  //     this.userservice.add_user(this.user_add)
-  //     this.back();
-  //   }
-  // }
-  
   validate() {
     
     if(this.user_add.user_name == "") {
@@ -85,6 +76,9 @@ export class RegisterPage implements OnInit {
       this.Toast('รหัสผ่านไม่ตรงกัน')
       console.log('รหัสผ่านไม่ตรงกัน')
 
+    }else{
+      this.userservice.add_user(this.user_add)
+      this.back();
     }
     
   }
