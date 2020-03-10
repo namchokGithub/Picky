@@ -9,13 +9,14 @@
             </ion-row>
             <!-- end logo -->
 
+
             <div padding class="ion-text-center" style="margin-top: 20px;">
                 <ion-text>
                     <h1>สมัครสมาชิก</h1>
                 </ion-text>
             </div>
+
             <!-- login -->
-                 <!-- login -->
             <div padding>
                 <!-- Name -->
                 <ion-item>
@@ -24,97 +25,37 @@
                     </ion-label>
                     <ion-input type="text" [(ngModel)]="name" name="name" placeholder="ชื่อ"></ion-input>
                 </ion-item>
- <!-- Name -->
- <ion-item>
-    <ion-label position="floating">
-        ชื่อผู้ใช้งาน
-    </ion-label>
-    <ion-input type="text" [(ngModel)]="username" name="username" placeholder="ชื่อผู้ใช้งาน"></ion-input>
-</ion-item>
-<!-- Username -->
-<ion-item style="border-radius: 5px; margin-top: 5px;">
-    <ion-label position="floating">
-        รหัสผ่าน
-    </ion-label>
-    <ion-input type="password" [(ngModel)]="password" placeholder="รหัสผ่าน"></ion-input>
-</ion-item>
-<!-- Password -->
-<ion-item style="border-radius: 5px; margin-top: 5px;">
-    <ion-label position="floating">
-        ยืนยันรหัสผ่าน
-    </ion-label>
-    <ion-input type="password" [(ngModel)]="confirmPassword" placeholder="ยืนยันรหัสผ่าน"></ion-input>
-</ion-item>
-</div>
-
-<ion-row style="margin-top: 20px;">
-<ion-col>
-    <ion-button (click)="validate()" expand="block" color="success">ยืนยัน</ion-button>
-</ion-col>
-</ion-row>
-<ion-row>
-<ion-col>
-    <ion-button (click)="backToLogin()" expand="block" color="danger">ยกเลิก</ion-button>
-</ion-col>
-</ion-row>
-
-
-
-</ion-col>
-</ion-row>
-</ion-content>
-
-
-
-
-
-
-    <!-- Name -->
-    <ion-item>
-        <ion-label position="floating">
-            ชื่อ
-        </ion-label>
-        <ion-input type="text" [(ngModel)]="name" name="name" placeholder="ชื่อ"></ion-input>
-    </ion-item>
-
-            <div padding>
                 <!-- Name -->
                 <ion-item>
                     <ion-label position="floating">
-                        Name
+                        ชื่อผู้ใช้งาน
                     </ion-label>
-                    <ion-input type="text" [(ngModel)]="name" name="name" placeholder=""></ion-input>
-                </ion-item>
-                <!-- Name -->
-                <ion-item>
-                    <ion-label position="floating">
-                        Username
-                    </ion-label>
-                    <ion-input type="text" [(ngModel)]="username" name="username" placeholder=""></ion-input>
+                    <ion-input type="text" [(ngModel)]="username" name="username" placeholder="ชื่อผู้ใช้งาน"></ion-input>
                 </ion-item>
                 <!-- Username -->
                 <ion-item style="border-radius: 5px; margin-top: 5px;">
                     <ion-label position="floating">
-                        Password
+                        รหัสผ่าน
                     </ion-label>
-                    <ion-input type="password" [(ngModel)]="password" placeholder=""></ion-input>
+                    <ion-input type="password" [(ngModel)]="password" placeholder="รหัสผ่าน"></ion-input>
                 </ion-item>
                 <!-- Password -->
                 <ion-item style="border-radius: 5px; margin-top: 5px;">
                     <ion-label position="floating">
-                        Confirm Password
+                        ยืนยันรหัสผ่าน
                     </ion-label>
-                    <ion-input type="password" [(ngModel)]="ConfirmPassword" placeholder=""></ion-input>
+                    <ion-input type="password" [(ngModel)]="confirmPassword" placeholder="ยืนยันรหัสผ่าน"></ion-input>
                 </ion-item>
             </div>
 
+            <ion-row style="margin-top: 20px;">
+                <ion-col>
+                    <ion-button (click)="validate()" expand="block" color="success">ยืนยัน</ion-button>
+                </ion-col>
+            </ion-row>
             <ion-row>
                 <ion-col>
-                    <ion-button expand="block" color="success">Confirm</ion-button>
-                </ion-col>
-
-                <ion-col>
-                    <ion-button (click)="back()" expand="block" color="danger">Cancel</ion-button>
+                    <ion-button (click)="backToLogin()" expand="block" color="danger">ยกเลิก</ion-button>
                 </ion-col>
             </ion-row>
 
