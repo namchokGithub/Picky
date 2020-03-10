@@ -49,8 +49,8 @@ export class LoginPage implements OnInit {
   goHomePage(user_name: string, user_password: string, user_id: string) {
 
     // this.router.navigate(['home']);
-    this.router.navigate(['app'], {queryParams: {user_name, user_password, user_id}});
-    this.router.navigate(['home'], {queryParams: {user_name, user_password, user_id}});
+    this.router.navigate(['app'], {queryParams: {user_name:user_name, user_password:user_password, user_id:user_id}});
+    this.router.navigate(['home'], {queryParams: {user_name:user_name, user_password:user_password, user_id:user_id}});
   }
 
   register() {
