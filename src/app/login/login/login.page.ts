@@ -9,7 +9,6 @@ import { Router } from '@angular/router'
 })
 export class LoginPage implements OnInit {
 
-
   private username: string = ""; 
   private password: string = "";
 
@@ -17,7 +16,9 @@ export class LoginPage implements OnInit {
     public navCtrl: NavController
     ,private router: Router
     ,private menu: MenuController
-  ) { }
+  ) {
+
+  }
 
   ngOnInit() {
     this.loginMenu()
@@ -45,7 +46,7 @@ export class LoginPage implements OnInit {
    * 2020-03-10
    */
   loginMenu() {
-    this.menu.enable(false, 'login');
+    this.menu.enable(false, 'menuSilde');
   }
 
 }
