@@ -128,5 +128,4 @@ export class LoginPage implements OnInit {
         }).then(toast => toast.present());
     }
 
-
 }
