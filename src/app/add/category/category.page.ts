@@ -35,21 +35,15 @@ export class CategoryPage implements OnInit {
     this.type_catagory = 'income';
 
       this.ListRecordService.get_list_record().subscribe(async res => {
-
-
         console.log(res);
-
+        
         for(var i = 0; i < res.length ; i++){
-          
                 if(res[i].record_type == "Income" ){
-
                   this.category_income.push(res[i]);
                 }else{
-
                   this.category_expense.push(res[i]);
                 }
         }
-
         console.log(this.category_income);
         console.log(this.category_expense);
       });
