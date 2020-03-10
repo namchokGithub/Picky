@@ -65,7 +65,6 @@ export class LoginPage implements OnInit {
     async validate() {
       if (this.validate_login()) {
         await this.presentLoading();
-          
         if (await this.check_login()) {
           this.goHomePage(this.userlogin.user_name, this.userlogin.user_password, this.userlogin.user_id);
         }
@@ -112,7 +111,6 @@ export class LoginPage implements OnInit {
     loginMenu() {
       this.menu.enable(false, 'menuSilde');
     }
-
 
     // * @Function   : showToast => แสดงข้อความแจ้งเตือน
     // * @Author     : Komsan Tesana
