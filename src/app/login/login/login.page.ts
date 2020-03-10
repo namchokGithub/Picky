@@ -58,19 +58,19 @@ export class LoginPage implements OnInit {
 
         for (let i = 0; i <  this.db_user.length ; i++) {
 
-            if(this.username == this.db_user[i].user_id) {
+            if(this.username === this.db_user[i].user_id) {
 
-                if(this.password == this.db_user[i].user_password){
+                if(this.password === this.db_user[i].user_password){
                     this.showToast('เข้าสู่ระบบสำเร็จ')
                     this.goHomePage(this.db_user[i].user_name,this.db_user[i].user_password,this.db_user[i].user_id);
-                }else if(this.password == null || this.password != this.db_user[i].user_password){
+                }else if(this.password === null || this.password != this.db_user[i].user_password){
                     this.showToast('รหัสผู้ใช้งานไม่ถูกต้อง')
                 }
                     
-            } else if(this.username == null){
+            } else if(this.username === null){
                 this.showToast('ชื่อผู้ใช้งานไม่ถูกต้อง')
             } else if(this.username != this.db_user[i].user_id){
-                if(this.password == null){
+                if(this.password === null){
                 this.showToast('รหัสผู้ใช้งานไม่ถูกต้อง')
                 }
                 else if(this.password != this.db_user[i].user_password){
