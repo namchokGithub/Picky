@@ -1,51 +1,48 @@
 <ion-content class="bg-login">
-    <ion-grid>
 
-        <ion-row justify-content-center style="text-align: center !important; margin-top: 10px;">
-            <ion-col align-self-center>
-                <div style="align-items: center; margin-left: 100px;">
-                    <ion-img style=" width: 150px; height: 150px;" src="assets/picky_logo.png"></ion-img>
-                </div>
+    <ion-grid style="margin-top: 80px;">
+        <ion-row justify-content-center>
+            <ion-col>
+                <ion-img class="image" src="assets/picky_logo.png"></ion-img>
             </ion-col>
         </ion-row>
 
         <ion-row>
-            <ion-col size="6" size-lg offset="3">
-                <ion-text>
-                    <h1 class="ion-text-center"> Picky </h1>
+            <ion-col size="8" size-lg offset="2" class="ion-text-center">
+                <ion-text class="app-name">
+                    Picky
+                    <p style="font-size: 20px;">save money, save you!</p>
                 </ion-text>
             </ion-col>
         </ion-row>
 
-        <ion-row style="margin-top: 50px;">
-            <ion-col size="8" size-lg offset="2">
+        <ion-row style="margin-top: 40px;">
+            <ion-col size="8" size-lg offset="2" class="bg-input">
                 <ion-input placeholder="Username" [(ngModel)]="username" type="text" name="username">
-                    <ion-icon name="person-sharp"></ion-icon>
+                    <ion-icon style="margin-right: 5px;" name="person-sharp"></ion-icon>
                 </ion-input>
             </ion-col>
         </ion-row>
 
         <ion-row style="margin-top: 10px;">
-            <ion-col size="8" size-lg offset="2">
+            <ion-col size="8" size-lg offset="2" class="bg-input">
                 <ion-input placeholder="Password" type="password" [(ngModel)]="password" name="password">
-                    <ion-icon name="key-sharp"></ion-icon>
+                    <ion-icon style="margin-right: 5px;" name="key-sharp"></ion-icon>
                 </ion-input>
             </ion-col>
         </ion-row>
 
         <ion-row align-items-center style="margin-top: 50px;">
-            <ion-col>
+            <ion-col size="8" size-lg offset="2">
                 <div class="ion-text-center mt-3" (click)="goHomePage()">
-                    <ion-button color="primary">Login</ion-button>
+                    <ion-button color="primary" expand="block">Login</ion-button>
                 </div>
             </ion-col>
         </ion-row>
 
         <ion-row>
-            <ion-col>
-                <div class=" ion-text-center " (click)="register()">
-                    <p>Register</p>
-                </div>
+            <ion-col class="ion-text-center " (click)="register()">
+                Register
             </ion-col>
         </ion-row>
 

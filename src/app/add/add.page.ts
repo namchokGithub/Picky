@@ -9,23 +9,26 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./add.page.scss'],
 })
 export class AddPage implements OnInit {
-  
-  income :string = ""
-  expense :string = ""
-  cash :string = ""
-  category :string = ""
-  date :string = ""
-  note :string = ""
 
-  constructor(private nav: NavController,
-              private modalController: ModalController, 
+  income = '';
+  expense = '';
+  cash = '';
+  category = '';
+  date = '';
+  note = '';
+
+  constructor(
+              private nav: NavController,
+              private modalController: ModalController,
               public activatedRoute: ActivatedRoute,
-              private router: Router,public alertController: AlertController) { }
+              private router: Router,
+              public alertController: AlertController
+              ) { }
 
   ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe(params => {
-       this.income  =params.get('Income')
-       this.expense  =params.get('Expense')
+       this.income = params.get('Income');
+       this.expense = params.get('Expense');
     });
   }
 

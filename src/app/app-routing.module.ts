@@ -60,8 +60,6 @@ const routes: Routes = [
     loadChildren: () => import('./account/enterprisemanagement/enterprisemanagement.module').then( m => m.EnterprisemanagementPageModule)
   }
 
-
-
 ];
 @NgModule({
   imports: [
@@ -69,4 +67,5 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule {}
