@@ -21,7 +21,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule.enablePersistence()
   ],
   providers: [
     StatusBar,

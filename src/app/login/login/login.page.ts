@@ -38,7 +38,7 @@ export class LoginPage implements OnInit {
   async presentLoading() {
     const loading = await this.loadingController.create({
       message: 'รอสักครู่...',
-      duration: 1000
+      duration: 500
     });
     await loading.present();
 
@@ -47,7 +47,6 @@ export class LoginPage implements OnInit {
   }
 
   goHomePage() {
-    
     
     // this.router.navigate(['home']);
     this.router.navigate(['app']);
@@ -64,8 +63,7 @@ export class LoginPage implements OnInit {
    * 2020-03-10
    */
     async validate() {
-      if (this.validate_login()) {
-        await this.presentLoading();
+      await this.presentLoading();
         if (await this.check_login()) {
           this.UserService.set_session_user(this.userlogin);
           this.goHomePage();
@@ -73,21 +71,23 @@ export class LoginPage implements OnInit {
         else {
           this.showToast('รหัสผู้ใช้งานไม่ถูกต้อง');
         }
-      }
+      // if (this.validate_login()) {
+        
+      // }
     }
 
     // comment
     validate_login() {
-      if ( this.username == '') {
+      if ( this.username == null) {
         this.showToast('กรุณาใส่ชื่อผู้ใช้')
         console.log('false');
         return false;
-      }else if ( this.password == '') {
+      }else if ( this.password == null) {
         this.showToast('กรุณาใส่รหัสผ่าน')
         console.log('false');
         return false;
       }else {
-        return true;
+        this.validate() 
       }
     }
 
