@@ -1,10 +1,8 @@
+import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController, AlertController ,ToastController,LoadingController} from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgForOf } from '@angular/common';
-import { NgForm } from '@angular/forms';
-import { RecordService } from './../services/record.service';
-
+import { RecordService, Record } from './../services/record.service';
 
 @Component({
   selector: 'app-add',
@@ -18,6 +16,13 @@ export class AddPage implements OnInit {
   private name_category = ' ';
   private date = ' ';
   private note = ' ';
+  private userlogin: any = [];
+
+  private record_array : Record = {
+    account_id: '',
+    account_name: 'Person',
+    user_record : []
+  };
 
   constructor(
               private nav: NavController,
@@ -27,7 +32,9 @@ export class AddPage implements OnInit {
               public alertController: AlertController,
               private loadingController: LoadingController,
               private toastController: ToastController,
-              private RecordService: RecordService) { }
+              private recordService: RecordService,
+              private userService: UserService
+            ) { }
 
   // * @Function   : ngOnInit => รับค่าจากหน้า CategoryPage ที่ส่งมายังหน้า add
   // * @Author     : Komsan Tesana
@@ -37,6 +44,8 @@ export class AddPage implements OnInit {
         this.type_category  = params.get('Type_category');
         this.name_category = params.get('record_name');
      });
+
+     this.userlogin =  this.userService.get_session_user();
   }
 
   // * @Function   : goCategoryPage => ไปยังหน้า CategoryPage
@@ -45,7 +54,6 @@ export class AddPage implements OnInit {
   goCategoryPage() {
     this.router.navigate(['category']);
   }
-
 
   // * @Function   : back => ย้อนไปยังหน้า home
   // * @Author     : Komsan Tesana
@@ -81,6 +89,24 @@ export class AddPage implements OnInit {
       console.log('วันที่ :' + this.date);
       console.log('เพิ่มเติม :' + this.note);
       console.log('จำนวนเงิน :' + this.cash);
+      console.log( this.name_category);
+      console.log( this.type_category);
+      console.log(this.userlogin.user_id);
+      console.log(this.userlogin.user_name);
+
+      this.record_array.account_id = '1';
+      this.record_array.account_name = 'Person';
+      this.record_array.user_record  = [
+        this.date,
+        this.name_category,
+        this.cash,
+        this.note,
+        this.type_category,
+        this.userlogin.user_id,
+        this.userlogin.user_name
+      ];
+      this.recordService.add_record(this.record_array);
+      this.router.navigate(['home']);
   }
 
   // * @Function   : validate => เช็คค่าหากไม่มีการกรอกข้อมูล จะทำการแสดงข้อความแจ้งเตือน
@@ -95,7 +121,7 @@ export class AddPage implements OnInit {
       } else if (this.date === ' ') {
         this.showToast('กรุณาระบุวันที่');
       } else {
-      this.onSubmit();
+          this.onSubmit();
       }
   }
 

@@ -60,18 +60,18 @@ export class RecordService {
   // Function add_record
   // create by : kittisak noidonpai
   // จะทำการ บันทึกข้อมูลของ record ลงใน firestore
-  add_record(Record: Record): Promise<DocumentReference> {
-    return this.record_Collection.add(Record);
+  add_record(record: Record): Promise<DocumentReference> {
+    return this.record_Collection.add(record);
   }
 
   // Function update_record
   // create by : kittisak noidonpai
   // จะทำการ เปลี่ยนข้อมูลของ record ตาม id ใน firestore
-  update_record(Record: Record): Promise<void> {
-    return this.record_Collection.doc(Record.id).update({
-      account_id: Record.account_id,
-      account_name: Record.account_name,
-      user_record: Record.user_record
+  update_record(record: Record): Promise<void> {
+    return this.record_Collection.doc(record.id).update({
+      account_id: record.account_id,
+      account_name: record.account_name,
+      user_record: record.user_record
     });
   }
 

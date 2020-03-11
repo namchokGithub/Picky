@@ -31,8 +31,11 @@ export class LoginPage implements OnInit {
   ) {}
 
   ngOnInit() {
+   
+
     this.UserService.get_user().subscribe(async res => {
       this.db_user = res;
+      console.log(res)
     });
 
     this.loginMenu();
