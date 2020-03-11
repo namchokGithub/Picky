@@ -41,7 +41,10 @@ export class AccountPersonService {
 
   constructor(private afs: AngularFirestore) {
     this.account_person_collection = this.afs.collection<Person>('account_person');
-    this.account_person = this.account_person_collection.snapshotChanges().pipe(
+  }
+
+  get_account_person(): Observable<Person[]> {
+    return this.account_person = this.account_person_collection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -49,11 +52,7 @@ export class AccountPersonService {
           return { id, ...data };
         });
       })
-    );
-  }
-
-  get_account_person(): Observable<Person[]> {
-    return this.account_person;
+    );  
   }
 
   get_acount_person_By_Id(id: string): Observable<Person> {
@@ -68,7 +67,7 @@ export class AccountPersonService {
         })
       );
   }
-
+  
   // tslint:disable-next-line: no-shadowed-variable
   add_account_person(person: Person): Promise<DocumentReference> {
     return this.account_person_collection.add(person);
