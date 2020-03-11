@@ -65,11 +65,13 @@ export class LoginPage implements OnInit {
     async validate() {
       await this.presentLoading();
         if (await this.check_login()) {
+          console.log('true');
           this.UserService.set_session_user(this.userlogin);
           this.goHomePage();
         }
         else {
-          this.showToast('รหัสผู้ใช้งานไม่ถูกต้อง');
+          console.log('false');
+          this.alertInput('ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง')
         }
       // if (this.validate_login()) {
         
@@ -94,20 +96,15 @@ export class LoginPage implements OnInit {
     // comment1
     async check_login() {
       this.userlogin = this.db_user.find(user => {
-        if(user.user_id == this.username) {
+        if(user.user_id == this.username && this.userlogin.user_password == this.password) {
+          console.log('true');
           return true;
         }else{
+          console.log('false');
           return false;
         }
       });
-
-      if (this.userlogin.user_password == this.password) {
-        console.log('true');
-        return true;
-      } else {
-        console.log('false');
-        return false;
-      }
+      return this.userlogin;
     }
 
     /**
@@ -122,12 +119,29 @@ export class LoginPage implements OnInit {
     // * @Function   : showToast => แสดงข้อความแจ้งเตือน
     // * @Author     : Komsan Tesana
     // * @Create Date: 10/3/2563
-    showToast(msg) {
+    showToast(msg:any , color = "dark") {
         this.toastController.create({
             message: msg,
             duration: 1000,
-            color: 'dark'
+            color: color,
+            animated: true,
+            translucent: true
         }).then(toast => toast.present());
     }
+
+  /**
+   * @param text 
+   * @author Namchok
+   * @date 2020-03-10
+   */
+  async alertInput(text) {
+    const alert = await this.alertController.create({
+      header: 'แจ้งเตือน',
+      message: text,
+      buttons: ['ตกลง']
+    });
+
+    await alert.present();
+  }
 
 }

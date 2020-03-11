@@ -79,6 +79,11 @@ export class RegisterPage implements OnInit {
     
   }
 
+  /**
+   * @param text 
+   * @author Namchok
+   * @date 2020-03-10
+   */
   async alertInput(text) {
     const alert = await this.alertController.create({
       header: 'แจ้งเตือน',
@@ -101,9 +106,7 @@ export class RegisterPage implements OnInit {
       ,position: 'bottom'
       ,cssClass: 'toast-message-color'
     });
-
-       toast.present();
-        
+    toast.present(); 
   }
 
 
