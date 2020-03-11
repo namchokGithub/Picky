@@ -1,22 +1,22 @@
-//import injectable from angular/core
-import { Injectable } from "@angular/core";
+// import injectable from angular/core
+import { Injectable } from '@angular/core';
 
-//import AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference from angular/fire/firestore
+// import AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference from angular/fire/firestore
 import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument,
   DocumentReference
-} from "@angular/fire/firestore";
+} from '@angular/fire/firestore';
 
-//import map,take from rxjs/operators
-import { map, take } from "rxjs/operators";
+// import map,take from rxjs/operators
+import { map, take } from 'rxjs/operators';
 
-//import Observable from rxjs
-import { Observable } from "rxjs";
+// import Observable from rxjs
+import { Observable } from 'rxjs';
 
-//import async from angular/core/testing
-import { async } from "@angular/core/testing";
+// import async from angular/core/testing
+import { async } from '@angular/core/testing';
 
 export interface Business {
   id?: string;
@@ -26,17 +26,17 @@ export interface Business {
 }
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class AccountBusinessService {
-  //account_person valible angular
+  // account_person valible angular
   private account_business: Observable<Business[]>;
 
   //account_person_collection valible angular
   private account_business_collection: AngularFirestoreCollection<Business>;
 
   constructor(private afs: AngularFirestore) {
-    this.account_business_collection = this.afs.collection<Business>("account_business");
+    this.account_business_collection = this.afs.collection<Business>('account_business');
     this.account_business = this.account_business_collection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
