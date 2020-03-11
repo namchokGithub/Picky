@@ -32,7 +32,7 @@ export class ReportPage implements OnInit {
         ['Houston, TX', 2099000],
         ['Philadelphia, PA', 1526000]
       ],
-      //opt_firstRowIsData: true,
+      // opt_firstRowIsData: true,
       options: {
         title: 'Population of Largest U.S. Cities',
         height: 600,
@@ -59,7 +59,7 @@ export class ReportPage implements OnInit {
         ['Houston, TX', 2099000, 1953000],
         ['Philadelphia, PA', 1526000, 1517000]
       ],
-      //opt_firstRowIsData: true,
+      // opt_firstRowIsData: true,
       options: {
         title: 'Monthly Balances',
         height: 600,
@@ -86,7 +86,7 @@ export class ReportPage implements OnInit {
         ['Houston, TX', 2099000, 1953000],
         ['Philadelphia, PA', 1526000, 1517000]
       ],
-      //opt_firstRowIsData: true,
+      // opt_firstRowIsData: true,
       options: {
         title: 'Population of Largest U.S. Cities',
         height: 400,

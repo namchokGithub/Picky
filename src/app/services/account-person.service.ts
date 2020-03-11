@@ -38,7 +38,6 @@ export class AccountPersonService {
   // account_person_collection valible angular
   private account_person_collection: AngularFirestoreCollection<Person>;
 
-
   constructor(private afs: AngularFirestore) {
     this.account_person_collection = this.afs.collection<Person>('account_person');
   }
@@ -46,7 +45,6 @@ export class AccountPersonService {
   // Function get_account_person
   // create by : kittisak noidonpai
   // จะทำการคืนค่า account_person ทั้งหมดในที่อยู่ในฐานข้อมูล
-
   get_account_person(): Observable<Person[]> {
     return this.account_person = this.account_person_collection.snapshotChanges().pipe(
       map(actions => {
@@ -89,8 +87,8 @@ export class AccountPersonService {
     return this.account_person_collection.doc(person.id).update({
       balance : person.balance,
       name_account: person.name_account,
-      user_id :person.user_id,
-      user_name :person.user_name
+      user_id : person.user_id,
+      user_name : person.user_name
     });
   }
 
