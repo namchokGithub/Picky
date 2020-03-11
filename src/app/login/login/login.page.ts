@@ -38,7 +38,7 @@ export class LoginPage implements OnInit {
   async presentLoading() {
     const loading = await this.loadingController.create({
       message: 'รอสักครู่...',
-      duration: 1000
+      duration: 500
     });
     await loading.present();
 
@@ -47,7 +47,6 @@ export class LoginPage implements OnInit {
   }
 
   goHomePage() {
-    
     
     // this.router.navigate(['home']);
     this.router.navigate(['app']);
