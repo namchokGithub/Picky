@@ -43,6 +43,10 @@ export class AccountPersonService {
     this.account_person_collection = this.afs.collection<Person>('account_person');
   }
 
+  // Function get_account_person
+  // create by : kittisak noidonpai
+  // จะทำการคืนค่า account_person ทั้งหมดในที่อยู่ในฐานข้อมูล  
+
   get_account_person(): Observable<Person[]> {
     return this.account_person = this.account_person_collection.snapshotChanges().pipe(
       map(actions => {
@@ -54,6 +58,10 @@ export class AccountPersonService {
       })
     );  
   }
+
+  // Function get_acount_person_By_Id 
+  // create by : kittisak noidonpai
+  // จะทำการคืนค่า acount_person ตาม id ที่ทำการส่งเข้ามา
 
   get_acount_person_By_Id(id: string): Observable<Person> {
     return this.account_person_collection
@@ -68,12 +76,18 @@ export class AccountPersonService {
       );
   }
   
-  // tslint:disable-next-line: no-shadowed-variable
+  // Function add_account_person
+  // create by : kittisak noidonpai
+  // จะทำการ บันทึกข้อมูลของ account_person ลงใน firestore
+
   add_account_person(person: Person): Promise<DocumentReference> {
     return this.account_person_collection.add(person);
   }
 
-  // tslint:disable-next-line: no-shadowed-variable
+  // Function update_account_person
+  // create by : kittisak noidonpai
+  // จะทำการ เปลี่ยนข้อมูลของ account_person ตาม id ใน firestore 
+
   update_account_person(person: Person): Promise<void> {
     return this.account_person_collection.doc(person.id).update({
       balance : person.balance,
@@ -82,6 +96,10 @@ export class AccountPersonService {
       user_name :person.user_name
     });
   }
+
+  // Function delete_account_person
+  // create by : kittisak noidonpai
+  // จะทำการ ลบข้อมูลของ account_person ตาม id ใน firestore 
 
   delete_account_person(id: string): Promise<void> {
     return this.account_person_collection.doc(id).delete();
