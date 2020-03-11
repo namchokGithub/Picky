@@ -1,12 +1,12 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument,
   DocumentReference
-} from "@angular/fire/firestore";
-import { map, take } from "rxjs/operators";
-import { Observable } from "rxjs";
+} from '@angular/fire/firestore';
+import { map, take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 export interface Account {
   id?: string;
@@ -17,14 +17,14 @@ export interface Account {
 }
 // ไปคอมเม้นมาทุกส่วน
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class AccountService {
   private account: Observable<Account[]>;
   private account_Collection: AngularFirestoreCollection<Account>;
 
   constructor(private afs: AngularFirestore) {
-    this.account_Collection = this.afs.collection<Account>("account");
+    this.account_Collection = this.afs.collection<Account>('account');
     this.account = this.account_Collection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {

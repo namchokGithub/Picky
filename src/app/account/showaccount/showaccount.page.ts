@@ -22,12 +22,7 @@ export class ShowaccountPage implements OnInit {
   Data = [
     'บัญชีส่วนตัว', 'บัญชีเงินฝาก', 'บัญชีเงินเก็บ'];
 
-  ngOnInit() {
-    this.activatedRoute.queryParamMap.subscribe(params => {
-      // this.type_account  = params.get('Type_Account')
-      this.Data.push(params.get('Name_Account'))
-   });
-  }
+  ngOnInit() {}
   /* ไปสู่หน้า Add Account */
   openAddAccount() {
     console.log('Click');
