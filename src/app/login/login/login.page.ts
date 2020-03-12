@@ -67,7 +67,7 @@ export class LoginPage implements OnInit {
   }
 
   /**
-   * validate เช็คlogin userid && password
+   * validate เช็ค login userid && password
    * Name: Komsan tesana
    * 2020-03-10
    */
@@ -75,7 +75,7 @@ export class LoginPage implements OnInit {
       if (this.validate_login()) {
         await this.presentLoading();
         if (await this.check_login()) {
-          this.goHomePage(this.userlogin.user_name, this.userlogin.user_password, this.userlogin.user_id);
+          this.selectAccount();
         }
         else {
           this.showToast('รหัสผู้ใช้งานไม่ถูกต้อง');
@@ -139,16 +139,4 @@ export class LoginPage implements OnInit {
             color: 'dark'
         }).then(toast => toast.present());
     }
-
-    /**
-     * check_login
-     * Name: Namchok
-     * 2020-03-10
-     */
-    setUserStorage(user) {
-      return this.storage.set('user', user).then(() => {
-          this.isLoggedIn = true;
-      });
-
-  }
 }
