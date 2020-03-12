@@ -98,7 +98,7 @@ export class LoginPage implements OnInit {
   async check_login() {
 
     this.userlogin = this.db_user.find(user =>  user.user_id === this.username);
-    if(this.userlogin){
+    if(this.userlogin.user_password == this.password){
       return true;
     }else{
       return false
