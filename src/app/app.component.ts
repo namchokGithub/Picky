@@ -12,8 +12,9 @@ import { UserService, User } from 'src/app/services/user.service';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
+  // tslint:disable-next-line: variable-name
   private user_session: any;
-  private name: string;
+  private name = '';
   public appPages = [
     {
       title: 'Home',

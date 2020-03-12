@@ -31,9 +31,7 @@ export class LoginPage implements OnInit {
   ) {}
 
   ngOnInit() {
-   
-
-    this.UserService.get_user().subscribe(async res => {
+   this.UserService.get_user().subscribe(async res => {
       this.db_user = res;
       console.log(res)
     });
@@ -56,7 +54,6 @@ export class LoginPage implements OnInit {
    * @date 2020-3-10
    */
   goHomePage() {
-    // this.router.navigate(['home']);
     this.router.navigate(["home"], { replaceUrl: true });
   }
 

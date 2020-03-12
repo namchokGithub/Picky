@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, MenuController } from '@ionic/angular';
 import { VirtualTimeScheduler } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -12,7 +12,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ShowaccountPage implements OnInit {
 
 
-  constructor(public navCtrl: NavController, private router: Router , private activatedRoute: ActivatedRoute ) { }
+  constructor(private menu: MenuController
+            , public navCtrl: NavController
+            , private router: Router
+            , private activatedRoute: ActivatedRoute ) { }
 
   /*balance = ['1000','2000','3000']
   name_account = ['บัญชีส่วนตัว', 'บัญชีเงินฝาก', 'บัญชีเงินเก็บ'];
@@ -22,7 +25,9 @@ export class ShowaccountPage implements OnInit {
   Data = [
     'บัญชีส่วนตัว', 'บัญชีเงินฝาก', 'บัญชีเงินเก็บ'];
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.menu.enable(true, 'menuSilde');
+  }
 
   /* ไปสู่หน้า Add Account */
   openAddAccount() {
