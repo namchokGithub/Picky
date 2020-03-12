@@ -113,7 +113,7 @@ export class AddPage implements OnInit {
         this.cash,
         this.note,
         this.type_category,
-        this.userlogin.user_id,
+        this.userlogin.id,
         this.userlogin.user_name ]
         this.recordService.add_record(this.record_array);   
         this.router.navigate(['home']);
