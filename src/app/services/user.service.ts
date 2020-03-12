@@ -20,6 +20,7 @@ export interface User {
   providedIn: 'root'
 })
 export class UserService {
+  isLoggedIn: boolean; // check session with storage
   private set_user : any[];
 
   private user: Observable<User[]>;
@@ -100,4 +101,27 @@ export class UserService {
     return this.set_user;
   }
 
+  /**
+   * isLogin
+   * Name: Namchok
+   */
+  isLogedIn() {
+    this.isLoggedIn = true;
+  }
+
+  /**
+   * isLogedOut
+   * Name: Namchok
+   */
+  isLogedOut() {
+    this.isLoggedIn = false;
+  }
+
+  /**
+   * isAuthenticated
+   * Name: Namchok
+   */
+  isAuthenticated() {
+    return this.isLoggedIn;
+  }
 }

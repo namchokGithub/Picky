@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, MenuController, AlertController , ToastController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ export class LoginPage implements OnInit {
     , private UserService: UserService
     , private toastController: ToastController
     , public loadingController: LoadingController
+    , public storage: Storage
   ) {
 
   }
@@ -43,18 +45,25 @@ export class LoginPage implements OnInit {
     await loading.present();
 
     const { role, data } = await loading.onDidDismiss();
-    console.log('Loading dismissed!');
+    // console.log('Loading dismissed!');
   }
 
-  goHomePage(user_name: string, user_password: string, user_id: string) {
-
-    // this.router.navigate(['home']);
-    this.router.navigate(['app'], {queryParams: {user_name, user_password, user_id}});
-    this.router.navigate(['home'], {queryParams: {user_name, user_password, user_id}});
+  /**
+   * @param -
+   * @name Namchok
+   * @date 2020-3-12
+   */
+  selectAccount() {
+    this.router.navigate(["showaccount"], { replaceUrl: true });
   }
 
-  register() {
-    this.router.navigate(['register']);
+  /**
+   * @param -
+   * @name Namchok
+   * @date 2020-3-10
+   */
+  goToRegister() {
+    this.router.navigate(["register"], { replaceUrl: true });
   }
 
   /**
@@ -74,7 +83,11 @@ export class LoginPage implements OnInit {
       }
     }
 
-    // comment
+  /**
+   * validate_login
+   * Name: Namchok
+   * 2020-03-10
+   */
     validate_login() {
       if ( this.username === '') {
         this.showToast('กรุณาใส่ชื่อผู้ใช้')
@@ -89,7 +102,11 @@ export class LoginPage implements OnInit {
       }
     }
 
-    // comment1
+  /**
+   * check_login
+   * Name: Namchok
+   * 2020-03-10
+   */
     async check_login() {
 
       this.userlogin = this.db_user.find(user => user.user_id === this.username);
@@ -123,5 +140,15 @@ export class LoginPage implements OnInit {
         }).then(toast => toast.present());
     }
 
+    /**
+     * check_login
+     * Name: Namchok
+     * 2020-03-10
+     */
+    setUserStorage(user) {
+      return this.storage.set('user', user).then(() => {
+          this.isLoggedIn = true;
+      });
 
+  }
 }

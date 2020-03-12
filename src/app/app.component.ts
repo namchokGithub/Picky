@@ -6,7 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { UserService, User } from 'src/app/services/user.service';
 
 /* File Name : app.component.ts
-  Author : Namchock 
+  Author : Namchock
   Description : แสดงแทบเมนูระบบ
   Date : -
   Update : 13-03-20 | Naruemon*/
@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
     },
     { // ไปที่หน้าการตั้งต่า (Setting)
       title: 'การตั้งค่า',
-      url: '/setting', 
+      url: '/setting',
       icon: 'settings'
     },
     { // เมนูออกจากระบบ โดยกลับไปที่หน้า login
@@ -65,8 +65,8 @@ export class AppComponent implements OnInit {
   }
   /**
    * function : initializeApp
-   * Name : 
-   * 
+   * Name : Nacmhok
+   *  hide menu bar
    */
   initializeApp() {
     this.platform.ready().then(() => {
@@ -76,8 +76,8 @@ export class AppComponent implements OnInit {
   }
   /**
    * function : ngOnInit
-   * Name : 
-   * 
+   * Name : Nacmhok
+   * load username and set page list
    */
   ngOnInit() {
     this.loadName();
@@ -91,7 +91,7 @@ export class AppComponent implements OnInit {
   }
   /**
    * function : loadName
-   * Name : 
+   * Name : Namchok
    * โหลดชื่อผู้ใช้
    */
   loadName() {
@@ -99,7 +99,4 @@ export class AppComponent implements OnInit {
     this.name = this.user_session.user_name;
   }
 
-  callpageAdd() {
-    console.log('click');
-  }
 }
