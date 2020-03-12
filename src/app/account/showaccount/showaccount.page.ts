@@ -3,6 +3,12 @@ import { NavController, MenuController } from '@ionic/angular';
 import { VirtualTimeScheduler } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
+/* File Name : app.component.ts
+  Author : Naruemon
+  Description : ฟังก์ชันในการทำงานของ show Account
+  Date : 01/03/20
+  Update : 13-03-20 | Naruemon*/
+
 @Component({
   selector: 'app-showaccount',
   templateUrl: './showaccount.page.html',
@@ -21,7 +27,8 @@ export class ShowaccountPage implements OnInit {
   name_account = ['บัญชีส่วนตัว', 'บัญชีเงินฝาก', 'บัญชีเงินเก็บ'];
   type_account = ['ครอบครัว','องค์กร','ผู้ใช้ทั่วไป']
   user_member = [0,1,2,3]*/
-
+  
+  /* ข้อมูลจำลองชั่วคราว */
   Data = [
     'บัญชีส่วนตัว', 'บัญชีเงินฝาก', 'บัญชีเงินเก็บ'];
 
@@ -29,13 +36,18 @@ export class ShowaccountPage implements OnInit {
     this.menu.enable(true, 'menuSilde');
   }
 
-  /* ไปสู่หน้า Add Account */
+  /**
+   * function : openAddAccount
+   * Name : Naruemon
+   * ไปสู่หน้า Add Account
+   */
   openAddAccount() {
     console.log('Click');
     this.router.navigate(['addaccount']);
   }
 
   /**
+   * function : selecet_account
    * @Name Naerumon
    * เลือก Account ไปสู่หน้า Home
    */
@@ -43,13 +55,21 @@ export class ShowaccountPage implements OnInit {
     this.router.navigateByUrl('home', { replaceUrl: true });
   }
 
-  /*ไปสู่หน้า Setting */
+  /**
+   * function : openSetting
+   * Name : Naruemon
+   * ไปสู่หน้า Setting 
+  */
   openSetting() {
     console.log('Clcik');
     this.router.navigate(['familymanagement']);
 
   }
-  /* ลบ Account บัญชีออก */
+  /**
+   * function : removeAccount
+   * Name : Naruemon
+   * ลบ Account บัญชีออก 
+  */
   removeAccount(data) {
     const index = this.Data.indexOf(data);
 
