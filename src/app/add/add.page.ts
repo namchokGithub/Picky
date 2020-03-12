@@ -11,14 +11,14 @@ import { RecordService, Record } from './../services/record.service';
 })
 export class AddPage implements OnInit {
 
-  private type_category = ' ';
-  private cash = ' ';
-  private name_category = ' ';
-  private date = ' ';
-  private note = ' ';
-  private userlogin: any = [];
+  public type_category = ' ';
+  public cash = ' ';
+  public name_category = ' ';
+  public date = ' ';
+  public note = ' ';
+  public userlogin: any = [];
 
-  private record_array : Record = {
+  public record_array : Record = {
     account_id: '',
     account_name: 'Person',
     user_record : []
@@ -46,6 +46,7 @@ export class AddPage implements OnInit {
      });
 
      this.userlogin =  this.userService.get_session_user();
+   
   }
 
   // * @Function   : goCategoryPage => ไปยังหน้า CategoryPage
@@ -91,8 +92,8 @@ export class AddPage implements OnInit {
       console.log('จำนวนเงิน :' + this.cash);
       console.log( this.name_category);
       console.log( this.type_category);
-      console.log(this.userlogin.user_id);
-      console.log(this.userlogin.user_name);
+      console.log('Id user ' + this.userlogin.user_id);
+      console.log('name user ' + this.userlogin.user_name);
 
       this.record_array.account_id = '1';
       this.record_array.account_name = 'Person';
@@ -105,6 +106,8 @@ export class AddPage implements OnInit {
         this.userlogin.user_id,
         this.userlogin.user_name
       ];
+
+      console.log(this.userlogin);
       this.recordService.add_record(this.record_array);
       this.router.navigate(['home']);
   }
