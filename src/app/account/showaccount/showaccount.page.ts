@@ -20,15 +20,9 @@ export class ShowaccountPage implements OnInit {
   user_member = [0,1,2,3]*/
 
   Data = [
-    'บัญชีส่วนตัว', 'บัญชีเงินฝาก', 'บัญชีเงินเก็บ'
-  ];
+    'บัญชีส่วนตัว', 'บัญชีเงินฝาก', 'บัญชีเงินเก็บ'];
 
-  ngOnInit() {
-    this.activatedRoute.queryParamMap.subscribe(params => {
-      // this.type_account  = params.get('Type_Account')
-      this.Data.push(params.get('Name_Account'))
-   });
-  }
+  ngOnInit() {}
   /* ไปสู่หน้า Add Account */
   openAddAccount() {
     console.log('Click');
@@ -41,13 +35,13 @@ export class ShowaccountPage implements OnInit {
     this.router.navigateByUrl('home', { replaceUrl: true });
   }
 
-
+  /*ไปสู่หน้า Setting */
   openSetting() {
     console.log('Clcik');
     this.router.navigate(['familymanagement']);
 
   }
-
+  /* ลบ Account บัญชีออก */
   removeAccount(data) {
     const index = this.Data.indexOf(data);
 

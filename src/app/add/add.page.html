@@ -3,7 +3,7 @@
         <!-- <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons> -->
-        <ion-title>Add transactions</ion-title>
+        <ion-title>เพิ่มรายการ</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -18,7 +18,7 @@
         <ion-card-content>
 
             <ion-item (click)="goCategoryPage()">
-                <ion-label class="lable" position="floating">Category</ion-label>
+                <ion-label class="lable" position="floating">ประเภท</ion-label>
 
                 <ion-input [(ngModel)]="name_category"></ion-input>
 
@@ -32,27 +32,25 @@
                 </ion-input>
             </ion-item>
 
-
-
             <ion-item>
-                <ion-label class="lable" position="floating">Date</ion-label>
-                <ion-datetime pickerFormat="DD MMM YYYY" displayFormat="DD MMM YY" placeholder="Select Date" [(ngModel)]="date"></ion-datetime>
+                <ion-label class="lable" position="floating">วันที่</ion-label>
+                <ion-datetime pickerFormat="DD MMM YYYY" displayFormat="DD MMM YY" placeholder="เลือกวันที่" [(ngModel)]="date"></ion-datetime>
             </ion-item>
 
             <ion-item>
                 <ion-label class="lable" position="floating">
-                    <ion-icon style="zoom:1.5;" name="pencil-outline"></ion-icon>Note
+                    <ion-icon style="zoom:1.5;" name="pencil-outline"></ion-icon>เพิ่มเติม
                 </ion-label>
-                <ion-textarea placeholder="Add Note" [(ngModel)]="note"></ion-textarea>
+                <ion-textarea placeholder="Add Note" [(ngModel)]="note" placeholder="รายละเอียดเพิ่มเติม"></ion-textarea>
             </ion-item>
             <ion-grid>
                 <ion-row>
                     <ion-col>
-                        <ion-button (click)="validate()" expand="block" color="success">Confirm</ion-button>
-                        <!-- s -->
+                        <ion-button (click)="validate()" expand="block" color="success">ยืนยัน</ion-button>
+
                     </ion-col>
                     <ion-col>
-                        <ion-button (click)="back()" expand="block" color="danger">Cancel</ion-button>
+                        <ion-button (click)="back()" expand="block" color="danger">ยกเลิก</ion-button>
                     </ion-col>
                 </ion-row>
 

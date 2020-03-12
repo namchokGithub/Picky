@@ -3,6 +3,7 @@
   Name : Naruemon 
   Date : 01/03/20
  -->
+<!-- Header -->
 <ion-header class="bg-account">
     <ion-toolbar>
         <ion-buttons slot="start">
@@ -11,31 +12,42 @@
         <ion-title>My account</ion-title>
     </ion-toolbar>
 </ion-header>
-
+<!-- End Header -->
+<!-- Body -->
 <ion-content>
     <ion-card>
         <ion-card-content>
-            <ion-list >
+            <ion-list>
                 <!-- Sliding item with text options on both sides -->
-                <ion-item-sliding *ngFor ="let data of Data">
+                <!-- for loop -->
+                <ion-item-sliding *ngFor="let data of Data">
                     <ion-item>
                         <ion-label>{{data}}</ion-label>
                     </ion-item>
-
+                    <!-- button -->
                     <ion-item-options side="end">
                         <ion-item-option color="success" (click)="selecet_account()">เลือก</ion-item-option>
                         <ion-item-option color="medium" (click)="openSetting()">ตั้งค่า</ion-item-option>
                         <ion-item-option color="danger" (click)="removeAccount(data)">ลบ</ion-item-option>
                     </ion-item-options>
+                    <!-- End button -->
                 </ion-item-sliding>
+                <!-- End Sliding item with text options on both sides -->
             </ion-list>
         </ion-card-content>
+
+        <!-- Footer -->
         <ion-toolbar>
             <div padding class="ion-text-center">
+                <!-- ปุ่มเพิ่ม Account -->
                 <ion-button (click)="openAddAccount()">
                     <ion-icon slot="icon-only" name="add-circle"></ion-icon>
                 </ion-button>
+                <!--End ปุ่มเพิ่ม Account -->
             </div>
         </ion-toolbar>
+        <!-- End Footer -->
+
     </ion-card>
 </ion-content>
+<!-- End Body -->
