@@ -5,6 +5,12 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { UserService, User } from 'src/app/services/user.service';
 
+/* File Name : app.component.ts
+  Author : Namchock
+  Description : แสดงแทบเมนูระบบ
+  Date : -
+  Update : 13-03-20 | Naruemon*/
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -16,7 +22,37 @@ export class AppComponent implements OnInit {
   private user_session: any;
   public name = '';
   public appPages = [
-   
+    {
+      // ไปที่หน้าแรกของระบบ (Home)
+      title: 'หน้าแรก',
+      url: '/home',
+      icon: 'home'
+    },
+    { // ไปที่หน้าทำธุรกรรม (Transactions)
+      title: 'ธุรกรรม',
+      url: '/list-transactions',
+      icon: 'card'
+    },
+    { // ไปที่หน้าบัญชี (Account)
+      title: 'บัญชี',
+      url: '/showaccount',
+      icon: 'person'
+    },
+    { // ไปที่หน้ารายงานบัญชี (Report)
+      title: 'รายงาน',
+      url: '/report',
+      icon: 'bar-chart'
+    },
+    { // ไปที่หน้าการตั้งต่า (Setting)
+      title: 'การตั้งค่า',
+      url: '/setting', 
+      icon: 'settings'
+    },
+    { // เมนูออกจากระบบ โดยกลับไปที่หน้า login
+      title: 'ออกจากระบบ',
+      url: '/login',
+      icon: 'log-out'
+    }
   ];
 
   constructor(
