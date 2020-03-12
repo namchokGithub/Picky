@@ -1,49 +1,49 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { Platform } from "@ionic/angular";
-import { SplashScreen } from "@ionic-native/splash-screen/ngx";
-import { StatusBar } from "@ionic-native/status-bar/ngx";
-import { UserService, User } from "src/app/services/user.service";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { UserService, User } from 'src/app/services/user.service';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "app.component.html",
-  styleUrls: ["app.component.scss"]
+  selector: 'app-root',
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
-  private user_session: any = [];
+  private user_session: any;
   private name: string;
   public appPages = [
     {
-      title: "Home",
-      url: "/home",
-      icon: "home"
+      title: 'Home',
+      url: '/home',
+      icon: 'home'
     },
     {
-      title: "Transactions",
-      url: "/list-transactions",
-      icon: "card"
+      title: 'Transactions',
+      url: '/list-transactions',
+      icon: 'card'
     },
     {
-      title: "Account",
-      url: "/showaccount",
-      icon: "person"
+      title: 'Account',
+      url: '/showaccount',
+      icon: 'person'
     },
     {
-      title: "Report",
-      url: "/report",
-      icon: "bar-chart"
+      title: 'Report',
+      url: '/report',
+      icon: 'bar-chart'
     },
     {
-      title: "Setting",
-      url: "/setting",
-      icon: "settings"
+      title: 'Setting',
+      url: '/setting',
+      icon: 'settings'
     },
     {
-      title: "Logout",
-      url: "/login",
-      icon: "log-out"
+      title: 'Logout',
+      url: '/login',
+      icon: 'log-out'
     }
   ];
 
@@ -67,7 +67,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.loadName();
 
-    const path = window.location.pathname.split("home/")[1];
+    const path = window.location.pathname.split('home/')[1];
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(
         page => page.title.toLowerCase() === path.toLowerCase()
@@ -78,10 +78,9 @@ export class AppComponent implements OnInit {
   loadName() {
     this.user_session = this.userService.get_session_user();
     this.name = this.user_session.user_name;
-    console.log(this.user_session);
   }
 
   callpageAdd() {
-    console.log("click");
+    console.log('click');
   }
 }
