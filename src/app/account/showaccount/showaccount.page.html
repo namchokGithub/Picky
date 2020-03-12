@@ -3,7 +3,7 @@
   Name : Naruemon 
   Date : 01/03/20
  -->
- <!-- Header -->
+<!-- Header -->
 <ion-header class="bg-account">
     <ion-toolbar>
         <ion-buttons slot="start">
@@ -17,10 +17,10 @@
 <ion-content>
     <ion-card>
         <ion-card-content>
-            <ion-list >
+            <ion-list>
                 <!-- Sliding item with text options on both sides -->
                 <!-- for loop -->
-                <ion-item-sliding *ngFor ="let data of Data">
+                <ion-item-sliding *ngFor="let data of Data">
                     <ion-item>
                         <ion-label>{{data}}</ion-label>
                     </ion-item>
@@ -35,6 +35,7 @@
                 <!-- End Sliding item with text options on both sides -->
             </ion-list>
         </ion-card-content>
+
         <!-- Footer -->
         <ion-toolbar>
             <div padding class="ion-text-center">
@@ -46,7 +47,7 @@
             </div>
         </ion-toolbar>
         <!-- End Footer -->
-    </ion-card-content>
+
     </ion-card>
 </ion-content>
 <!-- End Body -->

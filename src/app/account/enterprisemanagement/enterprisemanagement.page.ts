@@ -6,33 +6,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./enterprisemanagement.page.scss'],
 })
 export class EnterprisemanagementPage implements OnInit {
+
+  constructor() {}
   Person = [
     {
-      name:'Varthinee',
+      name: 'Varthinee',
       position : 'Ceo'
     },
     {
-      neme:'nook',
-      position:'manager'
+      neme: 'nook',
+      position: 'manager'
     }
-  ]
+  ];
+
   public arr = new Array('One', 'Two', 'Three');
 
-  
-  constructor(){}
+  todo = {};
 
-  ngOnInit(){}
+  ngOnInit() {}
 
- adddata(){
-  
-      this.arr.splice(0, 0, "");  //ระบุ parameter 2 เป็น 0 จะเท่ากับการ add
-      console.log(this.arr);
-
+  adddata() {
+    this.arr.splice(0, 0, '');  // ระบุ parameter 2 เป็น 0 จะเท่ากับการ add
+    console.log(this.arr);
   }
 
-  todo = {}
   logForm() {
-    console.log(this.todo)
+    console.log(this.todo);
   }
 
 }

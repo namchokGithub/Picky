@@ -4,9 +4,9 @@ import {
   AngularFirestoreCollection,
   AngularFirestoreDocument,
   DocumentReference
-} from "@angular/fire/firestore";
-import { map, take } from "rxjs/operators";
-import { Observable } from "rxjs";
+} from '@angular/fire/firestore';
+import { map, take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 export interface Category {
   id?: string;
@@ -22,7 +22,7 @@ export class CategoryService {
   private category_Collection: AngularFirestoreCollection<Category>;
 
   constructor(private afs: AngularFirestore) {
-    this.category_Collection = this.afs.collection<Category>("category");
+    this.category_Collection = this.afs.collection<Category>('category');
     this.category = this.category_Collection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -60,7 +60,7 @@ export class CategoryService {
       record_name_en: category.record_name_en,
       record_name_th: category.record_name_th,
       record_type: category.record_type,
-      
+
     });
   }
 

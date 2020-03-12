@@ -1,6 +1,6 @@
 <ion-content class="bg-login">
 
-    <ion-grid style="margin-top: 50px;">
+    <ion-grid class="grid-login">
         <ion-row justify-content-center>
             <ion-col>
                 <ion-img class="image" src="assets/picky_logo.png"></ion-img>
@@ -11,7 +11,7 @@
             <ion-col size="8" size-lg offset="2" class="ion-text-center">
                 <ion-text class="app-name">
                     Picky
-                    <p style="font-size: 20px; margin-top: 3px;">save money, save you!</p>
+                    <p>save money, save you!</p>
                 </ion-text>
             </ion-col>
         </ion-row>
@@ -34,13 +34,13 @@
 
         <ion-row align-items-center style="margin-top: 50px;">
             <ion-col size="8" size-lg offset="2" class="ion-text-center mt-3" (click)="validate_login()">
-                <ion-button color="primary" expand="block">เข้าสู่ระบบ</ion-button>
+                <ion-button color="primary" expand="block" style="font-size: 20px !important;">เข้าสู่ระบบ</ion-button>
             </ion-col>
         </ion-row>
 
         <ion-row>
             <ion-col class="ion-text-center " (click)="register()">
-                สมัครสมาชิก
+                สมัครสมาชิก ?
             </ion-col>
         </ion-row>
 
