@@ -1,13 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, MenuController, AlertController , ToastController, LoadingController } from '@ionic/angular';
+import {
+  NavController,
+  MenuController,
+  AlertController,
+  ToastController,
+  LoadingController
+} from '@ionic/angular';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  styleUrls: ['./login.page.scss']
 })
+
 export class LoginPage implements OnInit {
 
   private username = null;
@@ -16,45 +23,63 @@ export class LoginPage implements OnInit {
   private userlogin: any = [];
 
   constructor(
-    public navCtrl: NavController
-    , private router: Router
-    , private menu: MenuController
-    , public alertController: AlertController
-    , private UserService: UserService
-    , private toastController: ToastController
-    , public loadingController: LoadingController
-  ) {
-
-  }
+    public navCtrl: NavController,
+    private router: Router,
+    private menu: MenuController,
+    public alertController: AlertController,
+    private UserService: UserService,
+    private toastController: ToastController,
+    public loadingController: LoadingController
+  ) {}
 
   ngOnInit() {
     this.UserService.get_user().subscribe(async res => {
-      // console.log(res);
       this.db_user = res;
+      console.log(res);
     });
+
     this.loginMenu();
   }
 
+  /**
+   * @param -
+   * @name Namchok
+   * @date 2020-3-10
+   */
   async presentLoading() {
     const loading = await this.loadingController.create({
       message: 'รอสักครู่...',
-      duration: 1000
+      duration: 500
     });
     await loading.present();
-
     const { role, data } = await loading.onDidDismiss();
-    console.log('Loading dismissed!');
   }
 
-  goHomePage(user_name: string, user_password: string, user_id: string) {
-
-    // this.router.navigate(['home']);
-    this.router.navigate(['app'], {queryParams: {user_name, user_password, user_id}});
-    this.router.navigate(['home'], {queryParams: {user_name, user_password, user_id}});
+  /**
+   * @param -
+   * @name Komsan
+   * @date 2020-3-10
+   */
+  goHomePage() {
+    this.router.navigate(['home'], { replaceUrl: true });
   }
 
-  register() {
-    this.router.navigate(['register']);
+  /**
+   * @param -
+   * @name Namchok
+   * @date 2020-3-12
+   */
+  selectAccount() {
+    this.router.navigate(['showaccount'], { replaceUrl: true });
+  }
+
+  /**
+   * @param -
+   * @name Namchok
+   * @date 2020-3-10
+   */
+  goToRegister() {
+    this.router.navigate(['register'], { replaceUrl: true });
   }
 
   /**
@@ -62,66 +87,87 @@ export class LoginPage implements OnInit {
    * Name: Komsan tesana
    * 2020-03-10
    */
-    async validate() {
-      if (this.validate_login()) {
-        await this.presentLoading();
-        if (await this.check_login()) {
-          this.goHomePage(this.userlogin.user_name, this.userlogin.user_password, this.userlogin.user_id);
-        }
-        else {
-          this.showToast('รหัสผู้ใช้งานไม่ถูกต้อง');
-        }
-      }
+  async validate() {
+    await this.presentLoading();
+    if (await this.check_login()) {
+      await this.UserService.set_session_user(this.userlogin); // set user session
+      console.log('true');
+      console.log('login page ' + this.userlogin);
+      this.selectAccount(); // Goto page select account
+    } else {
+      console.log('false');
+      this.alertInput('ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง');
     }
+  }
 
-    // comment
-    validate_login() {
-      if ( this.username === '') {
-        this.showToast('กรุณาใส่ชื่อผู้ใช้')
-        console.log('false');
-        return false;
-      }else if ( this.password === '') {
-        this.showToast('กรุณาใส่รหัสผ่าน')
-        console.log('false');
-        return false;
-      }else {
-        return true;
-      }
+   /**
+    * loginMenu
+    * Name: Namchok
+    * 2020-03-10
+    */
+  validate_login() {
+    if (this.username == null) {
+      this.showToast('กรุณาใส่ชื่อผู้ใช้');
+      console.log('false');
+      return false;
+    } else if (this.password == null) {
+      this.showToast('กรุณาใส่รหัสผ่าน');
+      console.log('false');
+      return false;
+    } else {
+      this.validate();
     }
+  }
 
-    // comment1
-    async check_login() {
-
-      this.userlogin = this.db_user.find(user => user.user_id === this.username);
-
-      if (this.userlogin.user_password === this.password) {
-        console.log('true');
-        return true;
-      } else {
-        console.log('false');
-        return false;
-      }
+  /**
+   * loginMenu
+   * Name: Namchok
+   * 2020-03-10
+   */
+  async check_login() {
+    this.userlogin = this.db_user.find(user =>  user.user_id === this.username);
+    if (this.userlogin) {
+      return true;
+    } else {
+      return false;
     }
+  }
 
-    /**
-     * loginMenu
-     * Name: Phannita
-     * 2020-03-10
-     */
-    loginMenu() {
-      this.menu.enable(false, 'menuSilde');
-    }
+  /**
+   * loginMenu
+   * Name: Phannita
+   * 2020-03-10
+   */
+  loginMenu() {
+    this.menu.enable(false, 'menuSilde');
+  }
 
-    // * @Function   : showToast => แสดงข้อความแจ้งเตือน
-    // * @Author     : Komsan Tesana
-    // * @Create Date: 10/3/2563
-    showToast(msg) {
-        this.toastController.create({
-            message: msg,
-            duration: 3000,
-            color: 'dark'
-        }).then(toast => toast.present());
-    }
+  // * @Function   : showToast => แสดงข้อความแจ้งเตือน
+  // * @Author     : Komsan Tesana
+  // * @Create Date: 10/3/2563
+  showToast(msg: any, color = 'dark') {
+    this.toastController
+      .create({
+        message: msg,
+        duration: 1000,
+        color,
+        animated: true,
+        translucent: true
+      })
+      .then(toast => toast.present());
+  }
 
-
+  /**
+   * @param text
+   * @author Namchok
+   * @date 2020-03-10
+   */
+  async alertInput(text) {
+    const alert = await this.alertController.create({
+      header: 'แจ้งเตือน',
+      message: text,
+      buttons: ['ตกลง']
+    });
+    await alert.present();
+  }
 }

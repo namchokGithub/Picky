@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>หมวดหมู่ของรายการ</ion-title>
-        <ion-text (click)="back()" style="padding: 10px;" slot="end" size="small">กลับ</ion-text>
+        <ion-title>Category</ion-title>
+        <ion-text (click)="back()" style="padding: 10px;" slot="end" size="small">Back</ion-text>
     </ion-toolbar>
 </ion-header>
 
@@ -12,13 +12,13 @@
                 <ion-row>
                     <ion-col>
                         <!-- test -->
-                        <ion-card-title class="background_click" (click)="ChecktypeCatagory('income')">รายรับ
+                        <ion-card-title class="background_click" (click)="ChecktypeCatagory('income')">Income
                         </ion-card-title>
 
                     </ion-col>
                     <ion-col>
 
-                        <ion-card-title class="background_default" (click)="ChecktypeCatagory('Expense')">รายจ่าย
+                        <ion-card-title class="background_default" (click)="ChecktypeCatagory('Expense')">Expense
                         </ion-card-title>
 
                     </ion-col>
@@ -43,12 +43,12 @@
             <ion-grid>
                 <ion-row>
                     <ion-col>
-                        <ion-card-title class="background_default" (click)="ChecktypeCatagory('income')">รายรับ
+                        <ion-card-title class="background_default" (click)="ChecktypeCatagory('income')">Income
                         </ion-card-title>
                     </ion-col>
                     <ion-col>
 
-                        <ion-card-title class="background_click" (click)="ChecktypeCatagory('Expense')">รายจ่าย
+                        <ion-card-title class="background_click" (click)="ChecktypeCatagory('Expense')">Expense
                         </ion-card-title>
                     </ion-col>
                 </ion-row>
