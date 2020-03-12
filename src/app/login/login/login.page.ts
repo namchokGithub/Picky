@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, MenuController, AlertController , ToastController, LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ export class LoginPage implements OnInit {
     , private UserService: UserService
     , private toastController: ToastController
     , public loadingController: LoadingController
+    , public storage: Storage
   ) {
 
   }
@@ -74,7 +76,12 @@ export class LoginPage implements OnInit {
       }
     }
 
-    // comment
+    
+  /**
+   * validate_login
+   * Name: Namchok
+   * 2020-03-10
+   */
     validate_login() {
       if ( this.username === '') {
         this.showToast('กรุณาใส่ชื่อผู้ใช้')
@@ -89,7 +96,11 @@ export class LoginPage implements OnInit {
       }
     }
 
-    // comment1
+  /**
+   * check_login
+   * Name: Namchok
+   * 2020-03-10
+   */
     async check_login() {
 
       this.userlogin = this.db_user.find(user => user.user_id === this.username);
@@ -124,4 +135,15 @@ export class LoginPage implements OnInit {
     }
 
 
+    /**
+     * check_login
+     * Name: Namchok
+     * 2020-03-10
+     */
+    setUserStorage(user) {
+      return this.storage.set('user', user).then(() => {
+          this.isLoggedIn = true;
+      });
+
+  }
 }
