@@ -34,8 +34,7 @@ export class SettingPage implements OnInit {
   }
 
   async deleteName() {
-    console.log(123);
-      //ส่วนที่แสดงแจ้งเตือน ว่าต้องการลบบัญชีผู้ใช้หรือไม่ ?
+      // ส่วนที่แสดงแจ้งเตือน ว่าต้องการลบบัญชีผู้ใช้หรือไม่ ?
     const alert = await this.alertController.create({
       header: 'แน่ใจหรือไม่ ?',
       message: 'การลบข้อมูล ทำให้ไม่สามารถกู้ข้อมูลกลับมาได้เช่นเดิมคุณแน่ใจหรือไม่ที่ต้องการลบ',
@@ -50,7 +49,7 @@ export class SettingPage implements OnInit {
       }, {
         text: 'ต้องการ',
         handler: () => {
-          //console.log(this.name);
+          // console.log(this.name);
           console.log('กดต้องการลบ');
           this.router.navigate(['login'], { replaceUrl: true })
         }
@@ -62,7 +61,7 @@ export class SettingPage implements OnInit {
   }
 
   async successToEdit() {
-    //ส่วนที่แสดงแจ้งเตือนในการแก้ไขข้อมูล
+    // ส่วนที่แสดงแจ้งเตือนในการแก้ไขข้อมูล
     const alert = await this.alertController.create({
     header: 'ต้องการเปลี่ยนชื่อ?',
     message: 'คุณต้องการเปลี่ยนชื่อหรือไม่',
@@ -83,7 +82,7 @@ export class SettingPage implements OnInit {
       }, {
         text: 'ต้องการ',
         handler: () => {
-          //console.log(this.name);
+          // console.log(this.name);
           this.status = true;
           console.log('กด ต้องการ');
         }
