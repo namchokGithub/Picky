@@ -16,36 +16,7 @@ export class AppComponent implements OnInit {
   private user_session: any;
   public name = '';
   public appPages = [
-    {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
-    },
-    {
-      title: 'Transactions',
-      url: '/list-transactions',
-      icon: 'card'
-    },
-    {
-      title: 'Account',
-      url: '/showaccount',
-      icon: 'person'
-    },
-    {
-      title: 'Report',
-      url: '/report',
-      icon: 'bar-chart'
-    },
-    {
-      title: 'Setting',
-      url: '/setting',
-      icon: 'settings'
-    },
-    {
-      title: 'Logout',
-      url: '/login',
-      icon: 'log-out'
-    }
+   
   ];
 
   constructor(
