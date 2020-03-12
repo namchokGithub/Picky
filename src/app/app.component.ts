@@ -6,7 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { UserService, User } from 'src/app/services/user.service';
 
 /* File Name : app.component.ts
-  Author : Namchock 
+  Author : Namchock
   Description : แสดงแทบเมนูระบบ
   Date : -
   Update : 13-03-20 | Naruemon*/
@@ -22,7 +22,8 @@ export class AppComponent implements OnInit {
   private user_session: any;
   public name = '';
   public appPages = [
-    { // ไปที่หน้าแรกของระบบ (Home)
+    {
+      // ไปที่หน้าแรกของระบบ (Home)
       title: 'หน้าแรก',
       url: '/home',
       icon: 'home'
