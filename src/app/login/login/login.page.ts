@@ -76,7 +76,6 @@ export class LoginPage implements OnInit {
       }
     }
 
-    
   /**
    * validate_login
    * Name: Namchok
