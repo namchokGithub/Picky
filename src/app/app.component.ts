@@ -5,6 +5,12 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { UserService, User } from 'src/app/services/user.service';
 
+/* File Name : app.component.ts
+  Author : Namchock 
+  Description : แสดงแทบเมนูระบบ
+  Date : -
+  Update : 13-03-20 | Naruemon*/
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -16,33 +22,33 @@ export class AppComponent implements OnInit {
   private user_session: any;
   private name = '';
   public appPages = [
-    {
-      title: 'Home',
+    { // ไปที่หน้าแรกของระบบ (Home)
+      title: 'หน้าแรก',
       url: '/home',
       icon: 'home'
     },
-    {
-      title: 'Transactions',
+    { // ไปที่หน้าทำธุรกรรม (Transactions)
+      title: 'ธุรกรรม',
       url: '/list-transactions',
       icon: 'card'
     },
-    {
-      title: 'Account',
+    { // ไปที่หน้าบัญชี (Account)
+      title: 'บัญชี',
       url: '/showaccount',
       icon: 'person'
     },
-    {
-      title: 'Report',
+    { // ไปที่หน้ารายงานบัญชี (Report)
+      title: 'รายงาน',
       url: '/report',
       icon: 'bar-chart'
     },
-    {
-      title: 'Setting',
-      url: '/setting',
+    { // ไปที่หน้าการตั้งต่า (Setting)
+      title: 'การตั้งค่า',
+      url: '/setting', 
       icon: 'settings'
     },
-    {
-      title: 'Logout',
+    { // เมนูออกจากระบบ โดยกลับไปที่หน้า login
+      title: 'ออกจากระบบ',
       url: '/login',
       icon: 'log-out'
     }
@@ -57,14 +63,22 @@ export class AppComponent implements OnInit {
   ) {
     this.initializeApp();
   }
-
+  /**
+   * function : initializeApp
+   * Name : 
+   * 
+   */
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
   }
-
+  /**
+   * function : ngOnInit
+   * Name : 
+   * 
+   */
   ngOnInit() {
     this.loadName();
 
@@ -75,7 +89,11 @@ export class AppComponent implements OnInit {
       );
     }
   }
-
+  /**
+   * function : loadName
+   * Name : 
+   * โหลดชื่อผู้ใช้
+   */
   loadName() {
     this.user_session = this.userService.get_session_user();
     this.name = this.user_session.user_name;
