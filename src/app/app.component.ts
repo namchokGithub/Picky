@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   public selectedIndex = 0;
   // tslint:disable-next-line: variable-name
   private user_session: any;
-  private name = '';
+  public name = '';
   public appPages = [
     { // ไปที่หน้าแรกของระบบ (Home)
       title: 'หน้าแรก',
