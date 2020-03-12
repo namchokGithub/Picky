@@ -90,7 +90,7 @@ export class LoginPage implements OnInit {
   async validate() {
     await this.presentLoading();
     if (await this.check_login()) {
-      await this.UserService.set_session_user(this.userlogin);
+      await this.UserService.set_session_user(this.userlogin); // set user session
       console.log('true');
       console.log('login page ' + this.userlogin);
       this.selectAccount(); // Goto page select account
