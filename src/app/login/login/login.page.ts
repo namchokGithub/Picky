@@ -71,7 +71,9 @@ export class LoginPage implements OnInit {
     await this.presentLoading();
     if (await this.check_login()) {
       console.log("true");
-      this.UserService.set_session_user(this.userlogin);
+      await this.UserService.set_session_user(this.userlogin);
+
+      console.log('login page ' +this.userlogin);
       this.goHomePage();
     } else {
       console.log("false");
@@ -100,8 +102,7 @@ export class LoginPage implements OnInit {
     let checker = false;
 
     checker = this.db_user.find(user => {
-      console.log(`1-${this.username} - ${this.password}`)
-      console.log(`2-${user.user_password} - ${user.user_id}`)
+    
       if (
         user.user_id == this.username &&
         user.user_password == this.password
