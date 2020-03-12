@@ -96,19 +96,24 @@ export class LoginPage implements OnInit {
 
   // comment1
   async check_login() {
-    this.userlogin = this.db_user.find(user => {
+
+    let checker = false;
+
+    this.db_user.find(user => {
+      console.log(`1-${this.username} - ${this.password}`)
+      console.log(`2-${user.user_password} - ${user.user_id}`)
       if (
         user.user_id == this.username &&
-        this.userlogin.user_password == this.password
+        user.user_password == this.password
       ) {
         console.log("true");
-        return true;
+        checker =  true;
       } else {
         console.log("false");
-        return false;
+        checker = false;
       }
     });
-    return this.userlogin;
+    return checker;
   }
 
   /**
