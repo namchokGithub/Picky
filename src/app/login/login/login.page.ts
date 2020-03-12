@@ -1,20 +1,22 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import {
   NavController,
   MenuController,
   AlertController,
   ToastController,
   LoadingController
-} from "@ionic/angular";
-import { Router } from "@angular/router";
-import { UserService } from "../../services/user.service";
+} from '@ionic/angular';
+import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: "app-login",
-  templateUrl: "./login.page.html",
-  styleUrls: ["./login.page.scss"]
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss']
 })
+
 export class LoginPage implements OnInit {
+
   private username = null;
   private password = null;
   private db_user: any = [];
@@ -33,7 +35,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.UserService.get_user().subscribe(async res => {
       this.db_user = res;
-      console.log(res)
+      console.log(res);
     });
 
     this.loginMenu();
@@ -46,7 +48,7 @@ export class LoginPage implements OnInit {
    */
   async presentLoading() {
     const loading = await this.loadingController.create({
-      message: "รอสักครู่...",
+      message: 'รอสักครู่...',
       duration: 500
     });
     await loading.present();
@@ -59,7 +61,7 @@ export class LoginPage implements OnInit {
    * @date 2020-3-10
    */
   goHomePage() {
-    this.router.navigate(["home"], { replaceUrl: true });
+    this.router.navigate(['home'], { replaceUrl: true });
   }
 
   /**
@@ -68,7 +70,7 @@ export class LoginPage implements OnInit {
    * @date 2020-3-12
    */
   selectAccount() {
-    this.router.navigate(["showaccount"], { replaceUrl: true });
+    this.router.navigate(['showaccount'], { replaceUrl: true });
   }
 
   /**
@@ -77,7 +79,7 @@ export class LoginPage implements OnInit {
    * @date 2020-3-10
    */
   goToRegister() {
-    this.router.navigate(["register"], { replaceUrl: true });
+    this.router.navigate(['register'], { replaceUrl: true });
   }
 
   /**
@@ -89,28 +91,28 @@ export class LoginPage implements OnInit {
     await this.presentLoading();
     if (await this.check_login()) {
       await this.UserService.set_session_user(this.userlogin);
-      console.log("true");
+      console.log('true');
       console.log('login page ' + this.userlogin);
       this.selectAccount(); // Goto page select account
     } else {
-      console.log("false");
-      this.alertInput("ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง");
+      console.log('false');
+      this.alertInput('ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง');
     }
   }
 
    /**
-   * loginMenu
-   * Name: Namchok
-   * 2020-03-10
-   */
+    * loginMenu
+    * Name: Namchok
+    * 2020-03-10
+    */
   validate_login() {
     if (this.username == null) {
-      this.showToast("กรุณาใส่ชื่อผู้ใช้");
-      console.log("false");
+      this.showToast('กรุณาใส่ชื่อผู้ใช้');
+      console.log('false');
       return false;
     } else if (this.password == null) {
-      this.showToast("กรุณาใส่รหัสผ่าน");
-      console.log("false");
+      this.showToast('กรุณาใส่รหัสผ่าน');
+      console.log('false');
       return false;
     } else {
       this.validate();
@@ -124,10 +126,10 @@ export class LoginPage implements OnInit {
    */
   async check_login() {
     this.userlogin = this.db_user.find(user =>  user.user_id === this.username);
-    if(this.userlogin){
+    if (this.userlogin) {
       return true;
-    }else{
-      return false
+    } else {
+      return false;
     }
   }
 
@@ -137,18 +139,18 @@ export class LoginPage implements OnInit {
    * 2020-03-10
    */
   loginMenu() {
-    this.menu.enable(false, "menuSilde");
+    this.menu.enable(false, 'menuSilde');
   }
 
   // * @Function   : showToast => แสดงข้อความแจ้งเตือน
   // * @Author     : Komsan Tesana
   // * @Create Date: 10/3/2563
-  showToast(msg: any, color = "dark") {
+  showToast(msg: any, color = 'dark') {
     this.toastController
       .create({
         message: msg,
         duration: 1000,
-        color: color,
+        color,
         animated: true,
         translucent: true
       })
@@ -162,9 +164,9 @@ export class LoginPage implements OnInit {
    */
   async alertInput(text) {
     const alert = await this.alertController.create({
-      header: "แจ้งเตือน",
+      header: 'แจ้งเตือน',
       message: text,
-      buttons: ["ตกลง"]
+      buttons: ['ตกลง']
     });
     await alert.present();
   }
