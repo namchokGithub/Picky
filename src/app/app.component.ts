@@ -74,7 +74,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.loadName();
-
     const path = window.location.pathname.split('home/')[1];
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(
