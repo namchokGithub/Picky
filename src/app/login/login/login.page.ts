@@ -133,7 +133,6 @@ export class LoginPage implements OnInit {
         }).then(toast => toast.present());
     }
 
-
     /**
      * check_login
      * Name: Namchok
