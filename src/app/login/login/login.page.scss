@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit|Mitr|Prompt&display=swap');
+a {
+    font-size: 10px;
+}
+
+* {
+    font-family: 'Prompt' !important;
+}
+
+.bg-login {
+    // background-color: #62b4ea;
+    background: linear-gradient(237deg, #62b4ea, #f8b7cd) !important;
+    background-size: 400% 400% !important;
+    -webkit-animation: AnimationName 6s ease infinite;
+    -moz-animation: AnimationName 6s ease infinite;
+    animation: AnimationName 6s ease infinite !important;
+    @-webkit-keyframes AnimationName {
+        0% {
+            background-position: 0% 24%
+        }
+        50% {
+            background-position: 100% 77%
+        }
+        100% {
+            background-position: 0% 24%
+        }
+    }
+    @-moz-keyframes AnimationName {
+        0% {
+            background-position: 0% 24%
+        }
+        50% {
+            background-position: 100% 77%
+        }
+        100% {
+            background-position: 0% 24%
+        }
+    }
+    @keyframes AnimationName {
+        0% {
+            background-position: 0% 24%
+        }
+        50% {
+            background-position: 100% 77%
+        }
+        100% {
+            background-position: 0% 24%
+        }
+    }
+}
+
+.margin-bottom {
+    padding-top: 10px;
+}
+
+.bg-input {
+    background-color: hsla(0, 0%, 93%, 0.212) !important;
+    border-radius: 10px !important;
+}
+
+.app-name {
+    margin: auto;
+    font-size: 40px !important;
+}
+
+.app-name p {
+    font-size: 20px;
+    margin-top: 3px;
+}
+
+.image {
+    margin: auto !important;
+    width: 150px;
+    height: 150px;
+}
+
+.alert-message {
+    font-family: 'Prompt' !important;
+}
+
+.grid-login {
+    margin-top: 50px;
+}
+
+@media only screen and (max-width: 321px) {
+    .grid-login {
+        margin-top: 30px !important;
+    }
+    .image {
+        margin: auto !important;
+        width: 100px;
+        height: 100px;
+    }
+    .app-name {
+        margin: auto;
+        font-size: 30px !important;
+    }
+    .app-name p {
+        font-size: 15px;
+        margin-top: 3px;
+    }
+}
+
+@media only screen and (min-width: 1023px) {
+    .grid-login {
+        margin-top: 30px !important;
+    }
+    .image {
+        margin: auto !important;
+        width: 200px;
+        height: 200px;
+    }
+    .app-name {
+        margin: auto;
+        font-size: 50px !important;
+    }
+    .app-name p {
+        font-size: 30px;
+        margin-top: 3px;
+    }
+    .hydrated {
+        margin-left: 0px !important;
+    }
+}

@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit|Mitr|Prompt&display=swap');
+
+* {
+    font-family: 'Prompt' !important;
+  }
+
+.circle {
+    width: 120px;
+    /* ความกว้าง */
+    height: 30px;
+    /* ความสูง */
+    background: rgb(102, 112, 245);
+    /* สี */
+    -moz-border-radius: 70px;
+    -webkit-border-radius: 70px;
+    border-radius: 70px;
+    font-size: 16px;
+    padding: 5px;
+    padding-left: 15px;
+    color: white;
+}
+
+.circle-card {
+    width: 284px;
+    height: 88px;
+    background: white;
+    border-radius: 17px;
+    padding: 4px;
+    padding-left: 7px;
+}
+
+.text-red {
+    color: red;
+}
+
+.text-blue {
+    color: rgb(29, 29, 110);
+}
+
+.line-red {
+    border-color: #f44336!important;
+    border-bottom: 1px solid #ccc!important;
+}
+
+.text-green {
+    color: green;
+}
+
+.text-red {
+    color: red;
+}
+
+.text-black {
+    color: black;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.bg-tran {
+    background: linear-gradient(75deg, #aedaf7, rgb(234, 245, 255)) !important;
+    color: black;
+}
