@@ -23,15 +23,18 @@ export class ShowaccountPage implements OnInit {
     'บัญชีส่วนตัว', 'บัญชีเงินฝาก', 'บัญชีเงินเก็บ'];
 
   ngOnInit() {}
+
   /* ไปสู่หน้า Add Account */
   openAddAccount() {
     console.log('Click');
     this.router.navigate(['addaccount']);
   }
 
-  /* เลือก Account ไปสู่หน้า Home */
+  /**
+   * @Name Naerumon
+   * เลือก Account ไปสู่หน้า Home
+   */
   selecet_account() {
-    console.log('Clcik');
     this.router.navigateByUrl('home', { replaceUrl: true });
   }
 

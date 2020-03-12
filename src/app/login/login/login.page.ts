@@ -47,19 +47,35 @@ export class LoginPage implements OnInit {
       duration: 500
     });
     await loading.present();
-
     const { role, data } = await loading.onDidDismiss();
-    // console.log('Loading dismissed!');
   }
 
+  /**
+   * @param -
+   * @name Komsan
+   * @date 2020-3-10
+   */
   goHomePage() {
     // this.router.navigate(['home']);
-    this.router.navigate(["app"]);
-    this.router.navigate(["home"]);
+    this.router.navigate(["home"], { replaceUrl: true });
   }
 
-  register() {
-    this.router.navigate(["register"]);
+  /**
+   * @param -
+   * @name Namchok
+   * @date 2020-3-12
+   */
+  selectAccount() {
+    this.router.navigate(["showaccount"], { replaceUrl: true });
+  }
+
+  /**
+   * @param -
+   * @name Namchok
+   * @date 2020-3-10
+   */
+  goToRegister() {
+    this.router.navigate(["register"], { replaceUrl: true });
   }
 
   /**
@@ -70,18 +86,16 @@ export class LoginPage implements OnInit {
   async validate() {
     await this.presentLoading();
     if (await this.check_login()) {
-      console.log("true");
       await this.UserService.set_session_user(this.userlogin);
-
-      console.log('login page ' +this.userlogin);
-      this.goHomePage();
+      console.log("true");
+      console.log('login page ' + this.userlogin);
+      this.selectAccount(); // Goto page select account
     } else {
       console.log("false");
       this.alertInput("ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง");
     }
   }
 
-  // comment
   validate_login() {
     if (this.username == null) {
       this.showToast("กรุณาใส่ชื่อผู้ใช้");
@@ -96,9 +110,7 @@ export class LoginPage implements OnInit {
     }
   }
 
-  // comment1
   async check_login() {
-
     this.userlogin = this.db_user.find(user =>  user.user_id === this.username);
     if(this.userlogin){
       return true;
@@ -142,7 +154,6 @@ export class LoginPage implements OnInit {
       message: text,
       buttons: ["ตกลง"]
     });
-
     await alert.present();
   }
 }
