@@ -99,20 +99,20 @@ export class LoginPage implements OnInit {
 
     let checker = false;
 
-    this.db_user.find(user => {
+    checker = this.db_user.find(user => {
       console.log(`1-${this.username} - ${this.password}`)
       console.log(`2-${user.user_password} - ${user.user_id}`)
       if (
         user.user_id == this.username &&
         user.user_password == this.password
       ) {
-        console.log("true");
-        checker =  true;
+        console.log('true')
+        return true;
       } else {
-        console.log("false");
-        checker = false;
+        return false;
       }
     });
+    console.log('checker ' + checker);
     return checker;
   }
 
