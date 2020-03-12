@@ -42,6 +42,8 @@ export class RegisterPage implements OnInit {
       console.log(res);
       this.user = res;
     });
+
+    
   }
 
   back() {
