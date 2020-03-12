@@ -22,7 +22,7 @@ export class RegisterPage implements OnInit {
   };
 
   user: User[] 
-
+  user2:any = []
 
   constructor( 
     private router: Router,  //
@@ -39,12 +39,23 @@ export class RegisterPage implements OnInit {
       console.log(res);
       this.user = res;
     });
+
+    
   }
 
   back() {
     this.router.navigate(["login"]);
   }
-  
+
+
+  get_by_id(){
+    this.userservice.get_user_By_Id('user_id').subscribe(res => {
+      console.log(res);
+      this.user2 = res;
+    });
+  }
+
+
   validate() {
     
     if(this.user_add.user_name == "") { //
@@ -104,6 +115,10 @@ export class RegisterPage implements OnInit {
 
        toast.present();
         
+  }
+
+  delete_user(){
+    this.userservice.delete_user(this.user2.user_id)
   }
 
 
