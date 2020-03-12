@@ -31,7 +31,7 @@ export class LoginPage implements OnInit {
   ) {}
 
   ngOnInit() {
-   this.UserService.get_user().subscribe(async res => {
+    this.UserService.get_user().subscribe(async res => {
       this.db_user = res;
       console.log(res)
     });
@@ -39,6 +39,11 @@ export class LoginPage implements OnInit {
     this.loginMenu();
   }
 
+  /**
+   * @param -
+   * @name Namchok
+   * @date 2020-3-10
+   */
   async presentLoading() {
     const loading = await this.loadingController.create({
       message: "รอสักครู่...",
@@ -93,6 +98,11 @@ export class LoginPage implements OnInit {
     }
   }
 
+   /**
+   * loginMenu
+   * Name: Namchok
+   * 2020-03-10
+   */
   validate_login() {
     if (this.username == null) {
       this.showToast("กรุณาใส่ชื่อผู้ใช้");
@@ -107,6 +117,11 @@ export class LoginPage implements OnInit {
     }
   }
 
+  /**
+   * loginMenu
+   * Name: Namchok
+   * 2020-03-10
+   */
   async check_login() {
     this.userlogin = this.db_user.find(user =>  user.user_id === this.username);
     if(this.userlogin){
