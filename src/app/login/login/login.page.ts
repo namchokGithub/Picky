@@ -45,18 +45,25 @@ export class LoginPage implements OnInit {
     await loading.present();
 
     const { role, data } = await loading.onDidDismiss();
-    console.log('Loading dismissed!');
+    // console.log('Loading dismissed!');
   }
 
-  goHomePage(user_name: string, user_password: string, user_id: string) {
-
-    // this.router.navigate(['home']);
-    this.router.navigate(['app'], {queryParams: {user_name, user_password, user_id}});
-    this.router.navigate(['home'], {queryParams: {user_name, user_password, user_id}});
+  /**
+   * @param -
+   * @name Namchok
+   * @date 2020-3-12
+   */
+  selectAccount() {
+    this.router.navigate(["showaccount"], { replaceUrl: true });
   }
 
-  register() {
-    this.router.navigate(['register']);
+  /**
+   * @param -
+   * @name Namchok
+   * @date 2020-3-10
+   */
+  goToRegister() {
+    this.router.navigate(["register"], { replaceUrl: true });
   }
 
   /**
