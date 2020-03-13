@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-import { Family } from './account-family.service';
-import { Injectable } from '@angular/core';
-=======
 // import injectable from angular/core
 import { Injectable } from "@angular/core";
 
 // import AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference from angular/fire/firestore
->>>>>>> b0ed3185b820e60dbd5a12fd436bff041c6c97ba
 import {
   AngularFirestore,
   AngularFirestoreCollection,
@@ -27,16 +22,16 @@ export interface person {
   id?: string;
   account_balance: string;
   account_name: string;
+  account_type: string;
   account_user_id: string;
   account_user_name: string;
-  account_type: string;
 }
 
 export interface family {
   id?: string;
   account_balance: string;
-  account_name: string;
   account_member: any[];
+  account_name: string;
   account_type: string;
 }
 
@@ -49,11 +44,6 @@ export interface enterprise {
   account_department: string;
 }
 
-<<<<<<< HEAD
-
-// ไปคอมเม้นมาทุกส่วน
-=======
->>>>>>> b0ed3185b820e60dbd5a12fd436bff041c6c97ba
 @Injectable({
   providedIn: "root"
 })

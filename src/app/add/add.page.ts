@@ -2,7 +2,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController, AlertController ,ToastController,LoadingController} from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RecordService, Record } from './../services/record.service';
+
 
 @Component({
   selector: 'app-add',
@@ -18,11 +18,11 @@ export class AddPage implements OnInit {
   public note = ' ';
   public userlogin: any = [];
 
-  public record_array : Record = {
-    account_id: '',
-    account_name: 'Person',
-    user_record : []
-  };
+  // public record_array : Record = {
+  //   account_id: '',
+  //   account_name: 'Person',
+  //   user_record : []
+  // };
 
   constructor(
               private nav: NavController,
@@ -32,7 +32,6 @@ export class AddPage implements OnInit {
               public alertController: AlertController,
               private loadingController: LoadingController,
               private toastController: ToastController,
-              private recordService: RecordService,
               private userService: UserService
             ) { }
 
@@ -95,20 +94,19 @@ export class AddPage implements OnInit {
       console.log('Id user ' + this.userlogin.user_id);
       console.log('name user ' + this.userlogin.user_name);
 
-      this.record_array.account_id = '1';
-      this.record_array.account_name = 'Person';
-      this.record_array.user_record  = [
-        this.date,
-        this.name_category,
-        this.cash,
-        this.note,
-        this.type_category,
-        this.userlogin.user_id,
-        this.userlogin.user_name
-      ];
+      // this.record_array.account_id = '1';
+      // this.record_array.account_name = 'Person';
+      // this.record_array.user_record  = [
+      //   this.date,
+      //   this.name_category,
+      //   this.cash,
+      //   this.note,
+      //   this.type_category,
+      //   this.userlogin.user_id,
+      //   this.userlogin.user_name
+      // ];
 
       console.log(this.userlogin);
-      this.recordService.add_record(this.record_array);
       this.router.navigate(['home']);
   }
 
