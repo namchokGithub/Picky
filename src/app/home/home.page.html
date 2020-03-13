@@ -8,9 +8,9 @@
 
 <ion-content class="bg-flow">
 
-    <ion-card *ngFor="let account of account_person">
+    <ion-card>
         <ion-card-header>
-            <ion-text size="6">{{account.name_account}}</ion-text>
+            <ion-text size="6">nick</ion-text>
         </ion-card-header>
 
         <ion-card-content>
@@ -97,7 +97,7 @@
                 <!--รายละเอียดรายรับรายจ่าย-->
             </ion-tab-button>
 
-            <ion-tab-button tab="add">
+            <ion-tab-button (click)="add()">
                 <ion-icon color="success" class="icon-taps" name="add-circle"></ion-icon>
             </ion-tab-button>
 

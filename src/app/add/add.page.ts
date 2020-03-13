@@ -10,7 +10,8 @@ import { TransactionService, transaction} from 'src/app/services/transaction.ser
   styleUrls: ['./add.page.scss'],
 })
 export class AddPage implements OnInit {
-
+  private account_id:string;
+  private account_name:string;
   public type_category = ' ';
   public cash = ' ';
   public name_category = ' ';
@@ -45,10 +46,12 @@ export class AddPage implements OnInit {
   // * @Author     : Komsan Tesana
   // * @Create Date: 10/3/2563
   ngOnInit() {
-     this.activatedRoute.queryParamMap.subscribe(params => {
-        this.type_category  = params.get('Type_category');
-        this.name_category = params.get('record_name');
-     });
+    this.activatedRoute.queryParamMap.subscribe(params => {
+      this.account_id  = params.get('account_id')
+      console.log(this.account_id)
+      this.account_name = params.get('account_name')
+      console.log(this.account_name)
+   });
 
      this.user_session =  this.userService.get_session_user();
 

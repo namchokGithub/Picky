@@ -75,8 +75,8 @@ export class ShowaccountPage implements OnInit {
    * @Name Naerumon
    * เลือก Account ไปสู่หน้า Home
    */
-  selecet_account() {
-    this.router.navigateByUrl("home", { replaceUrl: true });
+  selecet_account(account_id,account_name) {
+    this.router.navigate(['home'], {queryParams: {account_id:account_id,account_name:account_name}});
   }
 
   /*ไปสู่หน้า Setting */
