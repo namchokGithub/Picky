@@ -36,7 +36,7 @@
                     </ion-col>
                     <ion-col class="line-red">
                         <ion-text>
-                            <p class="text-red text-right">฿ {{express}}</p>
+                            <p class="text-red text-right">฿ {{Expense}}</p>
                         </ion-text>
                     </ion-col>
                 </ion-row>
@@ -44,7 +44,7 @@
                 <ion-row>
                     <ion-col>
                         <ion-text>
-                            <p></p>
+                            <p class="">ยอดรวม</p>
                         </ion-text>
                     </ion-col>
                     <ion-col>
@@ -63,21 +63,21 @@
         </ion-card-header>
 
         <ion-card-content>
-            <div *ngIf="value; else show">
+            <div *ngIf="!value; else show">
                 <p>ไม่มีการบันทึกรายรับรายจ่าย</p>
             </div>
             <ion-grid ng-template #show *ngFor="let transaction of transaction">
                 <ion-row>
                     <ion-col>
-                        <ion-text class="">{{transaction.tran_category_name}}</ion-text>
+                        <ion-title size="small">{{transaction.tran_note}}</ion-title>
                     </ion-col>
-                    <ion-col *ngIf="transaction.tran_category_type == 'income';else express">
-                        <ion-text class="text-red text-right">
+                    <ion-col *ngIf='transaction.tran_category_type == "income"'>
+                        <ion-text class="text-green text-right">
                             <p>฿ {{transaction.tran_amount}}</p>
                         </ion-text>
                     </ion-col>
-                    <ion-col ng-template #express>
-                        <ion-text class="text-green text-right">
+                    <ion-col *ngIf='transaction.tran_category_type == "Expense"'>
+                        <ion-text class="text-red text-right">
                             <p>฿ {{transaction.tran_amount}}</p>
                         </ion-text>
                     </ion-col>
