@@ -31,7 +31,6 @@ export class AddaccountPage implements OnInit {
     account_type: '',
 
   };
-
   enterprise: enterprise = {
     account_balance: '',
     account_department: '',
@@ -115,20 +114,18 @@ export class AddaccountPage implements OnInit {
       }else if(type == 'Family'){
          this.family.account_balance = '0';
          this.family.account_name = this.name_account;
-         this.family.account_member = [this.user_session.user_id,
-         this.user_session.user_name];
+         this.family.account_member = [this.user_session];
          this.family.account_type = 'Family';
 
          this.accountService.add_account_family(this.family);
       }else if(type == 'Enterprise'){
         this.enterprise.account_balance = '0';
         this.enterprise.account_department = this.department;
-        this.enterprise.account_member = [this.user_session.user_id,
-        this.user_session.user_name];
+        this.enterprise.account_member = [this.user_session];
         this.enterprise.account_name = this.name_account;
         this.enterprise.account_type = 'Enterprise';
 
-        this.accountService.add_account_enterprise(this.enterprise);
+        this.accountService.add_account_enterprise(this.enterprise);  
       }
   }
 

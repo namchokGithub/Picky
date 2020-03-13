@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController, AlertController ,ToastController,LoadingController} from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 
-
+import { TransactionService, transaction} from 'src/app/services/transaction.service';
 @Component({
   selector: 'app-add',
   templateUrl: './add.page.html',
@@ -16,13 +16,18 @@ export class AddPage implements OnInit {
   public name_category = ' ';
   public date = ' ';
   public note = ' ';
-  public userlogin: any = [];
+  public user_session: any = [];
 
-  // public record_array : Record = {
-  //   account_id: '',
-  //   account_name: 'Person',
-  //   user_record : []
-  // };
+  transaction: transaction = {
+    tran_account_id: '',
+    tran_account: '',
+    tran_amount: '',
+    tran_category_name: '',
+    tran_category_type: '',
+    tran_date: '',
+    tran_note: '',
+    tran_user: ''
+   };
 
   constructor(
               private nav: NavController,
@@ -32,7 +37,8 @@ export class AddPage implements OnInit {
               public alertController: AlertController,
               private loadingController: LoadingController,
               private toastController: ToastController,
-              private userService: UserService
+              private userService: UserService,
+              private transactionService: TransactionService
             ) { }
 
   // * @Function   : ngOnInit => รับค่าจากหน้า CategoryPage ที่ส่งมายังหน้า add
@@ -44,7 +50,7 @@ export class AddPage implements OnInit {
         this.name_category = params.get('record_name');
      });
 
-     this.userlogin =  this.userService.get_session_user();
+     this.user_session =  this.userService.get_session_user();
 
   }
 
@@ -91,23 +97,21 @@ export class AddPage implements OnInit {
       console.log('จำนวนเงิน :' + this.cash);
       console.log( this.name_category);
       console.log( this.type_category);
-      console.log('Id user ' + this.userlogin.user_id);
-      console.log('name user ' + this.userlogin.user_name);
+    
 
-      // this.record_array.account_id = '1';
-      // this.record_array.account_name = 'Person';
-      // this.record_array.user_record  = [
-      //   this.date,
-      //   this.name_category,
-      //   this.cash,
-      //   this.note,
-      //   this.type_category,
-      //   this.userlogin.user_id,
-      //   this.userlogin.user_name
-      // ];
+     
+        // this.transaction.tran_account_id = 'ssss';
+        // this.tran_account = '';
+        // this.tran_amount = '';
+        // this.tran_category_name = '';
+        // this.tran_category_type = '';
+        // this.tran_date = '';
+        // this.tran_note = '';
+        // this.tran_user = '';
+     
 
-      console.log(this.userlogin);
-      this.router.navigate(['home']);
+
+      // this.router.navigate(['home']);
   }
 
   // * @Function   : validate => เช็คค่าหากไม่มีการกรอกข้อมูล จะทำการแสดงข้อความแจ้งเตือน
