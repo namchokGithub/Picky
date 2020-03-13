@@ -34,9 +34,9 @@ export class HomePage implements OnInit {
     account_name: "",
     user_record: []
   };
-
-  private user_session: any[];
-  private account_person: any[];
+  private user_id;
+  private user_session: any = [];
+  private account_person: any = [];
 
   constructor(
     private menu: MenuController,
@@ -48,14 +48,20 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.menu.enable(true, "menuSilde");
     this.load_session_user();
+    
   }
 
-  load_session_user() {
+  async load_session_user() {
     this.user_session = this.user.get_session_user();
-    // console.log(this.user_session);
+    this.user_id = this.user_session.user_id
+    await this.load_account()
   }
 
   load_account(){
+    this.accountPersonService.get_acount_person_By_user_Id(this.user_id).subscribe(res => {
+      this.account_person = res
+    })
     //this.account_person = this.accountPersonService.get_account_person()
+    
   }
 }
