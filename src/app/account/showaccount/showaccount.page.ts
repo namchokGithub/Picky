@@ -63,8 +63,8 @@ export class ShowaccountPage implements OnInit {
       console.log(this.account_person);
       console.log("get_person_account_success");
     });
-  }
 
+  }
   /* ไปสู่หน้า Add Account */
   openAddAccount() {
     console.log("Click");

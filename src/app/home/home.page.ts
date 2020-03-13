@@ -8,7 +8,6 @@ import {
 } from "@ionic/angular";
 import { ActivatedRoute, Router } from "@angular/router";
 import { UserService, User } from "src/app/services/user.service";
-
 import { from } from "rxjs";
 @Component({
   selector: "app-home",
@@ -16,9 +15,6 @@ import { from } from "rxjs";
   styleUrls: ["./home.page.scss"]
 })
 export class HomePage implements OnInit {
-  
-
-  
   private user_id;
   private user_session: any = [];
   private account_person: any = [];
@@ -30,9 +26,8 @@ export class HomePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.menu.enable(true, "menuSilde");
+    this.menu.enable(true,"menuSilde");
     this.load_session_user();
-    
   }
 
   async load_session_user() {
@@ -42,8 +37,6 @@ export class HomePage implements OnInit {
   }
 
   load_account(){
-    
     //this.account_person = this.accountPersonService.get_account_person()
-    
   }
 }

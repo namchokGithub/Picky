@@ -6,7 +6,6 @@ import {
   ModalController
 } from '@ionic/angular';
 
-
 @Component({
   selector: 'app-category',
   templateUrl: './category.page.html',
@@ -51,7 +50,7 @@ export class CategoryPage implements OnInit {
 
   ngOnInit() {
     this.type_catagory = 'income';
-    
+ 
   }
 
   // * @Function   : back => ย้อนกลับไปหน้า add

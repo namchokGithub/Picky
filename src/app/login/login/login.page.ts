@@ -90,8 +90,8 @@ export class LoginPage implements OnInit {
   async validate() {
     await this.presentLoading();
     if (await this.check_login()) {
+      await this.UserService.set_session_user(this.userlogin); // set user session
       console.log('true');
-      console.log('login page ' + this.userlogin);
       this.selectAccount(); // Goto page select account
     } else {
       console.log('false');
@@ -125,8 +125,7 @@ export class LoginPage implements OnInit {
    */
   async check_login() {
     this.userlogin = this.db_user.find(user =>  user.user_id === this.username);
-    if(this.userlogin.user_password === this.password){
-      this.UserService.set_session_user(this.userlogin);
+    if (this.userlogin) {
       return true;
     } else {
       return false;

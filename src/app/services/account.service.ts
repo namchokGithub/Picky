@@ -22,16 +22,16 @@ export interface person {
   id?: string;
   account_balance: string;
   account_name: string;
+  account_type: string;
   account_user_id: string;
   account_user_name: string;
-  account_type: string;
 }
 
 export interface family {
   id?: string;
   account_balance: string;
-  account_name: string;
   account_member: any[];
+  account_name: string;
   account_type: string;
 }
 
