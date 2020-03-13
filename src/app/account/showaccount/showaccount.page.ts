@@ -29,7 +29,10 @@ export class ShowaccountPage implements OnInit {
     this.menu.enable(true, 'menuSilde');
   }
 
-  /* ไปสู่หน้า Add Account */
+  /**
+   * Name: Naruemon
+   *ไปสู่หน้า Add Account 
+  */ 
   openAddAccount() {
     console.log('Click');
     this.router.navigate(['addaccount']);
@@ -43,13 +46,17 @@ export class ShowaccountPage implements OnInit {
     this.router.navigateByUrl('home', { replaceUrl: true });
   }
 
-  /*ไปสู่หน้า Setting */
+  /**
+   * Name: Naruemon
+   * ไปสู่หน้า Setting */
   openSetting() {
     console.log('Clcik');
     this.router.navigate(['familymanagement']);
 
   }
-  /* ลบ Account บัญชีออก */
+  /**
+   * Name: Naruemon
+   * ลบ Account บัญชีออก */
   removeAccount(data) {
     const index = this.Data.indexOf(data);
 
