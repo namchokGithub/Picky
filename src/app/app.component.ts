@@ -5,6 +5,12 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { UserService, User } from 'src/app/services/user.service';
 
+/* File Name : app.component.ts
+  Author : Namchock
+  Description : แสดงแทบเมนูระบบ
+  Date : -
+  Update : 13-03-20 | Naruemon*/
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -12,36 +18,38 @@ import { UserService, User } from 'src/app/services/user.service';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
+  // tslint:disable-next-line: variable-name
   private user_session: any;
-  private name: string;
+  public name = '';
   public appPages = [
     {
-      title: 'Home',
+      // ไปที่หน้าแรกของระบบ (Home)
+      title: 'หน้าแรก',
       url: '/home',
       icon: 'home'
     },
-    {
-      title: 'Transactions',
+    { // ไปที่หน้าทำธุรกรรม (Transactions)
+      title: 'ธุรกรรม',
       url: '/list-transactions',
       icon: 'card'
     },
-    {
-      title: 'Account',
+    { // ไปที่หน้าบัญชี (Account)
+      title: 'บัญชี',
       url: '/showaccount',
       icon: 'person'
     },
-    {
-      title: 'Report',
+    { // ไปที่หน้ารายงานบัญชี (Report)
+      title: 'รายงาน',
       url: '/report',
       icon: 'bar-chart'
     },
-    {
-      title: 'Setting',
-      url: '/setting',
+    { // ไปที่หน้าการตั้งต่า (Setting)
+      title: 'การตั้งค่า',
+      url: '/setting', 
       icon: 'settings'
     },
-    {
-      title: 'Logout',
+    { // เมนูออกจากระบบ โดยกลับไปที่หน้า login
+      title: 'ออกจากระบบ',
       url: '/login',
       icon: 'log-out'
     }
@@ -66,7 +74,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.loadName();
-
     const path = window.location.pathname.split('home/')[1];
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(
