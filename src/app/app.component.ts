@@ -64,14 +64,22 @@ export class AppComponent implements OnInit {
   ) {
     this.initializeApp();
   }
-
+  /**
+   * function: initializeApp
+   * Name: -
+   * Description:
+  */ 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
   }
-
+  /**
+   * function: ngOnInit
+   * Name: -
+   * Description:
+  */ 
   ngOnInit() {
     this.loadName();
     const path = window.location.pathname.split('home/')[1];
@@ -81,12 +89,20 @@ export class AppComponent implements OnInit {
       );
     }
   }
-
+  /**
+   * function: loadName
+   * Name: -
+   * Description: โหลดชื่อผู้ใช้
+  */ 
   loadName() {
     this.user_session = this.userService.get_session_user();
     this.name = this.user_session.user_name;
   }
-
+  /**
+   * function: callpageAdd
+   * Name: -
+   * Description: เรียกหน้า Add
+  */ 
   callpageAdd() {
     console.log('click');
   }
