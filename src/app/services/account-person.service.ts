@@ -70,7 +70,23 @@ export class AccountPersonService {
           account_person.id = id;
           return account_person;
         })
-      );
+    );
+  }
+
+  // Function get_acount_person_By_Id
+  // create by : kittisak noidonpai
+  // จะทำการคืนค่า acount_person ตาม id ที่ทำการส่งเข้ามา
+  get_acount_person_By_user_Id(id: string): Observable<Person> {
+    return this.account_person_collection
+      .doc<Person>(id)
+      .valueChanges()
+      .pipe(
+        take(999),
+        map(account_person => {
+          account_person.user_id = id;
+          return account_person;
+        })
+    );
   }
 
   // Function add_account_person
