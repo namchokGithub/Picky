@@ -10,7 +10,7 @@
 
     <ion-card>
         <ion-card-header>
-            <ion-text size="6">nick</ion-text>
+            <ion-text size="6">{{account_name}}</ion-text>
         </ion-card-header>
 
         <ion-card-content>
@@ -18,12 +18,12 @@
                 <ion-row>
                     <ion-col>
                         <ion-text>
-                            <p class="">Inflow</p>
+                            <p class="">รายรับ</p>
                         </ion-text>
                     </ion-col>
                     <ion-col>
                         <ion-text>
-                            <p class="text-green text-right">฿ 0</p>
+                            <p class="text-green text-right">฿ {{income}}</p>
                         </ion-text>
                     </ion-col>
                 </ion-row>
@@ -31,12 +31,12 @@
                 <ion-row>
                     <ion-col>
                         <ion-text>
-                            <p class="">Outflow</p>
+                            <p class="">รายจ่าย</p>
                         </ion-text>
                     </ion-col>
                     <ion-col class="line-red">
                         <ion-text>
-                            <p class="text-red text-right">฿ 4,000</p>
+                            <p class="text-red text-right">฿ {{express}}</p>
                         </ion-text>
                     </ion-col>
                 </ion-row>
@@ -49,7 +49,7 @@
                     </ion-col>
                     <ion-col>
                         <ion-text>
-                            <p class="text-right">- ฿ 4,000</p>
+                            <p class="text-right">{{balance}}</p>
                         </ion-text>
                     </ion-col>
                 </ion-row>
@@ -63,25 +63,22 @@
         </ion-card-header>
 
         <ion-card-content>
-            <ion-grid>
+            <div *ngIf="value; else show">
+                <p>ไม่มีการบันทึกรายรับรายจ่าย</p>
+            </div>
+            <ion-grid ng-template #show *ngFor="let transaction of transaction">
                 <ion-row>
                     <ion-col>
-                        <ion-text class="">Education</ion-text>
+                        <ion-text class="">{{transaction.tran_category_name}}</ion-text>
                     </ion-col>
-                    <ion-col>
+                    <ion-col *ngIf="transaction.tran_category_type == 'income';else express">
                         <ion-text class="text-red text-right">
-                            <p>฿ 2,500</p>
+                            <p>฿ {{transaction.tran_amount}}</p>
                         </ion-text>
                     </ion-col>
-                </ion-row>
-
-                <ion-row>
-                    <ion-col>
-                        <ion-text class="">Fitness</ion-text>
-                    </ion-col>
-                    <ion-col>
-                        <ion-text class="text-red text-right">
-                            <p>฿ 1,500</p>
+                    <ion-col ng-template #express>
+                        <ion-text class="text-green text-right">
+                            <p>฿ {{transaction.tran_amount}}</p>
                         </ion-text>
                     </ion-col>
                 </ion-row>
