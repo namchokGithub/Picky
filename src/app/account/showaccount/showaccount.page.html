@@ -22,13 +22,13 @@
                 <!-- for loop -->
                 <ion-item-sliding *ngFor="let data of Data">
                     <ion-item>
-                        <ion-label>{{data}}</ion-label>
+                        <ion-label>{{data.name_account}}</ion-label>
                     </ion-item>
                     <!-- button -->
                     <ion-item-options side="end">
                         <ion-item-option color="success" (click)="selecet_account()">เลือก</ion-item-option>
                         <ion-item-option color="medium" (click)="openSetting()">ตั้งค่า</ion-item-option>
-                        <ion-item-option color="danger" (click)="removeAccount(data)">ลบ</ion-item-option>
+                        <ion-item-option color="danger" (click)="removeAccount(data.id)">ลบ</ion-item-option>
                     </ion-item-options>
                     <!-- End button -->
                 </ion-item-sliding>

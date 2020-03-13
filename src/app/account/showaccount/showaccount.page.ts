@@ -14,39 +14,36 @@ import { UserService } from './../../services/user.service';
 
 export class ShowaccountPage implements OnInit {
 
-  private userlogin: any = [];
-  
+  public userlogin: any = [];
+
   constructor(public navCtrl: NavController,
-     private router: Router, 
-     private activatedRoute: ActivatedRoute,
-     private accountPersonService: AccountPersonService,
-     private accountFamilyService: AccountFamilyService,
-     private accountBusinessService: AccountBusinessService,
-     private userService: UserService) { }
+              private router: Router,
+              private activatedRoute: ActivatedRoute,
+              private accountPersonService: AccountPersonService,
+              private accountFamilyService: AccountFamilyService,
+              private accountBusinessService: AccountBusinessService,
+              private userService: UserService) { }
 
   /*balance = ['1000','2000','3000']
   name_account = ['บัญชีส่วนตัว', 'บัญชีเงินฝาก', 'บัญชีเงินเก็บ'];
   type_account = ['ครอบครัว','องค์กร','ผู้ใช้ทั่วไป']
   user_member = [0,1,2,3]*/
 
-  private Data: any [];
+  public Data = new Array();
   ngOnInit() {
     this.userlogin = this.userService.get_session_user();
-
-      console.log(this.userlogin);
+    console.log(this.userlogin);
     this.accountPersonService.get_account_person().subscribe(async res => {
-      this.check_account(res);
+      this.check_account_person(res);
     });
 
     this.accountFamilyService.get_account_family().subscribe(async res => {
-      this.check_account(res);
+      this.check_account_family(res);
     });
     this.accountBusinessService.get_account_business().subscribe(async res => {
-      this.check_account(res);
+      this.check_account_business(res);
     });
 
-    
-    
   }
   /* ไปสู่หน้า Add Account */
   openAddAccount() {
@@ -54,9 +51,11 @@ export class ShowaccountPage implements OnInit {
     this.router.navigate(['addaccount']);
   }
 
-  /* เลือก Account ไปสู่หน้า Home */
+  /**
+   * @Name Naerumon
+   * เลือก Account ไปสู่หน้า Home
+   */
   selecet_account() {
-    console.log('Clcik');
     this.router.navigateByUrl('home', { replaceUrl: true });
   }
 
@@ -68,19 +67,26 @@ export class ShowaccountPage implements OnInit {
   }
   /* ลบ Account บัญชีออก */
   removeAccount(data) {
-    const index = this.Data.indexOf(data);
-
-    if (index > -1) {
-      this.Data.splice(index, 1);
-    }
+    console.log(data);
   }
 
   gotomanagementFamily() {
     console.log('gotomanagementFamily');
   }
 
-  check_account(data_account){ 
+  check_account_person(data_account) {
+       // tslint:disable-next-line: prefer-for-of
+       for (let i = 0; i < data_account.length ; i++) {
+        if (this.userlogin.user_id === data_account[i].user_id) {
+          this.Data.push(data_account[i]);
+        }
+       }
+  }
 
+  check_account_family(data_account) {
+  }
+
+  check_account_business(data_account) {
   }
 
 }

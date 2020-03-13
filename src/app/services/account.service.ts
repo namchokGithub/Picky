@@ -1,3 +1,4 @@
+import { Family } from './account-family.service';
 import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
@@ -15,6 +16,8 @@ export interface Account {
   type_account: string;
   user_member:[];
 }
+
+
 // ไปคอมเม้นมาทุกส่วน
 @Injectable({
   providedIn: 'root'
