@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, MenuController } from '@ionic/angular';
 import { VirtualTimeScheduler } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountPersonService } from './../../services/account-person.service';
@@ -16,13 +16,11 @@ export class ShowaccountPage implements OnInit {
 
   public userlogin: any = [];
 
-  constructor(public navCtrl: NavController,
-              private router: Router,
-              private activatedRoute: ActivatedRoute,
-              private accountPersonService: AccountPersonService,
-              private accountFamilyService: AccountFamilyService,
-              private accountBusinessService: AccountBusinessService,
-              private userService: UserService) { }
+  constructor(private menu: MenuController
+            , public navCtrl: NavController
+            , private router: Router
+            , private activatedRoute: ActivatedRoute
+            ,private userService:UserService ) { }
 
   /*balance = ['1000','2000','3000']
   name_account = ['บัญชีส่วนตัว', 'บัญชีเงินฝาก', 'บัญชีเงินเก็บ'];
@@ -31,18 +29,9 @@ export class ShowaccountPage implements OnInit {
 
   public Data = new Array();
   ngOnInit() {
+    this.menu.enable(true, 'menuSilde');
     this.userlogin = this.userService.get_session_user();
     console.log(this.userlogin);
-    this.accountPersonService.get_account_person().subscribe(async res => {
-      this.check_account_person(res);
-    });
-
-    this.accountFamilyService.get_account_family().subscribe(async res => {
-      this.check_account_family(res);
-    });
-    this.accountBusinessService.get_account_business().subscribe(async res => {
-      this.check_account_business(res);
-    });
 
   }
   /* ไปสู่หน้า Add Account */
@@ -81,12 +70,6 @@ export class ShowaccountPage implements OnInit {
           this.Data.push(data_account[i]);
         }
        }
-  }
-
-  check_account_family(data_account) {
-  }
-
-  check_account_business(data_account) {
   }
 
 }
