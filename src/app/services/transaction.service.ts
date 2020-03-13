@@ -98,11 +98,8 @@ export class TransactionService {
 
   // Function delete_transaction
   // create by : kittisak noidonpai
-  // จะทำการ ลบข้อมูลของ transaction ตาม id ใน firestore
+  // จะทำการ ลบข้อมูลของ user ตาม id ใน firestore
   delete_transaction(id: string): Promise<void> {
     return this.transaction_collection.doc(id).delete();
   }
-
-  
-
 }
