@@ -1,72 +1,57 @@
+// import injectable from angular/core
 import { Injectable } from '@angular/core';
+
+// import AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference from angular/fire/firestore
 import {
   AngularFirestore,
   AngularFirestoreCollection,
   AngularFirestoreDocument,
   DocumentReference
 } from '@angular/fire/firestore';
+
+
+// import map,take from rxjs/operators
 import { map, take } from 'rxjs/operators';
+
+// import Observable from rxjs
 import { Observable } from 'rxjs';
 
-export interface Account {
+// import async from angular/core/testing
+import { async } from '@angular/core/testing';
+
+export interface Person {
   id?: string;
   balance: number;
   name_account: string;
-  type_account: string;
-  user_member:[];
+  user_id: string;
+  user_name: string;
+  account_type:string
 }
-// ไปคอมเม้นมาทุกส่วน
+
+export interface non_Person {
+  id?: string;
+  balance: number;
+  name_account: string;
+  user_member: any[];
+  account_type:string
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-  private account: Observable<Account[]>;
-  private account_Collection: AngularFirestoreCollection<Account>;
+  // account_person valible angular
+  private account_person: Observable<Person[]>;
 
-  constructor(private afs: AngularFirestore) {
-    this.account_Collection = this.afs.collection<Account>('account');
-    this.account = this.account_Collection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
-          return { id, ...data };
-        });
-      })
-    );
-  }
+  // account_person_collection valible angular
+  private account_person_collection: AngularFirestoreCollection<Person>;
 
-  get_account(): Observable<Account[]> {
-    return this.account;
-  }
+  // account_non_person
+  private account_non_person: Observable<non_Person[]>;
 
-  get_account_By_Id(id: string): Observable<Account> {
-    return this.account_Collection
-      .doc<Account>(id)
-      .valueChanges()
-      .pipe(
-        take(1),
-        map(account => {
-          account.id = id;
-          return account;
-        })
-      );
-  }
+  // account_non_person_collection valible angular
+  private account_non_person_collection: AngularFirestoreCollection<non_Person>;
 
-  add_account(Account: Account): Promise<DocumentReference> {
-    return this.account_Collection.add(Account);
-  }
-
-  update_account(Account: Account): Promise<void> {
-    return this.account_Collection.doc(Account.id).update({
-      balance: Account.balance,
-      name_account: Account.name_account,
-      type_account: Account.type_account,
-      user_member: Account.user_member
-    });
-  }
-
-  delete_account(id: string): Promise<void> {
-    return this.account_Collection.doc(id).delete();
-  }
+  constructor() { }
 }
