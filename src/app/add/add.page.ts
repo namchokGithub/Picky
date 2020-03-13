@@ -61,7 +61,7 @@ export class AddPage implements OnInit {
   // * @Author     : Komsan Tesana
   // * @Create Date: 10/3/2563
   goCategoryPage() {
-    this.router.navigate(['category']);
+    this.router.navigate(['category'],{queryParams: {account_id: this.account_id, account_name: this.account_name}} );
   }
 
   // * @Function   : back => ย้อนไปยังหน้า home
@@ -108,8 +108,8 @@ export class AddPage implements OnInit {
         this.transaction.tran_note = this.note;
         this.transaction.tran_user = this.user_session.user_id;
         this.transactionService.add_transaction(this.transaction);
-        console.log( this.transaction);
-      this.router.navigate(['home']);
+        console.log(this.transaction);
+      this.router.navigate(['home'],{queryParams: {account_id: this.account_id, account_name: this.account_name}});
   }
 
   // * @Function   : validate => เช็คค่าหากไม่มีการกรอกข้อมูล จะทำการแสดงข้อความแจ้งเตือน
