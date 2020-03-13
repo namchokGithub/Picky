@@ -90,15 +90,9 @@ export class LoginPage implements OnInit {
   async validate() {
     await this.presentLoading();
     if (await this.check_login()) {
-<<<<<<< HEAD
-      console.log("check_login  = true");
-      this.goHomePage();
-=======
-      await this.UserService.set_session_user(this.userlogin); // set user session
       console.log('true');
       console.log('login page ' + this.userlogin);
       this.selectAccount(); // Goto page select account
->>>>>>> fec9fdacf0c89cdadf70c68353dbdf986b94a60a
     } else {
       console.log('false');
       this.alertInput('ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง');
@@ -131,12 +125,8 @@ export class LoginPage implements OnInit {
    */
   async check_login() {
     this.userlogin = this.db_user.find(user =>  user.user_id === this.username);
-<<<<<<< HEAD
     if(this.userlogin.user_password === this.password){
       this.UserService.set_session_user(this.userlogin);
-=======
-    if (this.userlogin) {
->>>>>>> fec9fdacf0c89cdadf70c68353dbdf986b94a60a
       return true;
     } else {
       return false;
