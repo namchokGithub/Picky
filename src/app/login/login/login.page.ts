@@ -93,13 +93,16 @@ export class LoginPage implements OnInit {
 
       console.log("check_login  = true");
       this.goHomePage();
-=======
->>>>>>> b0ed3185b820e60dbd5a12fd436bff041c6c97ba
       await this.UserService.set_session_user(this.userlogin); // set user session
       console.log('true');
       console.log('login page ' + this.userlogin);
       this.selectAccount(); // Goto page select account
 
+=======
+      console.log('true');
+      console.log('login page ' + this.userlogin);
+      this.selectAccount(); // Goto page select account
+>>>>>>> 30d0a59c3f8f33f311e692a245990bd7af27f8ae
     } else {
       console.log('false');
       this.alertInput('ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง');
@@ -133,6 +136,7 @@ export class LoginPage implements OnInit {
   async check_login() {
     this.userlogin = this.db_user.find(user =>  user.user_id === this.username);
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (this.userlogin) {
 =======
 <<<<<<< HEAD
@@ -142,6 +146,10 @@ export class LoginPage implements OnInit {
     if (this.userlogin) {
 >>>>>>> fec9fdacf0c89cdadf70c68353dbdf986b94a60a
 >>>>>>> b0ed3185b820e60dbd5a12fd436bff041c6c97ba
+=======
+    if(this.userlogin.user_password === this.password){
+      this.UserService.set_session_user(this.userlogin);
+>>>>>>> 30d0a59c3f8f33f311e692a245990bd7af27f8ae
       return true;
     } else {
       return false;
