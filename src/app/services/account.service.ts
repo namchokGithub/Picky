@@ -69,7 +69,7 @@ export class AccountService {
   // create by : kittisak noidonpai
   // จะทำการคืนค่า acount แบบบุคคล TYPE person
 
-  get_account_person(): Observable<person[]> {
+  get_account(): Observable<person[]> {
     return (this.account_person = this.account_person_collection
       .snapshotChanges()
       .pipe(
@@ -128,7 +128,7 @@ export class AccountService {
       .doc<person>(id)
       .valueChanges()
       .pipe(
-        take(999),
+        take(1),
         map(account_person => {
           account_person.id = id;
           return account_person;
@@ -145,7 +145,7 @@ export class AccountService {
       .doc<family>(id)
       .valueChanges()
       .pipe(
-        take(999),
+        take(1),
         map(account_family => {
           account_family.id = id;
           return account_family;
@@ -162,7 +162,7 @@ export class AccountService {
       .doc<enterprise>(id)
       .valueChanges()
       .pipe(
-        take(999),
+        take(1),
         map(account_enterprise => {
           account_enterprise.id = id;
           return account_enterprise;
@@ -239,24 +239,10 @@ export class AccountService {
   // create by : kittisak noidonpai
   // จะทำการ ลบข้อมูลของ account_person ตาม id ใน firestore
 
-  delete_account_person(id: string): Promise<void> {
+  delete_account(id: string): Promise<void> {
     return this.account_person_collection.doc(id).delete();
   }
 
-  // Function delete_family_person
-  // create by : kittisak noidonpai
-  // จะทำการ ลบข้อมูลของ account_person ตาม id ใน firestore
-
-  delete_family_person(id: string): Promise<void> {
-    return this.account_family_collection.doc(id).delete();
-  }
-
-  // Function delete_ecterprise_person
-  // create by : kittisak noidonpai
-  // จะทำการ ลบข้อมูลของ account_person ตาม id ใน firestore
-
-  delete_ecterprise_person(id: string): Promise<void> {
-    return this.account_enterprise_collection.doc(id).delete();
-  }
+  
 
 }

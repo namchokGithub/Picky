@@ -21,6 +21,7 @@ import { async } from "@angular/core/testing";
 
 export interface transaction {
   id?: string;
+  tran_account_id:string;
   tran_account: string;
   tran_amount: string;
   tran_category_type: string;

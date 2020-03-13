@@ -5,7 +5,7 @@ import {
   ToastController,
   ModalController
 } from '@ionic/angular';
-import { ListRecordService } from './../../services/list-record.service';
+
 
 @Component({
   selector: 'app-category',
@@ -42,8 +42,7 @@ export class CategoryPage implements OnInit {
   public categores: any = [];
   constructor(
     private nav: NavController,
-    private router: Router,
-    private ListRecordService: ListRecordService
+    private router: Router
   ) {}
 
   // * @Function   : ngOnInit => ดึงข้อมูลจาก ListRecordService แล้วทำการบันทึกข้อมูล ลง array โดยมีการแยกประเภท Income ,  expense
@@ -52,19 +51,7 @@ export class CategoryPage implements OnInit {
 
   ngOnInit() {
     this.type_catagory = 'income';
-    this.ListRecordService.get_list_record().subscribe(async res => {
-      console.log(res);
-      this.categorys = res;
-      for (let i = 0; i < this.categorys.length; i++) {
-        if (this.categorys[i].record_type === 'Income') {
-          this.category_income.push(res[i]);
-        } else {
-          this.category_expense.push(res[i]);
-        }
-      }
-      console.log(this.category_income);
-      console.log(this.category_expense);
-    });
+    
   }
 
   // * @Function   : back => ย้อนกลับไปหน้า add
