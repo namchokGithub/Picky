@@ -19,7 +19,7 @@
                 <!-- Text Little -->
                 <ion-col>
                     <div class="ion-text-center">
-                        <ion-title>บัญชีที่ 2 Family</ion-title>
+                        <ion-title>{{account_name}}</ion-title>
                     </div>
                 </ion-col>
                 <!-- End Text Little -->
@@ -27,7 +27,7 @@
                 <!-- Icon logout -->
                 <ion-col class="ion-text-right">
                     <div class="margin-top text-right">
-                        <ion-icon class="icon" (click)="logout()" name="log-out"></ion-icon>
+
                     </div>
                 </ion-col>
                 <!-- End Icon logout -->
@@ -57,23 +57,45 @@
         <ion-card-content>
             <ion-grid>
                 <!-- Show List Family -->
-                <ion-list *ngFor="let name of Name">
+                <ion-list *ngFor="let account of account.account_member">
                     <ion-item-sliding>
-                        <ion-item>
-                            <ion-label>{{ name }}</ion-label>
+                        <ion-item *ngIf="user_session.user_id != account.user_id">
+                            <ion-label>{{ account.user_id }}</ion-label>
                         </ion-item>
                         <!-- Button delete -->
                         <ion-item-options side="end">
-                            <ion-item-option color="danger" (click)="delete(name)">Delete</ion-item-option>
+                            <ion-item-option color="danger" (click)="delete(account.id)">Delete</ion-item-option>
                         </ion-item-options>
                         <!-- End Button delete -->
                     </ion-item-sliding>
                 </ion-list>
                 <!-- End Show List Family -->
+
+                <ion-row>
+                    <ion-col class="ionic-text-start" size="9">
+                        <ion-input type="text" [(ngModel)]="sharename" name="sharename" placeholder="ไอดีบัญชีผู้ใช้ที่จะแชร์ร่วม">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                        </ion-input>
+                    </ion-col>
+
+                    <ion-col class="ionic-text-end" size="3">
+                        <ion-toolbar>
+                            <ion-button slot="end" (click)="searchusername()" size="small">
+                                <ion-icon name="search"></ion-icon>
+                            </ion-button>
+                        </ion-toolbar>
+
+                    </ion-col>
+
+                </ion-row>
+
             </ion-grid>
         </ion-card-content>
     </ion-card>
     <!-- Button confirm -->
+
+
+
     <ion-card-content>
         <ion-button expand="block" (click)="alert()">ยืนยัน</ion-button>
     </ion-card-content>

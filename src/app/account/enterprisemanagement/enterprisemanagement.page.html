@@ -1,22 +1,30 @@
 <ion-header>
-    <ion-toolbar color="primary">
+    <ion-toolbar>
         <ion-grid>
             <ion-row>
+                <!--Icon Back -->
                 <ion-col>
                     <div class="margin-top">
-                        <ion-icon name="arrow-back-circle"></ion-icon>
+                        <ion-icon class="icon" (click)="back()" name="arrow-back-circle"></ion-icon>
                     </div>
                 </ion-col>
+                <!-- end Icon Back -->
+
+                <!-- Text Little -->
                 <ion-col>
                     <div class="ion-text-center">
                         <ion-title>บัญชีผู้ใช้ Enterprise</ion-title>
                     </div>
                 </ion-col>
+                <!-- End Text Little -->
+
+                <!-- Icon logout -->
                 <ion-col class="ion-text-right">
                     <div class="margin-top text-right">
-                        <ion-icon name="log-out"></ion-icon>
+
                     </div>
                 </ion-col>
+                <!-- End Icon logout -->
 
             </ion-row>
         </ion-grid>
@@ -27,10 +35,11 @@
 
 <ion-content>
     <div class="ion-text-center">
-        <img class="sizeimg" decoding="async" src="assets/icon/male.png">
+        <img class="sizeimg" decoding="async" src="assets/icon/male.png" width="60%" height="60%">
     </div>
 
     <ion-card>
+
         <ion-card-header>
             <div class="ion-text-center">
                 <ion-title>List Shared with</ion-title>
@@ -38,44 +47,51 @@
         </ion-card-header>
 
         <ion-card-content>
-            <ion-grid>
-                <ion-row>
-                    <ion-col>
-                        <ion-title>DEV</ion-title>
-                    </ion-col>
-                    <ion-col>
-                        <div class="margin-top ion-text-end">
-                            <ion-icon name="trash"></ion-icon>
-                        </div>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
 
+
+            <ion-grid>
+                <ion-list *ngFor="let account of account.account_member">
+                    <ion-item-sliding>
+                        <ion-item *ngIf="user_session.user_id != account.user_id">
+                            <ion-label>{{ account.user_id }}</ion-label>
+                        </ion-item>
+                        <!-- Button delete -->
+                        <ion-item-options side="end">
+                            <ion-item-option color="danger" (click)="delete(account.id)">Delete</ion-item-option>
+                        </ion-item-options>
+                        <!-- End Button delete -->
+                    </ion-item-sliding>
+                </ion-list>
+
+
+            </ion-grid>
         </ion-card-content>
 
 
+
+        <ion-card-content>
+            <ion-grid>
+                <ion-item>
+                    <ion-label>ID</ion-label>
+                    <ion-input type="text" [(ngModel)]="sharename" name="sharename" id="sharename" placeholder="ไอดีบัญชีผู้ใช้ที่จะแชร์ร่วม">
+                        <ion-icon name="person-circle-outline"></ion-icon>
+                    </ion-input>
+                    <ion-button slot="end" (click)="searchusername()" size="small">
+                        <ion-icon name="search"></ion-icon>
+                    </ion-button>
+
+
+                </ion-item>
+
+
+
+
+
+            </ion-grid>
+        </ion-card-content>
+
     </ion-card>
 
-    <ion-card-content>
-        <form (ngSubmit)="logForm()">
-            <ion-item>
-                <ion-label>name</ion-label>
-                <ion-input type="text" [(ngModel)]="Person.name" name="name"></ion-input>
-            </ion-item>
-
-            <ion-item>
-                <ion-label>Position</ion-label>
-                <ion-select [(ngModel)]="Person.position" placeholder="Select One">
-                    <ion-select-option value="f">Ceo</ion-select-option>
-                    <ion-select-option value="m">Manager</ion-select-option>
-                    <ion-select-option value="f">Staff</ion-select-option>
-                </ion-select>
-
-            </ion-item>
-            <ion-card-content>
-                <ion-button (click)="adddata()" expand="block">confirm</ion-button>
-            </ion-card-content>
-        </form>
-    </ion-card-content>
+    <ion-button expand="block" (click)="alert()">confirm</ion-button>
 
 </ion-content>

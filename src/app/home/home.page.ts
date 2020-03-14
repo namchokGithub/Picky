@@ -86,9 +86,6 @@ export class HomePage implements OnInit {
     }
     this.balance = this.income - this.Expense;
   } 
-  
-  
-
 
   add(){
     this.income = 0;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { NavController, MenuController } from "@ionic/angular";
+import { NavController, MenuController, LoadingController } from "@ionic/angular";
 import { VirtualTimeScheduler } from "rxjs";
 import { ActivatedRoute, Router } from "@angular/router";
 import { UserService, User } from "src/app/services/user.service";
@@ -27,7 +27,8 @@ export class ShowaccountPage implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private userService:UserService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private loadingController: LoadingController
   ) {}
 
   ngOnInit() {
@@ -58,6 +59,7 @@ export class ShowaccountPage implements OnInit {
         }
       }
 
+      
       console.log(this.account_enterprise);
       console.log(this.account_family);
       console.log(this.account_person);
@@ -76,28 +78,32 @@ export class ShowaccountPage implements OnInit {
    * เลือก Account ไปสู่หน้า Home
    */
   selecet_account(account_id,account_name) {
+    this.presentLoading();
     this.router.navigate(['home'], {queryParams: {account_id:account_id,account_name:account_name}});
   }
 
-  /*ไปสู่หน้า Setting */
-  openSetting() {
-    console.log("Clcik");
-    this.router.navigate(["familymanagement"]);
+  gotomanagementFamily(account_id,account_name) {
+    this.presentLoading();
+    this.router.navigate(["familymanagement"], {queryParams: {account_id:account_id,account_name:account_name}});
   }
-  /* ลบ Account บัญชีออก */
-  // removeAccount(data) {
-  //   const index = this.Data.indexOf(data);
 
-  //   if (index > -1) {
-  //     this.Data.splice(index, 1);
-  //   }
-  // }
+  gotomanagementEnterprise(account_id,account_name) {
 
-  gotomanagementFamily() {
-    console.log("gotomanagementFamily");
+    this.presentLoading();
+    this.router.navigate(["enterprisemanagement"], {queryParams: {account_id:account_id,account_name:account_name}});
   }
 
   removeAccount(id) {
+    this.presentLoading();
     this.accountService.delete_account(id);
+  }
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'รอสักครู่...',
+      duration: 200
+    });
+    await loading.present();
+    const { role, data } = await loading.onDidDismiss();
   }
 }

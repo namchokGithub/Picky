@@ -61,6 +61,10 @@ export class UserService {
       );
   }
 
+
+
+   
+
   // Function add_user
   // create by : kittisak noidonpai
   // จะทำการ บันทึกข้อมูลของ user ลงใน firestore

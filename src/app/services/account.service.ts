@@ -216,7 +216,7 @@ export class AccountService {
     return this.account_family_collection.doc(family.id).update({
       balance : family.account_balance,
       name_account: family.account_name,
-      account_member:family.account_member,
+      account_member: family.account_member,
       account_type: family.account_type
     });
   }
