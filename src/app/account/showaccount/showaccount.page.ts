@@ -85,13 +85,13 @@ export class ShowaccountPage implements OnInit {
 
   gotomanagementFamily(account_id,account_name) {
     this.presentLoading();
-    this.router.navigate(['familymanagement']);
+    this.router.navigate(['familymanagement'], {queryParams: {account_id:account_id,account_name:account_name}});
   }
 
   gotomanagementEnterprise(account_id,account_name) {
 
     this.presentLoading();
-    this.router.navigate(['enterprisemanagement']);
+    this.router.navigate(['enterprisemanagement'], {queryParams: {account_id:account_id,account_name:account_name}});
   }
 
   removeAccount(id) {

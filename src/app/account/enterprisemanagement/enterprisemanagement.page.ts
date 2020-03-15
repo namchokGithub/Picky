@@ -44,8 +44,15 @@ export class EnterprisemanagementPage implements OnInit {
       this.db_user = res;
       
     });
-   this.account_id = this.accountService.get_session_account_id();
-   this.account_name = this.accountService.get_session_account_name();
+  
+    
+    this.activatedRoute.queryParamMap.subscribe(params => {
+      this.account_id  = params.get('account_id');
+      this.account_name = params.get('account_name');
+   });
+   console.log(this.account_id);
+
+
    this.accountService.get_acount_enterprise_By_Id(this.account_id).subscribe(res => {
     
     this.account = res;
