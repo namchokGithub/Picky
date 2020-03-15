@@ -8,9 +8,11 @@ import {
 } from "@ionic/angular";
 import { ActivatedRoute, Router } from "@angular/router";
 import { UserService, User } from "src/app/services/user.service";
+import { AccountService } from 'src/app/services/account.service'
 import { TransactionService, transaction } from 'src/app/services/transaction.service';
 import { from } from "rxjs";
 import { async } from '@angular/core/testing';
+import { importExpr } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: "app-home",
   templateUrl: "./home.page.html",
@@ -32,7 +34,8 @@ export class HomePage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private user: UserService,
-    private transactionService : TransactionService
+    private transactionService : TransactionService,
+    private accountService:AccountService
   ) {
     
   }
@@ -42,16 +45,15 @@ export class HomePage implements OnInit {
     this.Expense = 0;
     this.balance = 0;
     this.value = true;
-    this.activatedRoute.queryParamMap.subscribe(params => {
-      this.account_id  = params.get('account_id')
-      //console.log(this.account_id)
-      this.account_name = params.get('account_name')
-      //console.log(this.account_name)
-   });
-
     this.menu.enable(true, "menuSilde");
     this.load_session_user();
-    this.get_transaction()
+    this.load_session_account();
+  }
+
+  async load_session_account(){
+    this.account_id = this.accountService.get_session_account_id()
+    this.account_name = this.accountService.get_session_account_name();
+    await this.get_transaction();
   }
 
   load_session_user() {

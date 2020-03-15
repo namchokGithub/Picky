@@ -80,18 +80,18 @@ export class ShowaccountPage implements OnInit {
   selecet_account(account_id, account_name) {
     this.presentLoading();
     this.accountService.set_session_account(account_id, account_name)
-    this.router.navigate(['home'], {queryParams: {account_id:account_id,account_name:account_name}});
+    this.router.navigate(['home']);
   }
 
   gotomanagementFamily(account_id,account_name) {
     this.presentLoading();
-    this.router.navigate(['familymanagement'], {queryParams: {account_id:account_id,account_name:account_name}});
+    this.router.navigate(['familymanagement']);
   }
 
   gotomanagementEnterprise(account_id,account_name) {
 
     this.presentLoading();
-    this.router.navigate(['enterprisemanagement'], {queryParams: {account_id:account_id,account_name:account_name}});
+    this.router.navigate(['enterprisemanagement']);
   }
 
   removeAccount(id) {
