@@ -20,19 +20,47 @@
             <ion-list>
                 <!-- Sliding item with text options on both sides -->
                 <!-- for loop -->
-                <ion-item-sliding *ngFor="let data of Data">
-                    <ion-item>
-                        <ion-label>{{data}}</ion-label>
+                <ion-item-sliding *ngFor="let person of account_person">
+                    <ion-item *ngIf="person.account_user_id === session.user_id">
+                        <ion-label>{{person.account_name}}</ion-label>
                     </ion-item>
                     <!-- button -->
                     <ion-item-options side="end">
-                        <ion-item-option color="success" (click)="selecet_account()">เลือก</ion-item-option>
-                        <ion-item-option color="medium" (click)="openSetting()">ตั้งค่า</ion-item-option>
-                        <ion-item-option color="danger" (click)="removeAccount(data)">ลบ</ion-item-option>
+                        <ion-item-option color="success" (click)="selecet_account(person.id,person.account_name)">เลือก</ion-item-option>
+                        <ion-item-option color="danger" (click)="removeAccount(person.id)">ลบ</ion-item-option>
                     </ion-item-options>
                     <!-- End button -->
                 </ion-item-sliding>
-                <!-- End Sliding item with text options on both sides -->
+                <ion-item-sliding *ngFor="let family of account_family">
+                    <div *ngFor="let member of family.account_member">
+                        <ion-item *ngIf="member.user_id == session.user_id">
+                            <ion-label>{{family.account_name}}</ion-label>
+                        </ion-item>
+                        <!-- button -->
+                        <ion-item-options side="end">
+                            <ion-item-option color="success" (click)="selecet_account(family.id,family.account_name)">เลือก</ion-item-option>
+                            <ion-item-option color="medium" (click)="gotomanagementFamily(family.id,family.account_name)">ตั้งค่า</ion-item-option>
+                            <ion-item-option color="danger" (click)="removeAccount(family.id)">ลบ</ion-item-option>
+                        </ion-item-options>
+                        <!-- End button -->
+                    </div>
+                </ion-item-sliding>
+                <ion-item-sliding *ngFor="let enterprise of account_enterprise">
+                    <div *ngFor="let member of enterprise.account_member">
+                        <ion-item *ngIf="member.user_id == session.user_id">
+                            <ion-label>{{enterprise.account_name}}</ion-label>
+                        </ion-item>
+                        <!-- button -->
+                        <ion-item-options side="end">
+                            <ion-item-option color="success" (click)="selecet_account(enterprise.id,enterprise.account_name)">เลือก</ion-item-option>
+                            <ion-item-option color="medium" (click)="gotomanagementEnterprise(enterprise.id,enterprise.account_name)">ตั้งค่า</ion-item-option>
+                            <ion-item-option color="danger" (click)="removeAccount(enterprise.id)">ลบ</ion-item-option>
+                        </ion-item-options>
+                        <!-- End button -->
+                    </div>
+                </ion-item-sliding>
+
+
             </ion-list>
         </ion-card-content>
 
@@ -50,4 +78,6 @@
 
     </ion-card>
 </ion-content>
+
+
 <!-- End Body -->

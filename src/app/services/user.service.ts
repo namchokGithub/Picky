@@ -61,6 +61,10 @@ export class UserService {
       );
   }
 
+
+
+   
+
   // Function add_user
   // create by : kittisak noidonpai
   // จะทำการ บันทึกข้อมูลของ user ลงใน firestore
@@ -73,9 +77,17 @@ export class UserService {
   // จะทำการ เปลี่ยนข้อมูลของ user ตาม id ใน firestore
   update_user(User: User): Promise<void> {
     return this.user_collection.doc(User.id).update({
-      user_email: User.user_id,
       user_name: User.user_name,
       user_password: User.user_password
+    });
+  }
+
+   // Function update_name_user
+  // create by : komsan tesana
+  // จะทำการ เปลี่ยนข้อมูลชื่อ user ตาม id ใน firestore
+  update_name_user(User: User): Promise<void> {
+    return this.user_collection.doc(User.id).update({
+      user_name: User.user_name
     });
   }
 
