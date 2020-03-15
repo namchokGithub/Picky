@@ -8,7 +8,7 @@ import {
 } from "@ionic/angular";
 import { ActivatedRoute, Router } from "@angular/router";
 import { UserService, User } from "src/app/services/user.service";
-import { TransactionService,transaction } from 'src/app/services/transaction.service';
+import { TransactionService, transaction } from 'src/app/services/transaction.service';
 import { from } from "rxjs";
 import { async } from '@angular/core/testing';
 @Component({
@@ -17,22 +17,22 @@ import { async } from '@angular/core/testing';
   styleUrls: ["./home.page.scss"]
 })
 export class HomePage implements OnInit {
-  private account_id:string;
-  private account_name:string;
-  private income:number;
-  private Expense:number;
-  private balance:number;
-  private account_type:string;
+  private account_id: string;
+  private account_name: string;
+  private income: number;
+  private Expense: number;
+  private balance: number;
+  private account_type: string;
   private user_session: any = [];
   private transaction = []
   private tran = []
-  private value:boolean
+  private value: boolean
   constructor(
     private menu: MenuController,
     private activatedRoute: ActivatedRoute,
-    private router:Router,
+    private router: Router,
     private user: UserService,
-    private transactionService :TransactionService
+    private transactionService : TransactionService
   ) {
     
   }
@@ -49,7 +49,7 @@ export class HomePage implements OnInit {
       //console.log(this.account_name)
    });
 
-    this.menu.enable(true,"menuSilde");
+    this.menu.enable(true, "menuSilde");
     this.load_session_user();
     this.get_transaction()
   }
@@ -58,40 +58,44 @@ export class HomePage implements OnInit {
     this.user_session = this.user.get_session_user();
   }
 
-  get_transaction(){
-     this.transactionService.get_transaction().subscribe( res=>{
+  get_transaction() {
+     this.transactionService.get_transaction().subscribe( res => {
       this.tran = res;
       this.check_transaction()
     })
   }
 
-  check_transaction(){
-   
-    for(let i = 0;i< this.tran.length; i++){
-      console.log(i+' '+this.tran[i].tran_account_id+' '+this.account_id)
-      if(this.tran[i].tran_account_id == this.account_id){
+  check_transaction() {
+    for (let i = 0; i < this.tran.length; i++) {
+      console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + this.account_id)
+      if (this.tran[i].tran_account_id == this.account_id) {
         this.transaction[i] = this.tran[i]
       }
     }
     this.setvalue()
   }
 
-  setvalue(){
-    for(let i = 0;i < this.transaction.length; i++){
-      if(this.transaction[i].tran_category_type == "income"){
-        this.income += parseInt(this.transaction[i].tran_amount)
-      }else{
-        this.Expense += parseInt(this.transaction[i].tran_amount)
+  setvalue() {
+    if (this.transaction.length == 0) {
+      this.value = false;
+    } else {
+      for (let i = 0; i < this.transaction.length; i++) {
+        if (this.transaction[i].tran_category_type == "income") {
+          this.income += parseInt(this.transaction[i].tran_amount)
+        } else {
+          this.Expense += parseInt(this.transaction[i].tran_amount)
+        }
       }
+      this.balance = this.income - this.Expense;
     }
-    this.balance = this.income - this.Expense;
-  } 
 
-  add(){
+  }
+
+  add() {
     this.income = 0;
     this.Expense = 0;
     this.balance = 0;
-    this.router.navigate(['add'], {queryParams: {account_id:this.account_id,account_name:this.account_name}});
+    this.router.navigate(['add'], {queryParams: {account_id: this.account_id, account_name: this.account_name}});
   }
 
  

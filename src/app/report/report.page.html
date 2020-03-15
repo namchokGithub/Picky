@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>Report</ion-title>
+        <ion-title>รายงานการบันทึก</ion-title>
     </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -15,13 +15,10 @@
             </div>
         </ion-col>
     </ion-row>
-    <ion-row>
+    <!-- <ion-row>
         <ion-card style="width: 100%;">
             <ion-card-header>
-                <ion-card-subtitle>Personal Account</ion-card-subtitle>
-                <ion-card-title>
-                    <h3>Namchok Singhachai</h3>
-                </ion-card-title>
+                <ion-card-subtitle>{{account_name}}</ion-card-subtitle>
             </ion-card-header>
             <ion-card-content>
                 <ion-card-title>
@@ -30,20 +27,20 @@
             </ion-card-content>
 
         </ion-card>
-    </ion-row>
+    </ion-row> -->
 
-    <!-- <ion-row>
+    <ion-row>
         <ion-card style="width: 100%;">
             <ion-card-header>
                 <ion-card-title>
-                    <h3>Monthy Balances</h3>
+                    <h3>กราฟแสดงรายรับรายจ่ายของบัญชี {{account_name}}</h3>
                 </ion-card-title>
             </ion-card-header>
             <ion-card-content>
-                <google-chart [data]="barChart"></google-chart>
+                <google-chart [data]="pieChart"></google-chart>
             </ion-card-content>
         </ion-card>
-    </ion-row> -->
+    </ion-row>
 
 
 </ion-content>

@@ -48,6 +48,9 @@ export interface enterprise {
   providedIn: "root"
 })
 export class AccountService {
+
+  private account_id:string;
+  private account_name:string;
   // account_person valible angular
   private account_person: Observable<person[]>;
   private account_family: Observable<family[]>;
@@ -241,6 +244,19 @@ export class AccountService {
 
   delete_account(id: string): Promise<void> {
     return this.account_person_collection.doc(id).delete();
+  }
+
+  set_session_account(account_id:string,account_name:string){
+    this.account_id = account_id
+    this.account_name = account_name
+  }
+
+  get_session_account_id(){
+    return this.account_id
+  }
+
+  get_session_account_name(){
+    return this.account_name
   }
 
   

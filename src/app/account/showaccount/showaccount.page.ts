@@ -1,19 +1,19 @@
-import { Component, OnInit } from "@angular/core";
-import { NavController, MenuController, LoadingController } from "@ionic/angular";
-import { VirtualTimeScheduler } from "rxjs";
-import { ActivatedRoute, Router } from "@angular/router";
-import { UserService, User } from "src/app/services/user.service";
+import { Component, OnInit } from '@angular/core';
+import { NavController, MenuController, LoadingController } from '@ionic/angular';
+import { VirtualTimeScheduler } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService, User } from 'src/app/services/user.service';
 import {
   AccountService,
   person,
   family,
   enterprise
-} from "src/app/services/account.service";
+} from 'src/app/services/account.service';
 
 @Component({
-  selector: "app-showaccount",
-  templateUrl: "./showaccount.page.html",
-  styleUrls: ["./showaccount.page.scss"]
+  selector: 'app-showaccount',
+  templateUrl: './showaccount.page.html',
+  styleUrls: ['./showaccount.page.scss']
 })
 export class ShowaccountPage implements OnInit {
   private session = [];
@@ -32,7 +32,7 @@ export class ShowaccountPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.menu.enable(true, "menuSilde");
+    this.menu.enable(true, 'menuSilde');
     this.session_user();
     this.get_account();
   }
@@ -47,10 +47,10 @@ export class ShowaccountPage implements OnInit {
 
     this.accountService.get_account().subscribe(res => {
       for (let i = 0; i < res.length; i++) {
-        if (res[i].account_type == "Personal") {
+        if (res[i].account_type == 'Personal') {
           this.account_person[index_person] = res[i];
           index_person++;
-        } else if (res[i].account_type == "Family") {
+        } else if (res[i].account_type == 'Family') {
           this.account_family[index_family] = res[i];
           index_family++;
         } else {
@@ -63,34 +63,35 @@ export class ShowaccountPage implements OnInit {
       console.log(this.account_enterprise);
       console.log(this.account_family);
       console.log(this.account_person);
-      console.log("get_person_account_success");
+      console.log('get_person_account_success');
     });
 
   }
   /* ไปสู่หน้า Add Account */
   openAddAccount() {
-    console.log("Click");
-    this.router.navigate(["addaccount"]);
+    console.log('Click');
+    this.router.navigate(['addaccount']);
   }
 
   /**
    * @Name Naerumon
    * เลือก Account ไปสู่หน้า Home
    */
-  selecet_account(account_id,account_name) {
+  selecet_account(account_id, account_name) {
     this.presentLoading();
+    this.accountService.set_session_account(account_id, account_name)
     this.router.navigate(['home'], {queryParams: {account_id:account_id,account_name:account_name}});
   }
 
   gotomanagementFamily(account_id,account_name) {
     this.presentLoading();
-    this.router.navigate(["familymanagement"], {queryParams: {account_id:account_id,account_name:account_name}});
+    this.router.navigate(['familymanagement'], {queryParams: {account_id:account_id,account_name:account_name}});
   }
 
   gotomanagementEnterprise(account_id,account_name) {
 
     this.presentLoading();
-    this.router.navigate(["enterprisemanagement"], {queryParams: {account_id:account_id,account_name:account_name}});
+    this.router.navigate(['enterprisemanagement'], {queryParams: {account_id:account_id,account_name:account_name}});
   }
 
   removeAccount(id) {
