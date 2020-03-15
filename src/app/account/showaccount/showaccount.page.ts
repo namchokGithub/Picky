@@ -76,6 +76,7 @@ export class ShowaccountPage implements OnInit {
    * เลือก Account ไปสู่หน้า Home
    */
   selecet_account(account_id,account_name) {
+    this.accountService.set_session_account(account_id,account_name)
     this.router.navigate(['home'], {queryParams: {account_id:account_id,account_name:account_name}});
   }
 
@@ -84,15 +85,7 @@ export class ShowaccountPage implements OnInit {
     console.log("Clcik");
     this.router.navigate(["familymanagement"]);
   }
-  /* ลบ Account บัญชีออก */
-  // removeAccount(data) {
-  //   const index = this.Data.indexOf(data);
-
-  //   if (index > -1) {
-  //     this.Data.splice(index, 1);
-  //   }
-  // }
-
+  
   gotomanagementFamily() {
     console.log("gotomanagementFamily");
   }

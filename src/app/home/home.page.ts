@@ -66,7 +66,6 @@ export class HomePage implements OnInit {
   }
 
   check_transaction(){
-   
     for(let i = 0;i< this.tran.length; i++){
       console.log(i+' '+this.tran[i].tran_account_id+' '+this.account_id)
       if(this.tran[i].tran_account_id == this.account_id){
@@ -77,19 +76,21 @@ export class HomePage implements OnInit {
   }
 
   setvalue(){
-    for(let i = 0;i < this.transaction.length; i++){
-      if(this.transaction[i].tran_category_type == "income"){
-        this.income += parseInt(this.transaction[i].tran_amount)
-      }else{
-        this.Expense += parseInt(this.transaction[i].tran_amount)
+    if(this.transaction.length == 0){
+      this.value = false;
+    }else{
+      for(let i = 0;i < this.transaction.length; i++){
+        if(this.transaction[i].tran_category_type == "income"){
+          this.income += parseInt(this.transaction[i].tran_amount)
+        }else{
+          this.Expense += parseInt(this.transaction[i].tran_amount)
+        }
       }
+      this.balance = this.income - this.Expense;
     }
-    this.balance = this.income - this.Expense;
+    
   } 
   
-  
-
-
   add(){
     this.income = 0;
     this.Expense = 0;

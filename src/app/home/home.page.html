@@ -10,7 +10,7 @@
 
     <ion-card>
         <ion-card-header>
-            <ion-text size="6">{{account_name}}</ion-text>
+            <ion-card-title class="circle">{{account_name}}</ion-card-title>
         </ion-card-header>
 
         <ion-card-content>
@@ -53,13 +53,14 @@
                         </ion-text>
                     </ion-col>
                 </ion-row>
+
             </ion-grid>
         </ion-card-content>
     </ion-card>
 
     <ion-card>
         <ion-card-header>
-            <ion-card-title class="circle">Transactions</ion-card-title>
+            <ion-card-title class="circle">การบันทึก</ion-card-title>
         </ion-card-header>
 
         <ion-card-content>
@@ -85,7 +86,6 @@
             </ion-grid>
         </ion-card-content>
     </ion-card>
-
     <ion-tabs>
         <ion-tab-bar slot="bottom">
             <ion-tab-button tab="list-transactions">
