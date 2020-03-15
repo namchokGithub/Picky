@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   NavController,
   ToastController,
   ModalController
 } from '@ionic/angular';
-import { ListRecordService } from './../../services/list-record.service';
 
 @Component({
   selector: 'app-category',
@@ -15,6 +14,8 @@ import { ListRecordService } from './../../services/list-record.service';
 export class CategoryPage implements OnInit {
   public categorys: any = [];
   public type_catagory = 'income';
+  private account_id: string;
+  private account_name: string;
   public category_income: any = [
     {
       record_name: 'โบนัส'
@@ -43,7 +44,7 @@ export class CategoryPage implements OnInit {
   constructor(
     private nav: NavController,
     private router: Router,
-    private ListRecordService: ListRecordService
+    public activatedRoute: ActivatedRoute
   ) {}
 
   // * @Function   : ngOnInit => ดึงข้อมูลจาก ListRecordService แล้วทำการบันทึกข้อมูล ลง array โดยมีการแยกประเภท Income ,  expense
@@ -52,19 +53,13 @@ export class CategoryPage implements OnInit {
 
   ngOnInit() {
     this.type_catagory = 'income';
-    this.ListRecordService.get_list_record().subscribe(async res => {
-      console.log(res);
-      this.categorys = res;
-      for (let i = 0; i < this.categorys.length; i++) {
-        if (this.categorys[i].record_type === 'Income') {
-          this.category_income.push(res[i]);
-        } else {
-          this.category_expense.push(res[i]);
-        }
-      }
-      console.log(this.category_income);
-      console.log(this.category_expense);
-    });
+    
+    this.activatedRoute.queryParamMap.subscribe(params => {
+      
+      this.account_id  = params.get('account_id');
+      this.account_name = params.get('account_name');
+   });
+
   }
 
   // * @Function   : back => ย้อนกลับไปหน้า add
@@ -108,8 +103,8 @@ export class CategoryPage implements OnInit {
   // * @Create Date: 10/3/2563
   settype_category(type: string, record_name: string) {
     console.log(type + ' ' + record_name);
-    this.router.navigate(['add'], {
-      queryParams: { Type_category: type, record_name }
+    this.router.navigate(['add'],{
+      queryParams: { Type_category: type, record_name , account_id: this.account_id, account_name: this.account_name}
     });
   }
 }

@@ -92,7 +92,6 @@ export class LoginPage implements OnInit {
     if (await this.check_login()) {
       await this.UserService.set_session_user(this.userlogin); // set user session
       console.log('true');
-      console.log('login page ' + this.userlogin);
       this.selectAccount(); // Goto page select account
     } else {
       console.log('false');

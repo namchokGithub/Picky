@@ -1,28 +1,34 @@
 import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavController, AlertController ,ToastController,LoadingController} from '@ionic/angular';
+import { ModalController, NavController, AlertController , ToastController, LoadingController} from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RecordService, Record } from './../services/record.service';
 
+import { TransactionService, transaction} from 'src/app/services/transaction.service';
 @Component({
   selector: 'app-add',
   templateUrl: './add.page.html',
   styleUrls: ['./add.page.scss'],
 })
 export class AddPage implements OnInit {
+  private account_id:string;
+  private account_name:string;
+  public type_category = '';
+  public name_category = '';
+  public cash = '';
+  public date = '';
+  public note = '';
+  public user_session: any = [];
 
-  public type_category = ' ';
-  public cash = ' ';
-  public name_category = ' ';
-  public date = ' ';
-  public note = ' ';
-  public userlogin: any = [];
-
-  public record_array : Record = {
-    account_id: '',
-    account_name: 'Person',
-    user_record : []
-  };
+  transaction: transaction = {
+    tran_account_id: '',
+    tran_account: '',
+    tran_amount: '',
+    tran_category_name: '',
+    tran_category_type: '',
+    tran_date: '',
+    tran_note: '',
+    tran_user: ''
+   };
 
   constructor(
               private nav: NavController,
@@ -32,8 +38,8 @@ export class AddPage implements OnInit {
               public alertController: AlertController,
               private loadingController: LoadingController,
               private toastController: ToastController,
-              private recordService: RecordService,
-              private userService: UserService
+              private userService: UserService,
+              private transactionService: TransactionService
             ) { }
 
   // * @Function   : ngOnInit => รับค่าจากหน้า CategoryPage ที่ส่งมายังหน้า add
@@ -43,9 +49,11 @@ export class AddPage implements OnInit {
      this.activatedRoute.queryParamMap.subscribe(params => {
         this.type_category  = params.get('Type_category');
         this.name_category = params.get('record_name');
+        this.account_id  = params.get('account_id');
+        this.account_name = params.get('account_name');
      });
 
-     this.userlogin =  this.userService.get_session_user();
+     this.user_session =  this.userService.get_session_user();
 
   }
 
@@ -53,7 +61,7 @@ export class AddPage implements OnInit {
   // * @Author     : Komsan Tesana
   // * @Create Date: 10/3/2563
   goCategoryPage() {
-    this.router.navigate(['category']);
+    this.router.navigate(['category'],{queryParams: {account_id: this.account_id, account_name: this.account_name}} );
   }
 
   // * @Function   : back => ย้อนไปยังหน้า home
@@ -90,51 +98,47 @@ export class AddPage implements OnInit {
       console.log('วันที่ :' + this.date);
       console.log('เพิ่มเติม :' + this.note);
       console.log('จำนวนเงิน :' + this.cash);
-      console.log( this.name_category);
-      console.log( this.type_category);
-      console.log('Id user ' + this.userlogin.user_id);
-      console.log('name user ' + this.userlogin.user_name);
 
-      this.record_array.account_id = '1';
-      this.record_array.account_name = 'Person';
-      this.record_array.user_record  = [
-        this.date,
-        this.name_category,
-        this.cash,
-        this.note,
-        this.type_category,
-        this.userlogin.user_id,
-        this.userlogin.user_name
-      ];
-
-      console.log(this.userlogin);
-      this.recordService.add_record(this.record_array);
-      this.router.navigate(['home']);
+        this.transaction.tran_account = this.account_name;
+        this.transaction.tran_account_id = this.account_id;
+        this.transaction.tran_amount = this.cash;
+        this.transaction.tran_category_name = this.name_category;
+        this.transaction.tran_category_type = this.type_category;
+        this.transaction.tran_date = this.date;
+        this.transaction.tran_note = this.note;
+        this.transaction.tran_user = this.user_session.user_id;
+        this.transactionService.add_transaction(this.transaction);
+        console.log(this.transaction);
+      this.router.navigate(['home'],{queryParams: {account_id: this.account_id, account_name: this.account_name}});
   }
 
   // * @Function   : validate => เช็คค่าหากไม่มีการกรอกข้อมูล จะทำการแสดงข้อความแจ้งเตือน
   // * @Author     : Komsan Tesana
   // * @Create Date: 10/3/2563
-  validate() {
+  validate(){
 
-      if (this.type_category === ' ' ) {
-        console.log('กรุณาระบุประเภทรายรับ-รายจ่าย');
-      } else if (this.cash === ' ') {
-        this.showToast('กรุณาระบุจำนวนเงิน');
-      } else if (this.date === ' ') {
-        this.showToast('กรุณาระบุวันที่');
-      } else {
-          this.onSubmit();
-      }
+    if(this.name_category == ''){
+
+      this.showToast('กรุณาระบุประเภท');
+    }
+    else if(this.cash == ''){
+
+      this.showToast('กรุณาระบุจำนวนเงิน');
+    }else if(this.date == ''){
+
+      this.showToast('กรุณาระบุวันที่');
+    }else{
+
+      this.onSubmit();
+    }
+    
   }
 
-  // * @Function   : showToast => แสดงข้อความแจ้งเตือน
-  // * @Author     : Komsan Tesana
-  // * @Create Date: 10/3/2563
-  showToast(msg) {
-      this.toastController.create({
-        message: msg,
-        duration: 3000
-      }).then(toast => toast.present());
+  showToast(msg){
+    this.toastController.create({
+      message: msg,
+      duration: 2000
+    }).then(toast => toast.present());
   }
+  
 }
