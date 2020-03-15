@@ -41,18 +41,11 @@ export class FamilymanagementPage implements OnInit {
 
   ngOnInit() {
 
-    this.activatedRoute.queryParamMap.subscribe(params => {
-      this.account_id  = params.get('account_id')
-      //console.log(this.account_id)
-      this.account_name = params.get('account_name')
-      console.log(this.account_name)
-
-    
-   });
+   this.account_id = this.accountService.get_session_account_id();
+   this.account_name = this.accountService.get_session_account_name();
 
    this.userService.get_user().subscribe(async res => {
     this.db_user = res;
-    
   });
 
 
@@ -60,11 +53,8 @@ export class FamilymanagementPage implements OnInit {
    this.user_session = this.userService.get_session_user();
 
     console.log(this.user_session);
- 
     this.accountService.get_acount_family_By_Id(this.account_id).subscribe(res => {
-    
       this.account = res;
-    
       this.setaccount();
     });
 

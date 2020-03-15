@@ -5,7 +5,7 @@ import {
   ToastController,
   ModalController
 } from '@ionic/angular';
-
+import { AccountService } from 'src/app/services/account.service';
 @Component({
   selector: 'app-category',
   templateUrl: './category.page.html',
@@ -44,7 +44,8 @@ export class CategoryPage implements OnInit {
   constructor(
     private nav: NavController,
     private router: Router,
-    public activatedRoute: ActivatedRoute
+    public activatedRoute: ActivatedRoute,
+    private accountService: AccountService
   ) {}
 
   // * @Function   : ngOnInit => ดึงข้อมูลจาก ListRecordService แล้วทำการบันทึกข้อมูล ลง array โดยมีการแยกประเภท Income ,  expense
@@ -53,13 +54,10 @@ export class CategoryPage implements OnInit {
 
   ngOnInit() {
     this.type_catagory = 'income';
-    
     this.activatedRoute.queryParamMap.subscribe(params => {
-      
-      this.account_id  = params.get('account_id');
-      this.account_name = params.get('account_name');
    });
-
+   this.account_id = this.accountService.get_session_account_id();
+   this.account_name = this.accountService.get_session_account_name();
   }
 
   // * @Function   : back => ย้อนกลับไปหน้า add
@@ -104,7 +102,7 @@ export class CategoryPage implements OnInit {
   settype_category(type: string, record_name: string) {
     console.log(type + ' ' + record_name);
     this.router.navigate(['add'],{
-      queryParams: { Type_category: type, record_name , account_id: this.account_id, account_name: this.account_name}
+      queryParams: { Type_category: type, record_name}
     });
   }
 }

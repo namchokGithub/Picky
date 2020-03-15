@@ -2,7 +2,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController, AlertController , ToastController, LoadingController} from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { AccountService } from 'src/app/services/account.service';
 import { TransactionService, transaction} from 'src/app/services/transaction.service';
 @Component({
   selector: 'app-add',
@@ -39,9 +39,10 @@ export class AddPage implements OnInit {
               private loadingController: LoadingController,
               private toastController: ToastController,
               private userService: UserService,
-              private transactionService: TransactionService
+              private transactionService: TransactionService,
+              private accountService: AccountService
             ) { }
-
+  
   // * @Function   : ngOnInit => รับค่าจากหน้า CategoryPage ที่ส่งมายังหน้า add
   // * @Author     : Komsan Tesana
   // * @Create Date: 10/3/2563
@@ -49,19 +50,18 @@ export class AddPage implements OnInit {
      this.activatedRoute.queryParamMap.subscribe(params => {
         this.type_category  = params.get('Type_category');
         this.name_category = params.get('record_name');
-        this.account_id  = params.get('account_id');
-        this.account_name = params.get('account_name');
      });
 
      this.user_session =  this.userService.get_session_user();
-
+     this.account_id = this.accountService.get_session_account_id();
+     this.account_name = this.accountService.get_session_account_name();
   }
 
   // * @Function   : goCategoryPage => ไปยังหน้า CategoryPage
   // * @Author     : Komsan Tesana
   // * @Create Date: 10/3/2563
   goCategoryPage() {
-    this.router.navigate(['category'],{queryParams: {account_id: this.account_id, account_name: this.account_name}} );
+    this.router.navigate(['category']);
   }
 
   // * @Function   : back => ย้อนไปยังหน้า home
@@ -109,7 +109,7 @@ export class AddPage implements OnInit {
         this.transaction.tran_user = this.user_session.user_id;
         this.transactionService.add_transaction(this.transaction);
         console.log(this.transaction);
-      this.router.navigate(['home'],{queryParams: {account_id: this.account_id, account_name: this.account_name}});
+      this.router.navigate(['home']);
   }
 
   // * @Function   : validate => เช็คค่าหากไม่มีการกรอกข้อมูล จะทำการแสดงข้อความแจ้งเตือน
@@ -127,6 +127,9 @@ export class AddPage implements OnInit {
     }else if(this.date == ''){
 
       this.showToast('กรุณาระบุวันที่');
+    }else if(this.type_category == ''){
+
+      this.showToast('กรุณาระบุประเภท');
     }else{
 
       this.onSubmit();
