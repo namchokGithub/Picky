@@ -86,17 +86,20 @@ export class AddaccountPage implements OnInit {
             }else if(this.type == 'Enterprise'){
               this.add_account(this.type);
             }
-
+            this.go_to_showaccount()
             
-
-            this.router.navigate(['showaccount']);
-
           }
+          
         }
+        
       ]
+      
     });
-
     await alert.present();
+  }
+
+  go_to_showaccount(){
+    this.router.navigate(['showaccount']);
   }
 
   add_account(type:String){
