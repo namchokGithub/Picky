@@ -73,7 +73,7 @@ export class HomePage implements OnInit {
     var index = 0;
     for (let i = 0; i < this.tran.length; i++) {
       console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + this.account_id)
-      if (this.tran[i].tran_account_id == this.account_id) {
+      if (this.tran[i].tran_account_id == this.account_id && index < 5) {
         this.transaction[index] = this.tran[i]
         index++;
       }
