@@ -51,33 +51,29 @@ export class ShowaccountPage implements OnInit {
   */
 
  async log_out() {
-  const alert = await this.alertCtrl.create({
-    header: 'ยืนยันการออกจากระบบ?',
-    message: 'คุณต้องการออกจากระบบหรือไม่?',
-    buttons: [
-      {
-        text: 'ยกเลิก',
-        role: 'cancel',
-        cssClass: 'secondary',
-        handler: blah => {
-          console.log('Log out Cancel');
+    const alert = await this.alertCtrl.create({
+      header: 'ยืนยันการออกจากระบบ?',
+      message: 'คุณต้องการออกจากระบบหรือไม่?',
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: blah => {
+            console.log('Log out Cancel');
+          }
+        },
+        {
+          text: 'ยืนยัน',
+          handler: () => {
+            console.log('Log out');
+            this.router.navigate(['login']);
+          }
         }
-      },
-      {
-        text: 'ยืนยัน',
-        handler: () => {
-          console.log('Log out');
-          this.router.navigate(['login']);
-        }
-        
-      }
-      
-    ]
-    
-  });
-  await alert.present();
+      ]
+    });
+    await alert.present();
   }
- 
 
   get_account() {
     let index_person = 0;
