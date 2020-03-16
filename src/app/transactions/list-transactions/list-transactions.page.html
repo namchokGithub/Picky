@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar>
         <ion-title>
-            <h1 class="ion-text-center">MheeMoney</h1>
+            <h1 class="ion-text-center">บันทึกรายการ</h1>
         </ion-title>
     </ion-toolbar>
 </ion-header>
@@ -13,49 +13,7 @@
             <ion-card-title class="circle">{{account_name}}</ion-card-title>
         </ion-card-header>
 
-        <ion-card-content>
-            <ion-grid>
-                <ion-row>
-                    <ion-col>
-                        <ion-text>
-                            <p class="">รายรับ</p>
-                        </ion-text>
-                    </ion-col>
-                    <ion-col>
-                        <ion-text>
-                            <p class="text-green text-right">฿ {{income}}</p>
-                        </ion-text>
-                    </ion-col>
-                </ion-row>
 
-                <ion-row>
-                    <ion-col>
-                        <ion-text>
-                            <p class="">รายจ่าย</p>
-                        </ion-text>
-                    </ion-col>
-                    <ion-col class="line-red">
-                        <ion-text>
-                            <p class="text-red text-right">฿ {{Expense}}</p>
-                        </ion-text>
-                    </ion-col>
-                </ion-row>
-
-                <ion-row>
-                    <ion-col>
-                        <ion-text>
-                            <p class="">ยอดรวม</p>
-                        </ion-text>
-                    </ion-col>
-                    <ion-col>
-                        <ion-text>
-                            <p class="text-right">{{balance}}</p>
-                        </ion-text>
-                    </ion-col>
-                </ion-row>
-
-            </ion-grid>
-        </ion-card-content>
     </ion-card>
 
     <ion-card>
