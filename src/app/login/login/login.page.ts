@@ -90,13 +90,14 @@ export class LoginPage implements OnInit {
   async validate() {
     await this.presentLoading();
     if (await this.check_login()) {
-      this.UserService.set_session_user(this.userlogin); // set user session
-      this.UserService.loginSession(this.userlogin); // set user session for storage offine
-      this.UserService.setUsername(this.userlogin.user_name); // set user session for storage offine
+      await this.UserService.set_session_user(this.userlogin); // set user session
+
+      await this.UserService.loginSession(this.userlogin); // set user session for storage offine
+      await this.UserService.setUsername(this.userlogin.user_name); // set user_name session for storage offine
      
       console.log('true');
-      console.log(this.userlogin)
-      this.selectAccount(); // Goto page select account
+      // console.log(this.userlogin)
+      await this.selectAccount(); // Goto page select account
     } else {
       console.log('false');
       this.alertInput('ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง');

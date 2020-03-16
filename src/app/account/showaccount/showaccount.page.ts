@@ -32,20 +32,16 @@ export class ShowaccountPage implements OnInit {
     private accountService: AccountService,
     private loadingController: LoadingController
   ) {
-    
   }
 
   ngOnInit() {
     this.menu.enable(false, 'menuSilde');
-    this.session_user();
     this.get_account();
-  }
 
-  session_user() {
     this.session = this.userService.get_session_user();
+
     this.name = this.userService.getUsername();
-    // this.name = this.session['user_name'];
-    // console.log(this.session["user_name"]);
+    console.log(this.name);
   }
 
   get_account() {

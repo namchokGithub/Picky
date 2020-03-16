@@ -113,6 +113,10 @@ export class UserService {
   // create by : kittisak noidonpai
   // จะทำการคืนค่าข้อมูลของ user ที่loging เข้าใช้งานระบบ
   get_session_user() {
+    this.storage.get('username').then((username) => {
+      this.username = username;
+      // console.log(this.username)
+    });
     return this.set_user;
   }
 
@@ -155,7 +159,7 @@ export class UserService {
   // Function setUsername
   // create by : Namchok Singhachai
   setUsername(username) {
-    this.storage.set('username', username).then( () => { console.log(username);});
+    this.storage.set('username', username).then( () => { console.log(username); });
   }
 
   // Function isAuthen
@@ -167,9 +171,6 @@ export class UserService {
   // Fucntion getUsername
   // Create by : Namchok
   getUsername() {
-    this.storage.get('username').then((username) => {
-      this.username = username;
-    });
     return this.username;
   }
 
