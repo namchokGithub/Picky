@@ -70,7 +70,7 @@
             <ion-grid ng-template #show *ngFor="let transaction of transaction">
                 <ion-row>
                     <ion-col>
-                        <ion-title size="small">{{transaction.tran_note}}</ion-title>
+                        <ion-title size="small">{{transaction.tran_category_name}}</ion-title>
                     </ion-col>
                     <ion-col *ngIf='transaction.tran_category_type == "income"'>
                         <ion-text class="text-green text-right">
