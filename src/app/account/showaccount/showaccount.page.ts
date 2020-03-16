@@ -3,6 +3,7 @@ import { NavController, MenuController, LoadingController } from '@ionic/angular
 import { VirtualTimeScheduler } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService, User } from 'src/app/services/user.service';
+import { AlertController } from '@ionic/angular';
 
 import {
   AccountService,
@@ -30,9 +31,9 @@ export class ShowaccountPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private userService:UserService,
     private accountService: AccountService,
-    private loadingController: LoadingController
-  ) {
-  }
+    private loadingController: LoadingController,
+    public alertCtrl: AlertController
+  ) {}
 
   ngOnInit() {
     this.menu.enable(false, 'menuSilde');
@@ -43,6 +44,40 @@ export class ShowaccountPage implements OnInit {
     this.name = this.userService.getUsername();
     console.log(this.name);
   }
+  /*
+  Function Name : log_out
+  Author : Chatchalerm Wasuanunkul
+  Description : ออกจากระบบ เพื่อกลับไปสู่หน้า log in 
+  */
+
+ async log_out() {
+  const alert = await this.alertCtrl.create({
+    header: 'ยืนยันการออกจากระบบ?',
+    message: 'คุณต้องการออกจากระบบหรือไม่?',
+    buttons: [
+      {
+        text: 'ยกเลิก',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: blah => {
+          console.log('Log out Cancel');
+        }
+      },
+      {
+        text: 'ยืนยัน',
+        handler: () => {
+          console.log('Log out');
+          this.router.navigate(['login']);
+        }
+        
+      }
+      
+    ]
+    
+  });
+  await alert.present();
+  }
+ 
 
   get_account() {
     let index_person = 0;
