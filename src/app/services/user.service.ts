@@ -9,6 +9,7 @@ import {
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { async } from '@angular/core/testing';
+import { Storage } from '@ionic/storage';
 export interface User {
   id?: string;
   user_id: string;
@@ -20,14 +21,20 @@ export interface User {
   providedIn: 'root'
 })
 export class UserService {
-  private set_user : any[];
+
+  private isLoggedIn: boolean;
+  private userSession: any[];
+  private set_user: any[];
 
   private user: Observable<User[]>;
+
   // tslint:disable-next-line: variable-name
   private user_collection: AngularFirestoreCollection<User>;
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore,
+              public storage: Storage) {
     this.user_collection = this.afs.collection<User>('user');
+    this.isLoggedIn = false;
   }
 
   // Function get_user
@@ -61,15 +68,11 @@ export class UserService {
       );
   }
 
-
-
-   
-
   // Function add_user
   // create by : kittisak noidonpai
   // จะทำการ บันทึกข้อมูลของ user ลงใน firestore
-  add_user(User: User): Promise<DocumentReference> {
-    return this.user_collection.add(User);
+  add_user(user: User): Promise<DocumentReference> {
+    return this.user_collection.add(user);
   }
 
   // Function update_user
@@ -110,6 +113,37 @@ export class UserService {
   // จะทำการคืนค่าข้อมูลของ user ที่loging เข้าใช้งานระบบ
   get_session_user() {
     return this.set_user;
+  }
+
+  // Function setSessionUser
+  // create by : Namchok Singhachai
+  setSessionUser() {
+    this.storage.set('user', this.set_user).then(() => {
+      this.isLoggedIn = true;
+    });
+  }
+
+  // Function getSessionUser
+  // create by : Namchok Singhachai
+  getSessionUser() {
+    this.storage.get('user').then((user) => {
+      this.isLoggedIn = true;
+      this.userSession = user;
+    });
+  }
+
+  // Function logoutSessionUser
+  // create by : Namchok Singhachai
+  logoutSessionUser() {
+    this.storage.remove('user').then(() => {
+      this.isLoggedIn = false;
+    });
+  }
+
+  // Function isAuthen
+  // create by : Namchok Singhachai
+  isAuthen() {
+    return this.isLoggedIn;
   }
 
 }

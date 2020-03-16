@@ -3,6 +3,7 @@ import { NavController, MenuController, LoadingController } from '@ionic/angular
 import { VirtualTimeScheduler } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService, User } from 'src/app/services/user.service';
+
 import {
   AccountService,
   person,
@@ -16,6 +17,7 @@ import {
   styleUrls: ['./showaccount.page.scss']
 })
 export class ShowaccountPage implements OnInit {
+  public name = '';
   private session = [];
   private account_person = [];
   private account_family = [];
@@ -34,21 +36,22 @@ export class ShowaccountPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.account_enterprise)
-    console.log(this.account_family)
-    console.log(this.account_person)
-    this.menu.enable(true, 'menuSilde');
+    this.menu.enable(false, 'menuSilde');
     this.session_user();
     this.get_account();
+
   }
+
   session_user() {
     this.session = this.userService.get_session_user();
-    console.log(this.session)
+    this.name = this.session['user_name'];
+    // console.log(this.session["user_name"]);
   }
+
   get_account() {
-    var index_person = 0;
-    var index_family = 0;
-    var index_enterprise = 0;
+    let index_person = 0;
+    let index_family = 0;
+    let index_enterprise = 0;
 
     this.accountService.get_account().subscribe(res => {
       for (let i = 0; i < res.length; i++) {
@@ -64,11 +67,10 @@ export class ShowaccountPage implements OnInit {
         }
       }
 
-      
-      console.log(this.account_enterprise);
-      console.log(this.account_family);
-      console.log(this.account_person);
-      console.log('get_person_account_success');
+      // console.log(this.account_enterprise);
+      // console.log(this.account_family);
+      // console.log(this.account_person);
+      // console.log('get_person_account_success');
     });
 
   }
@@ -94,15 +96,14 @@ export class ShowaccountPage implements OnInit {
     this.router.navigate(['home']);
   }
 
-  gotomanagementFamily(account_id,account_name) {
+  gotomanagementFamily(account_id, account_name) {
     this.presentLoading();
-    this.router.navigate(['familymanagement'], {queryParams: {account_id:account_id,account_name:account_name}});
+    this.router.navigate(['familymanagement'], {queryParams: {account_id: account_id, account_name: account_name}});
   }
 
-  gotomanagementEnterprise(account_id,account_name) {
-
+  gotomanagementEnterprise(account_id, account_name) {
     this.presentLoading();
-    this.router.navigate(['enterprisemanagement'], {queryParams: {account_id:account_id,account_name:account_name}});
+    this.router.navigate(['enterprisemanagement'], {queryParams: {account_id: account_id, account_name: account_name}});
   }
 
   removeAccount(id) {
