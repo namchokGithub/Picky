@@ -29,7 +29,7 @@ export class ShowaccountPage implements OnInit {
     public navCtrl: NavController,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private userService:UserService,
+    private userService: UserService,
     private accountService: AccountService,
     private loadingController: LoadingController,
     public alertCtrl: AlertController
@@ -44,12 +44,12 @@ export class ShowaccountPage implements OnInit {
     this.name = this.userService.getUsername();
     console.log(this.name);
   }
+  
   /*
   Function Name : log_out
   Author : Chatchalerm Wasuanunkul
-  Description : ออกจากระบบ เพื่อกลับไปสู่หน้า log in 
+  Description : ออกจากระบบ เพื่อกลับไปสู่หน้า log in
   */
-
  async log_out() {
     const alert = await this.alertCtrl.create({
       header: 'ยืนยันการออกจากระบบ?',
@@ -99,10 +99,10 @@ export class ShowaccountPage implements OnInit {
   /* ไปสู่หน้า Add Account */
  async openAddAccount() {
     console.log('Click');
-  
-    while(this.account_person.length > 0){
-      this.account_person.pop()
-      console.log(this.account_person)
+
+    while (this.account_person.length > 0) {
+      this.account_person.pop();
+      console.log(this.account_person);
     }
 
     await this.router.navigate(['addaccount']);
@@ -114,18 +114,18 @@ export class ShowaccountPage implements OnInit {
    */
   selecet_account(account_id: string, account_name: string) {
     this.presentLoading();
-    this.accountService.set_session_account(account_id, account_name)
+    this.accountService.set_session_account(account_id, account_name);
     this.router.navigate(['home']);
   }
 
   gotomanagementFamily(account_id: any, account_name: any) {
     this.presentLoading();
-    this.router.navigate(['familymanagement'], {queryParams: {account_id: account_id, account_name: account_name}});
+    this.router.navigate(['familymanagement'], {queryParams: {account_id, account_name}});
   }
 
   gotomanagementEnterprise(account_id: any, account_name: any) {
     this.presentLoading();
-    this.router.navigate(['enterprisemanagement'], {queryParams: {account_id: account_id, account_name: account_name}});
+    this.router.navigate(['enterprisemanagement'], {queryParams: {account_id, account_name}});
   }
 
   removeAccount(id: string) {
