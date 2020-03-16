@@ -72,18 +72,15 @@ export class HomePage implements OnInit {
     console.log(this.tran);
     var index = 0;
     for (let i = 0; i < this.tran.length; i++) {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
       console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + this.account_id);
       if (this.tran[i].tran_account_id == this.account_id) {
         this.transaction[index] = this.tran[i];
-=======
->>>>>>> e8dbbcf5c95034e3e48e9b15f807def7fa3dd623
+
       console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + this.account_id)
       if (this.tran[i].tran_account_id == this.account_id && index < 5) {
         this.transaction[index] = this.tran[i]
->>>>>>> origin/kittisak
+
         index++;
       }
     }
