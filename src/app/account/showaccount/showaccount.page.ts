@@ -66,11 +66,6 @@ export class ShowaccountPage implements OnInit {
           index_enterprise++;
         }
       }
-
-      // console.log(this.account_enterprise);
-      // console.log(this.account_family);
-      // console.log(this.account_person);
-      // console.log('get_person_account_success');
     });
 
   }
