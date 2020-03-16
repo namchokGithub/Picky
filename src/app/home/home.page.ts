@@ -60,24 +60,29 @@ export class HomePage implements OnInit {
     this.user_session = this.user.get_session_user();
   }
 
-  get_transaction() {
+  async get_transaction() {
      this.transactionService.get_transaction().subscribe( res => {
       this.tran = res;
       this.check_transaction()
     })
+    
   }
 
-  check_transaction() {
+  async check_transaction() {
+    console.log(this.tran);
+    var index = 0;
     for (let i = 0; i < this.tran.length; i++) {
       console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + this.account_id)
       if (this.tran[i].tran_account_id == this.account_id) {
-        this.transaction[i] = this.tran[i]
+        this.transaction[index] = this.tran[i]
+        index++;
       }
     }
-    this.setvalue()
+    await this.setvalue()
   }
 
   setvalue() {
+    console.log(this.transaction)
     if (this.transaction.length == 0) {
       this.value = false;
     } else {
@@ -97,7 +102,7 @@ export class HomePage implements OnInit {
     this.income = 0;
     this.Expense = 0;
     this.balance = 0;
-    this.router.navigate(['add'], {queryParams: {account_id: this.account_id, account_name: this.account_name}});
+    this.router.navigate(['add']);
   }
 
  
