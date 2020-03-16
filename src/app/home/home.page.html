@@ -75,6 +75,7 @@
                     <ion-col *ngIf='transaction.tran_category_type == "income"'>
                         <ion-text class="text-green text-right">
                             <p>฿ {{transaction.tran_amount}}</p>
+                            <P>วันที่ {{transaction.tran_date.substring(0,transaction.tran_date.search('T'))}}</P>
                         </ion-text>
                     </ion-col>
                     <ion-col *ngIf='transaction.tran_category_type == "Expense"'>
