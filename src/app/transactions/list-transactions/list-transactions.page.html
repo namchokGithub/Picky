@@ -1,46 +1,89 @@
 <ion-header>
     <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
-        </ion-buttons>
         <ion-title>
-            <h1>MheeMoney</h1>
+            <h1 class="ion-text-center">MheeMoney</h1>
         </ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="bg-flow">
 
     <ion-card>
         <ion-card-header>
-            <ion-card-title class="circle">Transactions</ion-card-title>
+            <ion-card-title class="circle">{{account_name}}</ion-card-title>
         </ion-card-header>
 
         <ion-card-content>
             <ion-grid>
                 <ion-row>
                     <ion-col>
-                        <ion-text class="">Education</ion-text>
+                        <ion-text>
+                            <p class="">รายรับ</p>
+                        </ion-text>
                     </ion-col>
                     <ion-col>
-                        <ion-text class="text-red text-right">
-                            <p>฿ 2,500</p>
+                        <ion-text>
+                            <p class="text-green text-right">฿ {{income}}</p>
                         </ion-text>
                     </ion-col>
                 </ion-row>
 
                 <ion-row>
                     <ion-col>
-                        <ion-text class="">Fitness</ion-text>
+                        <ion-text>
+                            <p class="">รายจ่าย</p>
+                        </ion-text>
+                    </ion-col>
+                    <ion-col class="line-red">
+                        <ion-text>
+                            <p class="text-red text-right">฿ {{Expense}}</p>
+                        </ion-text>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col>
+                        <ion-text>
+                            <p class="">ยอดรวม</p>
+                        </ion-text>
                     </ion-col>
                     <ion-col>
+                        <ion-text>
+                            <p class="text-right">{{balance}}</p>
+                        </ion-text>
+                    </ion-col>
+                </ion-row>
+
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title class="circle">การบันทึก</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <div *ngIf="!value; else show">
+                <p>ไม่มีการบันทึกรายรับรายจ่าย</p>
+            </div>
+            <ion-grid ng-template #show *ngFor="let transaction of transaction">
+                <ion-row>
+                    <ion-col>
+                        <ion-title size="small">{{transaction.tran_category_name}}</ion-title>
+                    </ion-col>
+                    <ion-col *ngIf='transaction.tran_category_type == "income"'>
+                        <ion-text class="text-green text-right">
+                            <p>฿ {{transaction.tran_amount}}</p>
+                        </ion-text>
+                    </ion-col>
+                    <ion-col *ngIf='transaction.tran_category_type == "Expense"'>
                         <ion-text class="text-red text-right">
-                            <p>฿ 1,500</p>
+                            <p>฿ {{transaction.tran_amount}}</p>
                         </ion-text>
                     </ion-col>
                 </ion-row>
             </ion-grid>
         </ion-card-content>
     </ion-card>
-
 </ion-content>
