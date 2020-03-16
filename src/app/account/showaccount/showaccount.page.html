@@ -9,18 +9,8 @@
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>  
-        <ion-row>
-          <ion-col>
-                <ion-title>สวัสดีคุณ{{name}} !!</ion-title>
-            </ion-col>
-            <ion-col>
-                <ion-icon name="log-out-outline" style=" width: 30px; height: 30px; "  (click)="log_out()" ></ion-icon>
-            </ion-col>  
-        </ion-row>  
-        
-        
-        
-        
+            <ion-title>สวัสดีคุณ{{name}} !!</ion-title>
+        <ion-icon name="log-out-outline" style=" width: 30px; height: 30px; margin-right: 5%;"  (click)="log_out()" slot="end"></ion-icon>   
     </ion-toolbar>
 </ion-header>
 <!-- End Header -->
