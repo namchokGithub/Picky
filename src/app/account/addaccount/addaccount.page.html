@@ -63,20 +63,11 @@
 <ion-content fullscreen *ngIf="type == 'Family'">
 
     <ion-grid>
-
-        <ion-row>
-            <ion-col size="6" size-lg offset="3">
-                <ion-text>
-                    <h1 class="ion-text-center itim"> บัญชื่อผู้ใช้ </h1>
-                </ion-text>
-            </ion-col>
-        </ion-row>
-
-
-        <ion-row>
+        <ion-card>
+            <ion-row>
             <ion-col size-lg>
-                <ion-input type="text" [(ngModel)]="name_account" name="nameAccount" placeholder="ชื่อบัญชีผู้ใช้">
-                    <ion-icon name="person-circle-outline"></ion-icon>
+                <ion-input type="text" [(ngModel)]="name_account" name="nameAccount" placeholder="ชื่อบัญชี">
+                    <ion-icon name="person-circle-outline" style="width: 30px; height: 30px;"></ion-icon>
                 </ion-input>
             </ion-col>
         </ion-row>
@@ -86,7 +77,7 @@
 
             <ion-col size-lg>
                 <ion-item>
-                    <ion-label>ประเภทของบัญชีผู้ใช้</ion-label>
+                    <ion-label>ประเภทของบัญชี</ion-label>
                     <ion-select [(ngModel)]="type">
                         <ion-select-option value="Personal">บุคคล</ion-select-option>
                         <ion-select-option value="Family">ครอบครัว</ion-select-option>
@@ -110,7 +101,10 @@
                 <ion-button (click)="back()" expand="full" color="danger">ยกเลิก</ion-button>
             </ion-col>
         </ion-row>
-        <!-- End of back button -->
+         <!-- End of back button -->
+        </ion-card>
+        
+       
 
     </ion-grid>
 </ion-content>
@@ -118,20 +112,11 @@
 <ion-content fullscreen *ngIf="type == 'Enterprise'">
 
     <ion-grid>
-
-        <ion-row>
-            <ion-col size="6" size-lg offset="3">
-                <ion-text>
-                    <h1 class="ion-text-center itim"> บัญชื่อผู้ใช้ </h1>
-                </ion-text>
-            </ion-col>
-        </ion-row>
-
-
-        <ion-row>
+        <ion-card>
+             <ion-row>
             <ion-col size-lg>
-                <ion-input type="text" [(ngModel)]="name_account" name="nameAccount" placeholder="ชื่อบัญชีผู้ใช้">
-                    <ion-icon name="person-circle-outline"></ion-icon>
+                <ion-input type="text" [(ngModel)]="name_account" name="nameAccount" placeholder="ชื่อบัญชี">
+                    <ion-icon name="person-circle-outline" style="width: 30px; height: 30px;"></ion-icon>
                 </ion-input>
             </ion-col>
         </ion-row>
@@ -139,7 +124,7 @@
         <ion-row>
             <ion-col size-lg>
                 <ion-input type="text" [(ngModel)]="department" name="department" placeholder="ตำแหน่งงาน">
-                    <ion-icon name="people-outline"></ion-icon>
+                    <ion-icon name="people-outline" style="width: 30px; height: 30px;"></ion-icon>
                 </ion-input>
             </ion-col>
         </ion-row>
@@ -149,7 +134,7 @@
 
             <ion-col size-lg>
                 <ion-item>
-                    <ion-label>ประเภทของบัญชีผู้ใช้</ion-label>
+                    <ion-label>ประเภทของบัญชี</ion-label>
                     <ion-select [(ngModel)]="type">
                         <ion-select-option value="Personal">บุคคล</ion-select-option>
                         <ion-select-option value="Family">ครอบครัว</ion-select-option>
@@ -174,6 +159,8 @@
             </ion-col>
         </ion-row>
         <!-- End of back button -->
+        </ion-card>
+       
 
     </ion-grid>
 </ion-content>
