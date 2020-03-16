@@ -32,7 +32,7 @@ export class ShowaccountPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.menu.enable(true, 'menuSilde');
+    this.menu.enable(false, 'menuSilde');
     this.session_user();
     this.get_account();
   }
@@ -41,9 +41,9 @@ export class ShowaccountPage implements OnInit {
     console.log(this.session)
   }
   get_account() {
-    var index_person = 0;
-    var index_family = 0;
-    var index_enterprise = 0;
+    let index_person = 0;
+    let index_family = 0;
+    let index_enterprise = 0;
 
     this.accountService.get_account().subscribe(res => {
       for (let i = 0; i < res.length; i++) {
@@ -59,7 +59,6 @@ export class ShowaccountPage implements OnInit {
         }
       }
 
-      
       console.log(this.account_enterprise);
       console.log(this.account_family);
       console.log(this.account_person);
@@ -83,15 +82,14 @@ export class ShowaccountPage implements OnInit {
     this.router.navigate(['home']);
   }
 
-  gotomanagementFamily(account_id,account_name) {
+  gotomanagementFamily(account_id, account_name) {
     this.presentLoading();
-    this.router.navigate(['familymanagement'], {queryParams: {account_id:account_id,account_name:account_name}});
+    this.router.navigate(['familymanagement'], {queryParams: {account_id:account_id, account_name:account_name}});
   }
 
   gotomanagementEnterprise(account_id,account_name) {
-
     this.presentLoading();
-    this.router.navigate(['enterprisemanagement'], {queryParams: {account_id:account_id,account_name:account_name}});
+    this.router.navigate(['enterprisemanagement'], {queryParams: {account_id:account_id, account_name:account_name}});
   }
 
   removeAccount(id) {
