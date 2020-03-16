@@ -37,12 +37,12 @@ export class RegisterPage implements OnInit {
   ) {}
 
   ngOnInit() {
+
     this.menu.enable(false, "menuSilde");
     this.userservice.get_user().subscribe(res => {
       console.log(res);
       this.user = res;
     });
-
     
   }
 

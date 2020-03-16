@@ -1,104 +1,94 @@
-import { Component, ViewChild , OnInit } from '@angular/core';
-import { Ng2GoogleChartsModule } from 'ng2-google-charts';
-import { GoogleChartInterface } from 'ng2-google-charts/google-charts-interfaces';
+import { Component, ViewChild, OnInit } from "@angular/core";
+import { Ng2GoogleChartsModule } from "ng2-google-charts";
 
+import { GoogleChartInterface } from "ng2-google-charts/google-charts-interfaces";
+import { AccountService } from "src/app/services/account.service";
+import { TransactionService } from "src/app/services/transaction.service";
 @Component({
-  selector: 'app-report',
-  templateUrl: './report.page.html',
-  styleUrls: ['./report.page.scss'],
+  selector: "app-report",
+  templateUrl: "./report.page.html",
+  styleUrls: ["./report.page.scss"]
 })
 export class ReportPage implements OnInit {
+  
+
+  bars: any;
+  colorArray: any;
+
+
+  private account_id: string;
+  private account_name: string;
+  private income: number;
+  private Expense: number;
+  private transaction = [];
+  private tran = [];
+
   public columnChart1: GoogleChartInterface;
   public columnChart2: GoogleChartInterface;
-  public barChart: GoogleChartInterface
-  constructor() { }
+  public pieChart: GoogleChartInterface;
+  constructor(
+    private accountService: AccountService,
+    private tracsactionService: TransactionService
+  ) {}
 
   ngOnInit() {
+    this.income = 0;
+    this.Expense = 0;
+    this.account_id = this.accountService.get_session_account_id();
+    this.account_name = this.accountService.get_session_account_name();
+    this.load_transaction();
   }
+
   ionViewDidEnter() {
-    this.loadColumnChart();
-    this.loadGroupColumnChart();
-    this.loadBarChart();
+    this.loadSimplePieChart();
+    // this.loadGroupColumnChart();
+    // this.loadBarChart();
   }
 
-  loadColumnChart() {
-    this.columnChart1 = {
-      chartType: 'ColumnChart',
+  loadSimplePieChart() {
+    this.pieChart = {
+      chartType: 'PieChart',
       dataTable: [
-        ['City', '2010 Population'],
-        ['New York City, NY', 8175000],
-        ['Los Angeles, CA', 3792000],
-        ['Chicago, IL', 2695000],
-        ['Houston, TX', 2099000],
-        ['Philadelphia, PA', 1526000]
+        ['Task', 'Hours per Day'],
+        ['รายรับ', this.income],
+        ['รายจ่าย', this.Expense]
       ],
-      // opt_firstRowIsData: true,
+      //opt_firstRowIsData: true,
       options: {
-        title: 'Population of Largest U.S. Cities',
-        height: 600,
-        chartArea: { height: '400' },
-        hAxis: {
-          title: 'Total Population',
-          minValue: 0
-        },
-        vAxis: {
-          title: 'City'
-        }
+        pieHole :0.6,
+        height: '100%',
+        width: '100%'
       },
     };
   }
 
-  loadGroupColumnChart() {
-    this.columnChart2 = {
-      chartType: 'ColumnChart',
-      dataTable: [
-        ['City', '2010 Population', '2000 Population'],
-        ['New York City, NY', 8175000, 8008000],
-        ['Los Angeles, CA', 3792000, 3694000],
-        ['Chicago, IL', 2695000, 2896000],
-        ['Houston, TX', 2099000, 1953000],
-        ['Philadelphia, PA', 1526000, 1517000]
-      ],
-      // opt_firstRowIsData: true,
-      options: {
-        title: 'Monthly Balances',
-        height: 600,
-        chartArea: { height: '400' },
-        hAxis: {
-          title: 'Total Population',
-          minValue: 0
-        },
-        vAxis: {
-          title: 'City'
-        }
-      },
-    };
+  load_transaction() {
+    this.tracsactionService.get_transaction().subscribe(res => {
+      this.tran = res;
+      this.check_transaction();
+    });
   }
 
-  loadBarChart() {
-    this.barChart = {
-      chartType: 'BarChart',
-      dataTable: [
-        ['City', '2010 Population', '2000 Population'],
-        ['New York City, NY', 8175000, 8008000],
-        ['Los Angeles, CA', 3792000, 3694000],
-        ['Chicago, IL', 2695000, 2896000],
-        ['Houston, TX', 2099000, 1953000],
-        ['Philadelphia, PA', 1526000, 1517000]
-      ],
-      // opt_firstRowIsData: true,
-      options: {
-        title: 'Population of Largest U.S. Cities',
-        height: 400,
-        chartArea: { height: '300' },
-        hAxis: {
-          title: 'Total Population',
-          minValue: 0
-        },
-        vAxis: {
-          title: 'City'
-        }
-      },
+  check_transaction() {
+    for (let i = 0; i < this.tran.length; i++) {
+      console.log(
+        i + " " + this.tran[i].tran_account_id + " " + this.account_id
+      );
+      if (this.tran[i].tran_account_id == this.account_id) {
+        this.transaction[i] = this.tran[i];
+      }
     }
+    this.setvalue();
+  }
+
+  async setvalue() {
+    for (let i = 0; i < this.transaction.length; i++) {
+      if (this.transaction[i].tran_category_type == "income") {
+        this.income += parseInt(this.transaction[i].tran_amount);
+      } else {
+        this.Expense += parseInt(this.transaction[i].tran_amount);
+      }
+    }
+    await this.loadSimplePieChart();
   }
 }

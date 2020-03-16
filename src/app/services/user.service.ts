@@ -9,6 +9,7 @@ import {
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { async } from '@angular/core/testing';
+import { Storage } from '@ionic/storage';
 export interface User {
   id?: string;
   user_id: string;
@@ -20,14 +21,21 @@ export interface User {
   providedIn: 'root'
 })
 export class UserService {
-  private set_user : any[];
+
+  private isLoggedIn: boolean;
+  private userSession: any[];
+  private set_user: any[];
+  private username = '';
 
   private user: Observable<User[]>;
+
   // tslint:disable-next-line: variable-name
   private user_collection: AngularFirestoreCollection<User>;
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore,
+              public storage: Storage) {
     this.user_collection = this.afs.collection<User>('user');
+    this.isLoggedIn = false;
   }
 
   // Function get_user
@@ -64,8 +72,8 @@ export class UserService {
   // Function add_user
   // create by : kittisak noidonpai
   // จะทำการ บันทึกข้อมูลของ user ลงใน firestore
-  add_user(User: User): Promise<DocumentReference> {
-    return this.user_collection.add(User);
+  add_user(user: User): Promise<DocumentReference> {
+    return this.user_collection.add(user);
   }
 
   // Function update_user
@@ -73,9 +81,17 @@ export class UserService {
   // จะทำการ เปลี่ยนข้อมูลของ user ตาม id ใน firestore
   update_user(User: User): Promise<void> {
     return this.user_collection.doc(User.id).update({
-      user_email: User.user_id,
       user_name: User.user_name,
       user_password: User.user_password
+    });
+  }
+
+   // Function update_name_user
+  // create by : komsan tesana
+  // จะทำการ เปลี่ยนข้อมูลชื่อ user ตาม id ใน firestore
+  update_name_user(User: User): Promise<void> {
+    return this.user_collection.doc(User.id).update({
+      user_name: User.user_name
     });
   }
 
@@ -97,7 +113,65 @@ export class UserService {
   // create by : kittisak noidonpai
   // จะทำการคืนค่าข้อมูลของ user ที่loging เข้าใช้งานระบบ
   get_session_user() {
+    this.storage.get('username').then((username) => {
+      this.username = username;
+      // console.log(this.username)
+    });
     return this.set_user;
+  }
+
+  // Function setSession
+  // create by : Namchok Singhachai
+  setSession() {
+    this.storage.set('user', this.set_user).then(() => {
+      this.isLoggedIn = true;
+    });
+  }
+
+  // Function getSession
+  // create by : Namchok Singhachai
+  getSession() {
+    this.storage.get('user').then((user) => {
+      this.isLoggedIn = true;
+      this.userSession = user;
+    });
+
+    return this.userSession;
+  }
+
+  // Function logoutSession
+  // create by : Namchok Singhachai
+  logoutSession() {
+    this.storage.remove('user').then(() => {
+      this.isLoggedIn = false;
+    });
+  }
+
+  // Function logoutSession
+  // create by : Namchok Singhachai
+  loginSession(user) {
+    this.storage.set('user', user).then(() => {
+      this.isLoggedIn = true;
+      this.userSession = user;
+    });
+  }
+
+  // Function setUsername
+  // create by : Namchok Singhachai
+  setUsername(username) {
+    this.storage.set('username', username).then( () => { console.log(username); });
+  }
+
+  // Function isAuthen
+  // create by : Namchok Singhachai
+  isAuthen() {
+    return this.isLoggedIn;
+  }
+
+  // Fucntion getUsername
+  // Create by : Namchok
+  getUsername() {
+    return this.username;
   }
 
 }
