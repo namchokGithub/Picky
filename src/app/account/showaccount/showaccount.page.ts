@@ -37,12 +37,12 @@ export class ShowaccountPage implements OnInit {
     this.menu.enable(false, 'menuSilde');
     this.session_user();
     this.get_account();
-
   }
 
   session_user() {
     this.session = this.userService.get_session_user();
-    this.name = this.session['user_name'];
+    this.name = this.userService.getUsername();
+    // this.name = this.session['user_name'];
     // console.log(this.session["user_name"]);
   }
 
@@ -82,23 +82,23 @@ export class ShowaccountPage implements OnInit {
    * @Name Naerumon
    * เลือก Account ไปสู่หน้า Home
    */
-  selecet_account(account_id, account_name) {
+  selecet_account(account_id: string, account_name: string) {
     this.presentLoading();
     this.accountService.set_session_account(account_id, account_name)
     this.router.navigate(['home']);
   }
 
-  gotomanagementFamily(account_id, account_name) {
+  gotomanagementFamily(account_id: any, account_name: any) {
     this.presentLoading();
     this.router.navigate(['familymanagement'], {queryParams: {account_id: account_id, account_name: account_name}});
   }
 
-  gotomanagementEnterprise(account_id, account_name) {
+  gotomanagementEnterprise(account_id: any, account_name: any) {
     this.presentLoading();
     this.router.navigate(['enterprisemanagement'], {queryParams: {account_id: account_id, account_name: account_name}});
   }
 
-  removeAccount(id) {
+  removeAccount(id: string) {
     this.presentLoading();
     this.accountService.delete_account(id);
   }

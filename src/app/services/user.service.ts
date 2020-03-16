@@ -25,6 +25,7 @@ export class UserService {
   private isLoggedIn: boolean;
   private userSession: any[];
   private set_user: any[];
+  private username = '';
 
   private user: Observable<User[]>;
 
@@ -115,35 +116,61 @@ export class UserService {
     return this.set_user;
   }
 
-  // Function setSessionUser
+  // Function setSession
   // create by : Namchok Singhachai
-  setSessionUser() {
+  setSession() {
     this.storage.set('user', this.set_user).then(() => {
       this.isLoggedIn = true;
     });
   }
 
-  // Function getSessionUser
+  // Function getSession
   // create by : Namchok Singhachai
-  getSessionUser() {
+  getSession() {
     this.storage.get('user').then((user) => {
+      this.isLoggedIn = true;
+      this.userSession = user;
+    });
+
+    return this.userSession;
+  }
+
+  // Function logoutSession
+  // create by : Namchok Singhachai
+  logoutSession() {
+    this.storage.remove('user').then(() => {
+      this.isLoggedIn = false;
+    });
+  }
+
+  // Function logoutSession
+  // create by : Namchok Singhachai
+  loginSession(user) {
+    this.storage.set('user', user).then(() => {
       this.isLoggedIn = true;
       this.userSession = user;
     });
   }
 
-  // Function logoutSessionUser
+  // Function setUsername
   // create by : Namchok Singhachai
-  logoutSessionUser() {
-    this.storage.remove('user').then(() => {
-      this.isLoggedIn = false;
-    });
+  setUsername(username) {
+    this.storage.set('username', username).then( () => { console.log(username);});
   }
 
   // Function isAuthen
   // create by : Namchok Singhachai
   isAuthen() {
     return this.isLoggedIn;
+  }
+
+  // Fucntion getUsername
+  // Create by : Namchok
+  getUsername() {
+    this.storage.get('username').then((username) => {
+      this.username = username;
+    });
+    return this.username;
   }
 
 }
