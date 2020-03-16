@@ -73,9 +73,7 @@ export class HomePage implements OnInit {
     var index = 0;
     for (let i = 0; i < this.tran.length; i++) {
 
-      console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + this.account_id);
-      if (this.tran[i].tran_account_id == this.account_id) {
-        this.transaction[index] = this.tran[i];
+      
 
       console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + this.account_id)
       if (this.tran[i].tran_account_id == this.account_id && index < 5) {
@@ -86,6 +84,7 @@ export class HomePage implements OnInit {
     }
     await this.setvalue();
   }
+
 
   setvalue() {
     console.log(this.transaction);

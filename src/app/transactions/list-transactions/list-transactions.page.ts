@@ -126,7 +126,5 @@ export class ListTransactionsPage implements OnInit {
     }
    }
  
-   change_date(date){
-    var day = date.
-   }
+   
 }
