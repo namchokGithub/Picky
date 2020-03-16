@@ -31,7 +31,9 @@ export class ShowaccountPage implements OnInit {
     private userService:UserService,
     private accountService: AccountService,
     private loadingController: LoadingController
-  ) {}
+  ) {
+    
+  }
 
   ngOnInit() {
     this.menu.enable(false, 'menuSilde');
@@ -73,9 +75,15 @@ export class ShowaccountPage implements OnInit {
 
   }
   /* ไปสู่หน้า Add Account */
-  openAddAccount() {
+ async openAddAccount() {
     console.log('Click');
-    this.router.navigate(['addaccount']);
+  
+    while(this.account_person.length > 0){
+      this.account_person.pop()
+      console.log(this.account_person)
+    }
+
+    await this.router.navigate(['addaccount']);
   }
 
   /**
