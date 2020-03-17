@@ -62,7 +62,7 @@ export class AddPage implements OnInit {
   // * @Author     : Komsan Tesana
   // * @Create Date: 10/3/2563
   goCategoryPage() {
-    this.router.navigate(['category']);
+    this.router.navigate(['category'], { replaceUrl: true });
   }
 
   // * @Function   : back => ย้อนไปยังหน้า home
@@ -110,7 +110,7 @@ export class AddPage implements OnInit {
         this.transaction.tran_user = this.user_session.user_id;
         this.transactionService.add_transaction(this.transaction);
         console.log(this.transaction);
-      this.router.navigate(['home']);
+      this.router.navigate(['home'], { replaceUrl: true });
   }
 
   // * @Function   : validate => เช็คค่าหากไม่มีการกรอกข้อมูล จะทำการแสดงข้อความแจ้งเตือน

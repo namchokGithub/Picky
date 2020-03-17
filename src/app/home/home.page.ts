@@ -106,7 +106,7 @@ export class HomePage implements OnInit {
     this.income = 0;
     this.Expense = 0;
     this.balance = 0;
-    this.router.navigate(['add']);
+    this.router.navigate(['add'], { replaceUrl: true });
   }
 
 
