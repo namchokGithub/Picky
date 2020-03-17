@@ -10,6 +10,7 @@ import { AccountService, person, family, enterprise} from './../../services/acco
   styleUrls: ['./addaccount.page.scss']
 })
 export class AddaccountPage implements OnInit {
+
   person: person = {
     account_balance: '',
     account_name: '',
@@ -18,31 +19,28 @@ export class AddaccountPage implements OnInit {
     account_user_name: ''
   };
 
-  // record_account: Record = {
-  //   account_id: '',
-  //   account_name: '',
-  //   user_record: []
-  // };
   family: family = {
-
     account_balance: '',
     account_name: '',
     account_member: [],
     account_type: '',
 
   };
+
   enterprise: enterprise = {
     account_balance: '',
     account_department: '',
     account_member: [],
     account_name: '',
-    account_type: ''};
+    account_type: ''
+  };
 
-    private thtype: string;
+  private thtype: string;
   private type: string;
   private user_session: any = [];
   private name_account: string;
   private department: string;
+
   constructor(
     public navCtrl: NavController,
     private router: Router,
@@ -56,6 +54,10 @@ export class AddaccountPage implements OnInit {
     this.type = 'Personal';
   }
 
+  async ionViewWillEnter() {
+    await this.loaduser();
+  }
+
   back() {
     this.router.navigate(['showaccount'], { replaceUrl: true });
   }
@@ -65,16 +67,14 @@ export class AddaccountPage implements OnInit {
   // Date : 2020-03-09
   async confirm() {
 
-    if(this.type == 'Family'){
-
+    if (this.type == 'Family') {
       this.thtype = 'ครอบครัว';
-    }else if(this.type == 'Personal'){
-
+    } else if (this.type == 'Personal') {
       this.thtype = 'ส่วนตัว';
-    }else{
-
+    } else {
       this.thtype = 'องค์กร';
     }
+
     const alert = await this.alertController.create({
       header: 'ยืนยันการเพิ่มบัญชีผู้ใช้?',
       message: 'คุณต้องการเพิ่มบัญชีประเภท ' + this.thtype + ' หรือไม่?',
@@ -90,62 +90,54 @@ export class AddaccountPage implements OnInit {
         {
           text: 'ยืนยัน',
           handler: () => {
-            console.log('Confirm Okay');
             if (this.type == 'Personal') {
               this.add_account(this.type);
-            }else if(this.type == 'Family'){
+            } else if (this.type == 'Family') {
               this.add_account(this.type);
-            }else if(this.type == 'Enterprise'){
+            } else if (this.type == 'Enterprise') {
               this.add_account(this.type);
             }
-            this.go_to_showaccount()
-            
+            console.log('Confirm Okay');
+            this.go_to_showaccount();
           }
-          
         }
-        
       ]
-      
     });
     await alert.present();
   }
 
-  go_to_showaccount(){
+  go_to_showaccount() {
     this.router.navigate(['showaccount']);
   }
 
-  add_account(type:String){
+  add_account(type: String) {
 
-
-      if(type == 'Personal'){
-
+      if (type == 'Personal') {
         this.person.account_balance = '0';
         this.person.account_name = this.name_account;
         this.person.account_type = 'Personal';
         this.person.account_user_id = this.user_session.user_id;
         this.person.account_user_name = this.user_session.user_name;
-      
         this.accountService.add_account_person(this.person);
-      }else if(type == 'Family'){
-         this.family.account_balance = '0';
-         this.family.account_name = this.name_account;
-         this.family.account_member = [this.user_session];
-         this.family.account_type = 'Family';
-
-         this.accountService.add_account_family(this.family);
-      }else if(type == 'Enterprise'){
+      } else if (type == 'Family') {
+        this.family.account_balance = '0';
+        this.family.account_name = this.name_account;
+        this.family.account_member = [this.user_session];
+        this.family.account_type = 'Family';
+        console.log(this.family)
+        this.accountService.add_account_family(this.family);
+      } else if (type == 'Enterprise') {
         this.enterprise.account_balance = '0';
         this.enterprise.account_department = this.department;
         this.enterprise.account_member = [this.user_session];
         this.enterprise.account_name = this.name_account;
         this.enterprise.account_type = 'Enterprise';
-
-        this.accountService.add_account_enterprise(this.enterprise);  
+        this.accountService.add_account_enterprise(this.enterprise);
       }
   }
 
-  loaduser() {
-    this.user_session = this.userService.get_session_user();
+  async loaduser() {
+    this.user_session = await this.userService.get_session_user();
     console.log(this.user_session);
   }
 

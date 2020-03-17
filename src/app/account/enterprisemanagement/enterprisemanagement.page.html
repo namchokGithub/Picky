@@ -39,7 +39,6 @@
     </div>
 
     <ion-card>
-
         <ion-card-header>
             <div class="ion-text-center">
                 <ion-title>List Shared with</ion-title>
@@ -47,13 +46,11 @@
         </ion-card-header>
 
         <ion-card-content>
-
-
             <ion-grid>
                 <ion-list *ngFor="let account of account.account_member">
                     <ion-item-sliding>
-                        <ion-item *ngIf="user_session.user_id != account.user_id">
-                            <ion-label>{{ account.user_id }}</ion-label>
+                        <ion-item *ngIf="user_session['user_id'] != account.user_id">
+                            <ion-label>{{ account['user_id'] }}</ion-label>
                         </ion-item>
                         <!-- Button delete -->
                         <ion-item-options side="end">
@@ -62,12 +59,8 @@
                         <!-- End Button delete -->
                     </ion-item-sliding>
                 </ion-list>
-
-
             </ion-grid>
         </ion-card-content>
-
-
 
         <ion-card-content>
             <ion-grid>
@@ -79,14 +72,7 @@
                     <ion-button slot="end" (click)="searchusername()" size="small">
                         <ion-icon name="search"></ion-icon>
                     </ion-button>
-
-
                 </ion-item>
-
-
-
-
-
             </ion-grid>
         </ion-card-content>
 

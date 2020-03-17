@@ -46,13 +46,14 @@ export class AddPage implements OnInit {
   // * @Function   : ngOnInit => รับค่าจากหน้า CategoryPage ที่ส่งมายังหน้า add
   // * @Author     : Komsan Tesana
   // * @Create Date: 10/3/2563
-  ngOnInit() {
+  async ngOnInit() {
+    this.name_category = null
      this.activatedRoute.queryParamMap.subscribe(params => {
         this.type_category  = params.get('Type_category');
         this.name_category = params.get('record_name');
      });
 
-     this.user_session =  this.userService.get_session_user();
+     this.user_session =  await this.userService.get_session_user();
      this.account_id = this.accountService.get_session_account_id();
      this.account_name = this.accountService.get_session_account_name();
   }
@@ -117,7 +118,7 @@ export class AddPage implements OnInit {
   // * @Create Date: 10/3/2563
   validate(){
 
-    if(this.name_category == ''){
+    if(this.name_category == null){
 
       this.showToast('กรุณาระบุประเภท');
     }

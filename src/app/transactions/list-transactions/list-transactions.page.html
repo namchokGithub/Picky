@@ -6,47 +6,11 @@
     </ion-toolbar>
 </ion-header>
 
-
-
-
-
-
-
-
-
 <ion-content class="bg-flow">
-
     <ion-card>
-        <ion-card-header>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <ion-card-title class="circle">ธุรกรรม</ion-card-title>
-=======
-            <ion-card-title class="circle">{{account_name}}</ion-card-title>
-=======
-            <ion-card-title class="title-card">{{account_name}}</ion-card-title>
->>>>>>> 6b020638c97e7af78e165df86abc416f917c9ba0
-        </ion-card-header>
-
-
-    </ion-card>
-
-
-
-
-    <ion-card>
-        <ion-card-header>
-            <ion-card-title class="circle">การบันทึก</ion-card-title>
->>>>>>> e8dbbcf5c95034e3e48e9b15f807def7fa3dd623
-        </ion-card-header>
-
         <ion-card-content>
-
             <ion-card-header>
-
                 <ion-card-title class="search">ค้นหา </ion-card-title>
-
-
                 <ion-item>
                     <ion-label>เดือน</ion-label>
                     <ion-datetime display-format="MMMM" picker-format="MMMM" placeholder="ค้นหาด้วยเดือน" [(ngModel)]="month"></ion-datetime>
@@ -57,33 +21,21 @@
                     <ion-datetime display-format="DD" picker-format="DD" [(ngModel)]="date" placeholder="ค้นหาด้วยวันที่"></ion-datetime>
                 </ion-item>
 
-
-
-
-
                 <ion-grid>
                     <ion-row>
-
                         <button class="search_bt">
                             <ion-icon name="search" (click)="search()"></ion-icon>
                         </button>
-
                     </ion-row>
-
-
                 </ion-grid>
-
-
-
-
             </ion-card-header>
-
 
             <div *ngIf="!value; else show">
                 <p>ไม่มีการบันทึกรายรับรายจ่าย</p>
             </div>
             <ion-grid ng-template #show *ngFor="let transaction of transaction">
-                <ion-row *ngIf='transaction.tran_date.toString().substring(8,10) == date && transaction.tran_date.toString().substring(5,7) == month else show_month '>
+
+                <ion-row *ngIf='transaction.tran_date.toString().substring(8,10) == date && transaction.tran_date.toString().substring(5,7) == month else show_month'>
                     <ion-col>
                         <ion-title size="small">{{transaction.tran_category_name}}</ion-title>
                     </ion-col>
@@ -99,32 +51,20 @@
                     </ion-col>
                 </ion-row>
 
-                <ion-row #show_month *ngIf='transaction.tran_date.toString().substring(5,7) == month'>
+                <ion-row #show_month *ngIf='(transaction.tran_date.toString().substring(5,7) == month) || check_null()'>
                     <ion-col>
-<<<<<<< HEAD
-                        <ion-text class="">การศึกษา</ion-text>
-=======
                         <ion-title size="small">{{transaction.tran_category_name}}</ion-title>
->>>>>>> e8dbbcf5c95034e3e48e9b15f807def7fa3dd623
                     </ion-col>
                     <ion-col *ngIf='transaction.tran_category_type == "income"'>
                         <ion-text class="text-green text-right">
                             <p>฿ {{transaction.tran_amount}}</p>
+                            <P>วันที่ {{transaction.tran_date}}</P>
                         </ion-text>
                     </ion-col>
-<<<<<<< HEAD
-                </ion-row>
-
-                <ion-row>
-                    <ion-col>
-                        <ion-text class="">ออกกำลังกาย</ion-text>
-                    </ion-col>
-                    <ion-col>
-=======
                     <ion-col *ngIf='transaction.tran_category_type == "Expense"'>
->>>>>>> e8dbbcf5c95034e3e48e9b15f807def7fa3dd623
                         <ion-text class="text-red text-right">
                             <p>฿ {{transaction.tran_amount}}</p>
+                            <P>วันที่ {{transaction.tran_date}}</P>
                         </ion-text>
                     </ion-col>
                 </ion-row>
