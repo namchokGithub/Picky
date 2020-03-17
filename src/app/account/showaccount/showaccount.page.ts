@@ -18,11 +18,11 @@ import {
   styleUrls: ['./showaccount.page.scss']
 })
 export class ShowaccountPage implements OnInit {
-  public name = '';
-  private session = [];
-  private account_person = [];
-  private account_family = [];
-  private account_enterprise = [];
+  public name: string = '';
+  private session: any = [];
+  private account_person: any = [];
+  private account_family: any = [];
+  private account_enterprise: any = [];
 
   constructor(
     private menu: MenuController,
@@ -35,11 +35,14 @@ export class ShowaccountPage implements OnInit {
     public alertCtrl: AlertController
   ) {}
 
-  async ngOnInit() {
-    this.menu.enable(false, 'menuSilde');
+  ngOnInit() {
 
-    await this.presentLoading();
-    await this.setSession();
+    this.account_person = [];
+   
+    this.account_enterprise = [];
+    this.menu.enable(false, 'menuSilde');
+    this.presentLoading();
+     this.setSession();
   }
 
   async ionViewWillEnter() {
@@ -47,9 +50,9 @@ export class ShowaccountPage implements OnInit {
     this.name = await this.userService.getUsername();
   }
 
-  async setSession() {
-    this.session = await this.userService.get_session_user();
-    this.name = await this.userService.getUsername();
+   setSession() {
+    this.session =  this.userService.get_session_user();
+    this.name =  this.userService.getUsername();
     this.get_account();
   }
 
@@ -90,24 +93,24 @@ export class ShowaccountPage implements OnInit {
   Description : get account form db
   */
   get_account() {
-    let indexPerson = 0;
-    let indexFamily = 0;
-    let indexEnterprise = 0;
-
+    console.log(this.session);
+   
     this.accountService.get_account().subscribe(res => {
       // tslint:disable-next-line: prefer-for-of
       for (let i = 0; i < res.length; i++) {
         if (res[i].account_type == 'Personal') {
-          this.account_person[indexPerson] = res[i];
-          indexPerson++;
+          this.account_person.push(res[i]);
+     
         } else if (res[i].account_type == 'Family') {
-          this.account_family[indexFamily] = res[i];
-          indexFamily++;
+          this.account_family.push(res[i]);
+         
         } else {
-          this.account_enterprise[indexEnterprise] = res[i];
-          indexEnterprise++;
+          this.account_enterprise.push(res[i]);
+        
         }
       }
+
+   
     });
   }
 
@@ -121,10 +124,28 @@ export class ShowaccountPage implements OnInit {
     // Test pop account | Namchok
     while (this.account_person.length > 0) {
       this.account_person.pop();
-      console.log(this.account_person);
+      
+    }
+
+    while (this.account_family.length > 0) {
+      this.account_family.pop();
+    
+    }
+
+    while (this.account_enterprise.length > 0) {
+      this.account_enterprise.pop();
+     
     }
     /////////////////////////////////////
+    console.log('account_person');
+    console.log(this.account_person);
 
+    console.log('account_family');
+    console.log(this.account_family);
+
+    console.log('account_enterprise');
+    console.log(this.account_enterprise);
+    
     await this.router.navigate(['addaccount']);
   }
 
