@@ -69,7 +69,6 @@ export class AddaccountPage implements OnInit {
 
       this.thtype = 'ครอบครัว';
     }else if(this.type == 'Personal'){
-
       this.thtype = 'ส่วนตัว';
     }else{
 
@@ -144,8 +143,8 @@ export class AddaccountPage implements OnInit {
       }
   }
 
-  loaduser() {
-    this.user_session = this.userService.get_session_user();
+  async loaduser() {
+    this.user_session = await this.userService.get_session_user();
     console.log(this.user_session);
   }
 
