@@ -155,17 +155,7 @@ export class UserService {
 
   // Function get_session_user
   // create by : Namchok Singhachai
-  get_session_user() {
-    return this.userSession;
-  }
-
-  // Function getSession
-  // create by : Namchok Singhachai
-  getSession() {
-    this.storage.get('user').then((user) => {
-      this.isLoggedIn = true;
-      this.userSession = user;
-    });
+  async get_session_user() {
     return this.userSession;
   }
 
@@ -212,7 +202,7 @@ export class UserService {
 
   // Fucntion getUsername
   // Create by : Namchok
-  getUsername() {
+  async getUsername() {
     return this.username;
   }
 

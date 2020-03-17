@@ -39,7 +39,7 @@ export class FamilymanagementPage implements OnInit {
     ) { }
 
 
-  ngOnInit() {
+  async ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe(params => {
       this.account_id  = params.get('account_id')
       console.log(this.account_id)
@@ -51,7 +51,7 @@ export class FamilymanagementPage implements OnInit {
       this.db_user = res;
     });
 
-    this.user_session = this.userService.get_session_user();
+    this.user_session = await this.userService.get_session_user();
     console.log(this.user_session);
     this.accountService.get_acount_family_By_Id(this.account_id).subscribe(res => {
       this.account = res;
@@ -116,7 +116,10 @@ export class FamilymanagementPage implements OnInit {
 
     await alert.present();
   }
-
+  //  Function: Set Account ที่ทำการแชร์
+  //  Name: Chomphunut
+  //  Date: 14/3/20
+  //  Edit by Komsan
   setaccount(){
     this.family.id = this.account_id;
     this.family.account_balance = this.account.account_balance;
@@ -124,14 +127,20 @@ export class FamilymanagementPage implements OnInit {
     this.family.account_member = this.account.account_member;
     this.family.account_type = this.account.account_type;
   }
-
+  //  Function: Sear chusername เพื่อคนหาผู้ที่ทำการแชร์บัญชี
+  //  Name: Chomphunut
+  //  Date: 14/3/20
+  //  Edit by Komsan
   searchusername(){
     this.user_search = this.db_user.find(user => user.user_id === this.sharename);
     if(this.user_search.user_id == this.sharename) {
       this.showToast('ค้นหาผู้ใช้พบ');
     }
   }
-
+  //  Function: Show toast แสดงข้อความ
+  //  Name: Chomphunut
+  //  Date: 14/3/20
+  //  Edit by Komsan
   showToast(msg){
     this.toastController.create({
       message: msg,
