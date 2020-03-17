@@ -1,8 +1,9 @@
 <!-- 
     File Name : addaccount.page.html
-    Author : Chatchalerm
+    Author : Naruemon
     Date : 2020-03-09
  -->
+
 <!-- Header -->
 <ion-header>
     <ion-toolbar>
@@ -10,6 +11,8 @@
     </ion-toolbar>
 </ion-header>
 <!-- End of Header -->
+
+<!-- Content Personal -->
 <ion-content fullscreen *ngIf="type == 'Personal'">
 
     <ion-grid>
@@ -28,7 +31,7 @@
                 <ion-col size-lg>
                     <ion-item>
                         <ion-label>ประเภทของบัญชี</ion-label>
-                        <ion-select [(ngModel)]="type">
+                        <ion-select [(ngModel)]="type" ok-text="ตกลง" cancel-text="ยกเลิก">
                             <ion-select-option value="Personal">บุคคล</ion-select-option>
                             <ion-select-option value="Family">ครอบครัว</ion-select-option>
                             <ion-select-option value="Enterprise">องค์กร</ion-select-option>
@@ -40,24 +43,26 @@
         </ion-card>
 
         <!-- End of Selection -->
+
         <!-- Confirm button -->
         <ion-row>
             <ion-col>
-                <ion-button (click)="confirm()" expand="full" color="success">ยืนยัน</ion-button>
+                <ion-button (click)="confirm()" expand="block" color="success">ยืนยัน</ion-button>
             </ion-col>
         </ion-row>
         <!-- End of confirm button -->
         <!-- Back button -->
         <ion-row>
             <ion-col>
-                <ion-button (click)="back()" expand="full" color="danger">ยกเลิก</ion-button>
+                <ion-button (click)="back()" expand="block" color="danger">ยกเลิก</ion-button>
             </ion-col>
         </ion-row>
         <!-- End of back button -->
 
     </ion-grid>
 </ion-content>
-
+<!--  End Content Personal -->
+<!-- Content Family -->
 <ion-content fullscreen *ngIf="type == 'Family'">
 
     <ion-grid>
@@ -76,7 +81,7 @@
                 <ion-col size-lg>
                     <ion-item>
                         <ion-label>ประเภทของบัญชี</ion-label>
-                        <ion-select [(ngModel)]="type">
+                        <ion-select [(ngModel)]="type" ok-text="ตกลง" cancel-text="ยกเลิก">
                             <ion-select-option value="Personal">บุคคล</ion-select-option>
                             <ion-select-option value="Family">ครอบครัว</ion-select-option>
                             <ion-select-option value="Enterprise">องค์กร</ion-select-option>
@@ -86,29 +91,28 @@
 
             </ion-row>
             <!-- End of Selection -->
-
-            <!-- Confirm button -->
-            <ion-row>
-                <ion-col>
-                    <ion-button (click)="confirm()" expand="full" color="success">ยืนยัน</ion-button>
-                </ion-col>
-            </ion-row>
-            <!-- End of confirm button -->
-
-            <!-- Back button -->
-            <ion-row>
-                <ion-col>
-                    <ion-button (click)="back()" expand="full" color="danger">ยกเลิก</ion-button>
-                </ion-col>
-            </ion-row>
-            <!-- End of back button -->
         </ion-card>
+        <!-- Confirm button -->
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="confirm()" expand="block" color="success">ยืนยัน</ion-button>
+            </ion-col>
+        </ion-row>
+        <!-- End of confirm button -->
 
-
+        <!-- Back button -->
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="back()" expand="block" color="danger">ยกเลิก</ion-button>
+            </ion-col>
+        </ion-row>
+        <!-- End of back button -->
 
     </ion-grid>
 </ion-content>
+<!-- End Content Family -->
 
+<!-- Content Enterprise -->
 <ion-content fullscreen *ngIf="type == 'Enterprise'">
 
     <ion-grid>
@@ -134,7 +138,7 @@
                 <ion-col size-lg>
                     <ion-item>
                         <ion-label>ประเภทของบัญชี</ion-label>
-                        <ion-select [(ngModel)]="type">
+                        <ion-select [(ngModel)]="type" ok-text="ตกลง" cancel-text="ยกเลิก">
                             <ion-select-option value="Personal">บุคคล</ion-select-option>
                             <ion-select-option value="Family">ครอบครัว</ion-select-option>
                             <ion-select-option value="Enterprise">องค์กร</ion-select-option>
@@ -143,24 +147,23 @@
                 </ion-col>
             </ion-row>
             <!-- End of Selection -->
-
-            <!-- Confirm button -->
-            <ion-row>
-                <ion-col>
-                    <ion-button (click)="confirm()" expand="full" color="success">ยืนยัน</ion-button>
-                </ion-col>
-            </ion-row>
-            <!-- End of confirm button -->
-
-            <!-- Back button -->
-            <ion-row>
-                <ion-col>
-                    <ion-button (click)="back()" expand="full" color="danger">ยกเลิก</ion-button>
-                </ion-col>
-            </ion-row>
-            <!-- End of back button -->
         </ion-card>
 
+        <!-- Confirm button -->
+        <ion-row>
+            <ion-col>
+                <ion-button expand="block" (click)="confirm()" color="success">ยืนยัน</ion-button>
+            </ion-col>
+        </ion-row>
+        <!-- End of confirm button -->
 
+        <!-- Back button -->
+        <ion-row>
+            <ion-col>
+                <ion-button expand="block" (click)="back()" color="danger">ยกเลิก</ion-button>
+            </ion-col>
+        </ion-row>
+        <!-- End of back button -->
     </ion-grid>
 </ion-content>
+<!-- End Content Enterprise -->

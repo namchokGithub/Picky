@@ -38,14 +38,15 @@ export class HomePage implements OnInit {
     public accountService: AccountService
   ) {}
 
-  ngOnInit() {
+ async ngOnInit() {
     this.income = 0;
     this.Expense = 0;
     this.balance = 0;
     this.value = true;
     this.menu.enable(true, 'menuSilde');
-    this.load_session_user();
-    this.load_session_account();
+    await this.load_session_user();
+    await this.load_session_account();
+    await this.get();
     this.accountService.isAuthenAccount();
   }
 
@@ -58,39 +59,38 @@ export class HomePage implements OnInit {
   async load_session_account() {
     this.account_id = this.accountService.get_session_account_id();
     this.account_name = this.accountService.get_session_account_name();
-    // console.log(this.account_id)
-    // console.log(this.account_name)
-    await this.get_transaction();
+
   }
 
   load_session_user() {
     this.user_session = this.user.get_session_user();
   }
 
-  async get_transaction() {
+  async get() {
      this.transactionService.get_transaction().subscribe( res => {
+      console.log(res);
       this.tran = res;
       this.check_transaction();
     });
   }
 
-  async check_transaction() {
+  check_transaction() {
+    console.log('check_transaction');
     // console.log(this.tran);
+    console.log(this.tran);
     let index = 0;
     for (let i = 0; i < this.tran.length; i++) {
       console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + this.account_id);
-      if (this.tran[i].tran_account_id == this.account_id && index < 4) {
-        this.transaction[index] = this.tran[i];
-        index++;
+      if (this.tran[i].tran_account_id == this.account_id && index < 5) {
+        this.transaction.push(this.tran[i]);
         this.value = false;
+        index++;
       }
     }
-
-    await this.setvalue();
+    this.setvalue();
   }
 
   setvalue() {
-    
       for (let i = 0; i < this.transaction.length; i++) {
         if (this.transaction[i].tran_category_type == 'income') {
           this.income += parseInt(this.transaction[i].tran_amount);
@@ -106,8 +106,9 @@ export class HomePage implements OnInit {
     this.income = 0;
     this.Expense = 0;
     this.balance = 0;
+    for (let i = 0; i < this.transaction.length; i++) {
+      this.transaction.pop();
+    }
     this.router.navigate(['add'], { replaceUrl: true });
   }
-
-
 }

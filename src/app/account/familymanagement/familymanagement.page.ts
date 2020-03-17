@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule , ActivatedRoute} from '@angular/router';
 import { AlertController , ToastController, NavController} from '@ionic/angular';
-import { AccountService ,family} from 'src/app/services/account.service';
+import { AccountService , family} from 'src/app/services/account.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -14,11 +14,11 @@ export class FamilymanagementPage implements OnInit {
   public account_id: string;
   public account_name: string;
   public sharename: string;
-  private db_user = [];
-  public account:any = [];
-  private user_search:any = [];
+  public db_user = [];
+  public account: any = [];
+  public user_search: any = [];
 
-  private user_session = [];
+  public user_session = [];
 
   public family: family = {
 
@@ -41,10 +41,10 @@ export class FamilymanagementPage implements OnInit {
 
   async ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe(params => {
-      this.account_id  = params.get('account_id')
-      console.log(this.account_id)
-      this.account_name = params.get('account_name')
-      console.log(this.account_name)
+      this.account_id  = params.get('account_id');
+      console.log(this.account_id);
+      this.account_name = params.get('account_name');
+      console.log(this.account_name);
     });
 
     this.userService.get_user().subscribe(async res => {
@@ -52,7 +52,7 @@ export class FamilymanagementPage implements OnInit {
     });
 
     this.user_session = await this.userService.get_session_user();
-    console.log('this.user_session');
+    // console.log('this.user_session');
     console.log(this.user_session);
     this.accountService.get_acount_family_By_Id(this.account_id).subscribe(res => {
       this.account = res;
@@ -122,7 +122,7 @@ export class FamilymanagementPage implements OnInit {
   //  Name: Chomphunut
   //  Date: 14/3/20
   //  Edit by Komsan
-  setaccount(){
+  setaccount() {
     this.family.id = this.account_id;
     this.family.account_balance = this.account.account_balance;
     this.family.account_name = this.account.account_name;
@@ -133,9 +133,9 @@ export class FamilymanagementPage implements OnInit {
   //  Name: Chomphunut
   //  Date: 14/3/20
   //  Edit by Komsan
-  searchusername(){
+  searchusername() {
     this.user_search = this.db_user.find(user => user.user_id === this.sharename);
-    if(this.user_search.user_id == this.sharename) {
+    if (this.user_search.user_id == this.sharename) {
       this.showToast('ค้นหาผู้ใช้พบ');
     }
   }
@@ -143,7 +143,7 @@ export class FamilymanagementPage implements OnInit {
   //  Name: Chomphunut
   //  Date: 14/3/20
   //  Edit by Komsan
-  showToast(msg){
+  showToast(msg) {
     this.toastController.create({
       message: msg,
       duration: 2000

@@ -35,22 +35,36 @@ export class ShowaccountPage implements OnInit {
     public alertCtrl: AlertController
   ) {}
 
-  ngOnInit() {
+  /*
+  Function Name : ngOnInit
+  Author : Naruemon
+  Description : เรียกใช้ฟังก์ชันการทำงานที่เกี่ยวข้อง
+  */
+  async ngOnInit() {
+    this.menu.enable(false, 'menuSilde');
 
     this.account_person = [];
-   
     this.account_enterprise = [];
     this.menu.enable(false, 'menuSilde');
     this.presentLoading();
-     this.setSession();
+    this.setSession();
   }
 
+  /*
+  Function Name : ionViewWillEnter
+  Author : -
+  Description : เช็ตข้อมูลของผู้ใช้
+  */
   async ionViewWillEnter() {
     this.session = await this.userService.get_session_user();
     this.name = await this.userService.getUsername();
     
   }
-
+  /*
+  Function Name : setSession
+  Author : -
+  Description : เช็ตข้อมูลของผู้ใช้
+  */
   async setSession() {
     this.session = await this.userService.get_session_user();
     this.name =  await this.userService.getUsername();
@@ -116,11 +130,11 @@ export class ShowaccountPage implements OnInit {
     });
   }
 
-  /**
-   * @Name Naerumon
-   * เลือก Account ไปสู่หน้า Home
-   */
-  /* ไปสู่หน้า Add Account */
+  /*
+  Function Name : get_account
+  Author : Naerumon
+  Description : ไปสู่หน้าเพิ่มบัญชี
+  */
   async openAddAccount() {
 
     // Test pop account | Namchok
@@ -130,31 +144,55 @@ export class ShowaccountPage implements OnInit {
     await this.router.navigate(['addaccount']);
   }
 
-   selecet_account(accountId: string, accountName: string) {
+  /*
+  Function Name : selecet_accoun
+  Author : Naerumon
+  Description : เลือกบัญชีเพื่อไปสู่หน้าหลัก
+  */
+  selecet_account(accountId: string, accountName: string) {
     this.presentLoading();
     this.popaccount();
      this.accountService.set_session_account(accountId,accountName);
     this.router.navigate(['home']);
   }
 
-   gotomanagementFamily(accountId: string, accountName: string) {
+  /*
+  Function Name : gotomanagementFamily
+  Author : Naerumon
+  Description : ไปบัญชีประเภทครอบครัว
+  */
+  gotomanagementFamily(accountId: any, accountName: any) {
     this.presentLoading();
     this.popaccount();
      this.router.navigate(['familymanagement'], {queryParams: {account_id: accountId, account_name:accountName}});
   }
-
-   gotomanagementEnterprise(accountId: string, accountName: string) {
+  /*
+  Function Name : gotomanagementEnterprise
+  Author : Naerumon
+  Description : ไปบัญชีประเภทองค์กร
+  */
+  gotomanagementEnterprise(accountId: any, accountName: any) {
     this.presentLoading();
     this.popaccount();
       this.router.navigate(['enterprisemanagement'], {queryParams: {account_id:accountId, account_name:accountName}});
   }
 
+  /*
+  Function Name : removeAccount
+  Author : Naerumon
+  Description : ลบบัญชี
+  */
   removeAccount(id: string) {
     this.presentLoading();
     this.popaccount();
     this.accountService.delete_account(id);
   }
 
+  /*
+  Function Name : presentLoading
+  Author : Naerumon
+  Description : หน้าต่างแสดงผลโหลดข้อมูล รอสักครู่...
+  */
   async presentLoading() {
     const loading = await this.loadingController.create({
       message: 'รอสักครู่...',
@@ -168,17 +206,14 @@ export class ShowaccountPage implements OnInit {
 
     while (this.account_person.length > 0) {
       this.account_person.pop();
-      
     }
 
     while (this.account_family.length > 0) {
       this.account_family.pop();
-    
     }
 
     while (this.account_enterprise.length > 0) {
       this.account_enterprise.pop();
-     
     }
     /////////////////////////////////////
     console.log('account_person');
