@@ -18,11 +18,11 @@ import {
   styleUrls: ['./showaccount.page.scss']
 })
 export class ShowaccountPage implements OnInit {
-  public name = '';
-  private session = [];
-  private account_person = [];
-  private account_family = [];
-  private account_enterprise = [];
+  public name: string = '';
+  private session: any = [];
+  private account_person: any = [];
+  private account_family: any = [];
+  private account_enterprise: any = [];
 
   constructor(
     private menu: MenuController,
@@ -35,21 +35,25 @@ export class ShowaccountPage implements OnInit {
     public alertCtrl: AlertController
   ) {}
 
-  async ngOnInit() {
-    this.menu.enable(false, 'menuSilde');
+  ngOnInit() {
 
-    await this.presentLoading();
-    await this.setSession();
+    this.account_person = [];
+   
+    this.account_enterprise = [];
+    this.menu.enable(false, 'menuSilde');
+    this.presentLoading();
+     this.setSession();
   }
 
   async ionViewWillEnter() {
     this.session = await this.userService.get_session_user();
     this.name = await this.userService.getUsername();
+    
   }
 
   async setSession() {
     this.session = await this.userService.get_session_user();
-    this.name = await this.userService.getUsername();
+    this.name =  await this.userService.getUsername();
     this.get_account();
   }
 
@@ -75,6 +79,7 @@ export class ShowaccountPage implements OnInit {
           text: 'ยืนยัน',
           handler: () => {
             console.log('Log out');
+            this.popaccount();
             this.userService.logoutSession();
             this.router.navigate(['login'], { replaceUrl: true });
           }
@@ -90,24 +95,24 @@ export class ShowaccountPage implements OnInit {
   Description : get account form db
   */
   get_account() {
-    let indexPerson = 0;
-    let indexFamily = 0;
-    let indexEnterprise = 0;
-
+    console.log(this.session);
+   
     this.accountService.get_account().subscribe(res => {
       // tslint:disable-next-line: prefer-for-of
       for (let i = 0; i < res.length; i++) {
         if (res[i].account_type == 'Personal') {
-          this.account_person[indexPerson] = res[i];
-          indexPerson++;
+          this.account_person.push(res[i]);
+     
         } else if (res[i].account_type == 'Family') {
-          this.account_family[indexFamily] = res[i];
-          indexFamily++;
+          this.account_family.push(res[i]);
+         
         } else {
-          this.account_enterprise[indexEnterprise] = res[i];
-          indexEnterprise++;
+          this.account_enterprise.push(res[i]);
+        
         }
       }
+
+   
     });
   }
 
@@ -119,33 +124,34 @@ export class ShowaccountPage implements OnInit {
   async openAddAccount() {
 
     // Test pop account | Namchok
-    while (this.account_person.length > 0) {
-      this.account_person.pop();
-      console.log(this.account_person);
-    }
-    /////////////////////////////////////
-
+   
+    this.popaccount();
+    
     await this.router.navigate(['addaccount']);
   }
 
-  selecet_account(accountId: string, accountName: string) {
+   selecet_account(accountId: string, accountName: string) {
     this.presentLoading();
-    this.accountService.set_session_account(accountId, accountName);
+    this.popaccount();
+     this.accountService.set_session_account(accountId,accountName);
     this.router.navigate(['home']);
   }
 
-  gotomanagementFamily(accountId: any, accountName: any) {
+   gotomanagementFamily(accountId: string, accountName: string) {
     this.presentLoading();
-    this.router.navigate(['familymanagement'], {queryParams: {accountId, accountName}});
+    this.popaccount();
+     this.router.navigate(['familymanagement'], {queryParams: {account_id: accountId, account_name:accountName}});
   }
 
-  gotomanagementEnterprise(accountId: any, accountName: any) {
+   gotomanagementEnterprise(accountId: string, accountName: string) {
     this.presentLoading();
-    this.router.navigate(['enterprisemanagement'], {queryParams: {accountId, accountName}});
+    this.popaccount();
+      this.router.navigate(['enterprisemanagement'], {queryParams: {account_id:accountId, account_name:accountName}});
   }
 
   removeAccount(id: string) {
     this.presentLoading();
+    this.popaccount();
     this.accountService.delete_account(id);
   }
 
@@ -156,5 +162,32 @@ export class ShowaccountPage implements OnInit {
     });
     await loading.present();
     const { role, data } = await loading.onDidDismiss();
+  }
+
+  popaccount(){
+
+    while (this.account_person.length > 0) {
+      this.account_person.pop();
+      
+    }
+
+    while (this.account_family.length > 0) {
+      this.account_family.pop();
+    
+    }
+
+    while (this.account_enterprise.length > 0) {
+      this.account_enterprise.pop();
+     
+    }
+    /////////////////////////////////////
+    console.log('account_person');
+    console.log(this.account_person);
+
+    console.log('account_family');
+    console.log(this.account_family);
+
+    console.log('account_enterprise');
+    console.log(this.account_enterprise);
   }
 }

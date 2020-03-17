@@ -23,9 +23,9 @@ export class SettingPage implements OnInit {
   public user_session: any = [];
   constructor(public alertController: AlertController, private router: Router, private userService: UserService) {
   }
-  ngOnInit() {
+  async ngOnInit() {
 
-    this.user_session =  this.userService.get_session_user();
+    this.user_session =  await this.userService.get_session_user();
 
       this.name = this.user_session.user_name;
   }

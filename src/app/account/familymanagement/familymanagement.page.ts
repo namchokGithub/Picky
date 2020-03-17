@@ -52,6 +52,7 @@ export class FamilymanagementPage implements OnInit {
     });
 
     this.user_session = await this.userService.get_session_user();
+    console.log('this.user_session');
     console.log(this.user_session);
     this.accountService.get_acount_family_By_Id(this.account_id).subscribe(res => {
       this.account = res;
@@ -63,6 +64,7 @@ export class FamilymanagementPage implements OnInit {
   //  Name: Chomphunut
   //  Date: 6/3/20
   back() {
+
     this.router.navigate(['showaccount'], { replaceUrl: true });
   }
 

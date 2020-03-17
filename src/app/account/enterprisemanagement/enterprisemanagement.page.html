@@ -1,3 +1,9 @@
+<!-- 
+  File Name : app.cnterprisemanagement.pang.html
+  Name : Varthinee
+
+ -->
+<!-- Header -->
 <ion-header>
     <ion-toolbar>
         <ion-grid>
@@ -13,7 +19,7 @@
                 <!-- Text Little -->
                 <ion-col>
                     <div class="ion-text-center">
-                        <ion-title>บัญชีผู้ใช้ Enterprise</ion-title>
+                        <ion-title>{{account_name}}</ion-title>
                     </div>
                 </ion-col>
                 <!-- End Text Little -->
@@ -21,7 +27,6 @@
                 <!-- Icon logout -->
                 <ion-col class="ion-text-right">
                     <div class="margin-top text-right">
-
                     </div>
                 </ion-col>
                 <!-- End Icon logout -->
@@ -32,25 +37,23 @@
     </ion-toolbar>
 
 </ion-header>
-
+<!-- End Header -->
 <ion-content>
-    <div class="ion-text-center">
-        <img class="sizeimg" decoding="async" src="assets/icon/male.png" width="60%" height="60%">
-    </div>
-
     <ion-card>
+        <!-- Header -->
         <ion-card-header>
             <div class="ion-text-center">
-                <ion-title>List Shared with</ion-title>
+                <ion-title>รายชื่อที่ใช้ร่วมกัน</ion-title>
             </div>
         </ion-card-header>
-
+        <!-- End Header -->
         <ion-card-content>
             <ion-grid>
+                <!-- Show List Family -->
                 <ion-list *ngFor="let account of account.account_member">
                     <ion-item-sliding>
-                        <ion-item *ngIf="user_session['user_id'] != account.user_id">
-                            <ion-label>{{ account['user_id'] }}</ion-label>
+                        <ion-item *ngIf="user_session.user_id != account.user_id">
+                            <ion-label>{{ account.user_id }}</ion-label>
                         </ion-item>
                         <!-- Button delete -->
                         <ion-item-options side="end">
@@ -59,25 +62,33 @@
                         <!-- End Button delete -->
                     </ion-item-sliding>
                 </ion-list>
+                <!-- End Show List Family -->
+                <!-- Show ID Account -->
+                <ion-row>
+                    <ion-col class="ionic-text-start" size="9">
+                        <ion-input type="text" [(ngModel)]="sharename" name="sharename" placeholder="ไอดีบัญชีผู้ใช้ที่จะแชร์ร่วม">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                        </ion-input>
+                    </ion-col>
+                    <!-- End Show ID Account -->
+                    <!-- Search Usermane -->
+                    <ion-col class="ionic-text-end" size="3">
+                        <ion-toolbar>
+                            <ion-button slot="end" (click)="searchusername()" size="small">
+                                <ion-icon name="search"></ion-icon>
+                            </ion-button>
+                        </ion-toolbar>
+                        <!-- End Search Usermane -->
+                    </ion-col>
+
+                </ion-row>
+
             </ion-grid>
         </ion-card-content>
-
-        <ion-card-content>
-            <ion-grid>
-                <ion-item>
-                    <ion-label>ID</ion-label>
-                    <ion-input type="text" [(ngModel)]="sharename" name="sharename" id="sharename" placeholder="ไอดีบัญชีผู้ใช้ที่จะแชร์ร่วม">
-                        <ion-icon name="person-circle-outline"></ion-icon>
-                    </ion-input>
-                    <ion-button slot="end" (click)="searchusername()" size="small">
-                        <ion-icon name="search"></ion-icon>
-                    </ion-button>
-                </ion-item>
-            </ion-grid>
-        </ion-card-content>
-
     </ion-card>
-
-    <ion-button expand="block" (click)="alert()">confirm</ion-button>
-
+    <!-- Button confirm -->
+    <ion-card-content>
+        <ion-button expand="block" (click)="alert()">ยืนยัน</ion-button>
+    </ion-card-content>
+    <!-- End Button confirm -->
 </ion-content>

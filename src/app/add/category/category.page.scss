@@ -3,8 +3,19 @@
     font-family: 'Prompt' !important;
 }
 
-.background_click {
+.background_click-income {
     background-color: rgb(33, 168, 44);
+    width: 120px;
+    color: white;
+    height: 30px;
+    border-radius: 20px;
+    padding: 5px;
+    padding-left: 20px;
+    font-size: 18px;
+}
+
+.background_click-expense {
+    background-color: rgb(218, 0, 0);
     width: 120px;
     color: white;
     height: 30px;
