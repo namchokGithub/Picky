@@ -22,7 +22,7 @@
                 <!-- Sliding item with text options on both sides -->
                 <!-- for loop -->
                 <ion-item-sliding *ngFor="let person of account_person">
-                    <ion-item *ngIf="person.account_user_id === session['user_id']">
+                    <ion-item *ngIf="person.account_user_id == session['user_id']">
                         <ion-label>{{person.account_name}}</ion-label>
                     </ion-item>
                     <!-- button -->
@@ -80,6 +80,4 @@
     <!-- End Footer -->
 
 </ion-content>
-
-
 <!-- End Body -->
