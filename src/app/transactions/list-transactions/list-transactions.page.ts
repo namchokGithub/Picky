@@ -16,6 +16,7 @@ import {
 import { from } from "rxjs";
 import { async } from "@angular/core/testing";
 import { importExpr } from "@angular/compiler/src/output/output_ast";
+import { ignoreElements } from 'rxjs/operators';
 
 @Component({
   selector: "app-list-transactions",
@@ -51,7 +52,8 @@ export class ListTransactionsPage implements OnInit {
   ) {}
 
   ngOnInit() {
-  
+    this.month = null;
+    this.date = null;
     this.income = 0;
     this.Expense = 0;
     this.balance = 0;
@@ -59,7 +61,7 @@ export class ListTransactionsPage implements OnInit {
     this.menu.enable(true, "menuSilde");
     this.load_session_user();
     this.load_session_account();
-
+    this.check_null()
     console.log(this.tran);
   }
 
@@ -84,8 +86,8 @@ export class ListTransactionsPage implements OnInit {
     // console.log(this.tran);
     var index = 0;
     for (let i = 0; i < this.tran.length; i++) {
-      console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + 'Rq9axf6AfAJqwDr5eVrN') //this.account_id
-      if (this.tran[i].tran_account_id == 'Rq9axf6AfAJqwDr5eVrN') {
+      console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + this.account_id) //this.account_id
+      if (this.tran[i].tran_account_id == this.account_id) {
         this.transaction[index] = this.tran[i]
         index++;
       }
@@ -117,6 +119,7 @@ export class ListTransactionsPage implements OnInit {
    search(){
      //sub month & date to show trancition
     if ( this.month != null ) {
+      console.log(this.month)
       this.month = this.month.substring(7, 5);
     console.log(this.month);
      
@@ -124,6 +127,16 @@ export class ListTransactionsPage implements OnInit {
       this.date = this.date.substring(10, 8);
       console.log(this.date);
     }
+   }
+
+   check_null(){
+     console.log(this.month+this.date);
+     if(this.month == null && this.date == null){
+       console.log(true)
+       return true;
+     }else{
+       return false;
+     }
    }
  
    

@@ -34,7 +34,8 @@
                 <p>ไม่มีการบันทึกรายรับรายจ่าย</p>
             </div>
             <ion-grid ng-template #show *ngFor="let transaction of transaction">
-                <ion-row *ngIf='transaction.tran_date.toString().substring(8,10) == date && transaction.tran_date.toString().substring(5,7) == month else show_month '>
+
+                <ion-row *ngIf='check_null() || (transaction.tran_date.toString().substring(8,10) == date && transaction.tran_date.toString().substring(5,7) == month) else show_month'>
                     <ion-col>
                         <ion-title size="small">{{transaction.tran_category_name}}</ion-title>
                     </ion-col>
