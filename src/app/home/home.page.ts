@@ -85,7 +85,7 @@ export class HomePage implements OnInit {
         this.value = false;
       }
     }
-    
+
     await this.setvalue();
   }
 
