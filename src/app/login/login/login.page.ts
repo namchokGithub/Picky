@@ -33,9 +33,10 @@ export class LoginPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    
+    this.UserService.clearSession()
     this.UserService.get_user().subscribe(async res => {
       this.db_user = res;
-      console.log(res);
     });
 
     this.loginMenu();
@@ -91,8 +92,9 @@ export class LoginPage implements OnInit {
     await this.presentLoading();
     if (await this.check_login()) {
       await this.UserService.set_session_user(this.userlogin); // set user session
-      console.log('true');
-      this.selectAccount(); // Goto page select account
+      await this.UserService.loginSession(this.userlogin); // set user session for storage offine
+      console.log('login success');
+      await this.selectAccount(); // Goto page select account
     } else {
       console.log('false');
       this.alertInput('ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง');
@@ -169,4 +171,5 @@ export class LoginPage implements OnInit {
     });
     await alert.present();
   }
+
 }

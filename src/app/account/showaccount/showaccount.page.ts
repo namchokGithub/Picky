@@ -3,6 +3,7 @@ import { NavController, MenuController, LoadingController } from '@ionic/angular
 import { VirtualTimeScheduler } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService, User } from 'src/app/services/user.service';
+import { AlertController } from '@ionic/angular';
 
 import {
   AccountService,
@@ -28,80 +29,122 @@ export class ShowaccountPage implements OnInit {
     public navCtrl: NavController,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private userService:UserService,
+    private userService: UserService,
     private accountService: AccountService,
-    private loadingController: LoadingController
-  ) {
-    
-  }
+    private loadingController: LoadingController,
+    public alertCtrl: AlertController
+  ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.menu.enable(false, 'menuSilde');
-    this.session_user();
+
+    await this.presentLoading();
+    await this.setSession();
+  }
+
+  async ionViewWillEnter() {
+    this.session = await this.userService.get_session_user();
+    this.name = await this.userService.getUsername();
+  }
+
+  async setSession() {
+    this.session = await this.userService.get_session_user();
+    this.name = await this.userService.getUsername();
     this.get_account();
-
   }
 
-  session_user() {
-    this.session = this.userService.get_session_user();
-    this.name = this.session['user_name'];
-    // console.log(this.session["user_name"]);
+  /*
+  Function Name : log_out
+  Author : Chatchalerm Wasuanunkul
+  Description : ออกจากระบบ เพื่อกลับไปสู่หน้า log in
+  */
+ async log_out() {
+    const alert = await this.alertCtrl.create({
+      header: 'ยืนยันการออกจากระบบ?',
+      message: 'คุณต้องการออกจากระบบหรือไม่?',
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: blah => {
+            console.log('Log out Cancel');
+          }
+        },
+        {
+          text: 'ยืนยัน',
+          handler: () => {
+            console.log('Log out');
+            this.userService.logoutSession();
+            this.router.navigate(['login'], { replaceUrl: true });
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
+  /*
+  Function Name : get_account
+  Author : Namchok
+  Description : get account form db
+  */
   get_account() {
-    let index_person = 0;
-    let index_family = 0;
-    let index_enterprise = 0;
+    let indexPerson = 0;
+    let indexFamily = 0;
+    let indexEnterprise = 0;
 
     this.accountService.get_account().subscribe(res => {
+      // tslint:disable-next-line: prefer-for-of
       for (let i = 0; i < res.length; i++) {
         if (res[i].account_type == 'Personal') {
-          this.account_person[index_person] = res[i];
-          index_person++;
+          this.account_person[indexPerson] = res[i];
+          indexPerson++;
         } else if (res[i].account_type == 'Family') {
-          this.account_family[index_family] = res[i];
-          index_family++;
+          this.account_family[indexFamily] = res[i];
+          indexFamily++;
         } else {
-          this.account_enterprise[index_enterprise] = res[i];
-          index_enterprise++;
+          this.account_enterprise[indexEnterprise] = res[i];
+          indexEnterprise++;
         }
       }
     });
-
-  }
-  /* ไปสู่หน้า Add Account */
- async openAddAccount() {
-    console.log('Click');
-  
-    while(this.account_person.length > 0){
-      this.account_person.pop()
-      console.log(this.account_person)
-    }
-
-    await this.router.navigate(['addaccount']);
   }
 
   /**
    * @Name Naerumon
    * เลือก Account ไปสู่หน้า Home
    */
-  selecet_account(account_id, account_name) {
+  /* ไปสู่หน้า Add Account */
+  async openAddAccount() {
+
+    // Test pop account | Namchok
+    while (this.account_person.length > 0) {
+      this.account_person.pop();
+      console.log(this.account_person);
+    }
+    /////////////////////////////////////
+
+    await this.router.navigate(['addaccount']);
+  }
+
+  selecet_account(accountId: string, accountName: string) {
     this.presentLoading();
-    this.accountService.set_session_account(account_id, account_name)
+    this.accountService.set_session_account(accountId, accountName);
     this.router.navigate(['home']);
   }
 
-  gotomanagementFamily(account_id, account_name) {
+  gotomanagementFamily(accountId: any, accountName: any) {
     this.presentLoading();
-    this.router.navigate(['familymanagement'], {queryParams: {account_id: account_id, account_name: account_name}});
+    this.router.navigate(['familymanagement'], {queryParams: {accountId, accountName}});
   }
 
-  gotomanagementEnterprise(account_id, account_name) {
+  gotomanagementEnterprise(accountId: any, accountName: any) {
     this.presentLoading();
-    this.router.navigate(['enterprisemanagement'], {queryParams: {account_id: account_id, account_name: account_name}});
+    this.router.navigate(['enterprisemanagement'], {queryParams: {accountId, accountName}});
   }
 
-  removeAccount(id) {
+  removeAccount(id: string) {
     this.presentLoading();
     this.accountService.delete_account(id);
   }

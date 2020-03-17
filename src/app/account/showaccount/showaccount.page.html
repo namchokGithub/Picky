@@ -8,8 +8,9 @@
     <ion-toolbar>
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title>สวัสดีคุณ{{name}} !!</ion-title>
+        </ion-buttons>  
+            <ion-title>สวัสดีคุณ{{name}} !!</ion-title>
+        <ion-icon name="log-out-outline" style=" width: 30px; height: 30px; margin-right: 5%;"  (click)="log_out()" slot="end"></ion-icon>   
     </ion-toolbar>
 </ion-header>
 <!-- End Header -->
@@ -68,7 +69,8 @@
         <ion-toolbar>
             <div padding class="ion-text-center">
                 <!-- ปุ่มเพิ่ม Account -->
-                <ion-button (click)="openAddAccount()">
+                <ion-button (click)="openAddAccount()" expand="full">
+                    เพิ่มบัญชี
                     <ion-icon slot="icon-only" name="add-circle"></ion-icon>
                 </ion-button>
                 <!--End ปุ่มเพิ่ม Account -->
