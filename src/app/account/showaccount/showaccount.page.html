@@ -8,9 +8,10 @@
     <ion-toolbar>
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
-        </ion-buttons>  
-            <ion-title>สวัสดีคุณ{{name}} !!</ion-title>
-        <ion-icon name="log-out-outline" style=" width: 30px; height: 30px; margin-right: 5%;"  (click)="log_out()" slot="end"></ion-icon>   
+        </ion-buttons>
+        <ion-title>สวัสดีคุณ{{name}} !!</ion-title>
+        <ion-icon name="log-out-outline" style=" width: 30px; height: 30px; margin-right: 5%;" (click)="log_out()"
+            slot="end"></ion-icon>
     </ion-toolbar>
 </ion-header>
 <!-- End Header -->
@@ -27,7 +28,8 @@
                     </ion-item>
                     <!-- button -->
                     <ion-item-options side="end">
-                        <ion-item-option color="success" (click)="selecet_account(person.id,person.account_name)">เลือก</ion-item-option>
+                        <ion-item-option color="success" (click)="selecet_account(person.id,person.account_name)">เลือก
+                        </ion-item-option>
                         <ion-item-option color="danger" (click)="removeAccount(person.id)">ลบ</ion-item-option>
                     </ion-item-options>
                     <!-- End button -->
@@ -39,8 +41,10 @@
                         </ion-item>
                         <!-- button -->
                         <ion-item-options side="end">
-                            <ion-item-option color="success" (click)="selecet_account(family.id,family.account_name)">เลือก</ion-item-option>
-                            <ion-item-option color="medium" (click)="gotomanagementFamily(family.id,family.account_name)">ตั้งค่า</ion-item-option>
+                            <ion-item-option color="success" (click)="selecet_account(family.id,family.account_name)">
+                                เลือก</ion-item-option>
+                            <ion-item-option color="medium"
+                                (click)="gotomanagementFamily(family.id,family.account_name)">ตั้งค่า</ion-item-option>
                             <ion-item-option color="danger" (click)="removeAccount(family.id)">ลบ</ion-item-option>
                         </ion-item-options>
                         <!-- End button -->
@@ -53,8 +57,11 @@
                         </ion-item>
                         <!-- button -->
                         <ion-item-options side="end">
-                            <ion-item-option color="success" (click)="selecet_account(enterprise.id,enterprise.account_name)">เลือก</ion-item-option>
-                            <ion-item-option color="medium" (click)="gotomanagementEnterprise(enterprise.id,enterprise.account_name)">ตั้งค่า</ion-item-option>
+                            <ion-item-option color="success"
+                                (click)="selecet_account(enterprise.id,enterprise.account_name)">เลือก</ion-item-option>
+                            <ion-item-option color="medium"
+                                (click)="gotomanagementEnterprise(enterprise.id,enterprise.account_name)">ตั้งค่า
+                            </ion-item-option>
                             <ion-item-option color="danger" (click)="removeAccount(enterprise.id)">ลบ</ion-item-option>
                         </ion-item-options>
                         <!-- End button -->
@@ -67,18 +74,23 @@
 
         <!-- Footer -->
         <ion-toolbar>
-            <div padding class="ion-text-center">
-                <!-- ปุ่มเพิ่ม Account -->
-                <ion-button (click)="openAddAccount()" expand="full">
-                    เพิ่มบัญชี
-                    <ion-icon slot="icon-only" name="add-circle"></ion-icon>
-                </ion-button>
-                <!--End ปุ่มเพิ่ม Account -->
-            </div>
+
         </ion-toolbar>
         <!-- End Footer -->
 
     </ion-card>
+    <ion-row>
+        <ion-col>
+            <!-- ปุ่มเพิ่ม Account -->
+            <ion-button (click)="openAddAccount()" expand="full">
+                เพิ่มบัญชี
+                <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+            </ion-button>
+            <!--End ปุ่มเพิ่ม Account -->
+
+        </ion-col>
+    </ion-row>
+
 </ion-content>
 
 
