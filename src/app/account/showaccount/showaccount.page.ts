@@ -27,13 +27,13 @@ export class ShowaccountPage implements OnInit {
   public checkStatus = false;
 
   constructor(
-    private menu: MenuController,
+    public menu: MenuController,
     public navCtrl: NavController,
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private userService: UserService,
-    private accountService: AccountService,
-    private loadingController: LoadingController,
+    public router: Router,
+    public activatedRoute: ActivatedRoute,
+    public userService: UserService,
+    public accountService: AccountService,
+    public loadingController: LoadingController,
     public alertCtrl: AlertController
   ) {}
 

@@ -10,8 +10,8 @@ import { TransactionService, transaction} from 'src/app/services/transaction.ser
   styleUrls: ['./add.page.scss'],
 })
 export class AddPage implements OnInit {
-  private account_id: string;
-  private account_name: string;
+  public account_id: string;
+  public account_name: string;
   public type_category = '';
   public name_category = '';
   public cash = '';
@@ -31,16 +31,16 @@ export class AddPage implements OnInit {
    };
 
   constructor(
-              private nav: NavController,
-              private modalController: ModalController,
+              public nav: NavController,
+              public modalController: ModalController,
               public activatedRoute: ActivatedRoute,
-              private router: Router,
+              public router: Router,
               public alertController: AlertController,
-              private loadingController: LoadingController,
-              private toastController: ToastController,
-              private userService: UserService,
-              private transactionService: TransactionService,
-              private accountService: AccountService
+              public loadingController: LoadingController,
+              public toastController: ToastController,
+              public userService: UserService,
+              public transactionService: TransactionService,
+              public accountService: AccountService
             ) { }
 
   // * @Function   : ngOnInit => รับค่าจากหน้า CategoryPage ที่ส่งมายังหน้า add

@@ -64,22 +64,24 @@ export class AppComponent implements OnInit {
   ) {
     this.initializeApp();
   }
+
   /**
    * function: initializeApp
    * Name: -
    * Description:
-  */ 
+  */
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
   }
+
   /**
    * function: ngOnInit
    * Name: -
    * Description:
-  */ 
+  */
   ngOnInit() {
     this.platform.ready().then(() => {
       this.loadName();

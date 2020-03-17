@@ -16,7 +16,7 @@ import { UserService, User } from "src/app/services/user.service"; //UserService
 
 // ไปคอมเม้นมาทุกส่วน
 export class RegisterPage implements OnInit {
-  private confirmPassword: string = ""; // ประกาศตัวเเปร confirmPassword เป็น string
+  public confirmPassword: string = ""; // ประกาศตัวเเปร confirmPassword เป็น string
 
   user_add: User = {//เป็นตัวเเปรแบบ obj ที่เก็บค่าของผู้ใช้ใน user
     user_name: "", //เป็นตัวเเปรชื่อผู้ใช้
@@ -27,11 +27,11 @@ export class RegisterPage implements OnInit {
   user: User[]; //เป็นตัวเเปร array ที่เก็บค่าการใช้งานของ user
 
   constructor(
-    private router: Router, // เป็นการประกาศตัวเเปร ของclass Router เป็นตัวนำทางว่าเราจะไปยังอะไร
-    private alertController: AlertController, //เป็นการประกาศตัวเเปร ของclass AlertController
-    private userservice: UserService, //เป็นการประกาศตัวเเปร ของclass UserService
+    public router: Router, // เป็นการประกาศตัวเเปร ของclass Router เป็นตัวนำทางว่าเราจะไปยังอะไร
+    public alertController: AlertController, //เป็นการประกาศตัวเเปร ของclass AlertController
+    public userservice: UserService, //เป็นการประกาศตัวเเปร ของclass UserService
     public navCtrl: NavController, //เป็นการประกาศตัวเเปร ของclass NavController
-    private menu: MenuController, //เป็นการประกาศตัวเเปร ของclass MenuController
+    public menu: MenuController, //เป็นการประกาศตัวเเปร ของclass MenuController
     public toastController: ToastController //เป็นการประกาศตัวเเปร ของclass ToastController
   ) {}
 

@@ -35,12 +35,12 @@ export interface transaction {
   providedIn: 'root'
 })
 export class TransactionService {
-  
-  private transaction: Observable<transaction[]>;
-  // tslint:disable-next-line: variable-name
-  private transaction_collection: AngularFirestoreCollection<transaction>;
 
-  constructor(private afs: AngularFirestore) {
+  public transaction: Observable<transaction[]>;
+  // tslint:disable-next-line: variable-name
+  public transaction_collection: AngularFirestoreCollection<transaction>;
+
+  constructor(public afs: AngularFirestore) {
     this.transaction_collection = this.afs.collection<transaction>('transaction');
   }
 

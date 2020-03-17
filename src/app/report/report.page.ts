@@ -10,25 +10,21 @@ import { TransactionService } from "src/app/services/transaction.service";
   styleUrls: ["./report.page.scss"]
 })
 export class ReportPage implements OnInit {
-  
-
   bars: any;
   colorArray: any;
-
-
-  private account_id: string;
-  private account_name: string;
-  private income: number;
-  private Expense: number;
-  private transaction = [];
-  private tran = [];
+  public account_id: string;
+  public account_name: string;
+  public income: number;
+  public Expense: number;
+  public transaction = [];
+  public tran = [];
 
   public columnChart1: GoogleChartInterface;
   public columnChart2: GoogleChartInterface;
   public pieChart: GoogleChartInterface;
   constructor(
-    private accountService: AccountService,
-    private tracsactionService: TransactionService
+    public accountService: AccountService,
+    public tracsactionService: TransactionService
   ) {}
 
   async ngOnInit() {

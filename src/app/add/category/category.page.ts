@@ -14,8 +14,8 @@ import { AccountService } from 'src/app/services/account.service';
 export class CategoryPage implements OnInit {
   public categorys: any = [];
   public type_catagory = 'income';
-  private account_id: string;
-  private account_name: string;
+  public account_id: string;
+  public account_name: string;
   public category_income: any = [
     {
       record_name: 'โบนัส'
@@ -42,10 +42,10 @@ export class CategoryPage implements OnInit {
   ];
   public categores: any = [];
   constructor(
-    private nav: NavController,
-    private router: Router,
+    public nav: NavController,
+    public router: Router,
     public activatedRoute: ActivatedRoute,
-    private accountService: AccountService
+    public accountService: AccountService
   ) {}
 
   // * @Function   : ngOnInit => ดึงข้อมูลจาก ListRecordService แล้วทำการบันทึกข้อมูล ลง array โดยมีการแยกประเภท Income ,  expense

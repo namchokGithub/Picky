@@ -23,20 +23,20 @@ export interface User {
 })
 export class UserService {
 
-  private isLoggedIn: boolean;
-  private userSession: any[];
-  private set_user: any[];
-  private username = '';
+  public isLoggedIn: boolean;
+  public userSession: any[];
+  public set_user: any[];
+  public username = '';
 
-  private user: Observable<User[]>;
+  public user: Observable<User[]>;
 
   // tslint:disable-next-line: variable-name
-  private user_collection: AngularFirestoreCollection<User>;
+  public user_collection: AngularFirestoreCollection<User>;
 
   constructor(
-              private afs: AngularFirestore,
+              public afs: AngularFirestore,
               public storage: Storage,
-              private router: Router ) {
+              public router: Router ) {
 
     this.user_collection = this.afs.collection<User>('user');
     this.isLoggedIn = false;

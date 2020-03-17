@@ -70,21 +70,21 @@ export interface enterprise {
 // } from 'src/app/services/account.service';
 
 export class AccountService {
-  private account_id: string;
-  private account_name: string;
+  public account_id: string;
+  public account_name: string;
 
   // account_person valible angular
-  private account_person: Observable<person[]>;
-  private account_family: Observable<family[]>;
-  private account_enterprise: Observable<enterprise[]>;
+  public account_person: Observable<person[]>;
+  public account_family: Observable<family[]>;
+  public account_enterprise: Observable<enterprise[]>;
   // account_person_collection valible angular
-  private account_person_collection: AngularFirestoreCollection<person>;
-  private account_family_collection: AngularFirestoreCollection<family>;
-  private account_enterprise_collection: AngularFirestoreCollection<enterprise>;
+  public account_person_collection: AngularFirestoreCollection<person>;
+  public account_family_collection: AngularFirestoreCollection<family>;
+  public account_enterprise_collection: AngularFirestoreCollection<enterprise>;
 
-  constructor(private afs: AngularFirestore
+  constructor(public afs: AngularFirestore
             , public storage: Storage
-            , private router: Router) {
+            , public router: Router) {
     this.account_person_collection = this.afs.collection<person>('account');
     this.account_family_collection = this.afs.collection<family>('account');
     this.account_enterprise_collection = this.afs.collection<enterprise>('account');

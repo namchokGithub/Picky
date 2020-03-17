@@ -20,14 +20,15 @@ export class SettingPage implements OnInit {
     user_name: '',
     user_password: ''
   };
+
   public user_session: any = [];
+
   constructor(public alertController: AlertController, private router: Router, private userService: UserService) {
   }
+
   async ngOnInit() {
-
     this.user_session =  await this.userService.get_session_user();
-
-      this.name = this.user_session.user_name;
+    this.name = this.user_session.user_name;
   }
 
   async editName() {

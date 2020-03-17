@@ -30,7 +30,7 @@ export class FamilymanagementPage implements OnInit {
 
   };
   constructor(public navCtrl: NavController,
-              private router: Router,
+              public router: Router,
               public alertController: AlertController,
               public activatedRoute: ActivatedRoute,
               public accountService: AccountService,

@@ -17,18 +17,18 @@ import { UserService } from '../../services/user.service';
 
 export class LoginPage implements OnInit {
 
-  private username = null;
-  private password = null;
-  private db_user: any = [];
-  private userlogin: any = [];
+  public username = null;
+  public password = null;
+  public db_user: any = [];
+  public userlogin: any = [];
 
   constructor(
     public navCtrl: NavController,
-    private router: Router,
-    private menu: MenuController,
+    public router: Router,
+    public menu: MenuController,
     public alertController: AlertController,
-    private UserService: UserService,
-    private toastController: ToastController,
+    public UserService: UserService,
+    public toastController: ToastController,
     public loadingController: LoadingController
   ) {}
 
