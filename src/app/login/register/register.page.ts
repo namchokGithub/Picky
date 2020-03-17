@@ -1,13 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, RouterModule } from "@angular/router";
 import {
-  NavController,
-  AlertController,
-  MenuController,
-  ToastController
+  NavController, // เป็นการควบคุบการพาไป 
+  AlertController,//เป็นฟังชั่น text การเเจ้งเตือน ที่กดตกลงหรือยกเลือก comfirm
+  MenuController,//เป็นตัวเมนูบาร์
+  ToastController //เป็นการเเจ้งเตือน ให้ทราบ
 } from "@ionic/angular";
-import { map, count } from "rxjs/operators";
-import { UserService, User } from "src/app/services/user.service";
+import { map, count } from "rxjs/operators"; //map เป็นการจัดข้อมูล count คือการนับจำนวน
+import { UserService, User } from "src/app/services/user.service"; //UserService คือ เซอร์วิสการเข้าใช้งานของ user ส่วน user คือตัวเเปรของเซอร์วิส user
 @Component({
   selector: "app-register", // เป็นส่วนที่เชื่อมต่อ
   templateUrl: "./register.page.html", //เป็นส่วนที่เชื่อมต่อ
@@ -18,57 +18,56 @@ import { UserService, User } from "src/app/services/user.service";
 export class RegisterPage implements OnInit {
   private confirmPassword: string = ""; // ประกาศตัวเเปร confirmPassword เป็น string
 
-  user_add: User = {
-    //ฟังก์ชันการทำงานของการเพิ่มบัญชีผู้ใช้
-    user_name: "", //class ของ user
-    user_id: "", //
-    user_password: "" //
+  user_add: User = {//เป็นตัวเเปรแบบ obj ที่เก็บค่าของผู้ใช้ใน user
+    user_name: "", //เป็นตัวเเปรชื่อผู้ใช้
+    user_id: "", // เป็นตัวเเปรการเก็บid ของuser
+    user_password: "" // เป็นตัวเเปรการเก็บpassword ของuser
   };
 
-  user: User[];
+  user: User[]; //เป็นตัวเเปร array ที่เก็บค่าการใช้งานของ user
 
   constructor(
-    private router: Router, //
-    private alertController: AlertController, //
-    private userservice: UserService, //
-    public navCtrl: NavController, //
-    private menu: MenuController, //
-    public toastController: ToastController //
+    private router: Router, // เป็นการประกาศตัวเเปร ของclass Router เป็นตัวนำทางว่าเราจะไปยังอะไร
+    private alertController: AlertController, //เป็นการประกาศตัวเเปร ของclass AlertController
+    private userservice: UserService, //เป็นการประกาศตัวเเปร ของclass UserService
+    public navCtrl: NavController, //เป็นการประกาศตัวเเปร ของclass NavController
+    private menu: MenuController, //เป็นการประกาศตัวเเปร ของclass MenuController
+    public toastController: ToastController //เป็นการประกาศตัวเเปร ของclass ToastController
   ) {}
 
-  ngOnInit() {
+  ngOnInit() { //เป็นฟังก์ชั่นที่ถูกเรียกใช้ทันทีเป็นอันดับเเรก
 
-    this.menu.enable(false, "menuSilde");
-    this.userservice.get_user().subscribe(res => {
-      console.log(res);
-      this.user = res;
+    this.menu.enable(false, "menuSilde");//เป็นการสั่งปิดการทำงานของตัวเมนูด้านข้าง 
+    this.userservice.get_user().subscribe(res => {//เป็นการget ค่าของ user ออกมาใช้งานโดยผ่าน userservice
+      console.log(res);//ไว้ดูการ return ค่าอะไรออกมา
+      this.user = res;//เป็นการเก็บค่าไปยังตัวเเปร user
     });
     
   }
 
-  back() {
-    this.router.navigate(["login"]);
+  back() {// การกลับไปยังหน้า login
+    this.router.navigate(["login"]);// เป็นการเรียนใช้ router ให้กลับมายังที่หน้า login
   }
 
-  validate() {
-    if (this.user_add.user_name == "") {
-      this.Toast("กรุณาใส่ชื่อ");
-      console.log("กรุณาใส่ชื่อ");
-    } else if (this.user_add.user_id == "") {
-      this.Toast("กรุณาใส่ชื่อผู้ใช้งาน");
-      console.log("กรุณาใส่ชื่อผู้ใช้งาน");
-    } else if (this.user_add.user_password == "") {
-      this.Toast("กรุณาใส่รหัสผ่าน");
-      console.log("กรุณาใส่รหัสผ่าน");
-    } else if (this.confirmPassword == "") {
-      this.Toast("กรุณายืนยันรหัสผ่าน");
-      console.log("กรุณายืนยันรหัสผ่าน");
-    } else if (this.confirmPassword != this.user_add.user_password) {
-      this.Toast("รหัสผ่านไม่ตรงกัน");
-      console.log("รหัสผ่านไม่ตรงกัน");
-    } else {
-      this.userservice.add_user(this.user_add);
-      this.confirm();
+  validate() {//เป็นฟังก์ชั่นการตรวจสอบ 
+    if (this.user_add.user_name == "") {// ถ้ามันเท่ากับช่องว่าง จะมีการเเสดงวว่า "กรุณาใส่ชื่อ"
+      this.Toast("กรุณาใส่ชื่อ");// toast จะเป็นคำสั่งการเเจ้งเตือนให้ "กรุณาใส่ชื่อ"
+      console.log("กรุณาใส่ชื่อ");//  ไว้ดูการ return ค่าอะไรออกมา 
+    } else if (this.user_add.user_id == "") {//ถ้ามันเท่ากับช่องว่าง จะมีการเเสดงวว่า "กรุณาใส่ชื่อผู้ใช้งาน"
+      this.Toast("กรุณาใส่ชื่อผู้ใช้งาน");//toast จะเป็นคำสั่งการเเจ้งเตือนให้ "กรุณาใส่ชื่อผู้ใช้งาน"
+      console.log("กรุณาใส่ชื่อผู้ใช้งาน");//ไว้ดูการ return ค่าอะไรออกมา 
+    } else if (this.user_add.user_password == "") {//ถ้ามันเท่ากับช่องว่าง จะมีการเเสดงวว่า "กรุณาใส่รหัสผ่าน"
+      this.Toast("กรุณาใส่รหัสผ่าน");//toast จะเป็นคำสั่งการเเจ้งเตือนให้ "กรุณาใส่รหัสผ่าน"
+      console.log("กรุณาใส่รหัสผ่าน");//ไว้ดูการ return ค่าอะไรออกมา 
+    } else if (this.confirmPassword == "") {//ถ้ามันเท่ากับช่องว่าง จะมีการเเสดงวว่า "กรุณายืนยันรหัสผ่าน"
+      this.Toast("กรุณายืนยันรหัสผ่าน");//toast จะเป็นคำสั่งการเเจ้งเตือนให้ "กรุณายืนยันรหัสผ่าน"
+      console.log("กรุณายืนยันรหัสผ่าน");//ไว้ดูการ return ค่าอะไรออกมา 
+    } else if (this.confirmPassword != this.user_add.user_password) {// ถ้าconfirmPassword ไม่ตรงกับ Passwoed จะมีการเเสดงวว่า "รหัสผ่านไม่ตรงกัน"
+      this.Toast("รหัสผ่านไม่ตรงกัน");//toast จะเป็นคำสั่งการเเจ้งเตือนให้ "รหัสผ่านไม่ตรงกัน"
+      console.log("รหัสผ่านไม่ตรงกัน");//ไว้ดูการ return ค่าอะไรออกมา 
+    } else {//
+      this.userservice.add_user(this.user_add);// เป็นการ add ของทั้งหมดที่user ทำการสมัคร
+      this.confirm();// กด comfrim
       
     }
   }
@@ -78,7 +77,7 @@ export class RegisterPage implements OnInit {
    * @author Namchok
    * @date 2020-03-10
    */
-  async alertInput(text) {
+  async alertInput(text) { //เป็นการเเจ้งเตือนข้อความ
     const alert = await this.alertController.create({
       header: "แจ้งเตือน",
       message: text,
