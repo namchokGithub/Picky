@@ -18,7 +18,14 @@
 
     <ion-card>
         <ion-card-header>
+<<<<<<< HEAD
+<<<<<<< HEAD
+            <ion-card-title class="circle">ธุรกรรม</ion-card-title>
+=======
+            <ion-card-title class="circle">{{account_name}}</ion-card-title>
+=======
             <ion-card-title class="title-card">{{account_name}}</ion-card-title>
+>>>>>>> 6b020638c97e7af78e165df86abc416f917c9ba0
         </ion-card-header>
 
 
@@ -30,6 +37,7 @@
     <ion-card>
         <ion-card-header>
             <ion-card-title class="circle">การบันทึก</ion-card-title>
+>>>>>>> e8dbbcf5c95034e3e48e9b15f807def7fa3dd623
         </ion-card-header>
 
         <ion-card-content>
@@ -93,14 +101,28 @@
 
                 <ion-row #show_month *ngIf='transaction.tran_date.toString().substring(5,7) == month'>
                     <ion-col>
+<<<<<<< HEAD
+                        <ion-text class="">การศึกษา</ion-text>
+=======
                         <ion-title size="small">{{transaction.tran_category_name}}</ion-title>
+>>>>>>> e8dbbcf5c95034e3e48e9b15f807def7fa3dd623
                     </ion-col>
                     <ion-col *ngIf='transaction.tran_category_type == "income"'>
                         <ion-text class="text-green text-right">
                             <p>฿ {{transaction.tran_amount}}</p>
                         </ion-text>
                     </ion-col>
+<<<<<<< HEAD
+                </ion-row>
+
+                <ion-row>
+                    <ion-col>
+                        <ion-text class="">ออกกำลังกาย</ion-text>
+                    </ion-col>
+                    <ion-col>
+=======
                     <ion-col *ngIf='transaction.tran_category_type == "Expense"'>
+>>>>>>> e8dbbcf5c95034e3e48e9b15f807def7fa3dd623
                         <ion-text class="text-red text-right">
                             <p>฿ {{transaction.tran_amount}}</p>
                         </ion-text>
