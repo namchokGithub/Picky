@@ -104,7 +104,7 @@ export class AddPage implements OnInit {
         this.transaction.tran_amount = this.cash;
         this.transaction.tran_category_name = this.name_category;
         this.transaction.tran_category_type = this.type_category;
-        this.transaction.tran_date = this.date;
+        this.transaction.tran_date = this.date.toString().substring(0,10);
         this.transaction.tran_note = this.note;
         this.transaction.tran_user = this.user_session.user_id;
         this.transactionService.add_transaction(this.transaction);

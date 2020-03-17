@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
     },
     { // ไปที่หน้าการตั้งต่า (Setting)
       title: 'การตั้งค่า',
-      url: '/setting', 
+      url: '/setting',
       icon: 'settings'
     },
     { // เมนูออกจากระบบ โดยกลับไปที่หน้า login
@@ -81,29 +81,22 @@ export class AppComponent implements OnInit {
    * Description:
   */ 
   ngOnInit() {
-    this.loadName();
-    const path = window.location.pathname.split('home/')[1];
-    if (path !== undefined) {
-      this.selectedIndex = this.appPages.findIndex(
-        page => page.title.toLowerCase() === path.toLowerCase()
-      );
-    }
+    this.platform.ready().then(() => {
+      this.loadName();
+      const path = window.location.pathname.split('home/')[1];
+      if (path !== undefined) {
+        this.selectedIndex = this.appPages.findIndex(
+          page => page.title.toLowerCase() === path.toLowerCase()
+        );
+      }
+      this.userService.isAuthenticated();
+    });
   }
-  /**
-   * function: loadName
-   * Name: -
-   * Description: โหลดชื่อผู้ใช้
-  */ 
+
+  // Name: loadName
+  // loadName form user
+  // Namchok
   loadName() {
-    this.user_session = this.userService.get_session_user();
-    this.name = this.user_session.user_name;
-  }
-  /**
-   * function: callpageAdd
-   * Name: -
-   * Description: เรียกหน้า Add
-  */ 
-  callpageAdd() {
-    console.log('click');
+    this.name = this.userService.getUsername();
   }
 }
