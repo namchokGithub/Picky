@@ -18,11 +18,13 @@ import {
   styleUrls: ['./showaccount.page.scss']
 })
 export class ShowaccountPage implements OnInit {
-  public name: string = '';
-  private session: any = [];
-  private account_person: any = [];
-  private account_family: any = [];
-  private account_enterprise: any = [];
+  public name = '';
+  public session: any = [];
+  public account_person: any = [];
+  public account_family: any = [];
+  public account_enterprise: any = [];
+
+  public checkStatus = false;
 
   constructor(
     private menu: MenuController,
@@ -42,8 +44,9 @@ export class ShowaccountPage implements OnInit {
   */
   async ngOnInit() {
     this.menu.enable(false, 'menuSilde');
-
+    this.checkStatus = false;
     this.account_person = [];
+    this.account_family = [];
     this.account_enterprise = [];
     this.menu.enable(false, 'menuSilde');
     this.presentLoading();
@@ -56,6 +59,7 @@ export class ShowaccountPage implements OnInit {
   Description : เช็ตข้อมูลของผู้ใช้
   */
   async ionViewWillEnter() {
+    console.log(this.checkStatus)
     this.session = await this.userService.get_session_user();
     this.name = await this.userService.getUsername();
   }
@@ -66,8 +70,8 @@ export class ShowaccountPage implements OnInit {
   */
   async setSession() {
     this.session = await this.userService.get_session_user();
-    this.name =  await this.userService.getUsername();
-    this.get_account();
+    this.name =  this.userService.getUsername();
+    await this.get_account();
   }
 
   /*
@@ -75,7 +79,7 @@ export class ShowaccountPage implements OnInit {
   Author : Chatchalerm Wasuanunkul
   Description : ออกจากระบบ เพื่อกลับไปสู่หน้า log in
   */
- async log_out() {
+  async log_out() {
     const alert = await this.alertCtrl.create({
       header: 'ยืนยันการออกจากระบบ?',
       message: 'คุณต้องการออกจากระบบหรือไม่?',
@@ -108,25 +112,22 @@ export class ShowaccountPage implements OnInit {
   Description : get account form db
   */
   get_account() {
-    console.log(this.session);
-   
     this.accountService.get_account().subscribe(res => {
       // tslint:disable-next-line: prefer-for-of
       for (let i = 0; i < res.length; i++) {
         if (res[i].account_type == 'Personal') {
+          this.checkStatus = true;
           this.account_person.push(res[i]);
-     
         } else if (res[i].account_type == 'Family') {
           this.account_family.push(res[i]);
-         
-        } else {
+          this.checkStatus = true;
+        } else if (res[i].account_type == 'Enterprise') {
           this.account_enterprise.push(res[i]);
-        
+          this.checkStatus = true;
         }
       }
-
-   
     });
+
   }
 
   /*
@@ -135,11 +136,8 @@ export class ShowaccountPage implements OnInit {
   Description : ไปสู่หน้าเพิ่มบัญชี
   */
   async openAddAccount() {
-
     // Test pop account | Namchok
-   
     this.popaccount();
-    
     await this.router.navigate(['addaccount']);
   }
 
@@ -151,7 +149,7 @@ export class ShowaccountPage implements OnInit {
   selecet_account(accountId: string, accountName: string) {
     this.presentLoading();
     this.popaccount();
-     this.accountService.set_session_account(accountId,accountName);
+    this.accountService.set_session_account(accountId, accountName);
     this.router.navigate(['home']);
   }
 
@@ -163,7 +161,7 @@ export class ShowaccountPage implements OnInit {
   gotomanagementFamily(accountId: any, accountName: any) {
     this.presentLoading();
     this.popaccount();
-     this.router.navigate(['familymanagement'], {queryParams: {account_id: accountId, account_name:accountName}});
+    this.router.navigate(['familymanagement'], {queryParams: {account_id: accountId, account_name: accountName}});
   }
   /*
   Function Name : gotomanagementEnterprise
@@ -173,7 +171,7 @@ export class ShowaccountPage implements OnInit {
   gotomanagementEnterprise(accountId: any, accountName: any) {
     this.presentLoading();
     this.popaccount();
-      this.router.navigate(['enterprisemanagement'], {queryParams: {account_id:accountId, account_name:accountName}});
+    this.router.navigate(['enterprisemanagement'], {queryParams: {account_id: accountId, account_name: accountName}});
   }
 
   /*
@@ -201,7 +199,7 @@ export class ShowaccountPage implements OnInit {
     const { role, data } = await loading.onDidDismiss();
   }
 
-  popaccount(){
+  popaccount() {
 
     while (this.account_person.length > 0) {
       this.account_person.pop();
