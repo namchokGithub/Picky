@@ -72,21 +72,23 @@ export class HomePage implements OnInit {
       this.tran = res;
       this.check_transaction();
     });
+
+    
   }
 
-  async check_transaction() {
+  check_transaction() {
     // console.log(this.tran);
     let index = 0;
     for (let i = 0; i < this.tran.length; i++) {
       console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + this.account_id);
-      if (this.tran[i].tran_account_id == this.account_id && index < 4) {
-        this.transaction[index] = this.tran[i];
+      if (this.tran[i].tran_account_id == this.account_id && index < 5) {
+        this.transaction.push(this.tran[i])
         index++;
         this.value = false;
       }
     }
 
-    await this.setvalue();
+    this.setvalue();
   }
 
   setvalue() {
@@ -106,8 +108,9 @@ export class HomePage implements OnInit {
     this.income = 0;
     this.Expense = 0;
     this.balance = 0;
+    for(let i = 0; i < this.transaction.length; i++){
+      this.transaction.pop();
+    }
     this.router.navigate(['add'], { replaceUrl: true });
   }
-
-
 }
