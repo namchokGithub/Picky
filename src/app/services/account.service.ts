@@ -359,8 +359,12 @@ export class AccountService {
   // ตัวอย่างการเรียกใช้
   // this.accountService.set_session_account(account_id,account_name)
   set_session_account(account_id: string, account_name: string) {
-    this.storage.set('account_id', account_id);
-    this.storage.set('account_name', account_name);
+    let acc = {
+      account_id: account_id,
+      account_name: account_name
+    };
+
+    this.storage.set('account', acc);
     this.account_id = account_id;
     this.account_name = account_name;
   }
@@ -385,28 +389,22 @@ export class AccountService {
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
   // @Function   : isAuthenAccoun
   // @Author     : Modified by Namchok
   // @Create Date: 2563-03-13
   async isAuthenAccount() {
     let checker: boolean; // for check user id
-    await this.storage.get('account_id').then((accountId) => {
+    await this.storage.get('account').then((account) => {
 
-      if (accountId == null) {
+      if (account == null) {
         checker = false;
       } else {
         checker = true;
-        this.account_id = accountId;
-        // console.log(accountId)
+        this.account_id = account.account_id;
+        this.account_name = account.account_name;
+        console.log(this.account_name)
       }
 
-    });
-
-    await this.storage.get('account_name').then((accountName) => {
-      // console.log(accountName)
-      this.account_name = accountName;
     });
 
     if (checker == false) {
