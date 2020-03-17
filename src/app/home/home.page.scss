@@ -61,6 +61,15 @@
     text-align: right !important;
 }
 
+.text-start {
+    text-align: start !important;
+    margin-left: 23px;
+}
+
+.text-small {
+    font-size: 10px !important;
+}
+
 .bg-flow {
     background: linear-gradient(75deg, #90d1fd, rgb(235, 246, 255)) !important;
     color: black;

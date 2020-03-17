@@ -50,7 +50,7 @@ export class AddPage implements OnInit {
     this.name_category = null;
     this.activatedRoute.queryParamMap.subscribe(params => {
         this.type_category  = params.get('Type_category');
-        this.name_category = params.get('record_name');
+        this.name_category = params.get('name_category');
      });
 
     this.user_session =  await this.userService.get_session_user();
