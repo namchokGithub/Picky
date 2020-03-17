@@ -58,7 +58,6 @@ export class ShowaccountPage implements OnInit {
   async ionViewWillEnter() {
     this.session = await this.userService.get_session_user();
     this.name = await this.userService.getUsername();
-    
   }
   /*
   Function Name : setSession

@@ -16,7 +16,8 @@
 <!-- End Header -->
 <!-- Body -->
 <ion-content>
-    <ion-card>
+
+    <ion-card *ngIf="account_person">
         <ion-card-content>
             <ion-list>
                 <!-- Sliding item with text options on both sides -->
@@ -42,8 +43,7 @@
                         <ion-item-options side="end">
                             <ion-item-option color="success" (click)="selecet_account(family.id,family.account_name)">
                                 เลือก</ion-item-option>
-                            <ion-item-option color="medium"
-                                (click)="gotomanagementFamily(family.id,family.account_name)">ตั้งค่า</ion-item-option>
+                            <ion-item-option color="medium" (click)="gotomanagementFamily(family.id,family.account_name)">ตั้งค่า</ion-item-option>
                             <ion-item-option color="danger" (click)="removeAccount(family.id)">ลบ</ion-item-option>
                         </ion-item-options>
                         <!-- End button -->
@@ -56,10 +56,8 @@
                         </ion-item>
                         <!-- button -->
                         <ion-item-options side="end">
-                            <ion-item-option color="success"
-                                (click)="selecet_account(enterprise.id,enterprise.account_name)">เลือก</ion-item-option>
-                            <ion-item-option color="medium"
-                                (click)="gotomanagementEnterprise(enterprise.id,enterprise.account_name)">ตั้งค่า
+                            <ion-item-option color="success" (click)="selecet_account(enterprise.id,enterprise.account_name)">เลือก</ion-item-option>
+                            <ion-item-option color="medium" (click)="gotomanagementEnterprise(enterprise.id,enterprise.account_name)">ตั้งค่า
                             </ion-item-option>
                             <ion-item-option color="danger" (click)="removeAccount(enterprise.id)">ลบ</ion-item-option>
                         </ion-item-options>
@@ -74,19 +72,19 @@
 
 
     <ion-grid>
-    <ion-row>
-        <ion-col>
-            <!-- ปุ่มเพิ่ม Account -->
-            <ion-button (click)="openAddAccount()" expand="block">
-                เพิ่มบัญชี
-                <!--
+        <ion-row>
+            <ion-col>
+                <!-- ปุ่มเพิ่ม Account -->
+                <ion-button (click)="openAddAccount()" expand="block">
+                    เพิ่มบัญชี
+                    <!--
                     <ion-icon slot="icon-only" name="add-circle"></ion-icon>
                 -->
-            </ion-button>
-            <!--End ปุ่มเพิ่ม Account -->
-        </ion-col>
-    </ion-row>
-</ion-grid>
+                </ion-button>
+                <!--End ปุ่มเพิ่ม Account -->
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
 </ion-content>
 <!-- End Body -->
