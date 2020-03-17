@@ -8,7 +8,19 @@
 <!-- แสดงการ์ดตัวเลือกรายการรายรับ -->
 <ion-content *ngIf="type_catagory == 'income'">
     <ion-card id="card">
-        
+        <ion-card-header>
+            <ion-grid>
+                <!-- แสดงปุ่มรายการรายรับ-รายจ่าย -->
+                <ion-row>                    
+                    <ion-col>
+                        <ion-card-title class="background_click" (click)="ChecktypeCatagory('income')">รายรับ</ion-card-title>
+                    </ion-col>
+                    <ion-col>
+                        <ion-card-title class="background_default" (click)="ChecktypeCatagory('Expense')">รายจ่าย</ion-card-title>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-header>
 
         <ion-card-content>
             <!-- การแสดงรายการของประเภทรายรับ-->
