@@ -90,7 +90,6 @@ export class HomePage implements OnInit {
   }
 
   setvalue() {
-    
       for (let i = 0; i < this.transaction.length; i++) {
         if (this.transaction[i].tran_category_type == 'income') {
           this.income += parseInt(this.transaction[i].tran_amount);

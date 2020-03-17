@@ -1,8 +1,9 @@
 <!-- 
     File Name : addaccount.page.html
-    Author : Chatchalerm
+    Author : Naruemon
     Date : 2020-03-09
  -->
+
 <!-- Header -->
 <ion-header>
     <ion-toolbar>
@@ -10,6 +11,8 @@
     </ion-toolbar>
 </ion-header>
 <!-- End of Header -->
+
+<!-- Content Personal -->
 <ion-content fullscreen *ngIf="type == 'Personal'">
 
     <ion-grid>
@@ -40,24 +43,26 @@
         </ion-card>
 
         <!-- End of Selection -->
+
         <!-- Confirm button -->
         <ion-row>
             <ion-col>
-                <ion-button (click)="confirm()" expand="full" color="success">ยืนยัน</ion-button>
+                <ion-button (click)="confirm()" expand="block" color="success">ยืนยัน</ion-button>
             </ion-col>
         </ion-row>
         <!-- End of confirm button -->
         <!-- Back button -->
         <ion-row>
             <ion-col>
-                <ion-button (click)="back()" expand="full" color="danger">ยกเลิก</ion-button>
+                <ion-button (click)="back()" expand="block" color="danger">ยกเลิก</ion-button>
             </ion-col>
         </ion-row>
         <!-- End of back button -->
 
     </ion-grid>
 </ion-content>
-
+<!--  End Content Personal -->
+<!-- Content Family -->
 <ion-content fullscreen *ngIf="type == 'Family'">
 
     <ion-grid>
@@ -86,11 +91,11 @@
 
             </ion-row>
             <!-- End of Selection -->
-
+        </ion-card>
             <!-- Confirm button -->
             <ion-row>
                 <ion-col>
-                    <ion-button (click)="confirm()" expand="full" color="success">ยืนยัน</ion-button>
+                    <ion-button (click)="confirm()" expand="block" color="success">ยืนยัน</ion-button>
                 </ion-col>
             </ion-row>
             <!-- End of confirm button -->
@@ -98,17 +103,16 @@
             <!-- Back button -->
             <ion-row>
                 <ion-col>
-                    <ion-button (click)="back()" expand="full" color="danger">ยกเลิก</ion-button>
+                    <ion-button (click)="back()" expand="block" color="danger">ยกเลิก</ion-button>
                 </ion-col>
             </ion-row>
             <!-- End of back button -->
-        </ion-card>
-
-
-
+        
     </ion-grid>
 </ion-content>
+<!-- End Content Family -->
 
+<!-- Content Enterprise -->
 <ion-content fullscreen *ngIf="type == 'Enterprise'">
 
     <ion-grid>
@@ -143,11 +147,12 @@
                 </ion-col>
             </ion-row>
             <!-- End of Selection -->
-
+        </ion-card>
+   
             <!-- Confirm button -->
             <ion-row>
                 <ion-col>
-                    <ion-button (click)="confirm()" expand="full" color="success">ยืนยัน</ion-button>
+                    <ion-button expand="block" (click)="confirm()" color="success">ยืนยัน</ion-button>
                 </ion-col>
             </ion-row>
             <!-- End of confirm button -->
@@ -155,12 +160,10 @@
             <!-- Back button -->
             <ion-row>
                 <ion-col>
-                    <ion-button (click)="back()" expand="full" color="danger">ยกเลิก</ion-button>
+                    <ion-button expand="block" (click)="back()"  color="danger">ยกเลิก</ion-button>
                 </ion-col>
             </ion-row>
             <!-- End of back button -->
-        </ion-card>
-
-
     </ion-grid>
 </ion-content>
+<!-- End Content Enterprise -->
