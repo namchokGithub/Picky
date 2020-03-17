@@ -34,7 +34,8 @@
                 <p>ไม่มีการบันทึกรายรับรายจ่าย</p>
             </div>
             <ion-grid ng-template #show *ngFor="let transaction of transaction">
-                <ion-row *ngIf='transaction.tran_date.toString().substring(8,10) == date && transaction.tran_date.toString().substring(5,7) == month else show_month '>
+
+                <ion-row *ngIf='transaction.tran_date.toString().substring(8,10) == date && transaction.tran_date.toString().substring(5,7) == month else show_month'>
                     <ion-col>
                         <ion-title size="small">{{transaction.tran_category_name}}</ion-title>
                     </ion-col>
@@ -50,18 +51,20 @@
                     </ion-col>
                 </ion-row>
 
-                <ion-row #show_month *ngIf='transaction.tran_date.toString().substring(5,7) == month'>
+                <ion-row #show_month *ngIf='(transaction.tran_date.toString().substring(5,7) == month) || check_null()'>
                     <ion-col>
                         <ion-title size="small">{{transaction.tran_category_name}}</ion-title>
                     </ion-col>
                     <ion-col *ngIf='transaction.tran_category_type == "income"'>
                         <ion-text class="text-green text-right">
                             <p>฿ {{transaction.tran_amount}}</p>
+                            <P>วันที่ {{transaction.tran_date}}</P>
                         </ion-text>
                     </ion-col>
                     <ion-col *ngIf='transaction.tran_category_type == "Expense"'>
                         <ion-text class="text-red text-right">
                             <p>฿ {{transaction.tran_amount}}</p>
+                            <P>วันที่ {{transaction.tran_date}}</P>
                         </ion-text>
                     </ion-col>
                 </ion-row>
