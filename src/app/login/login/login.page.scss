@@ -7,6 +7,18 @@ a {
     font-family: 'Prompt' !important;
 }
 
+.btn-login {
+    margin: auto !important;
+    padding: 5px !important;
+    text-align: center !important;
+    color: white !important;
+    border-radius: 10px !important;
+    width: 250px;
+    height: 50px;
+    background-color: #DD5E89;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .bg-login {
     // background-color: #62b4ea;
     background: linear-gradient(237deg, #62b4ea, #f8b7cd) !important;
@@ -61,6 +73,7 @@ a {
 .app-name {
     margin: auto;
     font-size: 40px !important;
+    text-shadow: 1px 1px 2px #f0e4e4;
 }
 
 .app-name p {
@@ -121,4 +134,10 @@ a {
     .hydrated {
         margin-left: 0px !important;
     }
+}
+
+.image-input {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
 }

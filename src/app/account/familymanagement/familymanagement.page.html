@@ -40,12 +40,6 @@
 </ion-header>
 <!-- End Header -->
 <ion-content>
-    <!-- Image Acoount -->
-    <div class="ion-text-center">
-        <img class="sizeimg" decoding="async" src="assets/account.png">
-    </div>
-    <!-- End Image Acoount -->
-
     <ion-card>
         <!-- Header -->
         <ion-card-header>
@@ -70,21 +64,22 @@
                     </ion-item-sliding>
                 </ion-list>
                 <!-- End Show List Family -->
-
+                <!-- Show ID Account -->
                 <ion-row>
                     <ion-col class="ionic-text-start" size="9">
                         <ion-input type="text" [(ngModel)]="sharename" name="sharename" placeholder="ไอดีบัญชีผู้ใช้ที่จะแชร์ร่วม">
                             <ion-icon name="person-circle-outline"></ion-icon>
                         </ion-input>
                     </ion-col>
-
+                    <!-- End Show ID Account -->
+                    <!-- Search Usermane -->
                     <ion-col class="ionic-text-end" size="3">
                         <ion-toolbar>
                             <ion-button slot="end" (click)="searchusername()" size="small">
                                 <ion-icon name="search"></ion-icon>
                             </ion-button>
                         </ion-toolbar>
-
+                        <!-- End Search Usermane -->
                     </ion-col>
 
                 </ion-row>
@@ -93,9 +88,6 @@
         </ion-card-content>
     </ion-card>
     <!-- Button confirm -->
-
-
-
     <ion-card-content>
         <ion-button expand="block" (click)="alert()">ยืนยัน</ion-button>
     </ion-card-content>

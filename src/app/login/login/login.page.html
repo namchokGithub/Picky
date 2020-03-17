@@ -19,7 +19,7 @@
         <ion-row style="margin-top: 40px;">
             <ion-col size="8" size-lg offset="2" class="bg-input">
                 <ion-input placeholder="ชื่อผู้ใช้งาน" [(ngModel)]="username" type="text" name="username">
-                    <ion-icon style="margin-right: 5px;" name="person-sharp"></ion-icon>
+                    <ion-img class="image-input" src="assets/icon/fairytale.png"></ion-img>
                 </ion-input>
             </ion-col>
         </ion-row>
@@ -27,19 +27,19 @@
         <ion-row style="margin-top: 10px;">
             <ion-col size="8" size-lg offset="2" class="bg-input">
                 <ion-input placeholder="รหัสผ่าน" type="password" [(ngModel)]="password" name="password">
-                    <ion-icon style="margin-right: 5px;" name="key-sharp"></ion-icon>
+                    <ion-img class="image-input" src="assets/icon/key.png"></ion-img>
                 </ion-input>
             </ion-col>
         </ion-row>
 
         <ion-row align-items-center style="margin-top: 50px;">
             <ion-col size="8" size-lg offset="2" class="ion-text-center mt-3" (click)="validate_login()">
-                <ion-button color="primary" expand="block" style="font-size: 20px !important;">เข้าสู่ระบบ</ion-button>
+                <div style="font-size: 20px !important;" class="btn-login">เข้าสู่ระบบ</div>
             </ion-col>
         </ion-row>
 
-        <ion-row>
-            <ion-col class="ion-text-center " (click)="goToRegister()">
+        <ion-row style="margin-top: 20px;">
+            <ion-col class="ion-text-center " (click)="goToRegister() ">
                 สมัครสมาชิก ?
             </ion-col>
         </ion-row>

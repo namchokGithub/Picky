@@ -37,12 +37,12 @@ export class RegisterPage implements OnInit {
   ) {}
 
   ngOnInit() {
+
     this.menu.enable(false, "menuSilde");
     this.userservice.get_user().subscribe(res => {
       console.log(res);
       this.user = res;
     });
-
     
   }
 
@@ -68,7 +68,8 @@ export class RegisterPage implements OnInit {
       console.log("รหัสผ่านไม่ตรงกัน");
     } else {
       this.userservice.add_user(this.user_add);
-      this.back();
+      this.confirm();
+      
     }
   }
 
@@ -101,4 +102,37 @@ export class RegisterPage implements OnInit {
     });
     toast.present();
   }
+
+
+  // Function : confirm กดปุ่มยืนยันเพิ่มบัญชี
+  // name : Chatchalerm
+  // Date : 2020-03-09
+  async confirm() {
+    const alert = await this.alertController.create({
+      header: 'ยืนยันการสมัครสมาชิกหรือไม่?',
+      message: 'คุณต้องการสมัครสมาชิก ชื่อผู้ใช้ ' + this.user_add.user_name + ' หรือไม่?',
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: blah => {
+            console.log('Confirm Cancel');
+          }
+        },
+        {
+          text: 'ยืนยัน',
+          handler: () => {
+           
+            this.back();
+          }
+          
+        }
+        
+      ]
+      
+    });
+    await alert.present();
+  }
+  
 }
