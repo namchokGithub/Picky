@@ -179,7 +179,7 @@ export class UserService {
   // Function logoutSessionUser
   // create by : Namchok Singhachai
   // ตัวอย่างการเรียกใช้
-  // this.accountService.add_user(user)
+  // this.accountService.logoutSessionUser()
 
   logoutSessionUser() {
     this.storage.remove('user').then(() => {
@@ -190,7 +190,7 @@ export class UserService {
   // Function isAuthen
   // create by : Namchok Singhachai
   // ตัวอย่างการเรียกใช้
-  // this.accountService.add_user(user)
+  // this.accountService.isAuthen()
 
   isAuthen() {
     return this.isLoggedIn;
