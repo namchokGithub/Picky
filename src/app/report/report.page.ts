@@ -31,11 +31,11 @@ export class ReportPage implements OnInit {
     private tracsactionService: TransactionService
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.income = 0;
     this.Expense = 0;
-    this.account_id = this.accountService.get_session_account_id();
-    this.account_name = this.accountService.get_session_account_name();
+    this.account_id = await this.accountService.get_session_account_id();
+    this.account_name = await this.accountService.get_session_account_name();
     this.load_transaction();
   }
 
@@ -75,7 +75,7 @@ export class ReportPage implements OnInit {
         i + " " + this.tran[i].tran_account_id + " " + this.account_id
       );
       if (this.tran[i].tran_account_id == this.account_id) {
-        this.transaction[i] = this.tran[i];
+        this.transaction.push(this.tran[i]) 
       }
     }
     this.setvalue();
@@ -84,10 +84,11 @@ export class ReportPage implements OnInit {
   async setvalue() {
     for (let i = 0; i < this.transaction.length; i++) {
       if (this.transaction[i].tran_category_type == "income") {
+        console.log('income');
         this.income += parseInt(this.transaction[i].tran_amount);
       } else {
         this.Expense += parseInt(this.transaction[i].tran_amount);
-      }
+      } 
     }
     await this.loadSimplePieChart();
   }
