@@ -47,6 +47,7 @@ export class AddPage implements OnInit {
   // * @Author     : Komsan Tesana
   // * @Create Date: 10/3/2563
   async ngOnInit() {
+    this.name_category = null
      this.activatedRoute.queryParamMap.subscribe(params => {
         this.type_category  = params.get('Type_category');
         this.name_category = params.get('record_name');
@@ -117,7 +118,7 @@ export class AddPage implements OnInit {
   // * @Create Date: 10/3/2563
   validate(){
 
-    if(this.name_category == ''){
+    if(this.name_category == null){
 
       this.showToast('กรุณาระบุประเภท');
     }
