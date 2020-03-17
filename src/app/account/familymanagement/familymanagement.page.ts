@@ -131,7 +131,7 @@ export class FamilymanagementPage implements OnInit {
   //  Name: Chomphunut
   //  Date: 14/3/20
   //  Edit by Komsan
-  searchusername(){
+  search_username(){
     this.user_search = this.db_user.find(user => user.user_id === this.sharename);
     if(this.user_search.user_id == this.sharename) {
       this.showToast('ค้นหาผู้ใช้พบ');
