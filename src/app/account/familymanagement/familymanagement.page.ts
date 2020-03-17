@@ -14,11 +14,11 @@ export class FamilymanagementPage implements OnInit {
   public account_id: string;
   public account_name: string;
   public sharename: string;
-  private db_user = [];
+  public db_user = [];
   public account: any = [];
-  private user_search: any = [];
+  public user_search: any = [];
 
-  private user_session = [];
+  public user_session = [];
 
   public family: family = {
 

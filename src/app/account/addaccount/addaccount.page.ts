@@ -37,18 +37,18 @@ export class AddaccountPage implements OnInit {
     account_type: ''
   };
 
-  private thtype: string;
-  private type: string;
-  private user_session: any = [];
-  private name_account: string;
-  private department: string;
+  public thtype: string;
+  public type: string;
+  public user_session: any = [];
+  public name_account: string;
+  public department: string;
 
   constructor(
     public navCtrl: NavController,
-    private router: Router,
+    public router: Router,
     public alertController: AlertController,
-    private userService: UserService,
-    private accountService: AccountService
+    public userService: UserService,
+    public accountService: AccountService
   ) {}
 
   ngOnInit() {
@@ -159,8 +159,6 @@ export class AddaccountPage implements OnInit {
     this.user_session = await this.userService.get_session_user()
     //console.log(this.user_session);
   }
-
-  
   /*
   Function : add_record วันที่บันทึกข้อมูล
   name : Naruemon
