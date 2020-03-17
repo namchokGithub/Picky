@@ -23,7 +23,7 @@ export class ShowaccountPage implements OnInit {
   private account_person = [];
   private account_family = [];
   private account_enterprise = [];
-
+ 
   constructor(
     private menu: MenuController,
     public navCtrl: NavController,
@@ -40,7 +40,8 @@ export class ShowaccountPage implements OnInit {
     this.get_account();
 
     this.session = this.userService.get_session_user();
-
+    
+   
     this.name = this.userService.getUsername();
     console.log(this.name);
   }
@@ -67,7 +68,12 @@ export class ShowaccountPage implements OnInit {
           text: 'ยืนยัน',
           handler: () => {
             console.log('Log out');
+          
+             
+
+             this.userService.logoutSession();
             this.router.navigate(['login']);
+
           }
         }
       ]

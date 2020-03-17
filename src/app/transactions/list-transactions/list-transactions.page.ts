@@ -31,9 +31,15 @@ export class ListTransactionsPage implements OnInit {
   private balance: number;
   private account_type: string;
   private user_session: any = [];
-  private transaction = []
-  private tran = []
+  private transaction = [];
+  private tran = [];
   private value: boolean
+  public month: string;
+  public date: string;
+  
+  public searchtransaction = [];
+  
+ 
 
   constructor(
     private menu: MenuController,
@@ -45,6 +51,7 @@ export class ListTransactionsPage implements OnInit {
   ) {}
 
   ngOnInit() {
+  
     this.income = 0;
     this.Expense = 0;
     this.balance = 0;
@@ -52,6 +59,8 @@ export class ListTransactionsPage implements OnInit {
     this.menu.enable(true, "menuSilde");
     this.load_session_user();
     this.load_session_account();
+
+    console.log(this.tran);
   }
 
   async load_session_account(){
@@ -72,11 +81,11 @@ export class ListTransactionsPage implements OnInit {
   }
 
   async check_transaction() {
-    console.log(this.tran);
+    // console.log(this.tran);
     var index = 0;
     for (let i = 0; i < this.tran.length; i++) {
-      console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + this.account_id)
-      if (this.tran[i].tran_account_id == this.account_id) {
+      console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + 'Rq9axf6AfAJqwDr5eVrN') //this.account_id
+      if (this.tran[i].tran_account_id == 'Rq9axf6AfAJqwDr5eVrN') {
         this.transaction[index] = this.tran[i]
         index++;
       }
@@ -85,10 +94,12 @@ export class ListTransactionsPage implements OnInit {
   }
 
   setvalue() {
-    console.log(this.transaction)
+    
     if (this.transaction.length == 0) {
       this.value = false;
     } else {
+      
+      
       for (let i = 0; i < this.transaction.length; i++) {
         if (this.transaction[i].tran_category_type == "income") {
           this.income += parseInt(this.transaction[i].tran_amount)
@@ -99,5 +110,21 @@ export class ListTransactionsPage implements OnInit {
       this.balance = this.income - this.Expense;
     }
 
+  console.log(this.transaction);
+   
   }
+
+   search(){
+     //sub month & date to show trancition
+    if ( this.month != null ) {
+      this.month = this.month.substring(7, 5);
+    console.log(this.month);
+     
+    } if ( this.date != null ) {
+      this.date = this.date.substring(10, 8);
+      console.log(this.date);
+    }
+   }
+ 
+   
 }

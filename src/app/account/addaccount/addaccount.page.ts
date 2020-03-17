@@ -38,6 +38,7 @@ export class AddaccountPage implements OnInit {
     account_name: '',
     account_type: ''};
 
+    private thtype: string;
   private type: string;
   private user_session: any = [];
   private name_account: string;
@@ -63,9 +64,20 @@ export class AddaccountPage implements OnInit {
   // name : Chatchalerm
   // Date : 2020-03-09
   async confirm() {
+
+    if(this.type == 'Family'){
+
+      this.thtype = 'ครอบครัว';
+    }else if(this.type == 'Personal'){
+
+      this.thtype = 'ส่วนตัว';
+    }else{
+
+      this.thtype = 'องค์กร';
+    }
     const alert = await this.alertController.create({
       header: 'ยืนยันการเพิ่มบัญชีผู้ใช้?',
-      message: 'คุณต้องการเพิ่มบัญชีประเภท ' + this.type + ' หรือไม่?',
+      message: 'คุณต้องการเพิ่มบัญชีประเภท ' + this.thtype + ' หรือไม่?',
       buttons: [
         {
           text: 'ยกเลิก',
