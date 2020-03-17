@@ -159,16 +159,6 @@ export class UserService {
     return this.userSession;
   }
 
-  // Function getSession
-  // create by : Namchok Singhachai
-  getSession() {
-    this.storage.get('user').then((user) => {
-      this.isLoggedIn = true;
-      this.userSession = user;
-    });
-    return this.userSession;
-  }
-
   // Function logoutSession
   // create by : Namchok Singhachai
   logoutSession() {

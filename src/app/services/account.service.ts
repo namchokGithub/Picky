@@ -1,5 +1,8 @@
+import { ShowaccountPage } from './../account/showaccount/showaccount.page';
 // import injectable from angular/core
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
 
 // import AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference from angular/fire/firestore
 import {
@@ -7,17 +10,25 @@ import {
   AngularFirestoreCollection,
   AngularFirestoreDocument,
   DocumentReference
-} from "@angular/fire/firestore";
+} from '@angular/fire/firestore';
 
 // import map,take from rxjs/operators
-import { map, take } from "rxjs/operators";
+import { map, take } from 'rxjs/operators';
 
 // import Observable from rxjs
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 
-// import async from angular/core/testing
-import { async } from "@angular/core/testing";
+// Default account
+export interface account {
+  id?: string;
+  account_balance: string;
+  account_name: string;
+  account_type: string;
+  account_user_id: string;
+  account_user_name: string;
+}
 
+// Personal account
 export interface person {
   id?: string;
   account_balance: string;
@@ -27,6 +38,7 @@ export interface person {
   account_user_name: string;
 }
 
+// Family account
 export interface family {
   id?: string;
   account_balance: string;
@@ -35,6 +47,7 @@ export interface family {
   account_type: string;
 }
 
+// Enterprise account
 export interface enterprise {
   id?: string;
   account_balance: string;
@@ -45,7 +58,7 @@ export interface enterprise {
 }
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 
 // การเรียกใช้ account.service.ts
@@ -69,12 +82,12 @@ export class AccountService {
   private account_family_collection: AngularFirestoreCollection<family>;
   private account_enterprise_collection: AngularFirestoreCollection<enterprise>;
 
-  constructor(private afs: AngularFirestore) {
-    this.account_person_collection = this.afs.collection<person>("account");
-    this.account_family_collection = this.afs.collection<family>("account");
-    this.account_enterprise_collection = this.afs.collection<enterprise>(
-      "account"
-    );
+  constructor(private afs: AngularFirestore
+            , public storage: Storage
+            , private router: Router) {
+    this.account_person_collection = this.afs.collection<person>('account');
+    this.account_family_collection = this.afs.collection<family>('account');
+    this.account_enterprise_collection = this.afs.collection<enterprise>('account');
   }
 
   // Function get_account_person
@@ -87,11 +100,10 @@ export class AccountService {
   //    account_name:"account_name"
   //    account_type:"Personal"
   //    account_user_id:"user_id"
-  //    account_username:"user_name"  
+  //    account_username:"user_name"
   // }
   // ตัวอย่างการเรียกใช้
   // this.accountService.get_account().subscribe(res => {})
-  
   get_account(): Observable<person[]> {
     return (this.account_person = this.account_person_collection
       .snapshotChanges()
@@ -116,7 +128,7 @@ export class AccountService {
   //    account_member:[{
   //      id:"nOT94wDxCxye6JwoegpC"
   //      user_id:"ginowasu"
-  //      user_name:"จีโน่"    
+  //      user_name:"จีโน่"
   //      user_password:"12345678"
   //    }]
   //    account_name:"ginowasu22"
@@ -124,7 +136,6 @@ export class AccountService {
   // }
   // ตัวอย่างการเรียกใช้
   // this.accountService.get_account_family().subscribe(res => {})
-
   get_account_family(): Observable<family[]> {
     return (this.account_family = this.account_family_collection
       .snapshotChanges()
@@ -149,7 +160,7 @@ export class AccountService {
   //    account_member:[{
   //      id:"nOT94wDxCxye6JwoegpC"
   //      user_id:"ginowasu"
-  //      user_name:"จีโน่"    
+  //      user_name:"จีโน่"
   //      user_password:"12345678"
   //    }]
   //    account_name:"ginowasu22"
@@ -158,7 +169,6 @@ export class AccountService {
   // }
   // ตัวอย่างการเรียกใช้
   // this.accountService.get_account_enterprise().subscribe(res => {})
-
   get_account_enterprise(): Observable<enterprise[]> {
     return (this.account_enterprise = this.account_enterprise_collection
       .snapshotChanges()
@@ -183,11 +193,10 @@ export class AccountService {
   //    account_name:"account_name"
   //    account_type:"Personal"
   //    account_user_id:"user_id"
-  //    account_username:"user_name"  
+  //    account_username:"user_name"
   // }
   // ตัวอย่างการเรียกใช้
   // this.accountService.get_acount_person_By_Id(account_id).subscribe(res => {})
-
   get_acount_person_By_Id(id: string): Observable<person> {
     return this.account_person_collection
       .doc<person>(id)
@@ -211,7 +220,7 @@ export class AccountService {
   //    account_member:[{
   //      id:"nOT94wDxCxye6JwoegpC"
   //      user_id:"ginowasu"
-  //      user_name:"จีโน่"    
+  //      user_name:"จีโน่"
   //      user_password:"12345678"
   //    }]
   //    account_name:"ginowasu22"
@@ -219,7 +228,6 @@ export class AccountService {
   // }
   // ตัวอย่างการเรียกใช้
   // this.accountService.get_acount_family_By_Id(account_id).subscribe(res => {})
-
   get_acount_family_By_Id(id: string): Observable<family> {
     return this.account_family_collection
       .doc<family>(id)
@@ -243,7 +251,7 @@ export class AccountService {
   //    account_member:[{
   //      id:"nOT94wDxCxye6JwoegpC"
   //      user_id:"ginowasu"
-  //      user_name:"จีโน่"    
+  //      user_name:"จีโน่"
   //      user_password:"12345678"
   //    }]
   //    account_name:"ginowasu22"
@@ -252,7 +260,6 @@ export class AccountService {
   // }
   // ตัวอย่างการเรียกใช้
   // this.accountService.get_acount_enterprise_By_Id(account_id).subscribe(res => {})
-
   get_acount_enterprise_By_Id(id: string): Observable<enterprise> {
     return this.account_person_collection
       .doc<enterprise>(id)
@@ -271,7 +278,6 @@ export class AccountService {
   // จะทำการ บันทึกข้อมูลของ account_person ลงใน firestore
   // ตัวอย่างการเรียกใช้
   // this.accountService.add_account_person(account_person)
-
   add_account_person(person: person): Promise<DocumentReference> {
     return this.account_person_collection.add(person);
   }
@@ -281,7 +287,6 @@ export class AccountService {
   // จะทำการ บันทึกข้อมูลของ account_person ลงใน firestore
   // ตัวอย่างการเรียกใช้
   // this.accountService.add_account_family(account_family)
-
   add_account_family(family: family): Promise<DocumentReference> {
     return this.account_family_collection.add(family);
   }
@@ -291,7 +296,6 @@ export class AccountService {
   // จะทำการ บันทึกข้อมูลของ account_person ลงใน firestore
   // ตัวอย่างการเรียกใช้
   // this.accountService.add_account_enterprise(account_enterprise)
-
   add_account_enterprise(enterprise: enterprise): Promise<DocumentReference> {
     return this.account_enterprise_collection.add(enterprise);
   }
@@ -301,7 +305,6 @@ export class AccountService {
   // จะทำการ เปลี่ยนข้อมูลของ account_person ตาม id ใน firestore
   // ตัวอย่างการเรียกใช้
   // this.accountService.add_account_enterprise(account_person)
-
   update_account_person(person: person): Promise<void> {
     return this.account_person_collection.doc(person.id).update({
       balance: person.account_balance,
@@ -317,7 +320,6 @@ export class AccountService {
   // จะทำการ เปลี่ยนข้อมูลของ account_person ตาม id ใน firestore
   // ตัวอย่างการเรียกใช้
   // this.accountService.update_account_family(account_family)
-
   update_account_family(family: family): Promise<void> {
     return this.account_family_collection.doc(family.id).update({
       balance: family.account_balance,
@@ -332,7 +334,6 @@ export class AccountService {
   // จะทำการ เปลี่ยนข้อมูลของ account_person ตาม id ใน firestore
   // ตัวอย่างการเรียกใช้
   // this.accountService.add_account_enterprise(account_enterprise)
-
   update_account_enteprise(enterprise: enterprise): Promise<void> {
     return this.account_enterprise_collection.doc(enterprise.id).update({
       balance: enterprise.account_balance,
@@ -348,7 +349,6 @@ export class AccountService {
   // จะทำการ ลบข้อมูลของ account_person ตาม id ใน firestore
   // ตัวอย่างการเรียกใช้
   // this.accountService.delete_account(account_id)
-
   delete_account(id: string): Promise<void> {
     return this.account_person_collection.doc(id).delete();
   }
@@ -358,30 +358,60 @@ export class AccountService {
   // เก็บข้อมูลอย่าง acccount_id และ account_name ไว้ใน services เพื่อให้สามารถเรียกใช้ได้ทุกหน้า
   // ตัวอย่างการเรียกใช้
   // this.accountService.set_session_account(account_id,account_name)
-
   set_session_account(account_id: string, account_name: string) {
+    this.storage.set('account_id', account_id);
+    this.storage.set('account_name', account_name);
     this.account_id = account_id;
     this.account_name = account_name;
   }
 
   // Function get_session_account_id
   // create by : kittisak noidonpai
-  // คืนค่าข้อมูล acccount_id 
+  // คืนค่าข้อมูล acccount_id
   // ตัวอย่างการเรียกใช้
   // this.accountService.get_session_account_id()
-
   get_session_account_id() {
     return this.account_id;
   }
-
 
   // Function get_session_account_name
   // create by : kittisak noidonpai
   // คืนค่าข้อมูล acccount_name
   // ตัวอย่างการเรียกใช้
   // this.accountService.get_session_account_name()
-
   get_session_account_name() {
     return this.account_name;
   }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+  // @Function   : isAuthenAccoun
+  // @Author     : Modified by Namchok
+  // @Create Date: 2563-03-13
+  async isAuthenAccount() {
+    let checker: boolean; // for check user id
+    await this.storage.get('account_id').then((accountId) => {
+
+      if (accountId == null) {
+        checker = false;
+      } else {
+        checker = true;
+        this.account_id = accountId;
+        // console.log(accountId)
+      }
+
+    });
+
+    await this.storage.get('account_name').then((accountName) => {
+      // console.log(accountName)
+      this.account_name = accountName;
+    });
+
+    if (checker == false) {
+      this.router.navigate(['showaccount'], { replaceUrl: true });
+    }
+  }
+
 }
