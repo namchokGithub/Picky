@@ -53,7 +53,7 @@
                 <!-- Show List Family -->
                 <ion-list *ngFor="let account of account.account_member">
                     <ion-item-sliding>
-                        <ion-item *ngIf="user_session.user_id != account.user_id">
+                        <ion-item *ngIf="user_session['user_id'] != account.user_id">
                             <ion-label>{{ account.user_id }}</ion-label>
                         </ion-item>
                         <!-- Button delete -->
