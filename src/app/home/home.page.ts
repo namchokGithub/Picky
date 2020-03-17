@@ -46,7 +46,7 @@ export class HomePage implements OnInit {
     this.menu.enable(true, 'menuSilde');
     await this.load_session_user();
     await this.load_session_account();
-    await this.get()
+    await this.get();
     this.accountService.isAuthenAccount();
   }
 
@@ -68,21 +68,21 @@ export class HomePage implements OnInit {
 
   async get() {
      this.transactionService.get_transaction().subscribe( res => {
-      console.log(res)
+      console.log(res);
       this.tran = res;
-      this.check_transaction()
+      this.check_transaction();
     });
   }
 
   check_transaction() {
-    console.log('check_transaction')
+    console.log('check_transaction');
     // console.log(this.tran);
-    console.log(this.tran)
+    console.log(this.tran);
     let index = 0;
     for (let i = 0; i < this.tran.length; i++) {
       console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + this.account_id);
       if (this.tran[i].tran_account_id == this.account_id && index < 5) {
-        this.transaction.push(this.tran[i])
+        this.transaction.push(this.tran[i]);
         this.value = false;
         index++;
       }
@@ -106,7 +106,7 @@ export class HomePage implements OnInit {
     this.income = 0;
     this.Expense = 0;
     this.balance = 0;
-    for(let i = 0; i < this.transaction.length; i++){
+    for (let i = 0; i < this.transaction.length; i++) {
       this.transaction.pop();
     }
     this.router.navigate(['add'], { replaceUrl: true });
