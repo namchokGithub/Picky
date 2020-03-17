@@ -71,19 +71,28 @@
                                 <ion-text class="text-green text-right">
                                     <p>฿ {{transaction.tran_amount}}</p>
                                 </ion-text>
+
+                                <ion-row>
+                                    <ion-text class="text-start" size="small">
+                                        <P>วันที่ {{transaction.tran_date}}</P>
+                                    </ion-text>
+                                </ion-row>
                             </ion-col>
                             <ion-col *ngIf='transaction.tran_category_type == "Expense"'>
                                 <ion-text class="text-red text-right">
                                     <p>฿ {{transaction.tran_amount}}</p>
                                 </ion-text>
+
+
+                                <ion-row>
+                                    <ion-text class="text-start" size="small">
+                                        <P>วันที่ {{transaction.tran_date}}</P>
+                                    </ion-text>
+                                </ion-row>
                             </ion-col>
                         </ion-row>
                     </div>
-                    <ion-row>
-                        <ion-text class="text-start" size="small">
-                            <P>วันที่ {{transaction.tran_date}}</P>
-                        </ion-text>
-                    </ion-row>
+
                 </ion-grid>
             </div>
 
