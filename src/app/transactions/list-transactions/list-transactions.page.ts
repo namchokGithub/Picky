@@ -40,7 +40,7 @@ export class ListTransactionsPage implements OnInit {
   
   public searchtransaction = [];
   
- 
+
 
   constructor(
     private menu: MenuController,
@@ -76,7 +76,7 @@ export class ListTransactionsPage implements OnInit {
   }
 
   async get_transaction() {
-     this.transactionService.get_transaction().subscribe( res => {
+    this.transactionService.get_transaction().subscribe( res => {
       this.tran = res;
       this.check_transaction()
     })
@@ -113,31 +113,33 @@ export class ListTransactionsPage implements OnInit {
     }
 
   console.log(this.transaction);
-   
+  
   }
 
-   search(){
+  search(){
      //sub month & date to show trancition
     if ( this.month != null ) {
       console.log(this.month)
       this.month = this.month.substring(7, 5);
     console.log(this.month);
-     
+
     } if ( this.date != null ) {
       this.date = this.date.substring(10, 8);
       console.log(this.date);
     }
-   }
+  }
 
-   check_null(){
-     console.log(this.month+this.date);
-     if(this.month == null && this.date == null){
-       console.log(true)
-       return true;
-     }else{
-       return false;
-     }
-   }
- 
-   
+  check_null(){
+    console.log(this.month+this.date);
+    if(this.month == null && this.date == null){
+      console.log(true)
+      return true;
+    }else{
+      return false;
+    }
+  }
+  goHomePage() {
+    this.router.navigate(['showaccount'], { replaceUrl: true });
+  }
+
 }
