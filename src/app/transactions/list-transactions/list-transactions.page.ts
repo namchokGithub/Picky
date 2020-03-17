@@ -139,7 +139,7 @@ export class ListTransactionsPage implements OnInit {
     }
   }
   goHomePage() {
-    this.router.navigate(['showaccount'], { replaceUrl: true });
+    this.router.navigate(['home'], { replaceUrl: true });
   }
 
 }
