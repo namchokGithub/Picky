@@ -202,7 +202,7 @@ export class UserService {
 
   // Fucntion getUsername
   // Create by : Namchok
-  async getUsername() {
+   getUsername() {
     return this.username;
   }
 

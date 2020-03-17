@@ -61,10 +61,10 @@
         </ion-card-header>
 
         <ion-card-content>
-            <div *ngIf="!value; else show">
+            <div *ngIf="value else show">
                 <p>ไม่มีการบันทึกรายรับรายจ่าย</p>
             </div>
-            <ion-grid ng-template #show *ngFor="let transaction of transaction">
+            <ion-grid #show *ngFor="let transaction of transaction">
                 <ion-row>
                     <ion-col>
                         <ion-title size="small">{{transaction.tran_category_name}}</ion-title>

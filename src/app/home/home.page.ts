@@ -81,18 +81,16 @@ export class HomePage implements OnInit {
       console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + this.account_id);
       if (this.tran[i].tran_account_id == this.account_id && index < 4) {
         this.transaction[index] = this.tran[i];
-
         index++;
+        this.value = false;
       }
     }
+    
     await this.setvalue();
   }
 
   setvalue() {
-    // console.log(this.transaction);
-    if (this.transaction.length == 0) {
-      this.value = false;
-    } else {
+    
       for (let i = 0; i < this.transaction.length; i++) {
         if (this.transaction[i].tran_category_type == 'income') {
           this.income += parseInt(this.transaction[i].tran_amount);
@@ -101,8 +99,6 @@ export class HomePage implements OnInit {
         }
       }
       this.balance = this.income - this.Expense;
-    }
-
   }
 
   // Add transactions
