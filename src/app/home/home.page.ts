@@ -34,11 +34,9 @@ export class HomePage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private user: UserService,
-    private transactionService : TransactionService,
-    private accountService:AccountService
-  ) {
-
-  }
+    private transactionService: TransactionService,
+    private accountService: AccountService
+  ) {}
 
   ngOnInit() {
     this.income = 0;
@@ -48,16 +46,20 @@ export class HomePage implements OnInit {
     this.menu.enable(true, 'menuSilde');
     this.load_session_user();
     this.load_session_account();
+    this.accountService.isAuthenAccount();
   }
 
   ionViewWillEnter() {
     this.load_session_user();
     this.load_session_account();
+    this.accountService.isAuthenAccount();
   }
 
-  async load_session_account(){
+  async load_session_account() {
     this.account_id = this.accountService.get_session_account_id();
     this.account_name = this.accountService.get_session_account_name();
+    // console.log(this.account_id)
+    // console.log(this.account_name)
     await this.get_transaction();
   }
 
@@ -70,16 +72,15 @@ export class HomePage implements OnInit {
       this.tran = res;
       this.check_transaction();
     });
-
   }
 
   async check_transaction() {
-    console.log(this.tran);
-    var index = 0;
+    // console.log(this.tran);
+    let index = 0;
     for (let i = 0; i < this.tran.length; i++) {
-      console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + this.account_id)
+      console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + this.account_id);
       if (this.tran[i].tran_account_id == this.account_id && index < 4) {
-        this.transaction[index] = this.tran[i]
+        this.transaction[index] = this.tran[i];
 
         index++;
       }
@@ -87,9 +88,8 @@ export class HomePage implements OnInit {
     await this.setvalue();
   }
 
-
   setvalue() {
-    console.log(this.transaction);
+    // console.log(this.transaction);
     if (this.transaction.length == 0) {
       this.value = false;
     } else {
@@ -105,6 +105,7 @@ export class HomePage implements OnInit {
 
   }
 
+  // Add transactions
   add() {
     this.income = 0;
     this.Expense = 0;
@@ -112,5 +113,5 @@ export class HomePage implements OnInit {
     this.router.navigate(['add']);
   }
 
- 
+
 }
