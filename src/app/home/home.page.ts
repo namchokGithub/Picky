@@ -19,23 +19,23 @@ import { importExpr } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./home.page.scss']
 })
 export class HomePage implements OnInit {
-  private account_id: string;
-  private account_name: string;
-  private income: number;
-  private Expense: number;
-  private balance: number;
-  private account_type: string;
-  private user_session: any = [];
-  private transaction = [];
-  private tran = [];
-  private value: boolean;
+  public account_id: string;
+  public account_name: string;
+  public income: number;
+  public Expense: number;
+  public balance: number;
+  public account_type: string;
+  public user_session: any = [];
+  public transaction = [];
+  public tran = [];
+  public value: boolean;
   constructor(
-    private menu: MenuController,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private user: UserService,
-    private transactionService: TransactionService,
-    private accountService: AccountService
+    public menu: MenuController,
+    public activatedRoute: ActivatedRoute,
+    public router: Router,
+    public user: UserService,
+    public transactionService: TransactionService,
+    public accountService: AccountService
   ) {}
 
   ngOnInit() {
