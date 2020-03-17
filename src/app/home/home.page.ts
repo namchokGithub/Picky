@@ -50,6 +50,11 @@ export class HomePage implements OnInit {
     this.load_session_account();
   }
 
+  ionViewWillEnter() {
+    this.load_session_user();
+    this.load_session_account();
+  }
+
   async load_session_account(){
     this.account_id = this.accountService.get_session_account_id();
     this.account_name = this.accountService.get_session_account_name();
@@ -73,7 +78,7 @@ export class HomePage implements OnInit {
     var index = 0;
     for (let i = 0; i < this.tran.length; i++) {
       console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + this.account_id)
-      if (this.tran[i].tran_account_id == this.account_id && index < 5) {
+      if (this.tran[i].tran_account_id == this.account_id && index < 4) {
         this.transaction[index] = this.tran[i]
 
         index++;

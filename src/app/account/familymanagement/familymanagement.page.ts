@@ -10,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./familymanagement.page.scss'],
 })
 export class FamilymanagementPage implements OnInit {
- 
+
   public account_id: string;
   public account_name: string;
   public sharename: string;
@@ -29,50 +29,34 @@ export class FamilymanagementPage implements OnInit {
     account_type: '',
 
   };
-  constructor(public navCtrl: NavController, 
-    private router: Router,
-    public alertController: AlertController, 
-    public activatedRoute: ActivatedRoute,
-    public accountService: AccountService,
-    public userService: UserService,
-    public toastController: ToastController
+  constructor(public navCtrl: NavController,
+              private router: Router,
+              public alertController: AlertController,
+              public activatedRoute: ActivatedRoute,
+              public accountService: AccountService,
+              public userService: UserService,
+              public toastController: ToastController
     ) { }
 
 
   ngOnInit() {
-
     this.activatedRoute.queryParamMap.subscribe(params => {
       this.account_id  = params.get('account_id')
       console.log(this.account_id)
       this.account_name = params.get('account_name')
       console.log(this.account_name)
-
-    
-   });
-
-   this.userService.get_user().subscribe(async res => {
-    this.db_user = res;
-    
-  });
-
-
-
-   this.user_session = this.userService.get_session_user();
-
-    console.log(this.user_session);
- 
-    this.accountService.get_acount_family_By_Id(this.account_id).subscribe(res => {
-    
-      this.account = res;
-    
-      this.setaccount();
     });
 
-    
+    this.userService.get_user().subscribe(async res => {
+      this.db_user = res;
+    });
 
-
-
-
+    this.user_session = this.userService.get_session_user();
+    console.log(this.user_session);
+    this.accountService.get_acount_family_By_Id(this.account_id).subscribe(res => {
+      this.account = res;
+      this.setaccount();
+    });
   }
 
   //  Function: back กด icon ย้อนกลับ เพื่อไปยังหน้า showaccount
@@ -93,10 +77,8 @@ export class FamilymanagementPage implements OnInit {
   //  Name: Chomphunut
   //  Date: 7/3/20
   delete(id: string) {
-   
     console.log(id);
-  
-   }
+  }
 
   //  Function: confirm กด icon ออกจากหน้า familymanagement เพื่อไปยังหน้า showaccount
   //  Name: Chomphunut
@@ -142,14 +124,11 @@ export class FamilymanagementPage implements OnInit {
     this.family.account_member = this.account.account_member;
     this.family.account_type = this.account.account_type;
   }
-  
+
   searchusername(){
     this.user_search = this.db_user.find(user => user.user_id === this.sharename);
-    if(this.user_search.user_id == this.sharename){
+    if(this.user_search.user_id == this.sharename) {
       this.showToast('ค้นหาผู้ใช้พบ');
-    }else if(){
-
-      
     }
   }
 
