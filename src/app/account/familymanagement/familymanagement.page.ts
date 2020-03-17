@@ -43,7 +43,7 @@ export class FamilymanagementPage implements OnInit {
 
     this.activatedRoute.queryParamMap.subscribe(params => {
       this.account_id  = params.get('account_id')
-      //console.log(this.account_id)
+      console.log(this.account_id)
       this.account_name = params.get('account_name')
       console.log(this.account_name)
 

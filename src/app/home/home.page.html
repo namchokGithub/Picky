@@ -11,7 +11,7 @@
     <!-- Name Account -->
     <ion-card>
         <ion-card-header>
-            <ion-text size="6">{{account_name}}</ion-text>
+            <ion-card-title class="circle">{{account_name}}</ion-card-title>
         </ion-card-header>
 
         <ion-card-content>
@@ -54,13 +54,18 @@
                         </ion-text>
                     </ion-col>
                 </ion-row>
+
             </ion-grid>
         </ion-card-content>
     </ion-card>
 
     <ion-card>
         <ion-card-header>
+<<<<<<< HEAD
             <ion-card-title class="circle">ธุรกรรม</ion-card-title>
+=======
+            <ion-card-title class="circle">การบันทึก</ion-card-title>
+>>>>>>> e8dbbcf5c95034e3e48e9b15f807def7fa3dd623
         </ion-card-header>
 
         <ion-card-content>
@@ -70,23 +75,24 @@
             <ion-grid ng-template #show *ngFor="let transaction of transaction">
                 <ion-row>
                     <ion-col>
-                        <ion-title size="small">{{transaction.tran_note}}</ion-title>
+                        <ion-title size="small">{{transaction.tran_category_name}}</ion-title>
                     </ion-col>
                     <ion-col *ngIf='transaction.tran_category_type == "income"'>
                         <ion-text class="text-green text-right">
                             <p>฿ {{transaction.tran_amount}}</p>
+                            <P>วันที่ {{transaction.tran_date.substring(0,transaction.tran_date.search('T'))}}</P>
                         </ion-text>
                     </ion-col>
                     <ion-col *ngIf='transaction.tran_category_type == "Expense"'>
                         <ion-text class="text-red text-right">
                             <p>฿ {{transaction.tran_amount}}</p>
+                            <P>วันที่ {{transaction.tran_date.substring(0,transaction.tran_date.search('T'))}}</P>
                         </ion-text>
                     </ion-col>
                 </ion-row>
             </ion-grid>
         </ion-card-content>
     </ion-card>
-
     <ion-tabs>
         <ion-tab-bar slot="bottom">
             <ion-tab-button tab="list-transactions">

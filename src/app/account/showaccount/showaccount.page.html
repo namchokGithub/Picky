@@ -8,8 +8,9 @@
     <ion-toolbar>
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title>My account</ion-title>
+        </ion-buttons>  
+            <ion-title>สวัสดีคุณ{{name}} !!</ion-title>
+        <ion-icon name="log-out-outline" style=" width: 30px; height: 30px; margin-right: 5%;"  (click)="log_out()" slot="end"></ion-icon>   
     </ion-toolbar>
 </ion-header>
 <!-- End Header -->
@@ -21,7 +22,7 @@
                 <!-- Sliding item with text options on both sides -->
                 <!-- for loop -->
                 <ion-item-sliding *ngFor="let person of account_person">
-                    <ion-item *ngIf="person.account_user_id === session.user_id">
+                    <ion-item *ngIf="person.account_user_id === session['user_id']">
                         <ion-label>{{person.account_name}}</ion-label>
                     </ion-item>
                     <!-- button -->
@@ -33,7 +34,7 @@
                 </ion-item-sliding>
                 <ion-item-sliding *ngFor="let family of account_family">
                     <div *ngFor="let member of family.account_member">
-                        <ion-item *ngIf="member.user_id == session.user_id">
+                        <ion-item *ngIf="member.user_id == session['user_id']">
                             <ion-label>{{family.account_name}}</ion-label>
                         </ion-item>
                         <!-- button -->
@@ -47,7 +48,7 @@
                 </ion-item-sliding>
                 <ion-item-sliding *ngFor="let enterprise of account_enterprise">
                     <div *ngFor="let member of enterprise.account_member">
-                        <ion-item *ngIf="member.user_id == session.user_id">
+                        <ion-item *ngIf="member.user_id == session['user_id']">
                             <ion-label>{{enterprise.account_name}}</ion-label>
                         </ion-item>
                         <!-- button -->
@@ -68,7 +69,8 @@
         <ion-toolbar>
             <div padding class="ion-text-center">
                 <!-- ปุ่มเพิ่ม Account -->
-                <ion-button (click)="openAddAccount()">
+                <ion-button (click)="openAddAccount()" expand="full">
+                    เพิ่มบัญชี
                     <ion-icon slot="icon-only" name="add-circle"></ion-icon>
                 </ion-button>
                 <!--End ปุ่มเพิ่ม Account -->
