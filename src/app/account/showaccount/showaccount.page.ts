@@ -48,11 +48,12 @@ export class ShowaccountPage implements OnInit {
   async ionViewWillEnter() {
     this.session = await this.userService.get_session_user();
     this.name = await this.userService.getUsername();
+    
   }
 
-   setSession() {
-    this.session =  this.userService.get_session_user();
-    this.name =  this.userService.getUsername();
+  async setSession() {
+    this.session = await this.userService.get_session_user();
+    this.name =  await this.userService.getUsername();
     this.get_account();
   }
 
@@ -78,6 +79,7 @@ export class ShowaccountPage implements OnInit {
           text: 'ยืนยัน',
           handler: () => {
             console.log('Log out');
+            this.popaccount();
             this.userService.logoutSession();
             this.router.navigate(['login'], { replaceUrl: true });
           }
@@ -122,6 +124,48 @@ export class ShowaccountPage implements OnInit {
   async openAddAccount() {
 
     // Test pop account | Namchok
+   
+    this.popaccount();
+    
+    await this.router.navigate(['addaccount']);
+  }
+
+   selecet_account(accountId: string, accountName: string) {
+    this.presentLoading();
+    this.popaccount();
+     this.accountService.set_session_account(accountId,accountName);
+    this.router.navigate(['home']);
+  }
+
+   gotomanagementFamily(accountId: string, accountName: string) {
+    this.presentLoading();
+    this.popaccount();
+     this.router.navigate(['familymanagement'], {queryParams: {account_id: accountId, account_name:accountName}});
+  }
+
+   gotomanagementEnterprise(accountId: string, accountName: string) {
+    this.presentLoading();
+    this.popaccount();
+      this.router.navigate(['enterprisemanagement'], {queryParams: {account_id:accountId, account_name:accountName}});
+  }
+
+  removeAccount(id: string) {
+    this.presentLoading();
+    this.popaccount();
+    this.accountService.delete_account(id);
+  }
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'รอสักครู่...',
+      duration: 200
+    });
+    await loading.present();
+    const { role, data } = await loading.onDidDismiss();
+  }
+
+  popaccount(){
+
     while (this.account_person.length > 0) {
       this.account_person.pop();
       
@@ -145,37 +189,5 @@ export class ShowaccountPage implements OnInit {
 
     console.log('account_enterprise');
     console.log(this.account_enterprise);
-    
-    await this.router.navigate(['addaccount']);
-  }
-
-  selecet_account(accountId: string, accountName: string) {
-    this.presentLoading();
-    this.accountService.set_session_account(accountId, accountName);
-    this.router.navigate(['home']);
-  }
-
-  gotomanagementFamily(accountId: any, accountName: any) {
-    this.presentLoading();
-    this.router.navigate(['familymanagement'], {queryParams: {accountId, accountName}});
-  }
-
-  gotomanagementEnterprise(accountId: any, accountName: any) {
-    this.presentLoading();
-    this.router.navigate(['enterprisemanagement'], {queryParams: {accountId, accountName}});
-  }
-
-  removeAccount(id: string) {
-    this.presentLoading();
-    this.accountService.delete_account(id);
-  }
-
-  async presentLoading() {
-    const loading = await this.loadingController.create({
-      message: 'รอสักครู่...',
-      duration: 200
-    });
-    await loading.present();
-    const { role, data } = await loading.onDidDismiss();
   }
 }
