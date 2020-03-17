@@ -8,7 +8,7 @@
 </ion-header>
 <!-- แสดงหน้าจอการเพิ่มรายการ-->
 <ion-content>
-    
+
     <ion-card>
         <ion-card-content>
             <!-- การเลือกประเภทของรายการรายรับ-รายจ่าย-->
@@ -29,7 +29,7 @@
             <!-- เลือกวัน-เดือน-ปีที่ต้องการบันทึก -->
             <ion-item>
                 <ion-label class="lable" position="floating">วันที่</ion-label>
-                <ion-datetime pickerFormat="DD MMM YYYY" displayFormat="DD MMM YY" placeholder="เลือกวันที่" [(ngModel)]="date"></ion-datetime>
+                <ion-datetime pickerFormat="DD MMM YYYY" displayFormat="DD MMM YY" placeholder="เลือกวันที่" [(ngModel)]="date" done-text="ตกลง" cancel-text="ยกเลิก"></ion-datetime>
             </ion-item>
 
             <!-- กรอกรายละเอียดเพิ่มเติมของการบันทึกรายการนี้ -->
@@ -39,19 +39,19 @@
                 </ion-label>
                 <ion-textarea placeholder="Add Note" [(ngModel)]="note" placeholder="รายละเอียดเพิ่มเติม"></ion-textarea>
             </ion-item>
-
-            <!-- แสดงปุ่มยืนยันและยกเลิก-->
-            <ion-grid>
-                <ion-row>
-                    <ion-col>
-                        <ion-button (click)="validate()" expand="block" color="success">ยืนยัน</ion-button>
-                    </ion-col>
-                    <ion-col>
-                        <ion-button (click)="back()" expand="block" color="danger">ยกเลิก</ion-button>
-                    </ion-col>
-                </ion-row>
-            </ion-grid>
         </ion-card-content>
     </ion-card>
+
+    <!-- แสดงปุ่มยืนยันและยกเลิก-->
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-button (click)="validate()" expand="block" color="success">ยืนยัน</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button (click)="back()" expand="block" color="danger">ยกเลิก</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
 </ion-content>
