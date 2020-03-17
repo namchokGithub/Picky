@@ -99,10 +99,10 @@ export class CategoryPage implements OnInit {
   // * @Function   : settype_category ส่งค่า category  ที่เลือกส่งไปยังหน้า add โดยมีการส่งค่า type และ ชื่อ
   // * @Author     : Komsan Tesana
   // * @Create Date: 10/3/2563
-  settype_category(type: string, record_name: string) {
-    console.log(type + ' ' + record_name);
+  settype_category(type: string, name_category: string) {
+    console.log(type + ' ' + name_category);
     this.router.navigate(['add'],{
-      queryParams: { Type_category: type, record_name}
+      queryParams: { Type_category: type, name_category}
     });
   }
 }
