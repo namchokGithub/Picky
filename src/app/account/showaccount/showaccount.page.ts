@@ -35,16 +35,22 @@ export class ShowaccountPage implements OnInit {
     public alertCtrl: AlertController
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.menu.enable(false, 'menuSilde');
-    this.session = this.userService.get_session_user();
-    this.name = this.userService.getUsername();
-    this.get_account();
+
+    await this.presentLoading();
+    await this.setSession();
   }
 
-  ionViewWillEnter() {
-    this.session = this.userService.get_session_user();
-    this.name = this.userService.getUsername();
+  async ionViewWillEnter() {
+    this.session = await this.userService.get_session_user();
+    this.name = await this.userService.getUsername();
+  }
+
+  async setSession() {
+    this.session = await this.userService.get_session_user();
+    this.name = await this.userService.getUsername();
+    this.get_account();
   }
 
   /*

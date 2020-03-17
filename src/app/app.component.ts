@@ -88,7 +88,7 @@ export class AppComponent implements OnInit {
   // Name: loadName
   // loadName form user
   // Namchok
-  loadName() {
-    this.name = this.userService.getUsername();
+  async loadName() {
+    this.name = await this.userService.getUsername();
   }
 }
