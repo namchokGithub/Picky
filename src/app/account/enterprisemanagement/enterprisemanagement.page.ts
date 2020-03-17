@@ -11,20 +11,20 @@ import { ToastController , AlertController} from '@ionic/angular';
 })
 export class EnterprisemanagementPage implements OnInit {
 
-  private account_id:string;
-  private account_name:string;
-  public account:any = [];
+  private account_id: string;
+  private account_name: string;
+  public account: any = [];
   private user_session = [];
 
   constructor(public router: Router
-    ,public activatedRoute: ActivatedRoute
-    ,public accountService: AccountService
-    ,public userService: UserService
-    ,public toastController: ToastController
-    ,public alertController: AlertController) {}
-  public sharename:string;
- 
-  private user_search:any = [];
+    ,         public activatedRoute: ActivatedRoute
+    ,         public accountService: AccountService
+    ,         public userService: UserService
+    ,         public toastController: ToastController
+    ,         public alertController: AlertController) {}
+  public sharename: string;
+
+  private user_search: any = [];
 
   public enterprise: enterprise = {
     id : '',
@@ -33,39 +33,28 @@ export class EnterprisemanagementPage implements OnInit {
     account_member : [],
     account_type : '',
     account_department : '',
-  }
+  };
   private db_user = [];
-  ngOnInit() {
 
-
-    this.user_session = this.userService.get_session_user();
-   
+  async ngOnInit() {
+    this.user_session = await this.userService.get_session_user();
     this.userService.get_user().subscribe(async res => {
       this.db_user = res;
-      
     });
-  
-    
     this.activatedRoute.queryParamMap.subscribe(params => {
       this.account_id  = params.get('account_id');
       this.account_name = params.get('account_name');
-   });
-   console.log(this.account_id);
-
-
-   this.accountService.get_acount_enterprise_By_Id(this.account_id).subscribe(res => {
-    
-    this.account = res;
-  
-    console.log(this.account);
-   this.setaccount();
-  });
-
-   this.sharename = '';
- 
+    });
+    this.accountService.get_acount_enterprise_By_Id(this.account_id).subscribe(res => {
+      this.account = res;
+      console.log(this.account);
+      this.setaccount();
+    });
+    this.sharename = '';
+    // console.log(this.account_id);
   }
 
-  setaccount(){
+  setaccount() {
 
     this.enterprise.id = this.account_id;
     this.enterprise.account_balance = this.account.account_balance;
@@ -78,14 +67,12 @@ export class EnterprisemanagementPage implements OnInit {
   }
 
   confirm() {
-    console.log('confirm')
+    console.log('confirm');
   }
-  searchusername(){
 
+  searchusername() {
     this.user_search = this.db_user.find(user => user.user_id === this.sharename);
-
- 
-    if(this.user_search.user_id == this.sharename){
+    if (this.user_search.user_id == this.sharename) {
       this.showToast('ค้นหาผู้ใช้พบ');
     }
   }
@@ -93,7 +80,7 @@ export class EnterprisemanagementPage implements OnInit {
     this.router.navigate(['showaccount'], { replaceUrl: true });
   }
 
-  showToast(msg){
+  showToast(msg) {
     this.toastController.create({
       message: msg,
       duration: 2000
@@ -129,7 +116,7 @@ export class EnterprisemanagementPage implements OnInit {
 
     await alert.present();
   }
-  delete(account_id:string){
+  delete(account_id: string) {
 
     console.log(account_id);
 

@@ -6,39 +6,11 @@
     </ion-toolbar>
 </ion-header>
 
-
-
-
-
-
-
-
-
 <ion-content class="bg-flow">
-
     <ion-card>
-        <ion-card-header>
-            <ion-card-title class="title-card">{{account_name}}</ion-card-title>
-        </ion-card-header>
-
-
-    </ion-card>
-
-
-
-
-    <ion-card>
-        <ion-card-header>
-            <ion-card-title class="circle">การบันทึก</ion-card-title>
-        </ion-card-header>
-
         <ion-card-content>
-
             <ion-card-header>
-
                 <ion-card-title class="search">ค้นหา </ion-card-title>
-
-
                 <ion-item>
                     <ion-label>เดือน</ion-label>
                     <ion-datetime display-format="MMMM" picker-format="MMMM" placeholder="ค้นหาด้วยเดือน" [(ngModel)]="month"></ion-datetime>
@@ -49,27 +21,14 @@
                     <ion-datetime display-format="DD" picker-format="DD" [(ngModel)]="date" placeholder="ค้นหาด้วยวันที่"></ion-datetime>
                 </ion-item>
 
-
-
-
-
                 <ion-grid>
                     <ion-row>
-
                         <button class="search_bt">
                             <ion-icon name="search" (click)="search()"></ion-icon>
                         </button>
-
                     </ion-row>
-
-
                 </ion-grid>
-
-
-
-
             </ion-card-header>
-
 
             <div *ngIf="!value; else show">
                 <p>ไม่มีการบันทึกรายรับรายจ่าย</p>

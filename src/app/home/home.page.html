@@ -1,18 +1,15 @@
 <ion-header>
     <ion-toolbar>
         <ion-title>
-            <h1 class="ion-text-center">MheeMoney</h1>
+            <!-- Account -->
+            <h1 class="ion-text-center">{{account_name}}</h1>
         </ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content class="bg-flow">
-
+    <!-- Name Account -->
     <ion-card>
-        <ion-card-header>
-            <ion-card-title class="circle">{{account_name}}</ion-card-title>
-        </ion-card-header>
-
         <ion-card-content>
             <ion-grid>
                 <ion-row>
@@ -92,7 +89,7 @@
         <ion-tab-bar slot="bottom">
             <ion-tab-button tab="list-transactions">
                 <ion-img justify-content-center class="menu-icon" src="assets/icon/transactions.png"></ion-img>
-                <ion-label>Transactions</ion-label>
+                <ion-label>ธุรกรรม</ion-label>
                 <!--รายละเอียดรายรับรายจ่าย-->
             </ion-tab-button>
 
@@ -102,7 +99,7 @@
 
             <ion-tab-button tab="showaccount">
                 <ion-img justify-content-center class="menu-icon" src="assets/icon/account.png"></ion-img>
-                <ion-label>Account</ion-label>
+                <ion-label>บัญชีผู้ใช้งาน</ion-label>
                 <!--บัญชีผู้ใช้งาน-->
             </ion-tab-button>
         </ion-tab-bar>
