@@ -10,8 +10,8 @@ import { TransactionService, transaction} from 'src/app/services/transaction.ser
   styleUrls: ['./add.page.scss'],
 })
 export class AddPage implements OnInit {
-  private account_id:string;
-  private account_name:string;
+  private account_id: string;
+  private account_name: string;
   public type_category = '';
   public name_category = '';
   public cash = '';
@@ -42,27 +42,27 @@ export class AddPage implements OnInit {
               private transactionService: TransactionService,
               private accountService: AccountService
             ) { }
-  
+
   // * @Function   : ngOnInit => รับค่าจากหน้า CategoryPage ที่ส่งมายังหน้า add
   // * @Author     : Komsan Tesana
   // * @Create Date: 10/3/2563
   async ngOnInit() {
-    this.name_category = null
-     this.activatedRoute.queryParamMap.subscribe(params => {
+    this.name_category = null;
+    this.activatedRoute.queryParamMap.subscribe(params => {
         this.type_category  = params.get('Type_category');
-        this.name_category = params.get('record_name');
+        this.name_category = params.get('name_category');
      });
 
-     this.user_session =  await this.userService.get_session_user();
-     this.account_id = this.accountService.get_session_account_id();
-     this.account_name = this.accountService.get_session_account_name();
+    this.user_session =  await this.userService.get_session_user();
+    this.account_id = this.accountService.get_session_account_id();
+    this.account_name = this.accountService.get_session_account_name();
   }
 
   // * @Function   : goCategoryPage => ไปยังหน้า CategoryPage
   // * @Author     : Komsan Tesana
   // * @Create Date: 10/3/2563
   goCategoryPage() {
-    this.router.navigate(['category']);
+    this.router.navigate(['category'], { replaceUrl: true });
   }
 
   // * @Function   : back => ย้อนไปยังหน้า home
@@ -100,49 +100,48 @@ export class AddPage implements OnInit {
       console.log('เพิ่มเติม :' + this.note);
       console.log('จำนวนเงิน :' + this.cash);
 
-        this.transaction.tran_account = this.account_name;
-        this.transaction.tran_account_id = this.account_id;
-        this.transaction.tran_amount = this.cash;
-        this.transaction.tran_category_name = this.name_category;
-        this.transaction.tran_category_type = this.type_category;
-        this.transaction.tran_date = this.date.toString().substring(0,10);
-        this.transaction.tran_note = this.note;
-        this.transaction.tran_user = this.user_session.user_id;
-        this.transactionService.add_transaction(this.transaction);
-        console.log(this.transaction);
-      this.router.navigate(['home']);
+      this.transaction.tran_account = this.account_name;
+      this.transaction.tran_account_id = this.account_id;
+      this.transaction.tran_amount = this.cash;
+      this.transaction.tran_category_name = this.name_category;
+      this.transaction.tran_category_type = this.type_category;
+      this.transaction.tran_date = this.date.toString().substring(0, 10);
+      this.transaction.tran_note = this.note;
+      this.transaction.tran_user = this.user_session.user_id;
+      this.transactionService.add_transaction(this.transaction);
+      console.log(this.transaction);
+      this.router.navigate(['home'], { replaceUrl: true });
   }
 
   // * @Function   : validate => เช็คค่าหากไม่มีการกรอกข้อมูล จะทำการแสดงข้อความแจ้งเตือน
   // * @Author     : Komsan Tesana
   // * @Create Date: 10/3/2563
-  validate(){
+  validate() {
 
-    if(this.name_category == null){
+    if (this.name_category == null) {
 
       this.showToast('กรุณาระบุประเภท');
-    }
-    else if(this.cash == ''){
+    } else if (this.cash == '') {
 
       this.showToast('กรุณาระบุจำนวนเงิน');
-    }else if(this.date == ''){
+    } else if (this.date == '') {
 
       this.showToast('กรุณาระบุวันที่');
-    }else if(this.type_category == ''){
+    } else if (this.type_category == '') {
 
       this.showToast('กรุณาระบุประเภท');
-    }else{
+    } else {
 
       this.onSubmit();
     }
-    
+
   }
 
-  showToast(msg){
+  showToast(msg) {
     this.toastController.create({
       message: msg,
       duration: 2000
     }).then(toast => toast.present());
   }
-  
+
 }

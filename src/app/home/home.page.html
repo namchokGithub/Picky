@@ -20,7 +20,7 @@
                     </ion-col>
                     <ion-col>
                         <ion-text>
-                            <p class="text-green text-right">฿ {{income}}</p>
+                            <p class="text-green text-right">฿ {{income | number }}</p>
                         </ion-text>
                     </ion-col>
                 </ion-row>
@@ -33,7 +33,7 @@
                     </ion-col>
                     <ion-col class="line-red">
                         <ion-text>
-                            <p class="text-red text-right">฿ {{Expense}}</p>
+                            <p class="text-red text-right">฿ {{Expense | number }} </p>
                         </ion-text>
                     </ion-col>
                 </ion-row>
@@ -46,7 +46,7 @@
                     </ion-col>
                     <ion-col>
                         <ion-text>
-                            <p class="text-right">{{balance}}</p>
+                            <p class="text-right">฿ {{balance | number }}</p>
                         </ion-text>
                     </ion-col>
                 </ion-row>
@@ -67,21 +67,31 @@
             <ion-grid #show *ngFor="let transaction of transaction">
                 <ion-row>
                     <ion-col>
-                        <ion-title size="small">{{transaction.tran_category_name}}</ion-title>
+                        <ion-title>{{transaction.tran_category_name}}</ion-title>
                     </ion-col>
                     <ion-col *ngIf='transaction.tran_category_type == "income"'>
                         <ion-text class="text-green text-right">
-                            <p>฿ {{transaction.tran_amount}}</p>
-                            <P>วันที่ {{transaction.tran_date}}</P>
+                            <p>฿ {{transaction.tran_amount | number }}</p>
+
                         </ion-text>
+
                     </ion-col>
                     <ion-col *ngIf='transaction.tran_category_type == "Expense"'>
                         <ion-text class="text-red text-right">
-                            <p>฿ {{transaction.tran_amount}}</p>
-                            <P>วันที่ {{transaction.tran_date}}</P>
+                            <p>฿ {{transaction.tran_amount | number }}</p>
                         </ion-text>
                     </ion-col>
                 </ion-row>
+
+
+
+                <ion-row>
+                    <ion-text class="text-start" size="small">
+                        <P>วันที่ {{transaction.tran_date}}</P>
+                    </ion-text>
+                </ion-row>
+
+
             </ion-grid>
         </ion-card-content>
     </ion-card>

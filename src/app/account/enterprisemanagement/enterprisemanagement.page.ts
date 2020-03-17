@@ -11,10 +11,10 @@ import { ToastController , AlertController} from '@ionic/angular';
 })
 export class EnterprisemanagementPage implements OnInit {
 
-  private account_id: string;
-  private account_name: string;
+  public account_id: string;
+  public account_name: string;
   public account: any = [];
-  private user_session = [];
+  public user_session = [];
 
   constructor(public router: Router
     ,         public activatedRoute: ActivatedRoute
@@ -24,7 +24,7 @@ export class EnterprisemanagementPage implements OnInit {
     ,         public alertController: AlertController) {}
   public sharename: string;
 
-  private user_search: any = [];
+  public user_search: any = [];
 
   public enterprise: enterprise = {
     id : '',
@@ -34,7 +34,7 @@ export class EnterprisemanagementPage implements OnInit {
     account_type : '',
     account_department : '',
   };
-  private db_user = [];
+  public db_user = [];
 
   async ngOnInit() {
     this.user_session = await this.userService.get_session_user();

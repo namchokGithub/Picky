@@ -53,12 +53,12 @@
                 <!-- Show List Family -->
                 <ion-list *ngFor="let account of account.account_member">
                     <ion-item-sliding>
-                        <ion-item *ngIf="user_session.user_id != account.user_id">
+                        <ion-item *ngIf="user_session['user_id'] != account.user_id">
                             <ion-label>{{ account.user_id }}</ion-label>
                         </ion-item>
                         <!-- Button delete -->
                         <ion-item-options side="end">
-                            <ion-item-option color="danger" (click)="delete(account.id)">Delete</ion-item-option>
+                            <ion-item-option color="danger" (click)="delete(account.id)">ลบ</ion-item-option>
                         </ion-item-options>
                         <!-- End Button delete -->
                     </ion-item-sliding>
@@ -81,9 +81,7 @@
                         </ion-toolbar>
                         <!-- End Search Usermane -->
                     </ion-col>
-
                 </ion-row>
-
             </ion-grid>
         </ion-card-content>
     </ion-card>
