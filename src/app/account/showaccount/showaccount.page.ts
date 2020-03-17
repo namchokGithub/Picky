@@ -35,6 +35,11 @@ export class ShowaccountPage implements OnInit {
     public alertCtrl: AlertController
   ) {}
 
+  /*
+  Function Name : ngOnInit
+  Author : Naruemon
+  Description : เรียกใช้ฟังก์ชันการทำงานที่เกี่ยวข้อง
+  */
   async ngOnInit() {
     this.menu.enable(false, 'menuSilde');
 
@@ -42,11 +47,20 @@ export class ShowaccountPage implements OnInit {
     await this.setSession();
   }
 
+  /*
+  Function Name : ionViewWillEnter
+  Author : -
+  Description : เช็ตข้อมูลของผู้ใช้
+  */
   async ionViewWillEnter() {
     this.session = await this.userService.get_session_user();
     this.name = await this.userService.getUsername();
   }
-
+  /*
+  Function Name : setSession
+  Author : -
+  Description : เช็ตข้อมูลของผู้ใช้
+  */
   async setSession() {
     this.session = await this.userService.get_session_user();
     this.name = await this.userService.getUsername();
@@ -111,11 +125,11 @@ export class ShowaccountPage implements OnInit {
     });
   }
 
-  /**
-   * @Name Naerumon
-   * เลือก Account ไปสู่หน้า Home
-   */
-  /* ไปสู่หน้า Add Account */
+  /*
+  Function Name : get_account
+  Author : Naerumon
+  Description : ไปสู่หน้าเพิ่มบัญชี
+  */
   async openAddAccount() {
 
     // Test pop account | Namchok
@@ -128,27 +142,51 @@ export class ShowaccountPage implements OnInit {
     await this.router.navigate(['addaccount']);
   }
 
+  /*
+  Function Name : selecet_accoun
+  Author : Naerumon
+  Description : เลือกบัญชีเพื่อไปสู่หน้าหลัก
+  */
   selecet_account(accountId: string, accountName: string) {
     this.presentLoading();
     this.accountService.set_session_account(accountId, accountName);
     this.router.navigate(['home']);
   }
 
+  /*
+  Function Name : gotomanagementFamily
+  Author : Naerumon
+  Description : ไปบัญชีประเภทครอบครัว
+  */
   gotomanagementFamily(accountId: any, accountName: any) {
     this.presentLoading();
     this.router.navigate(['familymanagement'], {queryParams: {accountId, accountName}});
   }
-
+  /*
+  Function Name : gotomanagementEnterprise
+  Author : Naerumon
+  Description : ไปบัญชีประเภทองค์กร
+  */
   gotomanagementEnterprise(accountId: any, accountName: any) {
     this.presentLoading();
     this.router.navigate(['enterprisemanagement'], {queryParams: {accountId, accountName}});
   }
 
+  /*
+  Function Name : removeAccount
+  Author : Naerumon
+  Description : ลบบัญชี
+  */
   removeAccount(id: string) {
     this.presentLoading();
     this.accountService.delete_account(id);
   }
 
+  /*
+  Function Name : presentLoading
+  Author : Naerumon
+  Description : หน้าต่างแสดงผลโหลดข้อมูล รอสักครู่...
+  */
   async presentLoading() {
     const loading = await this.loadingController.create({
       message: 'รอสักครู่...',
