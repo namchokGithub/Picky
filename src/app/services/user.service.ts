@@ -1,14 +1,16 @@
-// ไปคอมเม้นมาทุกส่วน
+/**
+ * @File : user.service.ts
+ * service of user
+ */
+
 import { Injectable } from '@angular/core';
 import {
   AngularFirestore,
   AngularFirestoreCollection,
-  AngularFirestoreDocument,
   DocumentReference
 } from '@angular/fire/firestore';
 import { map, take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { async } from '@angular/core/testing';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
 export interface User {
@@ -17,19 +19,18 @@ export interface User {
   user_name: string;
   user_password: string;
 }
-// ไปคอมเม้นมาทุกส่วน
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
 
   public isLoggedIn: boolean;
   public userSession: any[];
   public set_user: any[];
   public username = '';
-
   public user: Observable<User[]>;
-
   // tslint:disable-next-line: variable-name
   public user_collection: AngularFirestoreCollection<User>;
 
@@ -37,10 +38,8 @@ export class UserService {
               public afs: AngularFirestore,
               public storage: Storage,
               public router: Router ) {
-
     this.user_collection = this.afs.collection<User>('user');
     this.isLoggedIn = false;
-
   }
 
   // Function get_user
@@ -66,6 +65,7 @@ export class UserService {
       })
     );
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function get_user_By_Id
   // create by : kittisak noidonpai
@@ -91,29 +91,30 @@ export class UserService {
         })
       );
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function add_user
   // create by : kittisak noidonpai
   // จะทำการ บันทึกข้อมูลของ user ลงใน firestore
   // ตัวอย่างการเรียกใช้
   // this.accountService.add_user(user)
-
   add_user(user: User): Promise<DocumentReference> {
     return this.user_collection.add(user);
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function update_user
   // create by : kittisak noidonpai
   // จะทำการ เปลี่ยนข้อมูลของ user ตาม id ใน firestore
   // ตัวอย่างการเรียกใช้
   // this.accountService.update_user(user)
-
   update_user(User: User): Promise<void> {
     return this.user_collection.doc(User.id).update({
       user_name: User.user_name,
       user_password: User.user_password
     });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function update_name_user
   // create by : komsan tesana
@@ -125,16 +126,17 @@ export class UserService {
       user_name: User.user_name
     });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function delete_user
   // create by : kittisak noidonpai
   // จะทำการ ลบข้อมูลของ user ตาม id ใน firestore
   // ตัวอย่างการเรียกใช้
   // this.accountService.delete_user(id)
-
   delete_user(id: string): Promise<void> {
     return this.user_collection.doc(id).delete();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function set_session_user
   // create by : kittisak noidonpai
@@ -144,6 +146,7 @@ export class UserService {
   set_session_user(user: any) {
     this.set_user = user;
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function get_session_user
   // create by : kittisak noidonpai
@@ -158,6 +161,7 @@ export class UserService {
   async get_session_user() {
     return this.userSession;
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function logoutSession
   // create by : Namchok Singhachai
@@ -170,6 +174,7 @@ export class UserService {
       console.log('log out and clear session');
     });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function clearSession
   // create by : Namchok Singhachai
@@ -182,6 +187,7 @@ export class UserService {
       console.log('clear session');
     });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function logoutSession
   // create by : Namchok Singhachai
@@ -192,6 +198,7 @@ export class UserService {
     this.storage.set('user', user);
     console.log('log in and set session');
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function isAuthen
   // create by : Namchok Singhachai
@@ -199,12 +206,14 @@ export class UserService {
   isAuthen() {
     return this.isLoggedIn;
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Fucntion getUsername
   // Create by : Namchok
-   getUsername() {
+  getUsername() {
     return this.username;
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // * @Function   : isAuthenticated => ตรวจสอบการ Login ว่ามีบันทึกใใน Local Storage หรือไม่
   // * @Author     : Jiramate Phuaphan | Modified by Namchok
@@ -227,5 +236,6 @@ export class UserService {
       this.router.navigate(['login'], { replaceUrl: true });
     }
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
 }

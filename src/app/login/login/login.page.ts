@@ -1,3 +1,8 @@
+/**
+ * @File : lofin.page.ts
+ * service of login
+ */
+
 import { Component, OnInit } from '@angular/core';
 import {
   NavController,
@@ -41,6 +46,7 @@ export class LoginPage implements OnInit {
 
     this.loginMenu();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /**
    * @param -
@@ -55,6 +61,7 @@ export class LoginPage implements OnInit {
     await loading.present();
     const { role, data } = await loading.onDidDismiss();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /**
    * @param -
@@ -64,6 +71,7 @@ export class LoginPage implements OnInit {
   goHomePage() {
     this.router.navigate(['home'], { replaceUrl: true });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /**
    * @param -
@@ -73,6 +81,7 @@ export class LoginPage implements OnInit {
   selectAccount() {
     this.router.navigate(['showaccount'], { replaceUrl: true });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /**
    * @param -
@@ -82,6 +91,7 @@ export class LoginPage implements OnInit {
   goToRegister() {
     this.router.navigate(['register'], { replaceUrl: true });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /**
    * validate เช็คlogin userid && password
@@ -100,12 +110,13 @@ export class LoginPage implements OnInit {
       this.alertInput('ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง');
     }
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
-   /**
-    * loginMenu
-    * Name: Namchok
-    * 2020-03-10
-    */
+  /**
+  * loginMenu
+  * Name: Namchok
+  * 2020-03-10
+  */
   validate_login() {
     if (this.username == null) {
       this.showToast('กรุณาใส่ชื่อผู้ใช้');
@@ -119,6 +130,7 @@ export class LoginPage implements OnInit {
       this.validate();
     }
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /**
    * loginMenu
@@ -133,6 +145,7 @@ export class LoginPage implements OnInit {
       return false;
     }
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /**
    * loginMenu
@@ -142,6 +155,7 @@ export class LoginPage implements OnInit {
   loginMenu() {
     this.menu.enable(false, 'menuSilde');
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // * @Function   : showToast => แสดงข้อความแจ้งเตือน
   // * @Author     : Komsan Tesana
@@ -157,6 +171,7 @@ export class LoginPage implements OnInit {
       })
       .then(toast => toast.present());
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /**
    * @param text
@@ -171,5 +186,6 @@ export class LoginPage implements OnInit {
     });
     await alert.present();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
 }

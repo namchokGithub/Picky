@@ -1,14 +1,20 @@
+/**
+ * @File : enterprisemanagement.page.ts
+ * service of enterprise management
+ */
+
 import { Component, OnInit  } from '@angular/core';
-import { Router, RouterModule , ActivatedRoute} from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
 import { AccountService, enterprise } from 'src/app/services/account.service';
 import { UserService } from 'src/app/services/user.service';
-
 import { ToastController , AlertController} from '@ionic/angular';
+
 @Component({
   selector: 'app-enterprisemanagement',
   templateUrl: './enterprisemanagement.page.html',
   styleUrls: ['./enterprisemanagement.page.scss'],
 })
+
 export class EnterprisemanagementPage implements OnInit {
 
   public account_id: string;
@@ -16,15 +22,13 @@ export class EnterprisemanagementPage implements OnInit {
   public account: any = [];
   public user_session = [];
 
-  constructor(public router: Router
-    ,         public activatedRoute: ActivatedRoute
-    ,         public accountService: AccountService
-    ,         public userService: UserService
-    ,         public toastController: ToastController
-    ,         public alertController: AlertController) {}
-  public sharename: string;
+  constructor(  public router: Router, public activatedRoute: ActivatedRoute, public accountService: AccountService
+              , public userService: UserService, public toastController: ToastController, public alertController: AlertController
+              ) {}
 
+  public sharename: string;
   public user_search: any = [];
+  public db_user = [];
 
   public enterprise: enterprise = {
     id : '',
@@ -34,7 +38,6 @@ export class EnterprisemanagementPage implements OnInit {
     account_type : '',
     account_department : '',
   };
-  public db_user = [];
 
   async ngOnInit() {
     this.user_session = await this.userService.get_session_user();
@@ -53,41 +56,60 @@ export class EnterprisemanagementPage implements OnInit {
     this.sharename = '';
     // console.log(this.account_id);
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
+  /*
+  Function : setaccount() | กำหนดค่าให้ Account
+  Date : 2020-03-14
+  */
   setaccount() {
-
     this.enterprise.id = this.account_id;
     this.enterprise.account_balance = this.account.account_balance;
     this.enterprise.account_name = this.account.account_name;
     this.enterprise.account_member = this.account.account_member;
     this.enterprise.account_type = this.account.account_type;
     this.enterprise.account_department = this.account.account_department;
-
-    console.log(this.enterprise);
+    // console.log(this.enterprise);
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
-  confirm() {
-    console.log('confirm');
-  }
-
+  /*
+  Function : searchusername() | ค้นหา user
+  Date : 2020-03-14
+  */
   searchusername() {
     this.user_search = this.db_user.find(user => user.user_id === this.sharename);
     if (this.user_search.user_id == this.sharename) {
       this.showToast('ค้นหาผู้ใช้พบ');
     }
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
+
+  /*
+  Function : back() | back to page show account
+  Date : 2020-03-14
+  */
   back() {
     this.router.navigate(['showaccount'], { replaceUrl: true });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
+  /*
+  Function : showToast() | show toast
+  Date : 2020-03-14
+  */
   showToast(msg) {
     this.toastController.create({
       message: msg,
       duration: 2000
     }).then(toast => toast.present());
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
-
+  /*
+  Function : alert() | show alert
+  Date : 2020-03-14
+  */
   async alert() {
     const alert = await this.alertController.create({
       header: 'ยืนยัน',
@@ -105,10 +127,7 @@ export class EnterprisemanagementPage implements OnInit {
           handler: () => {
             console.log('Confirm Okay');
             this.enterprise.account_member.push(this.user_search);
-
-          // console.log(this.enterprise);
             this.accountService.update_account_enteprise(this.enterprise);
-            this.confirm();
           }
         }
       ]
@@ -116,10 +135,14 @@ export class EnterprisemanagementPage implements OnInit {
 
     await alert.present();
   }
-  delete(account_id: string) {
+  // ----------------------------------------------------------------------------------------------------------------- //
 
-    console.log(account_id);
-
-  }
+  /*
+  Function : alert() | show alert
+  Date : 2020-03-14
+  */
+  // delete(accountId: string) {
+  //   console.log(accountId);
+  // }
 
 }

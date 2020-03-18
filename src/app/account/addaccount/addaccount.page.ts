@@ -1,16 +1,21 @@
+/**
+ * @File : addaccount.page.ts
+ * service of add account
+ */
+
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { UserService } from 'src/app/services/user.service';
 import { AccountService, person, family, enterprise} from './../../services/account.service';
-
 
 @Component({
   selector: 'app-addaccount',
   templateUrl: './addaccount.page.html',
   styleUrls: ['./addaccount.page.scss']
 })
+
 export class AddaccountPage implements OnInit {
 
   person: person = {
@@ -25,8 +30,7 @@ export class AddaccountPage implements OnInit {
     account_balance: '',
     account_name: '',
     account_member: [],
-    account_type: '',
-
+    account_type: ''
   };
 
   enterprise: enterprise = {
@@ -55,6 +59,7 @@ export class AddaccountPage implements OnInit {
     this.loaduser();
     this.type = 'Personal';
   }
+
   /*
   Function Name : ionViewWillEnter
   Author : -
@@ -63,14 +68,17 @@ export class AddaccountPage implements OnInit {
   async ionViewWillEnter() {
     await this.loaduser();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
+
   /*
   Function : กลับสู่หน้าแสดงบัญชี
   name : Naruemon
   Date : 2020-03-10
    */
   back() {
-    this.router.navigate(['showaccount'], { replaceUrl: true })
+    this.router.navigate(['showaccount'], { replaceUrl: true });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function : confirm กดปุ่มเพื่อยืนยันเพิ่มบัญชี
   // name : Chatchalerm Wasuanunkul
@@ -115,20 +123,24 @@ export class AddaccountPage implements OnInit {
     });
     await alert.present();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
+
   /*
   Function : เพิ่มบัญชี
   name : Naruemon
   Date : 2020-03-09
    */
   go_to_showaccount() {
-    this.router.navigate(['showaccount']);
+    this.router.navigate(['showaccount'], { replaceUrl: true });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
+
   /*
   Function : เพิ่มบัญชี
   name : Naruemon
   Date : 2020-03-09
    */
-  add_account(type: String) {
+  add_account(type: string) {
 
       if (type == 'Personal') {
         this.person.account_balance = '0';
@@ -153,24 +165,27 @@ export class AddaccountPage implements OnInit {
         this.accountService.add_account_enterprise(this.enterprise);
       }
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
-
+  /*
+  Function : เพิ่มบัญชี
+  name : Naruemon
+  Date : 2020-03-09
+  */
   async loaduser() {
-    this.user_session = await this.userService.get_session_user()
-    //console.log(this.user_session);
+    this.user_session = await this.userService.get_session_user();
+    // console.log(this.user_session);
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
+
   /*
   Function : add_record วันที่บันทึกข้อมูล
   name : Naruemon
   Date : 2020-03-09
-   */
+  */
   add_record() {
     const date = new Date();
     console.log(date.getDay() + '-' + date.getMonth() + '-' + date.getFullYear());
-    // this.record_account.account_id = this.account.id;
-    // this.record_account.account_name = this.account.name_account;
-    // this.record_account.user_record = [];
-
-    // this.recordService.add_record(this.record_account);
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 }

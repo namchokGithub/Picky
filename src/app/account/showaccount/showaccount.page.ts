@@ -1,8 +1,12 @@
+/**
+ * @File : showaccount.page.ts
+ * service of sho waccount
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { NavController, MenuController, LoadingController } from '@ionic/angular';
-import { VirtualTimeScheduler } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService, User } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/user.service';
 import { AlertController } from '@ionic/angular';
 
 import {
@@ -52,6 +56,7 @@ export class ShowaccountPage implements OnInit {
     this.presentLoading();
     this.setSession();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /*
   Function Name : ionViewWillEnter
@@ -63,6 +68,8 @@ export class ShowaccountPage implements OnInit {
     this.session = await this.userService.get_session_user();
     this.name = await this.userService.getUsername();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
+
   /*
   Function Name : setSession
   Author : -
@@ -73,6 +80,7 @@ export class ShowaccountPage implements OnInit {
     this.name =  this.userService.getUsername();
     await this.get_account();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /*
   Function Name : log_out
@@ -105,6 +113,7 @@ export class ShowaccountPage implements OnInit {
     });
     await alert.present();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /*
   Function Name : get_account
@@ -127,8 +136,8 @@ export class ShowaccountPage implements OnInit {
         }
       }
     });
-
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /*
   Function Name : get_account
@@ -138,8 +147,9 @@ export class ShowaccountPage implements OnInit {
   async openAddAccount() {
     // Test pop account | Namchok
     this.popaccount();
-    await this.router.navigate(['addaccount']);
+    await this.router.navigate(['addaccount'], { replaceUrl: true });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /*
   Function Name : selecet_accoun
@@ -150,8 +160,9 @@ export class ShowaccountPage implements OnInit {
     this.presentLoading();
     this.popaccount();
     this.accountService.set_session_account(accountId, accountName);
-    this.router.navigate(['home']);
+    this.router.navigate(['home'], { replaceUrl: true });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /*
   Function Name : gotomanagementFamily
@@ -161,8 +172,10 @@ export class ShowaccountPage implements OnInit {
   gotomanagementFamily(accountId: any, accountName: any) {
     this.presentLoading();
     this.popaccount();
-    this.router.navigate(['familymanagement'], {queryParams: {account_id: accountId, account_name: accountName}});
+    this.router.navigate(['familymanagement'], {queryParams: {account_id: accountId, account_name: accountName}, replaceUrl: true});
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
+
   /*
   Function Name : gotomanagementEnterprise
   Author : Naerumon
@@ -171,8 +184,9 @@ export class ShowaccountPage implements OnInit {
   gotomanagementEnterprise(accountId: any, accountName: any) {
     this.presentLoading();
     this.popaccount();
-    this.router.navigate(['enterprisemanagement'], {queryParams: {account_id: accountId, account_name: accountName}});
+    this.router.navigate(['enterprisemanagement'], {queryParams: {account_id: accountId, account_name: accountName}, replaceUrl: true});
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /*
   Function Name : removeAccount
@@ -184,6 +198,7 @@ export class ShowaccountPage implements OnInit {
     this.popaccount();
     this.accountService.delete_account(id);
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /*
   Function Name : presentLoading
@@ -198,9 +213,13 @@ export class ShowaccountPage implements OnInit {
     await loading.present();
     const { role, data } = await loading.onDidDismiss();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
+  /**
+   * @Name popaccount()
+   * pop account out of array
+   */
   popaccount() {
-
     while (this.account_person.length > 0) {
       this.account_person.pop();
     }
@@ -213,13 +232,14 @@ export class ShowaccountPage implements OnInit {
       this.account_enterprise.pop();
     }
     /////////////////////////////////////
-    console.log('account_person');
-    console.log(this.account_person);
+    // console.log('account_person');
+    // console.log(this.account_person);
 
-    console.log('account_family');
-    console.log(this.account_family);
+    // console.log('account_family');
+    // console.log(this.account_family);
 
-    console.log('account_enterprise');
-    console.log(this.account_enterprise);
+    // console.log('account_enterprise');
+    // console.log(this.account_enterprise);
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 }
