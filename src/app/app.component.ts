@@ -1,3 +1,10 @@
+/* File Name : app.component.ts
+  Author : Namchock
+  Description : แสดงแทบเมนูระบบ
+  Date : -
+  Update : 13-03-20 | Naruemon
+  */
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
@@ -5,18 +12,13 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { UserService, User } from 'src/app/services/user.service';
 
-/* File Name : app.component.ts
-  Author : Namchock
-  Description : แสดงแทบเมนูระบบ
-  Date : -
-  Update : 13-03-20 | Naruemon*/
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
+
   public selectedIndex = 0;
   // tslint:disable-next-line: variable-name
   private user_session: any;
@@ -65,21 +67,22 @@ export class AppComponent implements OnInit {
     this.initializeApp();
   }
 
-  /**
+  /*
    * function: initializeApp
-   * Name: -
+   * Name: Namchok
    * Description:
-  */
+    */
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
-  /**
+  /*
    * function: ngOnInit
-   * Name: -
+   * Name: Namchok
    * Description:
   */
   ngOnInit() {
@@ -94,6 +97,7 @@ export class AppComponent implements OnInit {
       this.userService.isAuthenticated();
     });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Name: loadName
   // loadName form user
@@ -101,4 +105,5 @@ export class AppComponent implements OnInit {
   async loadName() {
     this.name = await this.userService.getUsername();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 }

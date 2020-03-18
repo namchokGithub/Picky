@@ -1,14 +1,21 @@
+/**
+ * @File : add.page.ts
+ * service of add transactions
+ */
+
 import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController, AlertController , ToastController, LoadingController} from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from 'src/app/services/account.service';
 import { TransactionService, transaction} from 'src/app/services/transaction.service';
+
 @Component({
   selector: 'app-add',
   templateUrl: './add.page.html',
   styleUrls: ['./add.page.scss'],
 })
+
 export class AddPage implements OnInit {
   public account_id: string;
   public account_name: string;
@@ -57,6 +64,8 @@ export class AddPage implements OnInit {
     this.account_id = this.accountService.get_session_account_id();
     this.account_name = this.accountService.get_session_account_name();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
+
 
   // * @Function   : goCategoryPage => ไปยังหน้า CategoryPage
   // * @Author     : Komsan Tesana
@@ -64,6 +73,8 @@ export class AddPage implements OnInit {
   goCategoryPage() {
     this.router.navigate(['category'], { replaceUrl: true });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
+
 
   // * @Function   : back => ย้อนไปยังหน้า home
   // * @Author     : Komsan Tesana
@@ -71,10 +82,16 @@ export class AddPage implements OnInit {
   back() {
     this.router.navigate(['home'], { replaceUrl: true });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
+
+  // * @Function   : confirm => ย้อนไปยังหน้า home
+  // * @Author     : Komsan Tesana
+  // * @Create Date: 10/3/2563
   confirm() {
     this.router.navigate(['home'], { replaceUrl: true });
-  }
+  }// ----------------------------------------------------------------------------------------------------------------- //
+
 
   // * @Function   : addtransaction => แสดงหน้าต่างข้อความ
   // * @Author     : Komsan Tesana
@@ -89,6 +106,8 @@ export class AddPage implements OnInit {
 
     await alert.present();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
+
 
   // * @Function   : onSubmit => ส่งค่าจากที่ผู้ใช้กรอก บันทึกลงฐานข้อมูล
   // * @Author     : Komsan Tesana
@@ -112,6 +131,8 @@ export class AddPage implements OnInit {
       console.log(this.transaction);
       this.router.navigate(['home'], { replaceUrl: true });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
+
 
   // * @Function   : validate => เช็คค่าหากไม่มีการกรอกข้อมูล จะทำการแสดงข้อความแจ้งเตือน
   // * @Author     : Komsan Tesana
@@ -119,29 +140,28 @@ export class AddPage implements OnInit {
   validate() {
 
     if (this.name_category == null) {
-
       this.showToast('กรุณาระบุประเภท');
     } else if (this.cash == '') {
-
       this.showToast('กรุณาระบุจำนวนเงิน');
     } else if (this.date == '') {
-
       this.showToast('กรุณาระบุวันที่');
     } else if (this.type_category == '') {
-
       this.showToast('กรุณาระบุประเภท');
     } else {
-
       this.onSubmit();
     }
-
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
+  // * @Function   : showToast
+  // * @Author     : Komsan Tesana
+  // * @Create Date: 10/3/2563
   showToast(msg) {
     this.toastController.create({
       message: msg,
       duration: 2000
     }).then(toast => toast.present());
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
 }

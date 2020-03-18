@@ -1,5 +1,10 @@
 // import injectable from angular/core
-import { Injectable } from "@angular/core";
+/**
+ * @File : transaction.service.ts
+ * service of transaction
+ */
+
+import { Injectable } from '@angular/core';
 
 // import AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference from angular/fire/firestore
 import {
@@ -7,16 +12,16 @@ import {
   AngularFirestoreCollection,
   AngularFirestoreDocument,
   DocumentReference
-} from "@angular/fire/firestore";
+} from '@angular/fire/firestore';
 
 // import map,take from rxjs/operators
-import { map, take } from "rxjs/operators";
+import { map, take } from 'rxjs/operators';
 
 // import Observable from rxjs
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 
 // import async from angular/core/testing
-import { async } from "@angular/core/testing";
+import { async } from '@angular/core/testing';
 
 
 export interface transaction {
@@ -61,7 +66,6 @@ export class TransactionService {
   // }
   // ตัวอย่างการเรียกใช้
   // this.accountService.get_account().subscribe(res => {})
-
   get_transaction(): Observable<transaction[]> {
     return this.transaction = this.transaction_collection.snapshotChanges().pipe(
       map(actions => {
@@ -73,6 +77,7 @@ export class TransactionService {
       })
     );
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function get_transaction_By_Id
   // create by : kittisak noidonpai
@@ -91,7 +96,6 @@ export class TransactionService {
   // }
   // ตัวอย่างการเรียกใช้
   // this.accountService.get_transaction_By_Id(id).subscribe(res => {})
-
   get_transaction_By_Id(id: string): Observable<transaction> {
     return this.transaction_collection
       .doc<transaction>(id)
@@ -104,23 +108,23 @@ export class TransactionService {
         })
       );
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function add_transaction
   // create by : kittisak noidonpai
   // จะทำการ บันทึกข้อมูลของ transaction ลงใน firestore
   // ตัวอย่างการเรียกใช้
   // this.accountService.add_transaction(transaction)
-
   add_transaction(transaction: transaction): Promise<DocumentReference> {
     return this.transaction_collection.add(transaction);
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function update_transaction
   // create by : kittisak noidonpai
   // จะทำการ เปลี่ยนข้อมูลของ transaction ตาม id ใน firestore
   // ตัวอย่างการเรียกใช้
   // this.accountService.update_transaction(transaction)
-
   update_transaction(transaction: transaction): Promise<void> {
     return this.transaction_collection.doc(transaction.id).update({
       tran_account: transaction.tran_account,
@@ -132,14 +136,15 @@ export class TransactionService {
       tran_user:transaction.tran_user
     });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function delete_transaction
   // create by : kittisak noidonpai
   // จะทำการ ลบข้อมูลของ user ตาม id ใน firestore
   // ตัวอย่างการเรียกใช้
   // this.accountService.delete_transaction(id)
-
   delete_transaction(id: string): Promise<void> {
     return this.transaction_collection.doc(id).delete();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 }

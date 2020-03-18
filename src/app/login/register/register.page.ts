@@ -1,3 +1,8 @@
+/**
+ * @File : register.page.ts
+ * service of register
+ */
+
 import { Component, OnInit } from "@angular/core";
 import { Router, RouterModule } from "@angular/router";
 import {
@@ -44,10 +49,12 @@ export class RegisterPage implements OnInit {
     });
     
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   back() {// การกลับไปยังหน้า login
     this.router.navigate(["login"]);// เป็นการเรียนใช้ router ให้กลับมายังที่หน้า login
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   validate() {//เป็นฟังก์ชั่นการตรวจสอบ 
     if (this.user_add.user_name == "") {// ถ้ามันเท่ากับช่องว่าง จะมีการเเสดงวว่า "กรุณาใส่ชื่อ"
@@ -68,9 +75,9 @@ export class RegisterPage implements OnInit {
     } else {//
       this.userservice.add_user(this.user_add);// เป็นการ add ของทั้งหมดที่user ทำการสมัคร
       this.confirm();// กด comfrim
-      
     }
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /**
    * @param text
@@ -86,10 +93,12 @@ export class RegisterPage implements OnInit {
 
     await alert.present();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   backToLogin() {
     this.router.navigate(["login"], { replaceUrl: true });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   async Toast(text) {
     const toast = await this.toastController.create({
@@ -101,7 +110,7 @@ export class RegisterPage implements OnInit {
     });
     toast.present();
   }
-
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function : confirm กดปุ่มยืนยันเพิ่มบัญชี
   // name : Chatchalerm
@@ -133,5 +142,6 @@ export class RegisterPage implements OnInit {
     });
     await alert.present();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
   
 }

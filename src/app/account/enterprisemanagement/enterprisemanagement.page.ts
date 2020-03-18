@@ -56,6 +56,7 @@ export class EnterprisemanagementPage implements OnInit {
     this.sharename = '';
     // console.log(this.account_id);
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /*
   Function : setaccount() | กำหนดค่าให้ Account

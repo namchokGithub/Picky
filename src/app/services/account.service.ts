@@ -1,4 +1,8 @@
-import { ShowaccountPage } from './../account/showaccount/showaccount.page';
+/**
+ * @File : account.service.ts
+ * service of account
+ */
+
 // import injectable from angular/core
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
@@ -89,6 +93,7 @@ export class AccountService {
     this.account_family_collection = this.afs.collection<family>('account');
     this.account_enterprise_collection = this.afs.collection<enterprise>('account');
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function get_account_person
   // create by : kittisak noidonpai
@@ -117,6 +122,7 @@ export class AccountService {
         })
       ));
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function get_account_family
   // create by : kittisak noidonpai
@@ -149,6 +155,7 @@ export class AccountService {
         })
       ));
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function get_account_enterprise
   // create by : kittisak noidonpai
@@ -182,6 +189,7 @@ export class AccountService {
         })
       ));
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function get_acount_person_By_Id
   // create by : kittisak noidonpai
@@ -209,6 +217,7 @@ export class AccountService {
         })
       );
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function get_acount_family_By_Id
   // create by : kittisak noidonpai
@@ -240,6 +249,7 @@ export class AccountService {
         })
       );
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function get_acount_enterprise_By_Id
   // create by : kittisak noidonpai
@@ -272,6 +282,7 @@ export class AccountService {
         })
       );
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function add_account_person
   // create by : kittisak noidonpai
@@ -281,6 +292,7 @@ export class AccountService {
   add_account_person(person: person): Promise<DocumentReference> {
     return this.account_person_collection.add(person);
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function add_account_family
   // create by : kittisak noidonpai
@@ -290,6 +302,7 @@ export class AccountService {
   add_account_family(family: family): Promise<DocumentReference> {
     return this.account_family_collection.add(family);
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function add_account_enterprise
   // create by : kittisak noidonpai
@@ -299,6 +312,7 @@ export class AccountService {
   add_account_enterprise(enterprise: enterprise): Promise<DocumentReference> {
     return this.account_enterprise_collection.add(enterprise);
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function update_account_person
   // create by : kittisak noidonpai
@@ -314,6 +328,7 @@ export class AccountService {
       account_type: person.account_type
     });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function update_account_family
   // create by : kittisak noidonpai
@@ -328,6 +343,7 @@ export class AccountService {
       account_type: family.account_type
     });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function update_account_enteprise
   // create by : kittisak noidonpai
@@ -343,6 +359,7 @@ export class AccountService {
       account_department: enterprise.account_department
     });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function delete_account
   // create by : kittisak noidonpai
@@ -352,6 +369,7 @@ export class AccountService {
   delete_account(id: string): Promise<void> {
     return this.account_person_collection.doc(id).delete();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function set_session_account
   // create by : kittisak noidonpai
@@ -359,6 +377,7 @@ export class AccountService {
   // ตัวอย่างการเรียกใช้
   // this.accountService.set_session_account(account_id,account_name)
   set_session_account(account_id: string, account_name: string) {
+
     let acc = {
       account_id: account_id,
       account_name: account_name
@@ -368,6 +387,7 @@ export class AccountService {
     this.account_id = account_id;
     this.account_name = account_name;
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function get_session_account_id
   // create by : kittisak noidonpai
@@ -377,6 +397,7 @@ export class AccountService {
   get_session_account_id() {
     return this.account_id;
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Function get_session_account_name
   // create by : kittisak noidonpai
@@ -386,6 +407,7 @@ export class AccountService {
   get_session_account_name() {
     return this.account_name;
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -411,5 +433,6 @@ export class AccountService {
       this.router.navigate(['showaccount'], { replaceUrl: true });
     }
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
 }

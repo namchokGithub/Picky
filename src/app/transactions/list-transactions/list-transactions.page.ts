@@ -1,10 +1,11 @@
+/**
+ * @File : list-transactions.page.ts
+ * service of list-transactions
+ */
+
 import { Component, OnInit } from '@angular/core';
 import {
-  NavController,
   MenuController,
-  AlertController,
-  ToastController,
-  LoadingController
 } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService, User } from 'src/app/services/user.service';
@@ -61,16 +62,19 @@ export class ListTransactionsPage implements OnInit {
     this.check_null();
     console.log(this.tran);
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   async load_session_account() {
     this.account_id = this.accountService.get_session_account_id();
     this.account_name = this.accountService.get_session_account_name();
     await this.get_transaction();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   load_session_user() {
     this.user_session = this.user.get_session_user();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   async get_transaction() {
     this.transactionService.get_transaction().subscribe( res => {
@@ -78,6 +82,7 @@ export class ListTransactionsPage implements OnInit {
       this.check_transaction();
     });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   async check_transaction() {
     // console.log(this.tran);
@@ -91,27 +96,27 @@ export class ListTransactionsPage implements OnInit {
     }
     await this.setvalue();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   setvalue() {
-
     if (this.transaction.length == 0) {
       this.value = false;
     } else {
-
-
+      // tslint:disable-next-line: prefer-for-of
       for (let i = 0; i < this.transaction.length; i++) {
         if (this.transaction[i].tran_category_type == 'income') {
+          // tslint:disable-next-line: radix
           this.income += parseInt(this.transaction[i].tran_amount);
         } else {
+          // tslint:disable-next-line: radix
           this.Expense += parseInt(this.transaction[i].tran_amount);
         }
       }
       this.balance = this.income - this.Expense;
     }
-
     console.log(this.transaction);
-
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   search() {
      // sub month & date to show trancition
@@ -120,11 +125,13 @@ export class ListTransactionsPage implements OnInit {
       this.month = this.month.substring(7, 5);
       console.log(this.month);
 
-    } if ( this.date != null ) {
+    }
+    if ( this.date != null ) {
       this.date = this.date.substring(10, 8);
       console.log(this.date);
     }
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   check_null() {
     console.log(this.month + this.date);
@@ -135,8 +142,11 @@ export class ListTransactionsPage implements OnInit {
       return false;
     }
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
+
   goHomePage() {
     this.router.navigate(['home'], { replaceUrl: true });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
 }

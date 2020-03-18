@@ -1,8 +1,11 @@
+/**
+ * @File : setting.page.ts
+ * page of setting
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { AlertController} from '@ionic/angular';
-import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { async } from 'rxjs/internal/scheduler/async';
 import { UserService, User} from 'src/app/services/user.service';
 
 @Component({
@@ -10,6 +13,7 @@ import { UserService, User} from 'src/app/services/user.service';
   templateUrl: './setting.page.html',
   styleUrls: ['./setting.page.scss'],
 })
+
 export class SettingPage implements OnInit {
   status = true;
   statusDelete = false;
@@ -30,16 +34,18 @@ export class SettingPage implements OnInit {
     this.user_session =  await this.userService.get_session_user();
     this.name = this.user_session.user_name;
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   async editName() {
     if (this.status == true) {
-        // hide edit
-          this.status = false;
-      } else {
-        // show edit
-          this.status = true;
-      }
+      // hide edit
+        this.status = false;
+    } else {
+      // show edit
+        this.status = true;
+    }
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   async deleteUser() {
       // ส่วนที่แสดงแจ้งเตือน ว่าต้องการลบบัญชีผู้ใช้หรือไม่ ?
@@ -66,10 +72,9 @@ export class SettingPage implements OnInit {
         }
       }]
     });
-
     await alert.present();
-
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   async successToEdit() {
     // ส่วนที่แสดงแจ้งเตือนในการแก้ไขข้อมูล
@@ -103,11 +108,8 @@ export class SettingPage implements OnInit {
       }
     ]
   });
-
     await alert.present();
-
   }
-
-
+  // ----------------------------------------------------------------------------------------------------------------- //
 
 }

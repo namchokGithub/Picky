@@ -1,23 +1,21 @@
+/**
+ * @File : home.page.ts
+ * service of add transactions
+ */
+
 import { Component, OnInit } from '@angular/core';
-import {
-  NavController,
-  MenuController,
-  AlertController,
-  ToastController,
-  LoadingController
-} from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService, User } from 'src/app/services/user.service';
+import { UserService } from 'src/app/services/user.service';
 import { AccountService } from 'src/app/services/account.service';
-import { TransactionService, transaction } from 'src/app/services/transaction.service';
-import { from } from 'rxjs';
-import { async } from '@angular/core/testing';
-import { importExpr } from '@angular/compiler/src/output/output_ast';
+import { TransactionService } from 'src/app/services/transaction.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss']
 })
+
 export class HomePage implements OnInit {
   public account_id: string;
   public account_name: string;
@@ -29,6 +27,7 @@ export class HomePage implements OnInit {
   public transaction = [];
   public tran = [];
   public value: boolean;
+
   constructor(
     public menu: MenuController,
     public activatedRoute: ActivatedRoute,
@@ -38,7 +37,7 @@ export class HomePage implements OnInit {
     public accountService: AccountService
   ) {}
 
- async ngOnInit() {
+  async ngOnInit() {
     this.income = 0;
     this.Expense = 0;
     this.balance = 0;
@@ -49,22 +48,25 @@ export class HomePage implements OnInit {
     await this.get();
     this.accountService.isAuthenAccount();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   ionViewWillEnter() {
     this.load_session_user();
     this.load_session_account();
     this.accountService.isAuthenAccount();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   async load_session_account() {
     this.account_id = this.accountService.get_session_account_id();
     this.account_name = this.accountService.get_session_account_name();
-
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   load_session_user() {
     this.user_session = this.user.get_session_user();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   async get() {
      this.transactionService.get_transaction().subscribe( res => {
@@ -73,11 +75,12 @@ export class HomePage implements OnInit {
       this.check_transaction();
     });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   check_transaction() {
-    console.log('check_transaction');
+    // console.log('check_transaction');
     // console.log(this.tran);
-    console.log(this.tran);
+    // console.log(this.tran);
     let index = 0;
     for (let i = 0; i < this.tran.length; i++) {
       console.log(i + ' ' + this.tran[i].tran_account_id + ' ' + this.account_id);
@@ -89,26 +92,31 @@ export class HomePage implements OnInit {
     }
     this.setvalue();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   setvalue() {
-      for (let i = 0; i < this.transaction.length; i++) {
-        if (this.transaction[i].tran_category_type == 'income') {
-          this.income += parseInt(this.transaction[i].tran_amount);
-        } else {
-          this.Expense += parseInt(this.transaction[i].tran_amount);
-        }
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < this.transaction.length; i++) {
+      if (this.transaction[i].tran_category_type == 'income') {
+        this.income += parseInt(this.transaction[i].tran_amount);
+      } else {
+        this.Expense += parseInt(this.transaction[i].tran_amount);
       }
-      this.balance = this.income - this.Expense;
+    }
+    this.balance = this.income - this.Expense;
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   // Add transactions
   add() {
     this.income = 0;
     this.Expense = 0;
     this.balance = 0;
+    // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < this.transaction.length; i++) {
       this.transaction.pop();
     }
     this.router.navigate(['add'], { replaceUrl: true });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 }
