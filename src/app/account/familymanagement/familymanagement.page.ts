@@ -1,3 +1,8 @@
+/**
+ * @File : familymanagement.page.ts
+ * service of family management
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule , ActivatedRoute} from '@angular/router';
 import { AlertController , ToastController, NavController} from '@ionic/angular';
@@ -17,19 +22,18 @@ export class FamilymanagementPage implements OnInit {
   public db_user = [];
   public account: any = [];
   public user_search: any = [];
-
   public user_session = [];
 
   public family: family = {
-
     id: '',
     account_balance: '',
     account_name: '',
     account_member: [],
     account_type: '',
-
   };
-  constructor(public navCtrl: NavController,
+
+  constructor(
+              public navCtrl: NavController,
               public router: Router,
               public alertController: AlertController,
               public activatedRoute: ActivatedRoute,
@@ -37,7 +41,6 @@ export class FamilymanagementPage implements OnInit {
               public userService: UserService,
               public toastController: ToastController
     ) { }
-
 
   async ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe(params => {
@@ -59,14 +62,15 @@ export class FamilymanagementPage implements OnInit {
       this.setaccount();
     });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   //  Function: back กด icon ย้อนกลับ เพื่อไปยังหน้า showaccount
   //  Name: Chomphunut
   //  Date: 6/3/20
   back() {
-
     this.router.navigate(['showaccount'], { replaceUrl: true });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   //  Function: logout กด icon ออกจากระบบ เพื่อไปยังหน้า login
   //  Name: Chomphunut
@@ -74,13 +78,14 @@ export class FamilymanagementPage implements OnInit {
   logout() {
     this.router.navigate(['login'], { replaceUrl: true });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   //  Function: delete กดเพื่อลบรายชื่อจาก List Shared with
   //  Name: Chomphunut
   //  Date: 7/3/20
-  delete(id: string) {
-    console.log(id);
-  }
+  // delete(id: string) {
+  //   console.log(id);
+  // }
 
   //  Function: confirm กด icon ออกจากหน้า familymanagement เพื่อไปยังหน้า showaccount
   //  Name: Chomphunut
@@ -88,6 +93,7 @@ export class FamilymanagementPage implements OnInit {
   confirm() {
     this.router.navigate(['showaccount'], { replaceUrl: true });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   //  Function: alert แจ้งเตือนเพื่อนยืนยัน
   //  Name: Chomphunut
@@ -115,9 +121,10 @@ export class FamilymanagementPage implements OnInit {
         }
       ]
     });
-
     await alert.present();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
+
   //  Function: Set Account ที่ทำการแชร์
   //  Name: Chomphunut
   //  Date: 14/3/20
@@ -129,6 +136,8 @@ export class FamilymanagementPage implements OnInit {
     this.family.account_member = this.account.account_member;
     this.family.account_type = this.account.account_type;
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
+
   //  Function: Sear chusername เพื่อคนหาผู้ที่ทำการแชร์บัญชี
   //  Name: Chomphunut
   //  Date: 14/3/20
@@ -139,6 +148,8 @@ export class FamilymanagementPage implements OnInit {
       this.showToast('ค้นหาผู้ใช้พบ');
     }
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
+
   //  Function: Show toast แสดงข้อความ
   //  Name: Chomphunut
   //  Date: 14/3/20
@@ -149,4 +160,5 @@ export class FamilymanagementPage implements OnInit {
       duration: 2000
     }).then(toast => toast.present());
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 }

@@ -70,6 +70,7 @@ export class EnterprisemanagementPage implements OnInit {
     this.enterprise.account_department = this.account.account_department;
     // console.log(this.enterprise);
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /*
   Function : searchusername() | ค้นหา user
@@ -81,6 +82,7 @@ export class EnterprisemanagementPage implements OnInit {
       this.showToast('ค้นหาผู้ใช้พบ');
     }
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /*
   Function : back() | back to page show account
@@ -89,6 +91,7 @@ export class EnterprisemanagementPage implements OnInit {
   back() {
     this.router.navigate(['showaccount'], { replaceUrl: true });
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /*
   Function : showToast() | show toast
@@ -100,6 +103,7 @@ export class EnterprisemanagementPage implements OnInit {
       duration: 2000
     }).then(toast => toast.present());
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /*
   Function : alert() | show alert
@@ -130,6 +134,7 @@ export class EnterprisemanagementPage implements OnInit {
 
     await alert.present();
   }
+  // ----------------------------------------------------------------------------------------------------------------- //
 
   /*
   Function : alert() | show alert
